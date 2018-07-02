@@ -3,24 +3,12 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 
 import Explore from './screens/Explore'
-import Home from './screens/Home'
 import Profile from './screens/Profile'
 import Settings from './screens/Settings'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 
 export default createBottomTabNavigator({
-  Home: {
-    screen: Home,
-    navigationOptions: {
-      tabBarLabel: 'HOME',
-      tabBarIcon: ({tintColor})=>(
-        <Icon name="ios-home-outline"
-              color={tintColor}
-              size={24}/>
-      )
-    }
-  },
   Explore: {
     screen: Explore,
     navigationOptions: {
