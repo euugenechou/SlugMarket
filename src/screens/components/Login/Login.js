@@ -2,14 +2,13 @@ import React, {Component} from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 
 export default class Login extends Component {
-    render() {
+    render () {
         return {
             <View style={styles.container}>
                 <View style={styles.logoContainer}>
                     <Image
                         style={styles.logo}
-                        source={require('../assets/furniture.jpg')}
-                    />
+                        source={require('../assets/furniture.jpg')}/>
                     <Text style={styles.title}>
                         Fuck you Jon
                     </Text>
