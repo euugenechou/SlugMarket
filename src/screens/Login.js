@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 import { 
     StyleSheet,
     View, Image,
@@ -7,6 +8,7 @@ import {
     StatusBar,
     Button
 } from 'react-native';
+
 import Main from './Main';
 
 export default class Login extends Component {
