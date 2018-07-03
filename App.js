@@ -1,8 +1,9 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation';
 
+/* Screen imports */
 import Main from './src/screens/Main';
-import Login from './src/screens/components/Login/Login'
+import Splash from './src/screens/Splash';
 
 /* AWS Imports */
 import Amplify from 'aws-amplify';
@@ -12,6 +13,6 @@ Amplify.configure(aws_exports);
 
 export default class App extends React.Component {
     render () {
-        return <Main />;
+        return <Splash />;
     }
 }
