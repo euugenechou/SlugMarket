@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 
 import Explore from './screens/Explore'
@@ -7,6 +6,10 @@ import Profile from './screens/Profile'
 import Settings from './screens/Settings'
 import Icon from 'react-native-vector-icons/Ionicons'
 
+import Amplify from 'aws-amplify';
+import aws_exports from './src/aws-exports';
+
+Amplify.configure(aws_exports);
 
 export default createBottomTabNavigator({
   Explore: {
@@ -57,12 +60,3 @@ export default createBottomTabNavigator({
     }
   }
 })
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
