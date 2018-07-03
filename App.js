@@ -10,7 +10,7 @@ import aws_exports from './src/aws-exports';
 Amplify.configure(aws_exports);
 
 export default class App extends React.Component {
-  render () {
-    return <Main />;
-  }
+    render () {
+        return <Main />;
+    }
 }

@@ -1,19 +1,18 @@
 import React, { Component } from "react";
 import {
-  View,
-  Text,
-  StyleSheet
+    View,
+    Text,
+    StyleSheet
 } from "react-native";
 
 class Settings extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-      <Text>Settings
-      </Text>
-      </View>
-    );
-  }
+    render() {
+        return (
+            <View style={styles.container}>
+                <Text>Settings</Text>
+            </View>
+        );
+    }
 }
 
 export default Settings;
