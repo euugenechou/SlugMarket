@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation';
 
-import Main from './screens/Main';
+import Main from './src/screens/Main';
 
 /* AWS Imports */
 import Amplify from 'aws-amplify';
