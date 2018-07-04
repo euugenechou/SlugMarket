@@ -16,7 +16,7 @@ export default class Splash extends Component {
             return (
                 <View style={styles.container}>
                     <Text style={styles.title}>
-                        fuck you tim
+                        fuck you jon
                     </Text>
                 </View>
             )
@@ -31,13 +31,13 @@ export default class Splash extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'black',
+        backgroundColor: 'white',
         alignItems: 'center',
         justifyContent: 'center'
     },
     title: {
         fontWeight: 'bold',
         fontSize: 18,
-        color: 'white'
+        color: 'black'
     }
 });

@@ -11,9 +11,11 @@ export default class LoginTwo extends React.Component {
   state = {
     isAuthenticated: false
   }
+
   authenticate(isAuthenticated) {
     this.setState({ isAuthenticated })
   }
+
   render() {
     if (this.state.isAuthenticated) {
       console.log('Auth: ', Auth)

@@ -11,6 +11,20 @@ export default class Tabs extends React.Component {
 }
 
 const BottomTabNavigator = createBottomTabNavigator({
-  Signin: { screen: SignIn },
-  Signup: { screen: SignUp }
+  "SIGN IN": { screen: SignIn },
+  "SIGN UP": { screen: SignUp }
+},
+{    
+    tabBarOptions: {
+      activeTintColor: 'teal',
+      inactiveTintColor: 'grey',
+      style: {
+        backgroundColor: 'white',
+        borderTopWidth: 0,
+        shadowOffset: { width: 5, height: 3 },
+        shadowColor: 'black',
+        shadowOpacity: 0.5,
+        elevation: 5
+      }
+    }
 })

@@ -1,5 +1,6 @@
 import React from 'react';
 import { TextInput, Button, StyleSheet, Text, View } from 'react-native';
+import { Auth } from 'aws-amplify'
 
 export default class App extends React.Component {
   state = {
@@ -9,11 +10,13 @@ export default class App extends React.Component {
     email: '',
     confirmationCode: ''
   }
+
   onChangeText(key, value) {
     this.setState({
       [key]: value
     })
   }
+
   signUp() {
     Auth.signUp({
       username: this.state.username,
@@ -26,42 +29,49 @@ export default class App extends React.Component {
     .then(() => console.log('successful sign up!'))
     .catch(err => console.log('error signing up!: ', err))
   }
+
   confirmSignUp() {
     Auth.confirmSignUp(this.state.username, this.state.confirmationCode)
     .then(() => console.log('successful confirm sign up!'))
     .catch(err => console.log('error confirming signing up!: ', err))
   }
+
   render() {
     return (
       <View style={styles.container}>
         <TextInput
           onChangeText={value => this.onChangeText('username', value)}
           style={styles.input}
-          placeholder='username'
+          placeholder='UCSC ID'
+          placeholderTextColor='gray'
         />
         <TextInput
           onChangeText={value => this.onChangeText('password', value)}
           style={styles.input}
           secureTextEntry={true}
-          placeholder='password'
+          placeholder='Cruz Blue password'
+          placeholderTextColor='gray'
         />
         <TextInput
           onChangeText={value => this.onChangeText('phone_number', value)}
           style={styles.input}
           placeholder='phone'
+          placeholderTextColor='gray'
         />
         <TextInput
           onChangeText={value => this.onChangeText('email', value)}
           style={styles.input}
           placeholder='email'
+          placeholderTextColor='gray'
         />
-        <Button title="Sign Up" onPress={this.signUp.bind(this)} />
+        <Button color='teal' title="Sign Up" onPress={this.signUp.bind(this)} />
         <TextInput
           onChangeText={value => this.onChangeText('confirmationCode', value)}
           style={styles.input}
-          placeholder='confirmation Code'
+          placeholder='confirmation code'
+          placeholderTextColor='gray'
         />
-        <Button title="Confirm Sign Up" onPress={this.confirmSignUp.bind(this)} />
+        <Button color='teal' title="Confirm Sign Up" onPress={this.confirmSignUp.bind(this)} />
       </View>
     );
   }
@@ -71,12 +81,14 @@ const styles = StyleSheet.create({
   input: {
     height: 50,
     borderBottomWidth: 2,
-    borderBottomColor: '#2196F3',
+    borderBottomColor: 'teal',
+    color: 'white',
     margin: 10
   },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    padding: 30,
+    backgroundColor: 'white',
     justifyContent: 'center',
   },
 });

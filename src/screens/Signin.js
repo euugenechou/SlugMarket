@@ -39,20 +39,23 @@ export default class App extends React.Component {
           onChangeText={value => this.onChangeText('username', value)}
           style={styles.input}
           placeholder='username'
+          placeholderTextColor='gray'
         />
         <TextInput
           onChangeText={value => this.onChangeText('password', value)}
           style={styles.input}
           secureTextEntry={true}
           placeholder='password'
+          placeholderTextColor='gray'
         />
-        <Button title="Sign In" onPress={this.signIn.bind(this)} />
+        <Button color='teal' title="Sign In" onPress={this.signIn.bind(this)} />
         <TextInput
           onChangeText={value => this.onChangeText('confirmationCode', value)}
           style={styles.input}
-          placeholder='confirmation Code'
+          placeholder='confirmation code'
+          placeholderTextColor='gray'
         />
-        <Button title="Confirm Sign In" onPress={this.confirmSignIn.bind(this)} />
+        <Button color='teal' title="Confirm Sign In" onPress={this.confirmSignIn.bind(this)} />
       </View>
     );
   }
@@ -62,12 +65,13 @@ const styles = StyleSheet.create({
   input: {
     height: 50,
     borderBottomWidth: 2,
-    borderBottomColor: '#2196F3',
+    borderBottomColor: 'teal',
     margin: 10
   },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    padding: 30,
+    backgroundColor: 'white',
     justifyContent: 'center',
   },
 });
