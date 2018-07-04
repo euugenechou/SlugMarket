@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { StyleSheet, View, Image, Text } from 'react-native';
-import Login from './Login';
+import LoginTwo from './LoginTwo';
 
 export default class Splash extends Component {
     constructor (props){
@@ -22,7 +22,7 @@ export default class Splash extends Component {
             )
         } else {
             return (
-                <Login />
+                <LoginTwo />
             );
         }
     }

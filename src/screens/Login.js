@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import { 
     StyleSheet,
@@ -10,6 +10,10 @@ import {
 } from 'react-native';
 
 import Main from './Main';
+import Signup from './Signup';
+import Amplify, { Auth } from 'aws-amplify';
+import AWSConfig from '../aws-exports';
+Amplify.configure(AWSConfig)
 
 export default class Login extends Component {
     constructor (props) {
@@ -51,6 +55,10 @@ export default class Login extends Component {
                     <Button
                         title="Log in"
                         onPress={() => this.handleLogin()}
+                        />
+                    <Button
+                        title='Sign up'
+                        onPress={() => <Signup />}
                         />
                 </View>
             );
