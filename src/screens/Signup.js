@@ -44,6 +44,8 @@ export default class App extends React.Component {
           style={styles.input}
           placeholder='UCSC ID'
           placeholderTextColor='gray'
+          autoCapitalize="none"
+          autoCorrect={false}
         />
         <TextInput
           onChangeText={value => this.onChangeText('password', value)}
@@ -51,18 +53,25 @@ export default class App extends React.Component {
           secureTextEntry={true}
           placeholder='Cruz Blue password'
           placeholderTextColor='gray'
+          autoCapitalize="none"
+          autoCorrect={false}
         />
         <TextInput
           onChangeText={value => this.onChangeText('phone_number', value)}
           style={styles.input}
           placeholder='phone'
           placeholderTextColor='gray'
+          autoCapitalize="none"
+          autoCorrect={false}
         />
         <TextInput
           onChangeText={value => this.onChangeText('email', value)}
           style={styles.input}
           placeholder='email'
           placeholderTextColor='gray'
+          keyboardType="email-address"
+          autoCapitalize="none"
+          autoCorrect={false}
         />
         <Button color='teal' title="Sign Up" onPress={this.signUp.bind(this)} />
         <TextInput
@@ -70,6 +79,8 @@ export default class App extends React.Component {
           style={styles.input}
           placeholder='confirmation code'
           placeholderTextColor='gray'
+          autoCapitalize="none"
+          autoCorrect={false}
         />
         <Button color='teal' title="Confirm Sign Up" onPress={this.confirmSignUp.bind(this)} />
       </View>
@@ -82,7 +93,7 @@ const styles = StyleSheet.create({
     height: 50,
     borderBottomWidth: 2,
     borderBottomColor: 'teal',
-    color: 'white',
+    color: 'black',
     margin: 10
   },
   container: {
