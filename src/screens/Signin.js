@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput, Button, StyleSheet, Text, View } from 'react-native';
+import { TextInput, Button, StyleSheet, Text, View, Alert } from 'react-native';
 
 import { Auth } from 'aws-amplify'
 
@@ -25,11 +25,14 @@ export default class App extends React.Component {
   }
   confirmSignIn() {
     Auth.confirmSignIn(this.state.user, this.state.confirmationCode)
-    .then(() => {
-      this.props.screenProps.authenticate(true)
-    })
+    .then(() => {this.props.screenProps.authenticate(true)})
     .catch(err => console.log(err));
   }
+  //   .next(() => {
+  //     this.props.screenProps.authenticate(true)
+  //   })
+  //   .catch(err => console.log(err));
+  // }
   render() {
     return (
       <View style={styles.container}>

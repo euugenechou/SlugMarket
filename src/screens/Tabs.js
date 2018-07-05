@@ -6,7 +6,11 @@ import SignUp from './Signup'
 
 export default class Tabs extends React.Component {
   render () {
-    return <BottomTabNavigator />;
+    return (<BottomTabNavigator
+            screenProps={{
+              authenticate: this.props.screenProps.authenticate
+            }}
+            />);
   }
 }
 

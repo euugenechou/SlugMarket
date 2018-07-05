@@ -14,12 +14,13 @@ export default class LoginTwo extends React.Component {
   }
 
   authenticate(isAuthenticated) {
-    this.setState({ isAuthenticated })
+    Alert.alert('User has been authenticated');
+    this.setState({ isAuthenticated: isAuthenticated });
   }
 
   render() {
     if (this.state.isAuthenticated) {
-      return (
+      return ( 
         <Main />
       )
     }
