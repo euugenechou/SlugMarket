@@ -22,6 +22,7 @@
     "aws-amplify": "^0.4.8",
     "aws-amplify-react-native": "^0.2.19",
     "expo": "^28.0.0",
+    "graphql": "^0.13.0",
     "react": "16.3.1",
     "react-native": "~0.55.2",
     "react-native-google-signin": "^1.0.0-rc1",
