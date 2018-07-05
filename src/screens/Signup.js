@@ -2,6 +2,8 @@ import React from 'react';
 import { TextInput, Button, StyleSheet, Text, View } from 'react-native';
 import { Auth } from 'aws-amplify'
 
+import SignIn from './SignIn'
+
 export default class App extends React.Component {
   state = {
     username: '',
@@ -32,7 +34,7 @@ export default class App extends React.Component {
 
   confirmSignUp() {
     Auth.confirmSignUp(this.state.username, this.state.confirmationCode)
-    .then(() => console.log('successful confirm sign up!'))
+    .then(() => this.props.navigation.navigate('SignIn'))
     .catch(err => console.log('error confirming signing up!: ', err))
   }
 

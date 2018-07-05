@@ -17,10 +17,13 @@ const BottomTabNavigator = createBottomTabNavigator({
   "SIGN IN": { screen: SignIn },
   "SIGN UP": { screen: SignUp }
 },
-{    
+{   
+    tabBarPosition: 'bottom',
+    swipeEnabled: 'true',
     tabBarOptions: {
       activeTintColor: 'teal',
       inactiveTintColor: 'grey',
+      swipeEnabled: 'true',
       style: {
         backgroundColor: 'white',
         borderTopWidth: 0,

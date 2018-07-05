@@ -48,6 +48,8 @@ const BottomTabNavigator = createBottomTabNavigator({
   }
 },
   {
+    tabBarPosition: 'bottom',
+    swipeEnabled: 'true',
     tabBarOptions: {
       activeTintColor: 'teal',
       inactiveTintColor: 'grey',
