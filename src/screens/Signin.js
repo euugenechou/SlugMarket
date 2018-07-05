@@ -10,29 +10,29 @@ export default class App extends React.Component {
     confirmationCode: '',
     user: {}
   }
+  
   onChangeText(key, value) {
     this.setState({
       [key]: value
     })
   }
+
   signIn() {
     const { username, password } = this.state
     Auth.signIn(username, password)
     .then(user => {
       this.setState({ user })
+    .then(() => {this.props.screenProps.authenticate(true)})
     })
     .catch(err => console.log('error signing in!: ', err))
   }
+
   confirmSignIn() {
     Auth.confirmSignIn(this.state.user, this.state.confirmationCode)
     .then(() => {this.props.screenProps.authenticate(true)})
     .catch(err => console.log(err));
   }
-  //   .next(() => {
-  //     this.props.screenProps.authenticate(true)
-  //   })
-  //   .catch(err => console.log(err));
-  // }
+
   render() {
     return (
       <View style={styles.container}>

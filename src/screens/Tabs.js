@@ -1,8 +1,8 @@
 import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation';
 
-import SignIn from './Signin'
-import SignUp from './Signup'
+import SignIn from './SignIn'
+import SignUp from './SignUp'
 
 export default class Tabs extends React.Component {
   render () {
