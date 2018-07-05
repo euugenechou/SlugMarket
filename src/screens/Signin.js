@@ -18,11 +18,12 @@ export default class App extends React.Component {
   }
 
   signIn() {
-    const { username, password } = this.state
+    const { username, password } = this.state;
     Auth.signIn(username, password)
-    .then(user => {
-      this.setState({ user })
-    .then(() => {this.props.screenProps.authenticate(true)})
+    // .then(user => {this.setState({ user })
+    .then(() => {
+      user => this.setState({ user });
+      this.props.screenProps.authenticate(true);
     })
     .catch(err => console.log('error signing in!: ', err))
   }

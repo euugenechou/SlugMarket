@@ -45,14 +45,14 @@ features:
           alias-attributes:
             - email
             - phone_number
-          mfa-configuration: ON
+          mfa-configuration: OFF
           name: userpool
           password-policy: !com.amazonaws.mobilehub.ConvertibleMap 
             min-length: '8'
             require-lower-case: true
             require-numbers: true
-            require-symbols: true
-            require-upper-case: true
-          standard-attributes: '["email","phone_number"]'
+            require-symbols: false
+            require-upper-case: false
+          standard-attributes: '[]'
 name: SlugMarket
 region: us-west-1

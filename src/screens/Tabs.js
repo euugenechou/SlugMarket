@@ -9,8 +9,7 @@ export default class Tabs extends React.Component {
     return (<BottomTabNavigator
             screenProps={{
               authenticate: this.props.screenProps.authenticate
-            }}
-            />);
+            }}/>);
   }
 }
 
