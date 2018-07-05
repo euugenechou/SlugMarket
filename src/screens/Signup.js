@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput, Button, StyleSheet, Text, View } from 'react-native';
+import { TextInput, Button, StyleSheet, Text, View, Alert } from 'react-native';
 import { Auth } from 'aws-amplify'
 
 import SignIn from './SignIn'
@@ -28,14 +28,10 @@ export default class App extends React.Component {
         phone_number: this.state.phone_number
       }
     })
-    .then(() => console.log('successful sign up!'))
-    .catch(err => console.log('error signing up!: ', err))
-  }
-
-  confirmSignUp() {
-    Auth.confirmSignUp(this.state.username, this.state.confirmationCode)
-    .then(() => this.props.navigation.navigate('SignInScreen'))
-    .catch(err => console.log('error confirming signing up!: ', err))
+    .then(() => this.props.navigation.navigate('ConfirmScreen', {
+      userName: this.state.username
+    }))
+    .catch(err => Alert.alert(err))
   }
 
   render() {
@@ -75,16 +71,8 @@ export default class App extends React.Component {
           autoCapitalize="none"
           autoCorrect={false}
         />
-        <Button color='teal' title="Sign Up" onPress={this.signUp.bind(this)} />
-        <TextInput
-          onChangeText={value => this.onChangeText('confirmationCode', value)}
-          style={styles.input}
-          placeholder='confirmation code'
-          placeholderTextColor='gray'
-          autoCapitalize="none"
-          autoCorrect={false}
-        />
-        <Button color='teal' title="Confirm Sign Up" onPress={this.confirmSignUp.bind(this)} />
+        <Button color='teal' title="Sign Up" 
+          onPress={() => this.signUp()} />
       </View>
     );
   }

@@ -3,6 +3,7 @@ import { createStackNavigator } from "react-navigation";
 
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
+import Confirm from "./Confirm";
 
 export default class Tabs extends React.Component {
   render() {
@@ -19,7 +20,8 @@ export default class Tabs extends React.Component {
 const LoginStack = createStackNavigator(
   {
     SignInScreen: SignIn,
-    SignUpScreen: SignUp
+    SignUpScreen: SignUp,
+    ConfirmScreen: Confirm
   },
   {
     initialRouteName: "SignInScreen"

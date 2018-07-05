@@ -57,7 +57,7 @@ export default class App extends React.Component {
         <Button
           color="teal"
           title="Sign Up"
-          onPress={() => Alert.alert("???????????????")}
+          onPress={() => this.props.navigation.navigate('SignUpScreen')}
         />
       </View>
     );
