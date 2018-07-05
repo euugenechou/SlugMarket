@@ -8,11 +8,11 @@ import {
     Platform,
     StatusBar,
     ScrollView,
-    Image,
     Dimensions
 } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons'
 import Category from './components/Explore/Category'
+import { styles } from '../styles';
 
 const { height, width } = Dimensions.get('window')
 
@@ -52,11 +52,11 @@ class Explore extends Component {
                         scrollEventThrottle={16}
                     >
                         <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 20 }}>
-                            <Text style={{ fontSize: 24, fontWeight: '700', paddingHorizontal: 20 }}>
+                            <Text style={styles.sectionTitle}>
                                 Recently Added Items
                             </Text>
 
-                            <View style={{ height: 130, marginTop: 20 }}>
+                            <View style={styles.sideScroll}>
                                 <ScrollView
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
@@ -80,11 +80,3 @@ class Explore extends Component {
     }
 }
 export default Explore;
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-    }
-});

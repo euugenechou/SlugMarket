@@ -45,11 +45,11 @@ const styles = StyleSheet.create({
         height: 40,
         backgroundColor: 'white',
         marginBottom: 20,
-        color: 'white'
+        color: 'white',
         paddingHorizontal: 10
     },
     buttonContainer: {
-        backgroundColor: 'blue'
+        backgroundColor: 'blue',
         paddingVertical: 15
     },
     buttonText: {

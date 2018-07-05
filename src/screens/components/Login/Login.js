@@ -3,7 +3,7 @@ import { StyleSheet, View, Image } from 'react-native';
 
 export default class Login extends Component {
     render () {
-        return {
+        return (
             <View style={styles.container}>
                 <View style={styles.logoContainer}>
                     <Image
@@ -16,7 +16,7 @@ export default class Login extends Component {
                 <View style={styles.formContainer}>
                 </View>
             </View>
-        };
+        );
     }
 }
 

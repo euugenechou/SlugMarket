@@ -2,25 +2,30 @@ import React, { Component } from "react";
 import {
     View,
     Text,
-    StyleSheet
+    StyleSheet,
+    SafeAreaView,
+    StatusBar
 } from "react-native";
+import { styles } from '../styles';
 
 class Profile extends Component {
     render() {
         return (
-            <View style={styles.container}>
-                <Text>Profile</Text>
-            </View>
+            <SafeAreaView style={{flex: 1}}>
+                <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 20}}>
+                    <Text style={styles.sectionTitle}>
+                        Profile Page
+                    </Text>
+                </View>
+            </SafeAreaView>
         );
     }
 }
 
-export default Profile;
+const dummyProfile = {
+    name: 'Eugene Chou',
+    phoneNumber: '1800-i-hate-this',
+    email: 'whatthefuck@fuckthis.com'
+}
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-    }
-});
+export default Profile;
