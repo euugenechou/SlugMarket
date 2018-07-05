@@ -11,10 +11,8 @@ import aws_exports from './src/aws-exports';
 
 Amplify.configure(aws_exports);
 
-class App extends React.Component {
+export default class App extends React.Component {
     render () {
         return <Splash />;
     }
 }
-
-export default withAuthenticator(App);

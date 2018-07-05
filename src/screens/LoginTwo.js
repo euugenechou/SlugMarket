@@ -1,11 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Alert } from 'react-native';
 
 import Amplify, { Auth } from 'aws-amplify'
 import AWSConfig from '../aws-exports'
 Amplify.configure(AWSConfig)
 
 import Tabs from './Tabs'
+import Main from './Main'
 
 export default class LoginTwo extends React.Component {
   state = {
@@ -18,7 +19,7 @@ export default class LoginTwo extends React.Component {
 
   render() {
     if (this.state.isAuthenticated) {
-      console.log('Auth: ', Auth)
+      Alert.alert(this.state.isAuthenticated);
       return (
         <Main />
       )
