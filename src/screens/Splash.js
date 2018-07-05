@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { StyleSheet, View, Image, Text } from 'react-native';
-import Login from './Login';
+import Login from './login/Login';
 import Main from './Main'
 
 export default class Splash extends Component {

@@ -5,7 +5,7 @@ import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import Confirm from "./Confirm";
 
-export default class Tabs extends React.Component {
+export default class Login extends React.Component {
   render() {
     return (
       <LoginStack

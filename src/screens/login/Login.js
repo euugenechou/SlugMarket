@@ -4,11 +4,11 @@ import { StyleSheet,
 } from 'react-native';
 
 import Amplify, { Auth } from 'aws-amplify'
-import AWSConfig from '../aws-exports'
+import AWSConfig from '../../aws-exports'
 Amplify.configure(AWSConfig)
 
-import Main from './Main'
-import Tabs from './Tabs'
+import Main from '../Main'
+import LoginStack from './LoginStack'
 
 export default class Login extends React.Component {
   state = {
@@ -27,7 +27,7 @@ export default class Login extends React.Component {
     }
     return (
       <View style={styles.container}>
-        <Tabs
+        <LoginStack
           screenProps={{
             authenticate: this.authenticate.bind(this)
           }}
