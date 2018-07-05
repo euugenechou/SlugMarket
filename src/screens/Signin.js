@@ -20,17 +20,15 @@ export default class App extends React.Component {
     Auth.signIn(username, password)
     .then(user => {
       this.setState({ user })
-      console.log('successful sign in!')
     })
     .catch(err => console.log('error signing in!: ', err))
   }
   confirmSignIn() {
     Auth.confirmSignIn(this.state.user, this.state.confirmationCode)
     .then(() => {
-      console.log('successful confirm sign in!')
       this.props.screenProps.authenticate(true)
     })
-    .catch(err => console.log('error confirming signing in!: ', err))
+    .catch(err => console.log(err));
   }
   render() {
     return (

@@ -19,7 +19,6 @@ export default class LoginTwo extends React.Component {
 
   render() {
     if (this.state.isAuthenticated) {
-      Alert.alert(this.state.isAuthenticated);
       return (
         <Main />
       )

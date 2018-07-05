@@ -25,9 +25,9 @@ const awsmobile = {
     'aws_resource_name_prefix': 'slugmarket-mobilehub-135217890',
     'aws_sign_in_enabled': 'enable',
     'aws_user_pools': 'enable',
-    'aws_user_pools_id': 'us-west-2_MomTWaLwA',
+    'aws_user_pools_id': 'us-west-2_uPJkSvr4N',
     'aws_user_pools_mfa_type': 'ON',
-    'aws_user_pools_web_client_id': '1csso0g0digqi4hbsn00qafie0',
+    'aws_user_pools_web_client_id': '209dra4qogvc2r89adih1kd7me',
 }
 
 export default awsmobile;

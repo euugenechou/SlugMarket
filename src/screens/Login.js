@@ -6,7 +6,8 @@ import {
     TextInput, Text,
     TouchableOpacity,
     StatusBar,
-    Button
+    Button,
+    Alert
 } from 'react-native';
 
 import Main from './Main';

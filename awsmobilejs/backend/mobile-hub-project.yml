@@ -53,5 +53,6 @@ features:
             require-numbers: true
             require-symbols: true
             require-upper-case: true
+          standard-attributes: '["email","phone_number"]'
 name: SlugMarket
 region: us-west-1
