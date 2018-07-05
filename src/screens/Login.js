@@ -1,12 +1,14 @@
 import React from 'react';
-import { StyleSheet, View, Text, Alert } from 'react-native';
+import { StyleSheet,
+  View
+} from 'react-native';
 
 import Amplify, { Auth } from 'aws-amplify'
 import AWSConfig from '../aws-exports'
 Amplify.configure(AWSConfig)
 
-import Tabs from './Tabs'
 import Main from './Main'
+import Tabs from './Tabs'
 
 export default class Login extends React.Component {
   state = {

@@ -34,7 +34,7 @@ export default class App extends React.Component {
 
   confirmSignUp() {
     Auth.confirmSignUp(this.state.username, this.state.confirmationCode)
-    .then(() => this.props.navigation.navigate('SignIn'))
+    .then(() => this.props.navigation.navigate('SignInScreen'))
     .catch(err => console.log('error confirming signing up!: ', err))
   }
 
