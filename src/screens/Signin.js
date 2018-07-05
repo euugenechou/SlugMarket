@@ -55,15 +55,6 @@ export default class App extends React.Component {
           autoCorrect={false}
         />
         <Button color='teal' title="Sign In" onPress={this.signIn.bind(this)} />
-        <TextInput
-          onChangeText={value => this.onChangeText('confirmationCode', value)}
-          style={styles.input}
-          placeholder='confirmation code'
-          placeholderTextColor='gray'
-          autoCapitalize="none"
-          autoCorrect={false}
-        />
-        <Button color='teal' title="Confirm Sign In" onPress={this.confirmSignIn.bind(this)} />
       </View>
     );
   }
