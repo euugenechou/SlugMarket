@@ -37,7 +37,7 @@ class Explore extends Component {
                             shadowColor: 'black',
                             shadowOpacity: 0.2,
                             elevation: 1,
-                            marginTop: Platform.OS == 'android' ? 30 : null
+                            marginTop: Platform.OS == 'android' ? 30 : 15
                         }}>
                             <Icon name="ios-search" size={20} style={{ marginRight: 10 }} />
                             <TextInput
