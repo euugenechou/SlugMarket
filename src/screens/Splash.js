@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, Image, Text } from 'react-native';
+import { StyleSheet, View, Image, Text, Platform, TextInput, Button, ImageBackground } from 'react-native';
 import Login from './login/Login';
 import Main from './Main'
 
@@ -9,18 +9,17 @@ export default class Splash extends Component {
         this.state = {
             timePassed: false
         };
-        setTimeout(() => this.setState({timePassed: true}), 900);
+        setTimeout(() => this.setState({timePassed: true}), 1200);
     }
     
     render () {
         if (!this.state.timePassed) {
             return (
-                <View style={styles.container}>
-                    <Text style={styles.title}>
-                        fuck you jon
-                    </Text>
-                </View>
-            )
+                <ImageBackground 
+                    source = {require('../assets/SplashScreeniOS.png')} 
+                    style = {styles.container}>
+                </ImageBackground>
+            ) 
         } else {
             return (
                 <Login />
@@ -32,13 +31,13 @@ export default class Splash extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: 'skyblue',
         alignItems: 'center',
         justifyContent: 'center'
     },
     title: {
         fontWeight: 'bold',
         fontSize: 18,
-        color: 'black'
+        color: 'white'
     }
 });

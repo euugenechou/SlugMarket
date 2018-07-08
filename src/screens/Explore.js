@@ -52,7 +52,7 @@ class Explore extends Component {
 							<Icon name="ios-search" size={20} style={{ marginRight: 10 }} />
 							<TextInput
 								underlineColorAndroid="transparent"
-								placeholder="Fuck you Jon"
+								placeholder="Search"
 								placeholderTextColor="grey"
 								style={{ flex: 1, fontWeight: '700', backgroundColor: 'white' }}
 							/>
