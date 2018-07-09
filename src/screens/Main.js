@@ -1,6 +1,8 @@
+/* React imports */
 import React from 'react';
 import { createBottomTabNavigator, StackNavigator } from 'react-navigation';
 
+/* Local imports */
 import Explore from "./Explore";
 import Profile from "./Profile";
 import Settings from "./Settings";

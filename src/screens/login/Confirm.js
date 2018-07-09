@@ -1,8 +1,9 @@
+/* React imports */
 import React from 'react';
-import { TextInput, Button, StyleSheet, Text, View, Alert } from 'react-native';
-import { Auth } from 'aws-amplify'
+import { TextInput, Button, StyleSheet, View, Alert } from 'react-native';
 
-import SignIn from './SignIn'
+/* AWS imports */
+import { Auth } from 'aws-amplify'
 
 export default class App extends React.Component {
   state = {

@@ -1,8 +1,8 @@
+/* React imports */
 import React from "react";
-import { TextInput, Button, StyleSheet, Alert, View } from "react-native";
+import { TextInput, Button, StyleSheet, View } from "react-native";
 
-import SignUp from './SignUp'
-
+/* AWS imports */
 import { Auth } from "aws-amplify";
 
 export default class App extends React.Component {

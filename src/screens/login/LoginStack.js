@@ -1,6 +1,8 @@
+/* React imports */
 import React from "react";
 import { createStackNavigator } from "react-navigation";
 
+/* Local imports */
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import Confirm from "./Confirm";
