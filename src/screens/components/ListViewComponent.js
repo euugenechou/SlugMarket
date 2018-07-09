@@ -1,6 +1,6 @@
 /* React imports */
 import React, { Component } from 'react';
-import { Text, View, ListView, TouchableHighlight } from 'react-native';
+import { Text, View, ListView, TouchableHighlight, StyleSheet } from 'react-native';
 
 const items = [
 	{ name: 'Edit account' },
