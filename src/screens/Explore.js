@@ -74,9 +74,11 @@ class Explore extends Component {
 										justifyContent: 'space-evenly',
 									}}
 								>
-									<Listings width={width} name="Textbook 1" price={12} />
-									<Listings width={width} name="Textbook 2" price={12} />
-									<Listings width={width} name="Textbook 3" price={12} />
+									<Listings width={width} name="sorcerer's stone" price={2} description="hi jon" />
+									<Listings width={width} name="chamber of secrets" price={4} description="hi tim" />
+									<Listings width={width} name="prisoner of azkaban" price={6} description="hi sabrina" />
+									<Listings width={width} name="goblet of fire" price={8} description="hi daddy" />
+									<Listings width={width} name="order of the phoenix" price={10} description="hi mommy" />
 								</View>
 							</View>
 						</View>
