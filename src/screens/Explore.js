@@ -1,17 +1,9 @@
 /* React imports */
 import React, { Component } from 'react';
-import {
-	View,
-	Text,
-	SafeAreaView,
-	TextInput,
-	Platform,
-	StatusBar,
-	ScrollView,
-	Dimensions,
-} from 'react-native';
+import { View, Text, SafeAreaView, TextInput, Platform, StatusBar, ScrollView, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Category from './components/Explore/Category';
+import Listings from './components/Explore/Listings';
 import { styles } from '../styles';
 
 const { height, width } = Dimensions.get('window');
@@ -61,13 +53,31 @@ class Explore extends Component {
 					<ScrollView scrollEventThrottle={16}>
 						<View style={{ flex: 1, backgroundColor: 'white', paddingTop: 20 }}>
 							<Text style={styles.sectionTitle}>Recently Added Items</Text>
-
 							<View style={styles.sideScroll}>
 								<ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
 									<Category imageUri={require('../assets/textbooks.jpg')} name="Textbooks" />
 									<Category imageUri={require('../assets/furniture.jpg')} name="Furniture" />
 									<Category imageUri={require('../assets/electronics.jpg')} name="Electronics" />
 								</ScrollView>
+							</View>
+							<View style={{ marginTop: 40 }}>
+								<Text style={{ fontSize: 24, fontWeight: '700', paddingHorizontal: 20 }}>
+									Items For Sale
+								</Text>
+								<View
+									style={{
+										paddingHorizontal: 20,
+										paddingVertical: 20,
+										marginBottom: 20,
+										flexDirection: 'column',
+										flexWrap: 'wrap',
+										justifyContent: 'space-evenly',
+									}}
+								>
+									<Listings width={width} name="Textbook 1" price={12} />
+									<Listings width={width} name="Textbook 2" price={12} />
+									<Listings width={width} name="Textbook 3" price={12} />
+								</View>
 							</View>
 						</View>
 					</ScrollView>
