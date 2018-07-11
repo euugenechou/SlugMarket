@@ -56,7 +56,7 @@ class Profile extends Component {
 								flex: 3,
 								paddingVertical: 10,
 								paddingLeft: 10,
-								alignItems: 'left',
+								alignItems: 'flex-start',
 							}}
 						>
 							<View>

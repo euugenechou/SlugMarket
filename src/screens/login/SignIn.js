@@ -5,10 +5,8 @@ import {
   Button,
   StyleSheet,
   View,
-  Alert,
   Text,
-  ScrollView,
-  Image
+  ScrollView
 } from "react-native";
 import TopAlert from "../components/TopAlert";
 
@@ -41,11 +39,12 @@ export default class App extends React.Component {
         user => this.setState({ user });
         this.props.screenProps.authenticate(true);
       })
-      .catch((err) => console.log(err));
-    this.setState({
-      visible: true,
-      errorMessage: "Username or password incorrect"
-    });
+      .catch(() =>
+        this.setState({
+          visible: true,
+          errorMessage: "Username or password incorrect"
+        })
+      );
   }
 
   render() {
@@ -59,9 +58,6 @@ export default class App extends React.Component {
           contentContainerStyle={styles.container}
           centerContent={true}
         >
-          {/* <Image
-          source={require("../../assets/Slug.png")}
-          /> */}
           <Text style={styles.titleText}>SlugMarket</Text>
           <TextInput
             onChangeText={value => this.onChangeText("username", value)}
@@ -80,15 +76,14 @@ export default class App extends React.Component {
             autoCapitalize="none"
             autoCorrect={false}
           />
-          <Button
-            color="teal"
-            title="Sign In"
-            onPress={() => this.signIn()}
-          />
+          <Button color="teal" title="Sign In" onPress={() => this.signIn()} />
           <Button
             color="teal"
             title="Sign Up"
-            onPress={() => this.props.navigation.navigate("SignUpScreen")}
+            onPress={() => {
+              this.setState({ visible: false });
+              this.props.navigation.navigate("SignUpScreen");
+            }}
           />
         </ScrollView>
       </View>

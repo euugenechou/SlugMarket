@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Alert } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 export default class TopAlert extends React.Component {
   render() {
@@ -17,12 +17,18 @@ export default class TopAlert extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "red"
+    backgroundColor: "red",
+    zIndex: 1,
+    position: "absolute",
+    left: 0,
+    right: 0,
+    marginLeft: "auto",
+    marginRight: "auto"
   },
   text: {
     color: "white",
     textAlign: "center",
     fontSize: 16,
-    padding: 5
+    padding: 8
   }
 });
