@@ -16,17 +16,17 @@ features:
             attributes:
               category: S
               description: S
+              isSold: BOOL
               itemName: S
-              listingTime: S
-              pickupLocation: S
               price: N
-              sold: BOOL
+              seller: S
+              timeAdded: N
               userId: S
             hashKeyName: userId
             hashKeyType: S
-            rangeKeyName: itemName
-            rangeKeyType: S
-            tableName: ___DYNAMIC_PREFIX___-userListings
+            rangeKeyName: timeAdded
+            rangeKeyType: N
+            tableName: ___DYNAMIC_PREFIX___-postedItems
             tablePrivacy: protected
   mobile-analytics: !com.amazonaws.mobilehub.v0.Pinpoint 
     components:

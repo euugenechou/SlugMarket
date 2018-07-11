@@ -16,7 +16,7 @@ const awsmobile = {
     'aws_content_delivery_cloudfront_domain': 'd21c5j3odaffce.cloudfront.net',
     'aws_dynamodb': 'enable',
     'aws_dynamodb_all_tables_region': 'us-west-1',
-    'aws_dynamodb_table_schemas': [{"tableName":"slugmarketv-mobilehub-1439541682-userListings","attributes":[{"name":"userId","type":"S"},{"name":"itemName","type":"S"},{"name":"category","type":"S"},{"name":"description","type":"S"},{"name":"listingTime","type":"S"},{"name":"pickupLocation","type":"S"},{"name":"price","type":"N"},{"name":"sold","type":"BOOL"}],"indexes":[],"region":"us-west-1","hashKey":"userId","rangeKey":"itemName"}],
+    'aws_dynamodb_table_schemas': [{"tableName":"slugmarketv-mobilehub-1439541682-postedItems","attributes":[{"name":"userId","type":"S"},{"name":"timeAdded","type":"N"},{"name":"category","type":"S"},{"name":"description","type":"S"},{"name":"isSold","type":"BOOL"},{"name":"itemName","type":"S"},{"name":"price","type":"N"},{"name":"seller","type":"S"}],"indexes":[],"region":"us-west-1","hashKey":"userId","rangeKey":"timeAdded"}],
     'aws_mobile_analytics_app_id': 'ec1600eda59f44ad9b9a8f929ef1fcc6',
     'aws_mobile_analytics_app_region': 'us-east-1',
     'aws_project_id': '00e55ada-10ff-4e18-b2a3-530a96d40831',
