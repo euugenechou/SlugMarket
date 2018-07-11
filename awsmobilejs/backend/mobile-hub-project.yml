@@ -14,24 +14,20 @@ features:
         tables:
           - !com.amazonaws.mobilehub.v0.NoSQLTable 
             attributes:
-              email: S
-              personId: S
-              personName: S
-              phone: S
-              teamId: S
-            hashKeyName: teamId
+              category: S
+              description: S
+              itemName: S
+              listingTime: S
+              pickupLocation: S
+              price: N
+              sold: BOOL
+              userId: S
+            hashKeyName: userId
             hashKeyType: S
-            indexes:
-              - !com.amazonaws.mobilehub.v0.NoSQLIndex 
-                hashKeyName: teamId
-                hashKeyType: S
-                indexName: personName-index
-                rangeKeyName: personName
-                rangeKeyType: S
-            rangeKeyName: personId
+            rangeKeyName: itemName
             rangeKeyType: S
-            tableName: ___DYNAMIC_PREFIX___-AWSMobileTable
-            tablePrivacy: public
+            tableName: ___DYNAMIC_PREFIX___-userListings
+            tablePrivacy: protected
   mobile-analytics: !com.amazonaws.mobilehub.v0.Pinpoint 
     components:
       analytics: !com.amazonaws.mobilehub.v0.PinpointAnalytics {}
@@ -43,6 +39,7 @@ features:
       sign-in-user-pools: !com.amazonaws.mobilehub.v0.UserPoolsIdentityProvider 
         attributes:
           alias-attributes:
+            - preferred_username
             - email
             - phone_number
           mfa-configuration: OFF
@@ -52,7 +49,11 @@ features:
             require-lower-case: true
             require-numbers: true
             require-symbols: false
-            require-upper-case: false
-          standard-attributes: '[]'
-name: SlugMarket
+            require-upper-case: true
+          standard-attributes: '["email","phone_number"]'
+  user-files: !com.amazonaws.mobilehub.v0.UserFiles 
+    attributes:
+      enabled: true
+      wildcard-cors-policy: true
+name: SlugMarket-v2
 region: us-west-1
