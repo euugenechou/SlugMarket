@@ -24,7 +24,7 @@ class Listings extends Component {
 				<View style={{ flex: 1, alignItems: 'center', justifyContent: 'space-evenly' }}>
 					<Text style={{ alignItems: 'center', fontSize: 18, fontWeight: 'bold' }}>{this.props.name}</Text>
 					<Text style={{ alignItems: 'center', fontSize: 18 }}>${this.props.price}</Text>
-					<Text style={{ alignItems: 'center', fontSize: 16 }}>{this.props.description}</Text>
+					<Text style={{ alignItems: 'center', fontSize: 16 }}>seller: {this.props.seller}</Text>
 				</View>
 			</View>
 		);

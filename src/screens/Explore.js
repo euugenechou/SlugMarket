@@ -1,6 +1,12 @@
 /* React imports */
 import React, { Component } from 'react';
-import { View, Text, SafeAreaView, TextInput, Platform, StatusBar, ScrollView, Dimensions } from 'react-native';
+import { 
+	View, Text, 
+	SafeAreaView, 
+	TextInput, Platform, 
+	StatusBar, ScrollView, 
+  Dimensions, Button,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Category from './components/Explore/Category';
 import Listings from './components/Explore/Listings';
@@ -14,8 +20,8 @@ class Explore extends Component {
 		if (Platform.OS == 'android') {
 			this.startHeaderHeight = 100 + StatusBar.currentHeight;
 		}
-	}
-
+  }
+  
 	render() {
 		return (
 			<SafeAreaView style={{ flex: 1 }}>
@@ -52,7 +58,7 @@ class Explore extends Component {
 					</View>
 					<ScrollView scrollEventThrottle={16}>
 						<View style={{ flex: 1, backgroundColor: 'white', paddingTop: 20 }}>
-							<Text style={styles.sectionTitle}>Recently Added Items</Text>
+							<Text style={styles.sectionTitle}>Browse Items By Category</Text>
 							<View style={styles.sideScroll}>
 								<ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
 									<Category imageUri={require('../assets/textbooks.jpg')} name="Textbooks" />
@@ -60,9 +66,21 @@ class Explore extends Component {
 									<Category imageUri={require('../assets/electronics.jpg')} name="Electronics" />
 								</ScrollView>
 							</View>
-							<View style={{ marginTop: 40 }}>
+							<View>
+								<Button
+									style={{
+										flex: 2,
+										justifyContent: 'center',
+									}}
+									color='black'
+									onPress={ () => this.props.navigation.navigate('AddItem') }
+									title="Have Something To Sell?"
+								>
+								</Button>
+							</View>
+							<View style={{ marginTop: 20 }}>
 								<Text style={{ fontSize: 24, fontWeight: '700', paddingHorizontal: 20 }}>
-									Items For Sale
+									Recently Added Items
 								</Text>
 								<View
 									style={{
@@ -74,11 +92,11 @@ class Explore extends Component {
 										justifyContent: 'space-evenly',
 									}}
 								>
-									<Listings width={width} name="sorcerer's stone" price={2} description="hi jon" />
-									<Listings width={width} name="chamber of secrets" price={4} description="hi tim" />
-									<Listings width={width} name="prisoner of azkaban" price={6} description="hi sabrina" />
-									<Listings width={width} name="goblet of fire" price={8} description="hi daddy" />
-									<Listings width={width} name="order of the phoenix" price={10} description="hi mommy" />
+									<Listings width={width} name="sorcerer's stone" price={2} seller="jon" />
+									<Listings width={width} name="chamber of secrets" price={4} seller="tim" />
+									<Listings width={width} name="prisoner of azkaban" price={6} seller="sabrina" />
+									<Listings width={width} name="goblet of fire" price={8} seller="daddy" />
+									<Listings width={width} name="order of the phoenix" price={10} seller="mommy" />
 								</View>
 							</View>
 						</View>
@@ -88,4 +106,5 @@ class Explore extends Component {
 		);
 	}
 }
+
 export default Explore;

@@ -1,9 +1,10 @@
 /* React imports */
 import React from 'react';
-import { createBottomTabNavigator, StackNavigator } from 'react-navigation';
+import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 
 /* Local imports */
 import Explore from "./Explore";
+import AddItem from "./AddItem";
 import Profile from "./Profile";
 import Settings from "./Settings";
 import Icon from "react-native-vector-icons/Ionicons";
@@ -14,9 +15,14 @@ export default class Main extends React.Component {
   }
 }
 
+const ExploreStack = createStackNavigator({
+  MainExplore: { screen: Explore },
+  AddItem: { screen: AddItem }
+})
+
 const BottomTabNavigator = createBottomTabNavigator({
   Explore: {
-    screen: Explore,
+    screen: ExploreStack,
     navigationOptions: {
       tabBarLabel: 'EXPLORE',
       tabBarIcon: ({ tintColor }) => (
