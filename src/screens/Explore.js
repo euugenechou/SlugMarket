@@ -8,6 +8,8 @@ import {
   Dimensions, Button,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+
+/* Local imports */
 import Category from './components/Explore/Category';
 import Listings from './components/Explore/Listings';
 import { styles } from '../styles';
@@ -44,7 +46,7 @@ class Explore extends Component {
 								shadowColor: 'black',
 								shadowOpacity: 0.2,
 								elevation: 1,
-								marginTop: Platform.OS == 'android' ? 30 : 15,
+								marginTop: Platform.OS == 'android' ? 30 : 18,
 							}}
 						>
 							<Icon name="ios-search" size={20} style={{ marginRight: 10 }} />

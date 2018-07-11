@@ -23,9 +23,7 @@ const ExploreStack = createStackNavigator(
     MainExplore: { screen: Explore },
     AddItem: { screen: AddItem }
   },
-  {
-    mode: "modal"
-  }
+  { headerMode: 'none' }
 );
 
 const BottomTabNavigator = createBottomTabNavigator(

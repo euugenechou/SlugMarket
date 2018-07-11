@@ -26,6 +26,7 @@ const LoginStack = createStackNavigator(
     ConfirmScreen: Confirm
   },
   {
-    initialRouteName: "SignInScreen"
+    initialRouteName: "SignInScreen",
+    headerMode: 'none'
   }
 );
