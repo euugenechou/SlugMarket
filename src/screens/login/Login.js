@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 /* AWS imports */
-import Amplify, { Auth } from 'aws-amplify'
+import Amplify from 'aws-amplify'
 import AWSConfig from '../../aws-exports'
 Amplify.configure(AWSConfig)
 

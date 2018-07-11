@@ -16,14 +16,17 @@ import TopAlert from "../components/TopAlert";
 import { Auth } from "aws-amplify";
 
 export default class App extends React.Component {
-  state = {
-    username: "",
-    password: "",
-    confirmationCode: "",
-    user: {},
-    hasLoginError: false,
-    loginErrorMessage: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      password: "",
+      confirmationCode: "",
+      user: {},
+      visible: false,
+      errorMessage: ""
+    };
+  }
 
   onChangeText(key, value) {
     this.setState({
@@ -38,17 +41,19 @@ export default class App extends React.Component {
         user => this.setState({ user });
         this.props.screenProps.authenticate(true);
       })
-      .catch(err =>
-        this.setState({ hasloginError: true, loginErrorMessage: err })
-      );
+      .catch((err) => console.log(err));
+    this.setState({
+      visible: true,
+      errorMessage: "Username or password incorrect"
+    });
   }
 
   render() {
     return (
-      <View style={{ flexGrow: 1 }}>
+      <View style={{ flex: 1 }}>
         <TopAlert
-          visible={this.state.hasLoginError}
-          message={this.state.loginErrorMessage}
+          visible={this.state.visible}
+          message={this.state.errorMessage}
         />
         <ScrollView
           contentContainerStyle={styles.container}
@@ -78,7 +83,7 @@ export default class App extends React.Component {
           <Button
             color="teal"
             title="Sign In"
-            onPress={this.signIn.bind(this)}
+            onPress={() => this.signIn()}
           />
           <Button
             color="teal"

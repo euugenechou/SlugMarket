@@ -1,26 +1,17 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Alert } from "react-native";
 
 export default class TopAlert extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      visible: this.props.visible,
-      message: this.props.message
-    }
-  }
-
   render() {
-    if (!this.state.visible) {
+    if (this.props.visible) {
+      return (
+        <View style={styles.container}>
+          <Text style={styles.text}>{this.props.message}</Text>
+        </View>
+      );
+    } else {
       return null;
     }
-    return (
-      <View style={styles.container}>
-        <Text>
-          {this.state.message}
-        </Text>
-      </View>
-    )
   }
 }
 
@@ -31,7 +22,7 @@ const styles = StyleSheet.create({
   text: {
     color: "white",
     textAlign: "center",
-    fontSize: 18,
+    fontSize: 16,
     padding: 5
   }
 });
