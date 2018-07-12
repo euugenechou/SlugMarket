@@ -49,10 +49,10 @@ class Explore extends Component {
     API.get(apiName, path, headers)
       .then(response => {
         console.log(response);
-        this.setState(response);
+        this.setState({postsToRender: response});
       })
       .catch(error => console.log(error.response));
-  }
+	}
 
   render() {
     return (
@@ -138,26 +138,17 @@ class Explore extends Component {
                     justifyContent: "space-evenly"
                   }}
                 >
-                  {/* <Listings width={width} name="sorcerer's stone" price={2} seller="jon" />
-									<Listings width={width} name="chamber of secrets" price={4} seller="tim" />
-									<Listings width={width} name="prisoner of azkaban" price={6} seller="sabrina" />
-									<Listings width={width} name="goblet of fire" price={8} seller="daddy" />
-									<Listings width={width} name="order of the phoenix" price={10} seller="mommy" /> */}
-                  <Listings
-                    width={width}
-                    name="goblet of fire"
-                    price={8}
-                    seller="daddy"
-                  />;
-                  {this.state.postsToRender.forEach(post => {
-                    console.log(JSON.stringify(post));
-                    <Listings
-                      width={width}
-                      name="goblet of fire"
-                      price={8}
-                      seller="daddy"
-                    />;
-                  })}
+                  {this.state.postsToRender.map((post) => {
+										return (
+											<Listings
+												key={post.timeAdded}
+												width={width}
+												name={post.itemName}
+												price={post.price}
+												seller={post.seller}
+											/>
+										)
+									})}
                 </View>
               </View>
             </View>
