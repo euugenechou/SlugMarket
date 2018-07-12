@@ -8,7 +8,7 @@
 const awsmobile = {
     'aws_app_analytics': 'enable',
     'aws_cloud_logic': 'enable',
-    'aws_cloud_logic_custom': [{"id":"dx7d0njig7","name":"sampleCloudApi","description":"","endpoint":"https://dx7d0njig7.execute-api.us-west-1.amazonaws.com/Development","region":"us-west-1","paths":["/items","/items/123"]},{"id":"kpkfuhzq11","name":"itemPostsCRUD","description":"","endpoint":"https://kpkfuhzq11.execute-api.us-west-1.amazonaws.com/Development","region":"us-west-1","paths":["/itemPosts","/itemPosts/123"]}],
+    'aws_cloud_logic_custom': [{"id":"dx7d0njig7","name":"sampleCloudApi","description":"","endpoint":"https://dx7d0njig7.execute-api.us-west-1.amazonaws.com/Development","region":"us-west-1","paths":["/items","/items/123"]},{"id":"vehh0usrg1","name":"itemPostingsCRUD","description":"","endpoint":"https://vehh0usrg1.execute-api.us-west-1.amazonaws.com/Development","region":"us-west-1","paths":["/itemPostings","/itemPostings/123"]}],
     'aws_cognito_identity_pool_id': 'us-west-2:be237ae9-35b3-45a4-bce9-8e12199332d0',
     'aws_cognito_region': 'us-west-2',
     'aws_content_delivery': 'enable',
@@ -18,7 +18,7 @@ const awsmobile = {
     'aws_content_delivery_cloudfront_domain': 'd21c5j3odaffce.cloudfront.net',
     'aws_dynamodb': 'enable',
     'aws_dynamodb_all_tables_region': 'us-west-1',
-    'aws_dynamodb_table_schemas': [{"tableName":"slugmarketv-mobilehub-1439541682-AWSMobileTable","attributes":[{"name":"teamId","type":"S"},{"name":"personId","type":"S"},{"name":"email","type":"S"},{"name":"personName","type":"S"},{"name":"phone","type":"S"}],"indexes":[{"indexName":"personName-index","hashKey":"teamId","rangeKey":"personName"}],"region":"us-west-1","hashKey":"teamId","rangeKey":"personId"},{"tableName":"slugmarketv-mobilehub-1439541682-itemPosts","attributes":[{"name":"userId","type":"S"},{"name":"category","type":"S"},{"name":"description","type":"S"},{"name":"isSold","type":"BOOL"},{"name":"itemName","type":"S"},{"name":"price","type":"N"},{"name":"seller","type":"S"},{"name":"timePosted","type":"S"}],"indexes":[],"region":"us-west-1","hashKey":"userId"}],
+    'aws_dynamodb_table_schemas': [{"tableName":"slugmarketv-mobilehub-1439541682-AWSMobileTable","attributes":[{"name":"teamId","type":"S"},{"name":"personId","type":"S"},{"name":"email","type":"S"},{"name":"personName","type":"S"},{"name":"phone","type":"S"}],"indexes":[{"indexName":"personName-index","hashKey":"teamId","rangeKey":"personName"}],"region":"us-west-1","hashKey":"teamId","rangeKey":"personId"},{"tableName":"slugmarketv-mobilehub-1439541682-itemPostings","attributes":[{"name":"userId","type":"S"},{"name":"timeAdded","type":"S"},{"name":"category","type":"S"},{"name":"description","type":"S"},{"name":"isSold","type":"BOOL"},{"name":"itemName","type":"S"},{"name":"price","type":"N"},{"name":"seller","type":"S"}],"indexes":[],"region":"us-west-1","hashKey":"userId","rangeKey":"timeAdded"},{"tableName":"slugmarketv-mobilehub-1439541682-itemPosts","attributes":[{"name":"userId","type":"S"},{"name":"category","type":"S"},{"name":"description","type":"S"},{"name":"isSold","type":"BOOL"},{"name":"itemName","type":"S"},{"name":"price","type":"N"},{"name":"seller","type":"S"},{"name":"timePosted","type":"S"}],"indexes":[],"region":"us-west-1","hashKey":"userId"}],
     'aws_mobile_analytics_app_id': 'ec1600eda59f44ad9b9a8f929ef1fcc6',
     'aws_mobile_analytics_app_region': 'us-east-1',
     'aws_project_id': '00e55ada-10ff-4e18-b2a3-530a96d40831',
