@@ -7,17 +7,20 @@ import {
   Button,
   ScrollView
 } from "react-native";
+import { API } from "aws-amplify";
 
 export default class AddItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      itemName: "",
-      price: "",
-      timeAdded: "",
-      category: "",
+      userId: "",
+      Category: "",
       description: "",
+      isSold: false,
+      itemName: "",
+      price: -1,
+      seller: "",
+      timeAdded: new Date().toString()
     };
   }
 
@@ -25,6 +28,13 @@ export default class AddItem extends React.Component {
     this.setState({
       [key]: value
     });
+  }
+  
+  /**
+   * Save new post to postedItems schema in DynamoDB
+   */
+  async saveItemPost(event) {
+    event.preventDefault();
   }
 
   render() {
@@ -109,3 +119,4 @@ const styles = StyleSheet.create({
     color: "teal"
   }
 });
+
