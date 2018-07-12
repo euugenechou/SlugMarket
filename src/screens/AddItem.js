@@ -37,7 +37,7 @@ export default class AddItem extends React.Component {
     );
     const post = { "body": this.state };
     post.body.userId = userInfo["id"];
-    post.body.seller = userInfo["username"];
+    post.body.seller = "jon";
     post.body.timeAdded = new Date().toString();
     return post;
   }
@@ -46,12 +46,12 @@ export default class AddItem extends React.Component {
    * Save new post to postedItems schema in DynamoDB
    */
   saveItemPost() {
-    const apiName = "itemPostsCRUD";
-    const path = "/itemPosts";
+    const apiName = "itemPostingsCRUD";
+    const path = "/itemPostings";
     const post = this.createPostObject();
-    API.put(apiName, path, post)
-      .then(res => Alert.alert(JSON.stringify(res.data)))
-      .catch(err => Alert.alert(JSON.stringify(err)));
+    API.post(apiName, path, post)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   }
 
   render() {
