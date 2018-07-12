@@ -5,22 +5,23 @@ import {
   StyleSheet,
   View,
   Button,
-  ScrollView
+  ScrollView,
+  Alert
 } from "react-native";
-import { API } from "aws-amplify";
+import { API, Auth } from "aws-amplify";
 
 export default class AddItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       userId: "",
-      Category: "",
+      category: "",
       description: "",
       isSold: false,
       itemName: "",
       price: -1,
       seller: "",
-      timeAdded: new Date().toString()
+      timeAdded: ""
     };
   }
 
@@ -29,12 +30,29 @@ export default class AddItem extends React.Component {
       [key]: value
     });
   }
-  
+
+  createPost(userId) {
+    const newPost = { body: this.state };
+    newPost.body.userId = userId;
+    newPost.body.timeAdded = new Date().toString();
+    return newPost;
+  }
+
   /**
    * Save new post to postedItems schema in DynamoDB
    */
-  async saveItemPost(event) {
-    event.preventDefault();
+  async saveItemPost() {
+    const userInfo = await Auth.currentUserInfo().catch(error =>
+      Alert.alert(JSON.stringify(error))
+    );
+    const path = "/itemPosts"
+    const postInfo = this.createPost(userInfo["id"]);
+    try {
+      const apiResponse = await API.post("itemPostsCRUD", path, postInfo);
+      Alert.alert(JSON.stringify(apiResponse));
+    } catch (error) {
+      Alert.alert(JSON.stringify(error));
+    }
   }
 
   render() {
@@ -79,13 +97,12 @@ export default class AddItem extends React.Component {
           <Button
             style={{
               flex: 2,
-              justifyContent: 'center',
+              justifyContent: "center"
             }}
-            color='black'
-            onPress={() => console.log("adding item")}
+            color="black"
+            onPress={() => this.saveItemPost()}
             title="Add Item!"
-          >
-          </Button>
+          />
         </ScrollView>
       </View>
     );
@@ -119,4 +136,3 @@ const styles = StyleSheet.create({
     color: "teal"
   }
 });
-
