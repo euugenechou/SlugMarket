@@ -31,28 +31,27 @@ export default class AddItem extends React.Component {
     });
   }
 
-  createPost(userId) {
-    const newPost = { body: this.state };
-    newPost.body.userId = userId;
-    newPost.body.timeAdded = new Date().toString();
-    return newPost;
+  createPostObject() {
+    const userInfo = Auth.currentUserInfo().catch(error =>
+      Alert.alert(JSON.stringify(error))
+    );
+    const post = { "body": this.state };
+    post.body.userId = userInfo["id"];
+    post.body.seller = userInfo["username"];
+    post.body.timeAdded = new Date().toString();
+    return post;
   }
 
   /**
    * Save new post to postedItems schema in DynamoDB
    */
-  async saveItemPost() {
-    const userInfo = await Auth.currentUserInfo().catch(error =>
-      Alert.alert(JSON.stringify(error))
-    );
-    const path = "/itemPosts"
-    const postInfo = this.createPost(userInfo["id"]);
-    try {
-      const apiResponse = await API.post("itemPostsCRUD", path, postInfo);
-      Alert.alert(JSON.stringify(apiResponse));
-    } catch (error) {
-      Alert.alert(JSON.stringify(error));
-    }
+  saveItemPost() {
+    const apiName = "itemPostsCRUD";
+    const path = "/itemPosts";
+    const post = this.createPostObject();
+    API.put(apiName, path, post)
+      .then(res => Alert.alert(JSON.stringify(res.data)))
+      .catch(err => Alert.alert(JSON.stringify(err)));
   }
 
   render() {
