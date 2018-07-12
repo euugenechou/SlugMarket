@@ -9,6 +9,7 @@ import {
 import Explore from "./Explore";
 import AddItem from "./AddItem";
 import Profile from "./Profile";
+import EditProfile from "./EditProfile";
 import Settings from "./Settings";
 import Icon from "react-native-vector-icons/Ionicons";
 
@@ -26,6 +27,14 @@ const ExploreStack = createStackNavigator(
   { headerMode: 'none' }
 );
 
+const ProfileStack = createStackNavigator(
+  {
+    MainProfile: { screen: Profile },
+    EditProfile: { screen: EditProfile }
+  },
+  { headerMode: "none" }
+);
+
 const BottomTabNavigator = createBottomTabNavigator(
   {
     Explore: {
@@ -38,7 +47,7 @@ const BottomTabNavigator = createBottomTabNavigator(
       }
     },
     Profile: {
-      screen: Profile,
+      screen: ProfileStack,
       navigationOptions: {
         tabBarLabel: "PROFILE",
         tabBarIcon: ({ tintColor }) => (

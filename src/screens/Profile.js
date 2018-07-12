@@ -71,9 +71,10 @@ class Profile extends Component {
                   justifyContent: "center",
                   height: 30
                 }}
-              >
-                <Text>Edit Profile</Text>
-              </Button>
+                title="nani"
+                color="black"
+                onPress={() => this.props.navigation.navigate("EditProfile")}
+              />
             </View>
             <View
               style={{
@@ -102,12 +103,12 @@ class Profile extends Component {
           </View>
         </Content>
       </Container>
-      // <SafeAreaView style={{ flex: 1 }}>
-      // 	<Text style={{ flex: 0, backgroundColor: 'white', paddingTop: 20 }}>
-      // 		<Text style={styles.sectionTitle}> Profile Page</Text>
-      // 	</Text>
-      // </SafeAreaView>
     );
+    // <SafeAreaView style={{ flex: 1 }}>
+    // 	<Text style={{ flex: 0, backgroundColor: 'white', paddingTop: 20 }}>
+    // 		<Text style={styles.sectionTitle}> Profile Page</Text>
+    // 	</Text>
+    // </SafeAreaView>
   }
 }
 
