@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import {
-  View,
-  Text,
   StyleSheet,
   SafeAreaView,
   StatusBar,
-  Image
+  Image,
+  Text, 
+  View,
+  Dimensions
 } from "react-native";
 import {
   Icon,
@@ -15,33 +16,93 @@ import {
   Left,
   Body,
   Right,
-  Button
+  Button,
 } from "native-base";
 import EntypoIcon from "react-native-vector-icons/Entypo";
 
-const dummyProfile = {
-  name: "John Doe",
-  phoneNumber: "1800-123-4567",
-  email: "johndoe@gmail.com",
-  pickup_address: "1156 High Street"
-};
-
 class Profile extends Component {
+  static navigationOtions = {
+    tabBarIcon: ({tintColor}) => (
+      <Icon name = "person" style = {{color:tintColor}} />
+    )
+  }
+
+  constructor(props){
+    super(props)
+    this.state = {
+      activeIndex: 0
+    }
+  }
+
+  segmentClicked = (index) => {
+    this.setState({
+      activeIndex: index
+    })
+  }
+
+  renderSectionOne = () => {
+    return images.map((image,index)=>{
+      return (
+        <View key = {index} style = {[{width:(width)/3}, {height:(height)/6}, {marginBottom: 2}, index%3!==0?{paddingLeft:2}: {paddingLeft:0}]}>
+          <Image style = {{flex: 1, width: undefined, height: undefined }}
+            source = {image}/>
+        </View>
+      )
+    })
+  }
+  renderSection = () => {
+    switch(this.state.activeIndex){
+      case 0:
+        return (
+          <View
+            style = {{flexDirection: 'row', flexWrap: 'wrap'}}>
+            {this.renderSectionOne()} 
+          </View>
+        )
+      case 1:
+        return (
+          <View> 
+            <Text> This is the second section</Text>
+          </View>
+        )
+      case 2:
+        return (
+          <View> 
+            <Text> This is the third section</Text>
+          </View>
+        )
+    }
+  }
+  
   render() {
     return (
       <Container style={{ flex: 1, backgroundColor: "white" }}>
         <Header>
           <Left>
-            <Icon name="md-person-add" style={{ paddingLeft: 10 }} />
+            <Button
+              transparent
+              size = {10}
+              onPress={() => this.props.navigation.navigate("Explore")}
+              style={{paddingLeft: 10}}
+              >
+              <Icon
+                name="arrow-back"
+                style={{ paddingTop: 5, paddingRight: 10,}}/>
+            </Button>
           </Left>
-          <Body>
+          <Body style = {{paddingTop: 10}}>
             <Text style={field.text}>{dummyProfile.name}</Text>
           </Body>
           <Right>
-            <EntypoIcon
-              name="back-in-time"
-              style={{ paddingRight: 10, fontSize: 28 }}
-            />
+            <Button
+            transparent
+            onPress={() => this.props.navigation.navigate("Settings")}
+            style={{paddingLeft: 10}}
+            >
+              <Icon
+                name="settings"
+                style={{ paddingTop: 10, paddingRight: 10 }}/>
+            </Button>
           </Right>
         </Header>
         <Content>
@@ -61,20 +122,19 @@ class Profile extends Component {
               </View>
             </View>
             <View style={{ flexDirection: "row" }}>
-              <Button
-                bordered
-                dark
+              <Button 
+                bordered dark
+                onPress={() => this.props.navigation.navigate("EditProfile")}
                 style={{
                   flex: 2,
                   marginLeft: 50,
                   marginRight: 50,
                   justifyContent: "center",
                   height: 30
-                }}
-                title="nani"
-                color="black"
-                onPress={() => this.props.navigation.navigate("EditProfile")}
-              />
+                }} >
+                <Text> Edit Profile </Text> 
+                color="teal"
+              </Button>
             </View>
             <View
               style={{
@@ -100,17 +160,65 @@ class Profile extends Component {
                 </Text>
               </View>
             </View>
+              <View
+                style={{
+                  flexDirection: "row", 
+                  justifyContent: 'space-around', 
+                  borderTopWidth:1, 
+                  borderTopColor: '#eae5e5',
+                }}
+              >
+                <Button
+                  transparent
+                  onPress= {() => this.segmentClicked(0)}
+                  active = {this.state.activeIndex == 0}
+                >
+                  <Icon name = "ios-apps-outline"
+                    style = {[this.state.activeIndex == 0? {}: {color: 'grey'}]}/>
+                </Button>
+
+                <Button
+                  transparent
+                  onPress= {() => this.segmentClicked(1)}
+                  active = {this.state.activeIndex == 1}
+                >
+                  <Icon name = "ios-chatbubbles-outline"
+                    style = {[this.state.activeIndex == 1? {}: {color: 'grey'}]}/>
+                </Button>
+
+                <Button
+                  transparent
+                  onPress= {() => this.segmentClicked(2)}
+                  active = {this.state.activeIndex == 2}
+                >
+                  <Icon name = "ios-bookmark-outline"
+                    style = {[this.state.activeIndex == 2? {}: {color: 'grey'}]}/>
+                </Button>
+              </View>
+            {this.renderSection()}
           </View>
         </Content>
       </Container>
     );
-    // <SafeAreaView style={{ flex: 1 }}>
-    // 	<Text style={{ flex: 0, backgroundColor: 'white', paddingTop: 20 }}>
-    // 		<Text style={styles.sectionTitle}> Profile Page</Text>
-    // 	</Text>
-    // </SafeAreaView>
   }
 }
+
+const dummyProfile = {
+  name: "John Doe",
+  phoneNumber: "1800-123-4567",
+  email: "johndoe@gmail.com",
+  pickup_address: "1156 High Street"
+};
+
+var {width, height} = Dimensions.get('window')
+
+var images = [
+  require('../assets/textbooks.jpg'),
+  require('../assets/electronics.jpg'),
+  require('../assets/furniture.jpg'),
+  require('../assets/icon.png'),
+  require('../assets/market_stand.png')
+]
 
 const B = props => <Text style={{ fontWeight: "bold" }}>{props.children}</Text>;
 
