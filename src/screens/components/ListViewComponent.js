@@ -9,6 +9,8 @@ import {
   TouchableHighlight,
   StyleSheet
 } from "react-native";
+import { Title } from "native-base";
+import EditProfile from "../EditProfile";
 
 const items = [
   { name: "Edit account" },
@@ -51,22 +53,28 @@ export default class ListViewComponent extends Component {
     return (
       <View>
         <SafeAreaView style={{ flex: 1 }}>
-          <View style={{ flex: 1, backgroundColor: "white", paddingTop: 20 }}>
-            <Text style={styles.sectionTitle}> Settings </Text>
+          <View style={{ flex: 1, backgroundColor: "white", paddingTop: 10 }}>
+            <Title style={styles.settigns}> Settings </Title>
           </View>
         </SafeAreaView>
         <ListView
           dataSource={this.state.itemsDataSource}
           renderRow={this.renderRow}
         />
+
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  settings:{
+    flex: 1,
+    fontSize: 30, 
+    justifyContent: 'left',
+  },
   row: {
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "center",
     padding: 20,
     backgroundColor: "#f6f6f6",

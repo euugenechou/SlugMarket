@@ -6,7 +6,8 @@ import {
   Image,
   Text, 
   View,
-  Dimensions
+  Dimensions,
+  ScrollView
 } from "react-native";
 import {
   Icon,
@@ -40,6 +41,9 @@ class Profile extends Component {
     })
   }
 
+  /*
+  Render images so that they fit correctly and uniformly
+  */
   renderSectionOne = () => {
     return images.map((image,index)=>{
       return (
@@ -50,6 +54,13 @@ class Profile extends Component {
       )
     })
   }
+
+  onLearnMore = (user) => {
+    this.props.navigation.navigate('Details', { ...user });
+  };
+  /*
+  Determine which section to render
+  */
   renderSection = () => {
     switch(this.state.activeIndex){
       case 0:
@@ -62,13 +73,13 @@ class Profile extends Component {
       case 1:
         return (
           <View> 
-            <Text> This is the second section</Text>
+            <Text>Chat messages will appear here</Text>
           </View>
         )
       case 2:
         return (
           <View> 
-            <Text> This is the third section</Text>
+            <Text> Favorited items will appear here</Text>
           </View>
         )
     }
