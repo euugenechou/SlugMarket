@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   settings:{
     flex: 1,
     fontSize: 30, 
-    justifyContent: 'left',
+    justifyContent: 'flex-start',
   },
   row: {
     flexDirection: "column",

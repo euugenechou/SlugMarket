@@ -8,7 +8,7 @@ import {
   ScrollView,
   Alert
 } from "react-native";
-import { API, Auth } from "aws-amplify";
+import { API, Auth, Storage } from "aws-amplify";
 
 export default class AddItem extends React.Component {
   constructor(props) {
@@ -19,7 +19,7 @@ export default class AddItem extends React.Component {
       description: "",
       isSold: false,
       itemName: "",
-      price: -1,
+      price: 0,
       seller: "",
       timeAdded: ""
     };
@@ -31,24 +31,37 @@ export default class AddItem extends React.Component {
     });
   }
 
-  createPostObject() {
-    const userInfo = Auth.currentUserInfo().catch(error =>
-      Alert.alert(JSON.stringify(error))
-    );
-    const post = { "body": this.state };
-    post.body.userId = userInfo["id"];
+  /**
+   * Creates post object to save in itemPostings schema
+   */
+  createPostObject(cognitoUserId) {
+    const post = {"body": this.state};
+    post.body.userId = cognitoUserId;
     post.body.seller = "jon";
     post.body.timeAdded = new Date().toString();
     return post;
   }
 
   /**
+   * Saves image(s) associated with a user post to S3 bucket as
+   * a protected file (others can se but can't modify)
+   */
+  saveImageAsProtected(cognitoUserId, imageUriArray) {
+    imageUriArray.forEach((imageUri) => {
+      
+    })
+  }
+
+  /**
    * Save new post to postedItems schema in DynamoDB
    */
-  saveItemPost() {
+  async saveItemPost() {
+    const userInfo = await Auth.currentUserInfo().catch(error =>
+      Alert.alert(JSON.stringify(error))
+    );
     const apiName = "itemPostingsCRUD";
     const path = "/itemPostings";
-    const post = this.createPostObject();
+    const post = this.createPostObject(userInfo.id);
     API.post(apiName, path, post)
       .then(res => console.log(res))
       .catch(err => console.log(err));
