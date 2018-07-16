@@ -30,7 +30,7 @@ import {
 import { API } from "aws-amplify";
 import EntypoIcon from "react-native-vector-icons/Entypo";
 
-import Listings from "./components/Explore/Listings";
+import UserListings from "./components/Profile/UserListings";
 
 class Profile extends Component {
   constructor(props) {
@@ -81,47 +81,48 @@ class Profile extends Component {
   Render images so that they fit correctly and uniformly
   */
   renderSectionOne = () => {
-    // this.state.postsToRender.map(post => {
+    return ( this.state.postsToRender.map(post => {
+        return (
+          <TouchableHighlight
+            onPress={() =>
+              this.props.navigation.navigate("UserListingInfoScreen", {
+                name: post.itemName,
+                price: post.price,
+                seller: post.seller,
+                description: post.description,
+              })
+            }
+            key={post.timeAdded}
+          >
+            <UserListings
+              width={width}
+              name={post.itemName}
+              price={post.price}
+              seller={post.seller}
+            />
+          </TouchableHighlight>
+        );
+      })
+    )
+
+    // return images.map((image, index) => {
     //   return (
-    //     <TouchableHighlight
-    //       onPress={() =>
-    //         this.props.navigation.navigate("ListingInfo", {
-    //           name: post.itemName,
-    //           price: post.price,
-    //           seller: post.seller,
-    //           description: post.description
-    //         })
-    //       }
-    //       key={post.timeAdded}
+    //     <View
+    //       key={index}
+    //       style={[
+    //         { width: width / 3 },
+    //         { height: height / 6 },
+    //         { marginBottom: 2 },
+    //         index % 3 !== 0 ? { paddingLeft: 2 } : { paddingLeft: 0 }
+    //       ]}
     //     >
-    //       <Listings
-    //         width={width}
-    //         name={post.itemName}
-    //         price={post.price}
-    //         seller={post.seller}
+    //       <Image
+    //         style={{ flex: 1, width: undefined, height: undefined }}
+    //         source={image}
     //       />
-    //     </TouchableHighlight>
+    //     </View>
     //   );
     // });
-
-    return images.map((image, index) => {
-      return (
-        <View
-          key={index}
-          style={[
-            { width: width / 3 },
-            { height: height / 6 },
-            { marginBottom: 2 },
-            index % 3 !== 0 ? { paddingLeft: 2 } : { paddingLeft: 0 }
-          ]}
-        >
-          <Image
-            style={{ flex: 1, width: undefined, height: undefined }}
-            source={image}
-          />
-        </View>
-      );
-    });
   };
 
   onLearnMore = user => {

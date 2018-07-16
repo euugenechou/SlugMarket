@@ -4,16 +4,20 @@ import {
   createBottomTabNavigator,
   createStackNavigator
 } from "react-navigation";
+import Icon from "react-native-vector-icons/Ionicons";
 
 /* Local imports */
 import Explore from "./Explore";
 import AddItem from "./AddItem";
+import ListingInfo from "./components/Explore/ListingInfo";
+
 import Profile from "./Profile";
-import SignIn from "./login/SignIn";
 import EditProfile from "./EditProfile";
+import UserListings from "./components/Profile/UserListings";
+import UserListingInfo from "./components/Profile/UserListingInfo";
+
 import Settings from "./Settings";
-import ListingInfo from "./components/Explore/ListingInfo"
-import Icon from "react-native-vector-icons/Ionicons";
+import SignIn from "./login/SignIn";
 
 export default class Main extends React.Component {
   render() {
@@ -33,7 +37,9 @@ const ExploreStack = createStackNavigator(
 const ProfileStack = createStackNavigator(
   {
     MainProfile: { screen: Profile },
-    EditProfile: { screen: EditProfile }
+    EditProfile: { screen: EditProfile },
+    UserListingScreen: { screen: UserListings},
+    UserListingInfoScreen: { screen: UserListingInfo}
   },
   { headerMode: "none" }
 );
