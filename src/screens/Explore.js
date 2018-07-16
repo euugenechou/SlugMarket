@@ -10,7 +10,8 @@ import {
   ScrollView,
   Dimensions,
   Button,
-  Alert
+  RefreshControl,
+  TouchableHighlight
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { API } from "aws-amplify";
@@ -24,7 +25,8 @@ const { height, width } = Dimensions.get("window");
 
 class Explore extends Component {
   state = {
-    postsToRender: []
+    postsToRender: [],
+    refreshing: false
   };
 
   componentWillMount() {
@@ -36,6 +38,12 @@ class Explore extends Component {
     console.log(this.state.postsToRender);
   }
 
+  _onRefresh = () => {
+    this.setState({ refreshing: true });
+    this.getRecentPosts();
+    this.setState({ refreshing: false });
+  };
+
   /**
    * Gets items which were posted at most one day ago
    */
@@ -46,16 +54,16 @@ class Explore extends Component {
       headers: {},
       response: true,
       queryStringPrameters: {
-        'order': 'timeAdded'
+        order: "timeAdded"
       }
     };
     API.get(apiName, path, headers)
       .then(response => {
         console.log(response);
-        this.setState({postsToRender: response.data});
+        this.setState({ postsToRender: response.data });
       })
       .catch(error => console.log(error.response));
-	}
+  }
 
   render() {
     return (
@@ -91,7 +99,15 @@ class Explore extends Component {
               />
             </View>
           </View>
-          <ScrollView scrollEventThrottle={16}>
+          <ScrollView
+            scrollEventThrottle={16}
+            refreshControl={
+              <RefreshControl
+                refreshing={this.state.refreshing}
+                onRefresh={this._onRefresh}
+              />
+            }
+          >
             <View style={{ flex: 1, backgroundColor: "white", paddingTop: 20 }}>
               <Text style={styles.sectionTitle}>Browse Items By Category</Text>
               <View style={styles.sideScroll}>
@@ -141,17 +157,28 @@ class Explore extends Component {
                     justifyContent: "space-evenly"
                   }}
                 >
-                  {this.state.postsToRender.map((post) => {
-										return (
-											<Listings
-												key={post.timeAdded}
-												width={width}
-												name={post.itemName}
-												price={post.price}
-												seller={post.seller}
-											/>
-										)
-									})}
+                  {this.state.postsToRender.map(post => {
+                    return (
+                      <TouchableHighlight
+                        onPress={() =>
+                          this.props.navigation.navigate("ListingInfo", {
+                            name: post.itemName,
+                            price: post.price,
+                            seller: post.seller,
+                            description: post.description,
+                          })
+                        }
+                        key={post.timeAdded}
+                      >
+                        <Listings
+                          width={width}
+                          name={post.itemName}
+                          price={post.price}
+                          seller={post.seller}
+                        />
+                      </TouchableHighlight>
+                    );
+                  })}
                 </View>
               </View>
             </View>

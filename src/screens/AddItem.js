@@ -50,7 +50,6 @@ export default class AddItem extends React.Component {
   createPostObject(cognitoUserId) {
     const post = {"body": this.state};
     post.body.userId = cognitoUserId;
-    post.body.seller = "jon";
     post.body.timeAdded = new Date().toString();
     return post;
   }
@@ -82,7 +81,9 @@ export default class AddItem extends React.Component {
     const path = "/itemPostings";
     const post = this.createPostObject(userInfo.id);
     API.post(apiName, path, post)
-      .then(res => console.log(res))
+      .then(res => this.props.navigation.navigate("MainExplore", {
+        reload: true
+      }))
       .catch(err => console.log(err));
   }
 
@@ -124,6 +125,14 @@ export default class AddItem extends React.Component {
             placeholderTextColor="gray"
             autoCapitalize="none"
             autoCorrect={true}
+          />
+          <TextInput
+            onChangeText={value => this.onChangeText("seller", value)}
+            style={styles.input}
+            placeholder="seller name"
+            placeholderTextColor="gray"
+            autoCapitalize="words"
+            autoCorrect={false}
           />
           <Button
             style={{
