@@ -1,6 +1,6 @@
 /* React imports */
 import React, { Component } from 'react';
-import { Alert, Platform, Text, View, StyleSheet, Button } from 'react-native';
+import { Alert, Platform, Text, View, StyleSheet, Button, SafeAreaView } from 'react-native';
 import ListViewComponent from './components/ListViewComponent';
 import {
 	Icon,
@@ -9,6 +9,7 @@ import {
 	Header,
 	Left,
 	Body,
+	Title,
 	Right,
   } from "native-base";
 
@@ -17,15 +18,15 @@ class Settings extends Component {
 		Alert.alert('Would you like to sign out?')
 	}	
 	render() {
-		return [
+		return (
 			<ListViewComponent/>,
-			<View style={ styles.bottomView} >
+			<View style={ styles.bottomView}>
 				<Button
-            		onPress={this._onPressButton}
-            		title="Sign Out"
-          		/>
+					onPress={this._onPressButton}
+					title="Sign Out"
+				/>
 			</View>
-		]
+		)
 	}
 }
 
