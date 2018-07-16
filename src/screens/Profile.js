@@ -1,3 +1,9 @@
+/*
+Create separate file for UserListing.js
+Then one they click on the image, then in main add a screen called userlisting to stack
+Use Touchable highlist to select images
+onPress () => navigate to userlisting thing
+*/
 import React, { Component } from "react";
 import {
   StyleSheet,
