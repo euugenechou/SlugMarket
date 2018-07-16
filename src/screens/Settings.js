@@ -18,7 +18,7 @@ class Settings extends Component {
 		Alert.alert('Would you like to sign out?')
 	}	
 	render() {
-		return (
+		return [
 			<ListViewComponent/>,
 			<View style={ styles.bottomView}>
 				<Button
@@ -26,7 +26,7 @@ class Settings extends Component {
 					title="Sign Out"
 				/>
 			</View>
-		)
+		]
 	}
 }
 
