@@ -53,7 +53,7 @@ class Explore extends Component {
     const headers = {
       headers: {},
       response: true,
-      queryStringPrameters: {
+      queryStringParameters: {
         order: "timeAdded"
       }
     };

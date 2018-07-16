@@ -43,7 +43,7 @@ class Profile extends Component {
     const headers = {
       headers: {},
       response: true,
-      queryStringPrameters: {
+      queryStringParameters: {
         order: "timeAdded"
       }
     };
