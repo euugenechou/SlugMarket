@@ -7,7 +7,8 @@ import {
   Text,
   View,
   Dimensions,
-  ScrollView
+  ScrollView,
+  TouchableHighlight
 } from "react-native";
 import {
   Icon,
@@ -23,21 +24,30 @@ import {
 import { API } from "aws-amplify";
 import EntypoIcon from "react-native-vector-icons/Entypo";
 
+import Listings from "./components/Explore/Listings";
+
 class Profile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeIndex: 0,
+      postsToRender: []
+    };
+  }
+
   static navigationOtions = {
     tabBarIcon: ({ tintColor }) => (
       <Icon name="person" style={{ color: tintColor }} />
     )
   };
 
-  // for getting user posts
   componentWillMount() {
-    this.getRecentPosts();
+    this.getUserPosts();
     console.log(this.state.postsToRender);
   }
 
   // for getting user posts
-  getRecentPosts() {
+  getUserPosts() {
     const path = "/itemPostings/userPosts";
     const apiName = "itemPostingsCRUD";
     const headers = {
@@ -54,13 +64,6 @@ class Profile extends Component {
       })
       .catch(error => console.log(error.response));
   }
-  
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeIndex: 0
-    };
-  }
 
   segmentClicked = index => {
     this.setState({
@@ -72,6 +75,29 @@ class Profile extends Component {
   Render images so that they fit correctly and uniformly
   */
   renderSectionOne = () => {
+    // this.state.postsToRender.map(post => {
+    //   return (
+    //     <TouchableHighlight
+    //       onPress={() =>
+    //         this.props.navigation.navigate("ListingInfo", {
+    //           name: post.itemName,
+    //           price: post.price,
+    //           seller: post.seller,
+    //           description: post.description
+    //         })
+    //       }
+    //       key={post.timeAdded}
+    //     >
+    //       <Listings
+    //         width={width}
+    //         name={post.itemName}
+    //         price={post.price}
+    //         seller={post.seller}
+    //       />
+    //     </TouchableHighlight>
+    //   );
+    // });
+
     return images.map((image, index) => {
       return (
         <View

@@ -9,6 +9,7 @@ import {
 import Explore from "./Explore";
 import AddItem from "./AddItem";
 import Profile from "./Profile";
+import SignIn from "./login/SignIn";
 import EditProfile from "./EditProfile";
 import Settings from "./Settings";
 import ListingInfo from "./components/Explore/ListingInfo"
@@ -37,6 +38,14 @@ const ProfileStack = createStackNavigator(
   { headerMode: "none" }
 );
 
+const SettingsStack = createStackNavigator(
+  {
+    MainSettings: { screen: Settings },
+    SignInScreen: { screen: SignIn }
+  },
+  { headerMode: "none" }
+);
+
 const BottomTabNavigator = createBottomTabNavigator(
   {
     Explore: {
@@ -58,7 +67,7 @@ const BottomTabNavigator = createBottomTabNavigator(
       }
     },
     Settings: {
-      screen: Settings,
+      screen: SettingsStack,
       navigationOptions: {
         tabBarLabel: "SETTINGS",
         tabBarIcon: ({ tintColor }) => (

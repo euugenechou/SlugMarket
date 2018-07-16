@@ -11,18 +11,25 @@ import {
 	Body,
 	Title,
 	Right,
-  } from "native-base";
+	} from "native-base";
+import LoginStack from './login/LoginStack'
+import {Auth} from "aws-amplify"
 
 class Settings extends Component {
 	_onPressButton() {
-		Alert.alert('Would you like to sign out?')
+		() => this.props.navigation.navigate("SignInScreen");
+		// Auth.signOut()
+		// 	.then(() => {
+				
+		// 	})
+		// 	.catch(err => console.log(err));
 	}	
 	render() {
 		return [
 			<ListViewComponent/>,
-			<View style={ styles.bottomView}>
+			<View style={styles.bottomView}>
 				<Button
-					onPress={this._onPressButton}
+					onPress={() => {return <LoginStack />}}
 					title="Sign Out"
 				/>
 			</View>
