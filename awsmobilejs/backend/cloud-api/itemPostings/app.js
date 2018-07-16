@@ -56,35 +56,35 @@ const convertUrlType = (param, type) => {
  * HTTP Get method for list objects *
  ********************************/
 
-// app.get('/itemPostings', function(req, res) {
-//   var condition = {}
-//   condition[partitionKeyName] = {
-//     ComparisonOperator: 'EQ'
-//   }
+app.get('/itemPostings/userPosts', function(req, res) {
+  var condition = {}
+  condition[partitionKeyName] = {
+    ComparisonOperator: 'EQ'
+  }
   
-//   if (userIdPresent && req.apiGateway) {
-//     condition[partitionKeyName]['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH ];
-//   } else {
-//     try {
-//       condition[partitionKeyName]['AttributeValueList'] = [ convertUrlType(req.params[partitionKeyName], partitionKeyType) ];
-//     } catch(err) {
-//       res.json({error: 'Wrong column type ' + err});
-//     }
-//   }
+  if (userIdPresent && req.apiGateway) {
+    condition[partitionKeyName]['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH ];
+  } else {
+    try {
+      condition[partitionKeyName]['AttributeValueList'] = [ convertUrlType(req.params[partitionKeyName], partitionKeyType) ];
+    } catch(err) {
+      res.json({error: 'Wrong column type ' + err});
+    }
+  }
 
-//   let queryParams = {
-//     TableName: tableName,
-//     KeyConditions: condition
-//   } 
+  let queryParams = {
+    TableName: tableName,
+    KeyConditions: condition
+  } 
 
-//   dynamodb.query(queryParams, (err, data) => {
-//     if (err) {
-//       res.json({error: 'Could not load items: ' + err});
-//     } else {
-//       res.json(data.Items);
-//     }
-//   });
-// });
+  dynamodb.query(queryParams, (err, data) => {
+    if (err) {
+      res.json({error: 'Could not load items: ' + err});
+    } else {
+      res.json(data.Items);
+    }
+  });
+});
 
 app.get("/itemPostings", function(req, res) {
   const payload = {

@@ -11,6 +11,7 @@ import AddItem from "./AddItem";
 import Profile from "./Profile";
 import EditProfile from "./EditProfile";
 import Settings from "./Settings";
+import ListingInfo from "./components/Explore/ListingInfo"
 import Icon from "react-native-vector-icons/Ionicons";
 
 export default class Main extends React.Component {
@@ -22,7 +23,8 @@ export default class Main extends React.Component {
 const ExploreStack = createStackNavigator(
   {
     MainExplore: { screen: Explore },
-    AddItem: { screen: AddItem }
+    AddItem: { screen: AddItem },
+    ListingInfo: { screen: ListingInfo }
   },
   { headerMode: 'none' }
 );
