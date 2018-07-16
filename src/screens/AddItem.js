@@ -1,5 +1,6 @@
 /* React imports */
 import React from "react";
+import Expo from "expo";
 import {
   TextInput,
   StyleSheet,
@@ -32,6 +33,18 @@ export default class AddItem extends React.Component {
   }
 
   /**
+   * Open image picker for creating a new post
+   */
+  async getPostImage() {
+    let result = await Expo.ImagePicker.launchCameraAsync({
+      allowsEditing: true,
+      aspect: [4, 3],
+      mediaTypes: "Images"
+    });
+    return result;
+  }
+
+  /**
    * Creates post object to save in itemPostings schema
    */
   createPostObject(cognitoUserId) {
@@ -43,22 +56,28 @@ export default class AddItem extends React.Component {
   }
 
   /**
-   * Saves image(s) associated with a user post to S3 bucket as
-   * a protected file (others can se but can't modify)
+   * Saves image(s) associated with a user post to S3 bucket
    */
-  saveImageAsProtected(cognitoUserId, imageUriArray) {
+  saveImageToS3(cognitoUserId, imageUriArray, timeAdded) {
     imageUriArray.forEach((imageUri) => {
-      
+      Storage.put(imageUri, { 
+        level: "protected",
+        identityId: cognitoUserId
+      })
+      .then()
+      .catch(error => console.log(error));
     })
   }
 
   /**
-   * Save new post to postedItems schema in DynamoDB
+   * Save a new item post to postedItems schema.
+   * Primary key: userId and timeAdded
    */
   async saveItemPost() {
-    const userInfo = await Auth.currentUserInfo().catch(error =>
-      Alert.alert(JSON.stringify(error))
-    );
+    const userInfo = await Auth.currentUserInfo().catch(error => {
+      Alert.alert(JSON.stringify(error));
+      return;
+    });
     const apiName = "itemPostingsCRUD";
     const path = "/itemPostings";
     const post = this.createPostObject(userInfo.id);

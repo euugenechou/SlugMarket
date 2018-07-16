@@ -44,12 +44,15 @@ class Explore extends Component {
     const apiName = "itemPostingsCRUD";
     const headers = {
       headers: {},
-      response: false
+      response: true,
+      queryStringPrameters: {
+        'order': 'timeAdded'
+      }
     };
     API.get(apiName, path, headers)
       .then(response => {
         console.log(response);
-        this.setState({postsToRender: response});
+        this.setState({postsToRender: response.data});
       })
       .catch(error => console.log(error.response));
 	}
