@@ -21,11 +21,7 @@ class UserListingsInfo extends Component {
     const path = "/itemPostings";
     const put = this.createPutObject(userInfo.id);
     API.put(apiName, path, put)
-      .then(res =>
-        this.props.navigation.navigate("MainProfile", {
-          reload: true
-        })
-      )
+      .then(res => this.props.navigation.navigate("MainProfile"))
       .catch(err => console.log(err));
   }
 
@@ -69,7 +65,7 @@ class UserListingsInfo extends Component {
           style={{
             justifyContent: "center"
           }}
-          color="black"
+          color="teal"
           onPress={() => this.saveItemChanges()}
           title="Save Changes!"
         />
@@ -84,11 +80,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 40,
-    alignItems: "center",
-    justifyContent: "center"
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   text: {
     flex: 1,
+    paddingBottom: 80,
     alignItems: "flex-start",
     fontSize: 16,
     color: "black"

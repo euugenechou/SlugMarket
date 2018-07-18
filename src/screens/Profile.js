@@ -176,49 +176,24 @@ class Profile extends Component {
         }
       >
         <Container style={{ flex: 1, backgroundColor: "white" }}>
-          <Header>
-            <Left>
-              <Button
-                transparent
-                size={10}
-                onPress={() => this.props.navigation.navigate("Explore")}
-                style={{ paddingLeft: 10 }}
-              >
-                <Icon
-                  name="arrow-back"
-                  style={{ paddingTop: 5, paddingRight: 10 }}
-                />
-              </Button>
-            </Left>
-            <Body style={{ paddingTop: 10 }}>
-              <Text style={field.text}>{this.state.userName}</Text>
-            </Body>
-            <Right>
-              <Button
-                transparent
-                onPress={() => this.props.navigation.navigate("Settings")}
-                style={{ paddingLeft: 10 }}
-              >
-                <Icon
-                  name="settings"
-                  style={{ paddingTop: 10, paddingRight: 10 }}
-                />
-              </Button>
-            </Right>
-          </Header>
           <Content>
             <View>
+              <Body style={{ paddingTop: 30, paddingRight: 10 }}>
+                <Text style={field.text}>{this.state.userName}</Text>
+              </Body>
               <View>
                 <View
                   style={{
                     flex: 1,
                     justifyContent: "center",
-                    alignItems: "center"
+                    alignItems: "center",
+                    paddingLeft: 10,
+                    paddingTop: 5
                   }}
                 >
                   <Image
                     source={require("../assets/darrell.png")}
-                    style={{ width: 200, height: 200, borderRadius: 37.5 }}
+                    style={{ width: 200, height: 200, borderRadius: 35.5}}
                   />
                 </View>
               </View>
@@ -228,7 +203,7 @@ class Profile extends Component {
                   dark
                   onPress={() => this.props.navigation.navigate("EditProfile")}
                   style={{
-                    flex: 2,
+                    flex: 1,
                     marginLeft: 50,
                     marginRight: 50,
                     justifyContent: "center",
@@ -243,8 +218,8 @@ class Profile extends Component {
                 style={{
                   flexDirection: "column",
                   flex: 3,
-                  paddingVertical: 10,
-                  paddingLeft: 10,
+                  paddingVertical: 15,
+                  paddingLeft: 80,
                   alignItems: "flex-start"
                 }}
               >
@@ -259,9 +234,6 @@ class Profile extends Component {
                   <Text>
                     <B>Email:</B> {this.state.userAttributes.email}
                   </Text>
-                  {/* <Text>
-                  <B>Pickup Address:</B> {dummyProfile.pickup_address}
-                </Text> */}
                 </View>
               </View>
               <View
@@ -269,7 +241,9 @@ class Profile extends Component {
                   flexDirection: "row",
                   justifyContent: "space-around",
                   borderTopWidth: 1,
-                  borderTopColor: "#eae5e5"
+                  borderBottomWidth: 1,
+                  borderTopColor: "#dddddd",
+                  borderBottomColor: "#dddddd"
                 }}
               >
                 <Button
@@ -319,13 +293,6 @@ class Profile extends Component {
     );
   }
 }
-
-const dummyProfile = {
-  name: "trolol",
-  phoneNumber: "1800-123-4567",
-  email: "johndoe@gmail.com",
-  pickup_address: "1156 High Street"
-};
 
 var { width, height } = Dimensions.get("window");
 

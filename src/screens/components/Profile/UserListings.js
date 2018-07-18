@@ -12,7 +12,8 @@ class UserListings extends Component {
           height: this.props.width / 2 - 80,
           borderWidth: 0.5,
           borderColor: "#dddddd",
-          marginBottom: 20
+          marginLeft: 20,
+          marginTop: 20
         }}
       >
         <View style={{ flex: 2 }}>
@@ -40,9 +41,6 @@ class UserListings extends Component {
           </Text>
           <Text style={{ alignItems: "center", fontSize: 18 }}>
             ${this.props.price}
-          </Text>
-          <Text style={{ alignItems: "center", fontSize: 16 }}>
-            seller: {this.props.seller}
           </Text>
         </View>
       </View>
