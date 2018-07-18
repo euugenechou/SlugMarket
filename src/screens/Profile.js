@@ -27,7 +27,7 @@ import {
   Button
 } from "native-base";
 
-import { API } from "aws-amplify";
+import { API, Auth } from "aws-amplify";
 import EntypoIcon from "react-native-vector-icons/Entypo";
 
 import UserListings from "./components/Profile/UserListings";
@@ -37,7 +37,9 @@ class Profile extends Component {
     super(props);
     this.state = {
       activeIndex: 0,
-      postsToRender: []
+      postsToRender: [],
+      userName: "",
+      userAttributes: {}
     };
   }
 
@@ -49,6 +51,7 @@ class Profile extends Component {
 
   componentWillMount() {
     this.getUserPosts();
+    this.getUserInfo();
     console.log(this.state.postsToRender);
   }
 
@@ -76,6 +79,16 @@ class Profile extends Component {
       activeIndex: index
     });
   };
+
+  getUserInfo() {
+    Auth.currentUserInfo()
+      .then(res => {
+        this.setState({userAttributes: res.attributes});
+        this.setState({userName: res.username});
+        console.log(res);
+    })
+      .catch(err => console.log(err));
+  }
 
   /*
   Render images so that they fit correctly and uniformly
@@ -125,9 +138,6 @@ class Profile extends Component {
     // });
   };
 
-  onLearnMore = user => {
-    this.props.navigation.navigate("Details", { ...user });
-  };
   /*
   Determine which section to render
   */
@@ -172,7 +182,7 @@ class Profile extends Component {
             </Button>
           </Left>
           <Body style={{ paddingTop: 10 }}>
-            <Text style={field.text}>{dummyProfile.name}</Text>
+            <Text style={field.text}>{this.state.userName}</Text>
           </Body>
           <Right>
             <Button
@@ -231,17 +241,17 @@ class Profile extends Component {
             >
               <View>
                 <Text>
-                  <B>Name:</B> {dummyProfile.name}
+                  <B>Name:</B> {this.state.userName}
                 </Text>
                 <Text>
-                  <B>Phone Number:</B> {dummyProfile.phoneNumber}
+                  <B>Phone Number:</B> {this.state.userAttributes.phone_number}
                 </Text>
                 <Text>
-                  <B>Email:</B> {dummyProfile.email}
+                  <B>Email:</B> {this.state.userAttributes.email}
                 </Text>
-                <Text>
+                {/* <Text>
                   <B>Pickup Address:</B> {dummyProfile.pickup_address}
-                </Text>
+                </Text> */}
               </View>
             </View>
             <View
@@ -294,7 +304,7 @@ class Profile extends Component {
 }
 
 const dummyProfile = {
-  name: "John Doe",
+  name: "trolol",
   phoneNumber: "1800-123-4567",
   email: "johndoe@gmail.com",
   pickup_address: "1156 High Street"
