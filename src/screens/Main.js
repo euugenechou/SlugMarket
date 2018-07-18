@@ -9,6 +9,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 /* Local imports */
 import Explore from "./Explore";
 import AddItem from "./AddItem";
+import ItemCategory from "./components/Explore/ItemCategory";
 import ListingInfo from "./components/Explore/ListingInfo";
 
 import Profile from "./Profile";
@@ -27,21 +28,27 @@ export default class Main extends React.Component {
 
 const ExploreStack = createStackNavigator(
   {
-    MainExplore: { screen: Explore },
+    MainExplore: {
+      screen: Explore,
+      headerVisible: false
+    },
     AddItem: { screen: AddItem },
-    ListingInfo: { screen: ListingInfo }
+    ListingInfo: { screen: ListingInfo },
+    ViewCategory: { screen: ItemCategory }
   },
-  { headerMode: 'none' }
+  // { headerMode: 'none' }
 );
 
 const ProfileStack = createStackNavigator(
   {
-    MainProfile: { screen: Profile },
+    MainProfile: { 
+      screen: Profile,
+    },
     EditProfile: { screen: EditProfile },
     UserListingScreen: { screen: UserListings},
     UserListingInfoScreen: { screen: UserListingInfo}
   },
-  { headerMode: "none" }
+  // { headerMode: "none" }
 );
 
 const SettingsStack = createStackNavigator(
@@ -49,7 +56,7 @@ const SettingsStack = createStackNavigator(
     MainSettings: { screen: Settings },
     SignInScreen: { screen: SignIn }
   },
-  { headerMode: "none" }
+  // { headerMode: "none" }
 );
 
 const BottomTabNavigator = createBottomTabNavigator(

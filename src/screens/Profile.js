@@ -28,6 +28,10 @@ import EntypoIcon from "react-native-vector-icons/Entypo";
 import UserListings from "./components/Profile/UserListings";
 
 class Profile extends Component {
+  static navigationOptions = ({ navigation }) => ({
+    header: null
+  })
+
   constructor(props) {
     super(props);
     this.state = {
@@ -104,15 +108,18 @@ class Profile extends Component {
               name: post.itemName,
               price: post.price,
               seller: post.seller,
+              category: post.category,
               description: post.description
             })
           }
+          underlayColor='white'
           key={post.timeAdded}
         >
           <UserListings
             width={width}
             name={post.itemName}
             price={post.price}
+            category={post.category}
             seller={post.seller}
           />
         </TouchableHighlight>

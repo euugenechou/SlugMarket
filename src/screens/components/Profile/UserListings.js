@@ -13,7 +13,14 @@ class UserListings extends Component {
           borderWidth: 0.5,
           borderColor: "#dddddd",
           marginLeft: 20,
-          marginTop: 20
+          marginTop: 20,
+          borderRadius: 3,
+          borderWidth: 0.5,
+          borderColor: "#dddddd",
+          shadowOffset: { width: 0, height: 0 },
+          shadowColor: "black",
+          shadowOpacity: 0.1,
+          elevation: 1
         }}
       >
         <View style={{ flex: 2 }}>
@@ -22,24 +29,42 @@ class UserListings extends Component {
               flex: 2,
               width: null,
               height: null,
-              resizeMode: "cover"
+              resizeMode: "cover",
+              borderRadius: 3
             }}
             source={require("../../../assets/textbooks.jpg")}
           />
         </View>
         <View
-          style={{
-            flex: 1,
-            alignItems: "center",
-            justifyContent: "space-evenly"
-          }}
+          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
         >
           <Text
-            style={{ alignItems: "center", fontSize: 18, fontWeight: "bold" }}
+            style={{
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 14,
+              fontWeight: "bold",
+              paddingHorizontal: 10,
+            }}
           >
             {this.props.name}
           </Text>
-          <Text style={{ alignItems: "center", fontSize: 18 }}>
+          <Text
+            style={{
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 12
+            }}
+          >
+            {this.props.category}
+          </Text>
+          <Text
+            style={{
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 12
+            }}
+          >
             ${this.props.price}
           </Text>
         </View>

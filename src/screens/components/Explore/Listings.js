@@ -12,7 +12,14 @@ class Listings extends Component {
           height: this.props.width / 2 - 80,
           borderWidth: 0.5,
           borderColor: "#dddddd",
-          marginBottom: 20
+          marginBottom: 20,
+          borderRadius: 3,
+          borderWidth: 0.5,
+          borderColor: "#dddddd",
+          shadowOffset: { width: 0, height: 0 },
+          shadowColor: "black",
+          shadowOpacity: 0.1,
+          elevation: 1
         }}
       >
         <View style={{ flex: 2 }}>
@@ -21,7 +28,8 @@ class Listings extends Component {
               flex: 2,
               width: null,
               height: null,
-              resizeMode: "cover"
+              resizeMode: "cover",
+              borderRadius: 3
             }}
             source={require("../../../assets/textbooks.jpg")}
           />
@@ -34,14 +42,23 @@ class Listings extends Component {
           }}
         >
           <Text
-            style={{ alignItems: "center", fontSize: 18, fontWeight: "bold" }}
+            style={{
+              alignItems: "center",
+              fontSize: 14,
+              fontWeight: "bold",
+              justifyContent: "center",
+              paddingHorizontal: 10
+            }}
           >
             {this.props.name}
           </Text>
-          <Text style={{ alignItems: "center", fontSize: 18 }}>
+          <Text style={{ alignItems: "center", fontSize: 12 }}>
+            {this.props.category}
+          </Text>
+          <Text style={{ alignItems: "center", fontSize: 12 }}>
             ${this.props.price}
           </Text>
-          <Text style={{ alignItems: "center", fontSize: 16 }}>
+          <Text style={{ alignItems: "center", fontSize: 12 }}>
             seller: {this.props.seller}
           </Text>
         </View>

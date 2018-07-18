@@ -16,6 +16,10 @@ import LoginStack from './login/LoginStack'
 import {Auth} from "aws-amplify"
 
 class Settings extends Component {
+	static navigationOptions = ({ navigation }) => ({
+		header: null
+	})
+	
 	_onPressButton() {
 		() => this.props.navigation.navigate("SignInScreen");
 		// Auth.signOut()

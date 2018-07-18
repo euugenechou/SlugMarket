@@ -29,8 +29,12 @@ class Explore extends Component {
     refreshing: false
   };
 
+  static navigationOptions = ({ navigation }) => ({
+    header: null
+  });
+
   componentWillMount() {
-    this.startHeaderHeight = 80;
+    this.startHeaderHeight = 75;
     if (Platform.OS == "android") {
       this.startHeaderHeight = 100 + StatusBar.currentHeight;
     }
@@ -54,13 +58,17 @@ class Explore extends Component {
       headers: {},
       response: true,
       queryStringParameters: {
-        order: "timeAdded"
+        ScanIndexForward: false
       }
     };
     API.get(apiName, path, headers)
       .then(response => {
         console.log(response);
-        this.setState({ postsToRender: response.data });
+        this.setState({
+          postsToRender: response.data.sort((a, b) => {
+            return new Date(b.timeAdded) - new Date(a.timeAdded);
+          })
+        });
       })
       .catch(error => console.log(error.response));
   }
@@ -68,14 +76,9 @@ class Explore extends Component {
   render() {
     return (
       <SafeAreaView style={{ flex: 1 }}>
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, backgroundColor: "white" }}>
           <View
-            style={{
-              height: this.startHeaderHeight,
-              backgroundColor: "white",
-              borderBottomWidth: 1,
-              borderBottomColor: "#dddddd"
-            }}
+            style={{ height: this.startHeaderHeight, backgroundColor: "white" }}
           >
             <View
               style={{
@@ -85,9 +88,9 @@ class Explore extends Component {
                 marginHorizontal: 20,
                 shadowOffset: { width: 0, height: 0 },
                 shadowColor: "black",
-                shadowOpacity: 0.2,
+                shadowOpacity: 0.1,
                 elevation: 1,
-                marginTop: Platform.OS == "android" ? 30 : 18
+                marginTop: Platform.OS == "android" ? 30 : 30
               }}
             >
               <Icon name="ios-search" size={20} style={{ marginRight: 10 }} />
@@ -95,7 +98,12 @@ class Explore extends Component {
                 underlineColorAndroid="transparent"
                 placeholder="Search"
                 placeholderTextColor="grey"
-                style={{ flex: 1, fontWeight: "700", backgroundColor: "white" }}
+                style={{
+                  flex: 1,
+                  fontWeight: "700",
+                  backgroundColor: "white",
+                  borderRadius: 3
+                }}
               />
             </View>
           </View>
@@ -115,23 +123,50 @@ class Explore extends Component {
                   horizontal={true}
                   showsHorizontalScrollIndicator={false}
                 >
-                  <Category
-                    imageUri={require("../assets/textbooks.jpg")}
-                    name="Textbooks"
-                  />
-                  <Category
-                    imageUri={require("../assets/furniture.jpg")}
-                    name="Furniture"
-                  />
-                  <Category
-                    imageUri={require("../assets/electronics.jpg")}
-                    name="Electronics"
-                  />
+                  <TouchableHighlight
+                    onPress={() =>
+                      this.props.navigation.navigate("ViewCategory", {
+                        category: "Textbooks"
+                      })
+                    }
+                    underlayColor="white"
+                  >
+                    <Category
+                      imageUri={require("../assets/textbooks.jpg")}
+                      name="Textbooks"
+                    />
+                  </TouchableHighlight>
+                  <TouchableHighlight
+                    onPress={() =>
+                      this.props.navigation.navigate("ViewCategory", {
+                        category: "Furniture"
+                      })
+                    }
+                    underlayColor="white"
+                  >
+                    <Category
+                      imageUri={require("../assets/furniture.jpg")}
+                      name="Furniture"
+                    />
+                  </TouchableHighlight>
+                  <TouchableHighlight
+                    onPress={() =>
+                      this.props.navigation.navigate("ViewCategory", {
+                        category: "Electronics"
+                      })
+                    }
+                    underlayColor="white"
+                  >
+                    <Category
+                      imageUri={require("../assets/electronics.jpg")}
+                      name="Electronics"
+                    />
+                  </TouchableHighlight>
                 </ScrollView>
               </View>
               <View>
                 <Button
-                  style={{ flex: 2, justifyContent: "center" }}
+                  style={{ flex: 2, justifyContent: "center", paddingTop: 1 }}
                   color="black"
                   onPress={() => this.props.navigation.navigate("AddItem")}
                   title="Have Something To Sell?"
@@ -165,9 +200,11 @@ class Explore extends Component {
                             name: post.itemName,
                             price: post.price,
                             seller: post.seller,
-                            description: post.description,
+                            category: post.category,
+                            description: post.description
                           })
                         }
+                        underlayColor="white"
                         key={post.timeAdded}
                       >
                         <Listings
@@ -175,6 +212,7 @@ class Explore extends Component {
                           name={post.itemName}
                           price={post.price}
                           seller={post.seller}
+                          category={post.category}
                         />
                       </TouchableHighlight>
                     );

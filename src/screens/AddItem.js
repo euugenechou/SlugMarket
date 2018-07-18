@@ -7,7 +7,8 @@ import {
   View,
   Button,
   ScrollView,
-  Alert
+  Alert,
+  Picker
 } from "react-native";
 import { API, Auth, Storage } from "aws-amplify";
 
@@ -110,14 +111,14 @@ export default class AddItem extends React.Component {
             autoCapitalize="none"
             autoCorrect={false}
           />
-          <TextInput
-            onChangeText={value => this.onChangeText("category", value)}
-            style={styles.input}
-            placeholder="category"
-            placeholderTextColor="gray"
-            autoCapitalize="none"
-            autoCorrect={false}
-          />
+          <Picker
+            selectedValue={this.state.category}
+            style={{ height: 50, width: 100, flex: 1 }}
+            onValueChange={(itemValue, itemIndex) => this.setState({ category: itemValue })}>
+            <Picker.Item label="Furniture" value="furniture" />
+            <Picker.Item label="Textbook" value="textbook" />
+            <Picker.Item label="Electronic" value="electronic" />
+          </Picker>
           <TextInput
             onChangeText={value => this.onChangeText("description", value)}
             style={styles.input}
