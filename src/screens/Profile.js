@@ -167,12 +167,6 @@ class Profile extends Component {
       case 1:
         return (
           <View>
-            <Text>Chat messages will appear here</Text>
-          </View>
-        );
-      case 2:
-        return (
-          <View>
             <Text> Favorited items will appear here</Text>
           </View>
         );
