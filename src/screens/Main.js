@@ -19,6 +19,7 @@ import UserListingInfo from "./components/Profile/UserListingInfo";
 
 import Settings from "./Settings";
 import SignIn from "./login/SignIn";
+import Chat from "./Chat";
 
 export default class Main extends React.Component {
   render() {
@@ -59,6 +60,15 @@ const SettingsStack = createStackNavigator(
   // { headerMode: "none" }
 );
 
+const ChatStack = createStackNavigator(
+  {
+    MainChat: { screen: Chat},
+  },
+  {
+      headerMode: "none",
+  }
+)
+
 const BottomTabNavigator = createBottomTabNavigator(
   {
     Explore: {
@@ -76,6 +86,15 @@ const BottomTabNavigator = createBottomTabNavigator(
         tabBarLabel: "PROFILE",
         tabBarIcon: ({ tintColor }) => (
           <Icon name="ios-person-outline" color={tintColor} size={24} />
+        )
+      }
+    },
+    Chat: {
+      screen: ChatStack,
+      navigationOptions: {
+        tabBarLabel: "MESSAGES",
+        tabBarIcon: ({tintColor}) => (
+          <Icon name = "ios-chatbubbles-outline" color ={tintColor} size = {24}/>
         )
       }
     },

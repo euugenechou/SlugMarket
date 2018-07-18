@@ -160,12 +160,6 @@ class Profile extends Component {
       case 1:
         return (
           <View>
-            <Text>Chat messages will appear here</Text>
-          </View>
-        );
-      case 2:
-        return (
-          <View>
             <Text> Favorited items will appear here</Text>
           </View>
         );
@@ -224,7 +218,7 @@ class Profile extends Component {
               <View
                 style={{
                   flexDirection: "column",
-                  flex: 3,
+                  flex: 2,
                   paddingVertical: 15,
                   paddingLeft: 80,
                   alignItems: "flex-start"
@@ -251,43 +245,26 @@ class Profile extends Component {
                   borderBottomWidth: 1,
                   borderTopColor: "#dddddd",
                   borderBottomColor: "#dddddd"
-                }}
-              >
+                }}>
                 <Button
                   transparent
                   onPress={() => this.segmentClicked(0)}
-                  active={this.state.activeIndex == 0}
-                >
+                  active={this.state.activeIndex == 0}>
                   <Icon
                     name="ios-apps-outline"
                     style={[
                       this.state.activeIndex == 0 ? {} : { color: "grey" }
-                    ]}
-                  />
+                    ]}/>
                 </Button>
-
                 <Button
                   transparent
                   onPress={() => this.segmentClicked(1)}
                   active={this.state.activeIndex == 1}
                 >
                   <Icon
-                    name="ios-chatbubbles-outline"
-                    style={[
-                      this.state.activeIndex == 1 ? {} : { color: "grey" }
-                    ]}
-                  />
-                </Button>
-
-                <Button
-                  transparent
-                  onPress={() => this.segmentClicked(2)}
-                  active={this.state.activeIndex == 2}
-                >
-                  <Icon
                     name="ios-bookmark-outline"
                     style={[
-                      this.state.activeIndex == 2 ? {} : { color: "grey" }
+                      this.state.activeIndex == 1 ? {} : { color: "grey" }
                     ]}
                   />
                 </Button>
