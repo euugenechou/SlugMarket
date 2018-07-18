@@ -1,13 +1,13 @@
 /* React imports */
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Image, Button } from "react-native";
+import { View, Text, StyleSheet, Image, Button, TextInput } from "react-native";
 
 /* AWS imports */
-import {Auth} from "aws-amplify"
+import { Auth } from "aws-amplify";
 
 class UserListingsInfo extends Component {
   createPutObject(cognitoUserId) {
-    const put = { "body": this.state };
+    const put = { body: this.state };
     put.body.timeAdded = new Date().toString();
     return post;
   }
@@ -21,9 +21,11 @@ class UserListingsInfo extends Component {
     const path = "/itemPostings";
     const put = this.createPutObject(userInfo.id);
     API.put(apiName, path, put)
-      .then(res => this.props.navigation.navigate("MainProfile", {
-        reload: true
-      }))
+      .then(res =>
+        this.props.navigation.navigate("MainProfile", {
+          reload: true
+        })
+      )
       .catch(err => console.log(err));
   }
 
@@ -33,12 +35,36 @@ class UserListingsInfo extends Component {
         <Text style={styles.text}>
           Item name: {this.props.navigation.getParam("name")}
         </Text>
+        <TextInput
+          // onChangeText={value => this.onChangeText("username", value)}
+          style={styles.text}
+          placeholder="item name"
+          placeholderTextColor="gray"
+          autoCapitalize="none"
+          autoCorrect={false}
+        />
         <Text style={styles.text}>
           Item price: ${this.props.navigation.getParam("price")}
         </Text>
+        <TextInput
+          // onChangeText={value => this.onChangeText("username", value)}
+          style={styles.text}
+          placeholder="price"
+          placeholderTextColor="gray"
+          autoCapitalize="none"
+          autoCorrect={false}
+        />
         <Text style={styles.text}>
           Item description: {this.props.navigation.getParam("description")}
         </Text>
+        <TextInput
+          // onChangeText={value => this.onChangeText("description", value)}
+          style={styles.text}
+          placeholder="description"
+          placeholderTextColor="gray"
+          autoCapitalize="none"
+          autoCorrect={false}
+        />
         <Button
           style={{
             justifyContent: "center"
@@ -63,7 +89,7 @@ const styles = StyleSheet.create({
   },
   text: {
     flex: 1,
-    alignItems: 'flex-start',
+    alignItems: "flex-start",
     fontSize: 16,
     color: "black"
   }
