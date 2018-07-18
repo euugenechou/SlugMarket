@@ -116,13 +116,14 @@ const BottomTabNavigator = createBottomTabNavigator(
       inactiveTintColor: "grey",
       style: {
         backgroundColor: "white",
-        borderTopWidth: 0,
+        borderTopWidth: 0.5,
+        borderTopColor: "#dddddd",
         shadowOffset: { width: 5, height: 3 },
         shadowColor: "black",
         shadowOpacity: 0.5,
         elevation: 5,
         paddingTop: 5,
-        paddingBottom: 5
+        paddingBottom: 5,
       }
     }
   }

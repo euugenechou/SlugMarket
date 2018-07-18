@@ -238,7 +238,7 @@ class Profile extends Component {
                       paddingVertical: 15,
                       paddingLeft: 80,
                       alignItems: "flex-start"
-                    } // flex: 1,
+                    }
                   }
                 >
                   <View>
@@ -276,29 +276,15 @@ class Profile extends Component {
                       ]}
                     />
                   </Button>
-
                   <Button
                     transparent
                     onPress={() => this.segmentClicked(1)}
                     active={this.state.activeIndex == 1}
                   >
                     <Icon
-                      name="ios-chatbubbles-outline"
-                      style={[
-                        this.state.activeIndex == 1 ? {} : { color: "grey" }
-                      ]}
-                    />
-                  </Button>
-
-                  <Button
-                    transparent
-                    onPress={() => this.segmentClicked(2)}
-                    active={this.state.activeIndex == 2}
-                  >
-                    <Icon
                       name="ios-bookmark-outline"
                       style={[
-                        this.state.activeIndex == 2 ? {} : { color: "grey" }
+                        this.state.activeIndex == 1 ? {} : { color: "grey" }
                       ]}
                     />
                   </Button>

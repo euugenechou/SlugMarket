@@ -27,6 +27,5 @@ const LoginStack = createStackNavigator(
   },
   {
     initialRouteName: "SignInScreen",
-    headerMode: 'none'
   }
 );

@@ -2,7 +2,6 @@
 import React from "react";
 import {
   TextInput,
-  Button,
   StyleSheet,
   View,
   Text,
@@ -13,7 +12,13 @@ import TopAlert from "../components/TopAlert";
 /* AWS imports */
 import { Auth } from "aws-amplify";
 
+import { Button } from 'react-native-elements'
+
 export default class App extends React.Component {
+  static navigationOptions = ({ navigation }) => ({
+    header: null
+  });
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -49,7 +54,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{flex: 1}}>
         <TopAlert
           visible={this.state.visible}
           message={this.state.errorMessage}
@@ -58,7 +63,7 @@ export default class App extends React.Component {
           contentContainerStyle={styles.container}
           centerContent={true}
         >
-          <Text style={styles.titleText}>SlugMarket</Text>
+          <Text style={styles.titleText}>SLUGMARKET</Text>
           <TextInput
             onChangeText={value => this.onChangeText("username", value)}
             style={styles.input}
@@ -76,10 +81,22 @@ export default class App extends React.Component {
             autoCapitalize="none"
             autoCorrect={false}
           />
-          <Button color="teal" title="Sign In" onPress={() => this.signIn()} />
           <Button
-            color="teal"
-            title="Sign Up"
+            raised
+            color='white'
+            title="SIGN IN"
+            onPress={() => this.signIn()}
+            backgroundColor="teal"
+            borderRadius={5}
+            containerViewStyle={{width: 300, paddingVertical: 20}}
+            />
+          <Button
+            raised
+            color="white"
+            title="SIGN UP"
+            backgroundColor="teal"
+            borderRadius={5}
+            containerViewStyle={{width: 300}}
             onPress={() => {
               this.setState({ visible: false });
               this.props.navigation.navigate("SignUpScreen");
@@ -95,20 +112,26 @@ const styles = StyleSheet.create({
   input: {
     height: 50,
     color: "black",
-    borderBottomWidth: 2,
-    borderBottomColor: "teal",
+    borderWidth: 1,
+    borderRadius: 4,
+    borderColor: "white",
     margin: 10,
-    width: 300
+    width: 300,
+    paddingLeft: 10,
+    backgroundColor: "white"
   },
   container: {
     flex: 1,
-    padding: 30,
-    backgroundColor: "white",
-    alignItems: "center"
+    paddingVertical: 150,
+    backgroundColor: "#B0DFE5",
+    alignItems: "center",
   },
   titleText: {
     fontSize: 36,
-    padding: 50,
-    color: "teal"
+    fontWeight: "800",
+    padding: 20,
+    color: "white",
+    textShadowColor: "#dddddd",
+    textShadowRadius: 15
   }
 });

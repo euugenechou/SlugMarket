@@ -1,23 +1,38 @@
 /* React imports */
-import React from 'react';
-import { TextInput, Button, StyleSheet, Text, View, Alert } from 'react-native';
+import React from "react";
+import {
+  TextInput,
+  StyleSheet,
+  Text,
+  View,
+  Alert,
+  ScrollView
+} from "react-native";
 
 /* AWS imports */
-import { Auth } from 'aws-amplify'
+import { Auth } from "aws-amplify";
+import { Button } from "react-native-elements";
 
 export default class App extends React.Component {
   state = {
-    username: '',
-    password: '',
-    phone_number: '',
-    email: '',
-    confirmationCode: ''
-  }
+    username: "",
+    password: "",
+    phone_number: "",
+    email: "",
+    confirmationCode: ""
+  };
+
+  static navigationOptions = () => ({
+    headerTintColor: "white",
+    headerStyle: {
+      backgroundColor: "#B0DFE5",
+      height: 40,
+      shadowColor: "transparent"
+    }
+  });
 
   onChangeText(key, value) {
-    this.setState({
-      [key]: value
-    })
+    this.setState({ [key]: value });
   }
 
   signUp() {
@@ -29,52 +44,63 @@ export default class App extends React.Component {
         phone_number: this.state.phone_number
       }
     })
-    .then(() => this.props.navigation.navigate('ConfirmScreen', {
-      userName: this.state.username
-    }))
-    .catch(err => Alert.alert(err))
+      .then(() =>
+        this.props.navigation.navigate("ConfirmScreen", {
+          userName: this.state.username
+        })
+      )
+      .catch(err => Alert.alert(err));
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <TextInput
-          onChangeText={value => this.onChangeText('username', value)}
-          style={styles.input}
-          placeholder='UCSC ID'
-          placeholderTextColor='gray'
-          autoCapitalize="none"
-          autoCorrect={false}
-        />
-        <TextInput
-          onChangeText={value => this.onChangeText('password', value)}
-          style={styles.input}
-          secureTextEntry={true}
-          placeholder='Cruz Blue password'
-          placeholderTextColor='gray'
-          autoCapitalize="none"
-          autoCorrect={false}
-        />
-        <TextInput
-          onChangeText={value => this.onChangeText('phone_number', value)}
-          style={styles.input}
-          placeholder='phone'
-          placeholderTextColor='gray'
-          autoCapitalize="none"
-          autoCorrect={false}
-        />
-        <TextInput
-          onChangeText={value => this.onChangeText('email', value)}
-          style={styles.input}
-          placeholder='email'
-          placeholderTextColor='gray'
-          keyboardType="email-address"
-          autoCapitalize="none"
-          autoCorrect={false}
-        />
-        <Button color='teal' title="Sign Up" 
-          onPress={() => this.signUp()} />
-      </View>
+      <ScrollView centerContent={true} contentContainerStyle={styles.container}>
+        <View style={styles.container}>
+          <TextInput
+            onChangeText={value => this.onChangeText("username", value)}
+            style={styles.input}
+            placeholder="UCSC ID"
+            placeholderTextColor="gray"
+            autoCapitalize="none"
+            autoCorrect={false}
+          />
+          <TextInput
+            onChangeText={value => this.onChangeText("password", value)}
+            style={styles.input}
+            secureTextEntry={true}
+            placeholder="Cruz Blue password"
+            placeholderTextColor="gray"
+            autoCapitalize="none"
+            autoCorrect={false}
+          />
+          <TextInput
+            onChangeText={value => this.onChangeText("phone_number", value)}
+            style={styles.input}
+            placeholder="phone"
+            placeholderTextColor="gray"
+            autoCapitalize="none"
+            autoCorrect={false}
+          />
+          <TextInput
+            onChangeText={value => this.onChangeText("email", value)}
+            style={styles.input}
+            placeholder="email"
+            placeholderTextColor="gray"
+            keyboardType="email-address"
+            autoCapitalize="none"
+            autoCorrect={false}
+          />
+          <Button
+            raised
+            color="white"
+            title="SIGN UP"
+            backgroundColor="teal"
+            borderRadius={5}
+            containerViewStyle={{ width: 300, paddingTop: 10 }}
+            onPress={() => this.signUp()}
+          />
+        </View>
+      </ScrollView>
     );
   }
 }
@@ -82,15 +108,21 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   input: {
     height: 50,
-    borderBottomWidth: 2,
-    borderBottomColor: 'teal',
-    color: 'black',
-    margin: 10
+    color: "black",
+    borderWidth: 1,
+    borderRadius: 4,
+    borderColor: "white",
+    margin: 10,
+    width: 300,
+    paddingLeft: 10,
+    alignContent: "center",
+    backgroundColor: "white"
   },
   container: {
     flex: 1,
-    padding: 30,
-    backgroundColor: 'white',
-    justifyContent: 'center',
-  },
+    backgroundColor: "#B0DFE5",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 10
+  }
 });
