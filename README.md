@@ -16,5 +16,8 @@ sell or browse for items they want to buy.
 
 ### Sprint 1
 + Plan: https://drive.google.com/open?id=1wG1clPwAOnCxp487KVaqaCuPlTQUdFU_2lHFDsxUxSc
-+ Review: https://drive.google.com/open?id=1UFOGL8fvvFgu_nYi2olXLmi6akD4L4C5ZWgDou9zJGg
++ Report: https://drive.google.com/open?id=1UFOGL8fvvFgu_nYi2olXLmi6akD4L4C5ZWgDou9zJGg
 
+### Sprint 2
++ Plan: https://drive.google.com/open?id=1VC5QeYatYUf7NKu2VkJ0vv3xQ4p-LYCPtievqwX2lxE
++ Report: https://drive.google.com/open?id=1pr9u67bgjlBnZZ9yBl4epqFyB7lr4pffilq-gEkcGjA 
