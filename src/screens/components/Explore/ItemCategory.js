@@ -21,13 +21,15 @@ const { height, width } = Dimensions.get("window");
 class ItemCategory extends Component {
   state = {
     postsToRender: [],
+    category: this.props.navigation.getParam("category"),
     refreshing: false
   };
 
   static navigationOptions = () => ({
+    headerTintColor: 'teal',
     headerStyle: {
-      backgroundColor: "white",
-      height: 40
+      height: 40,
+      backgroundColor: 'white'
     }
   });
 
@@ -43,28 +45,24 @@ class ItemCategory extends Component {
   };
 
   getPostsByCategory() {
-    const path = "/itemPostings/userPosts";
+    const path = "/itemPostings";
     const apiName = "itemPostingsCRUD";
     const headers = {
       response: true,
       queryStringParameters: {
-        ScanIndexForward: false,
-        FilterExpression: "category = :c",
-        ExpressionAttributeValues: {
-          ":c": this.props.navigation.getParam("category")
-        }
+        ScanIndexForward: false
       }
     };
     API.get(apiName, path, headers)
       .then(response => {
         console.log(response);
+        console.log(response.data[0].category);
+        console.log(this.state.category);
         let filteredResponse = response.data.filter((post) => {
-          return post.attributes.category == this.state.navigation.getParam("category")
+          return post.category.toLowerCase() == this.state.category.toLowerCase();
         });
         this.setState({
-          postsToRender: filteredResponse.sort((a, b) => {
-            return new Date(b.timeAdded) - new Date(a.timeAdded);
-          })
+          postsToRender: filteredResponse
         });
       })
       .catch(error => console.log(error.response));
@@ -76,6 +74,7 @@ class ItemCategory extends Component {
         <View style={{ flex: 1, backgroundColor: "white" }}>
           <ScrollView
             scrollEventThrottle={16}
+            showsVerticalScrollIndicator={false}
             refreshControl={
               <RefreshControl
                 refreshing={this.state.refreshing}

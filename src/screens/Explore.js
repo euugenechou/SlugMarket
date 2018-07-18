@@ -9,11 +9,11 @@ import {
   StatusBar,
   ScrollView,
   Dimensions,
-  Button,
   RefreshControl,
   TouchableHighlight
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import { Button } from "react-native-elements";
 import { API } from "aws-amplify";
 
 /* Local imports */
@@ -29,8 +29,14 @@ class Explore extends Component {
     refreshing: false
   };
 
-  static navigationOptions = ({ navigation }) => ({
-    header: null
+  static navigationOptions = () => ({
+    header: null,
+    headerStyle: {
+      height: 40,
+      shadowColor: "black",
+      borderBottomColor: "black",
+      borderBottomWidth: 0.5
+    }
   });
 
   componentWillMount() {
@@ -78,7 +84,16 @@ class Explore extends Component {
       <SafeAreaView style={{ flex: 1 }}>
         <View style={{ flex: 1, backgroundColor: "white" }}>
           <View
-            style={{ height: this.startHeaderHeight, backgroundColor: "white" }}
+            style={{
+              height: this.startHeaderHeight,
+              backgroundColor: "white",
+              borderBottomWidth: 0.5,
+              borderBottomColor: "#dddddd",
+              shadowOffset: { width: 0, height: 0 },
+              shadowColor: "black",
+              shadowOpacity: 0.1,
+              elevation: 1
+            }}
           >
             <View
               style={{
@@ -86,7 +101,7 @@ class Explore extends Component {
                 padding: 10,
                 backgroundColor: "white",
                 marginHorizontal: 20,
-                shadowOffset: {width: 0, height: 0},
+                shadowOffset: { width: 0, height: 0 },
                 shadowColor: "black",
                 shadowOpacity: 0.2,
                 elevation: 1,
@@ -127,7 +142,7 @@ class Explore extends Component {
                   <TouchableHighlight
                     onPress={() =>
                       this.props.navigation.navigate("ViewCategory", {
-                        category: "Textbooks"
+                        category: "textbook"
                       })
                     }
                     underlayColor="white"
@@ -140,7 +155,7 @@ class Explore extends Component {
                   <TouchableHighlight
                     onPress={() =>
                       this.props.navigation.navigate("ViewCategory", {
-                        category: "Furniture"
+                        category: "furniture"
                       })
                     }
                     underlayColor="white"
@@ -153,7 +168,7 @@ class Explore extends Component {
                   <TouchableHighlight
                     onPress={() =>
                       this.props.navigation.navigate("ViewCategory", {
-                        category: "Electronics"
+                        category: "electronic"
                       })
                     }
                     underlayColor="white"
@@ -165,17 +180,16 @@ class Explore extends Component {
                   </TouchableHighlight>
                 </ScrollView>
               </View>
-              <View>
+              <View style={{ alignItems: "center", justifyContent: "center" }}>
                 <Button
-                  style={{
-                    flex: 2,
-                    justifyContent: "center",
-                    paddingTop: 10,
-                    fontWeight: "500"
-                  }}
-                  color="black"
+                  raised
+                  color="white"
+                  backgroundColor="teal"
+                  borderRadius={5}
+                  containerViewStyle={{ width: 300, paddingTop: 10 }}
                   onPress={() => this.props.navigation.navigate("AddItem")}
-                  title="Have Something To Sell?"
+                  title="Sell An Item"
+                  fontWeight="bold"
                 />
               </View>
               <View style={{ marginTop: 20 }}>

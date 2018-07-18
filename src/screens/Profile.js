@@ -19,9 +19,9 @@ import {
   Left,
   Body,
   Right,
-  Button
 } from "native-base";
 
+import { Button } from "react-native-elements";
 import { API, Auth } from "aws-amplify";
 import EntypoIcon from "react-native-vector-icons/Entypo";
 
@@ -212,23 +212,19 @@ class Profile extends Component {
                     />
                   </View>
                 </View>
-                <View style={{ flexDirection: "row" }}>
+                <View style={{ alignItems: "center", justifyContent: "center" }}>
                   <Button
-                    bordered
-                    dark
+                    raised
+                    color="white"
+                    backgroundColor="teal"
+                    borderRadius={5}
+                    title="Edit Profile"
+                    fontWeight="bold"
                     onPress={() =>
                       this.props.navigation.navigate("EditProfile")
                     }
-                    style={{
-                      flex: 1,
-                      marginLeft: 50,
-                      marginRight: 50,
-                      justifyContent: "center",
-                      height: 30
-                    }}
+                    containerViewStyle={{ width: 300, paddingTop: 10 }}
                   >
-                    <Text> Edit Profile </Text>
-                    color="teal"
                   </Button>
                 </View>
                 <View

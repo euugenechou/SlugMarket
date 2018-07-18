@@ -23,9 +23,8 @@ export default class App extends React.Component {
   };
 
   static navigationOptions = () => ({
-    headerTintColor: "white",
+    headerTransparent: true,
     headerStyle: {
-      backgroundColor: "#B0DFE5",
       height: 40,
       shadowColor: "transparent"
     }
@@ -93,7 +92,8 @@ export default class App extends React.Component {
           <Button
             raised
             color="white"
-            title="SIGN UP"
+            title="Sign Up"
+            fontWeight="bold"
             backgroundColor="teal"
             borderRadius={5}
             containerViewStyle={{ width: 300, paddingTop: 10 }}

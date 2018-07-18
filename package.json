@@ -17,6 +17,11 @@
   "jest": {
     "preset": "jest-expo"
   },
+  "rnpm": {
+    "assets": [
+      "./src/assets/fonts"
+    ]
+  },
   "dependencies": {
     "aws-amplify": "^0.4.8",
     "aws-amplify-react-native": "^0.2.19",

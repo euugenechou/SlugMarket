@@ -11,14 +11,14 @@ import TopAlert from "../components/TopAlert";
 
 /* AWS imports */
 import { Auth } from "aws-amplify";
-
+import Expo, { Font } from 'expo';
 import { Button } from 'react-native-elements'
 
 export default class App extends React.Component {
   static navigationOptions = ({ navigation }) => ({
     header: null
   });
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -84,7 +84,8 @@ export default class App extends React.Component {
           <Button
             raised
             color='white'
-            title="SIGN IN"
+            title="Sign In"
+            fontWeight="bold"
             onPress={() => this.signIn()}
             backgroundColor="teal"
             borderRadius={5}
@@ -93,7 +94,8 @@ export default class App extends React.Component {
           <Button
             raised
             color="white"
-            title="SIGN UP"
+            title="Sign Up"
+            fontWeight="bold"
             backgroundColor="teal"
             borderRadius={5}
             containerViewStyle={{width: 300}}

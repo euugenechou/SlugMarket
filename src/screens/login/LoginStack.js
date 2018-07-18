@@ -27,5 +27,6 @@ const LoginStack = createStackNavigator(
   },
   {
     initialRouteName: "SignInScreen",
+    activeBackgroundColor: "#B0DFE5"
   }
 );
