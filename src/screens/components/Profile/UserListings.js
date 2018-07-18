@@ -15,12 +15,13 @@ class UserListings extends Component {
           marginLeft: 20,
           marginTop: 20,
           borderRadius: 3,
-          borderWidth: 0.5,
+          borderWidth: 1,
           borderColor: "#dddddd",
           shadowOffset: { width: 0, height: 0 },
           shadowColor: "black",
           shadowOpacity: 0.1,
-          elevation: 1
+          elevation: 1,
+          backgroundColor: "white"
         }}
       >
         <View style={{ flex: 2 }}>
@@ -44,7 +45,7 @@ class UserListings extends Component {
               justifyContent: "center",
               fontSize: 14,
               fontWeight: "bold",
-              paddingHorizontal: 10,
+              paddingHorizontal: 10
             }}
           >
             {this.props.name}

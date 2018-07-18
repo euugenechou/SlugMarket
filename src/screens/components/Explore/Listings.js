@@ -14,12 +14,13 @@ class Listings extends Component {
           borderColor: "#dddddd",
           marginBottom: 20,
           borderRadius: 3,
-          borderWidth: 0.5,
+          borderWidth: 1,
           borderColor: "#dddddd",
           shadowOffset: { width: 0, height: 0 },
           shadowColor: "black",
           shadowOpacity: 0.1,
-          elevation: 1
+          elevation: 1,
+          backgroundColor: 'white'
         }}
       >
         <View style={{ flex: 2 }}>

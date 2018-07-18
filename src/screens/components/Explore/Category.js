@@ -11,12 +11,13 @@ class Category extends Component {
           width: 130,
           marginLeft: 20,
           borderRadius: 3,
-          borderWidth: 0.5,
+          borderWidth: 1,
           borderColor: "#dddddd",
           shadowOffset: { width: 0, height: 0 },
           shadowColor: "black",
           shadowOpacity: 0.2,
-          elevation: 1
+          elevation: 1,
+          backgroundColor: 'white'
         }}
       >
         <View style={{ flex: 2 }}>
@@ -27,12 +28,16 @@ class Category extends Component {
               width: null,
               height: null,
               resizeMode: "cover",
+              borderWidth: 0.1,
               borderRadius: 3,
+              shadowOffset: { width: 0, height: 0 },
+              shadowColor: "black",
+              shadowOpacity: 0.2,
             }}
           />
         </View>
         <View style={styles.container}>
-          <Text>{this.props.name}</Text>
+          <Text style={{fontWeight: '600'}}> {this.props.name} </Text>
         </View>
       </View>
     );
@@ -45,6 +50,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   }
 });

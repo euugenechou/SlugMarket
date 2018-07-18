@@ -34,7 +34,7 @@ class Explore extends Component {
   });
 
   componentWillMount() {
-    this.startHeaderHeight = 75;
+    this.startHeaderHeight = 90;
     if (Platform.OS == "android") {
       this.startHeaderHeight = 100 + StatusBar.currentHeight;
     }
@@ -86,9 +86,9 @@ class Explore extends Component {
                 padding: 10,
                 backgroundColor: "white",
                 marginHorizontal: 20,
-                shadowOffset: { width: 0, height: 0 },
+                shadowOffset: {width: 0, height: 0},
                 shadowColor: "black",
-                shadowOpacity: 0.1,
+                shadowOpacity: 0.2,
                 elevation: 1,
                 marginTop: Platform.OS == "android" ? 30 : 30
               }}
@@ -109,6 +109,7 @@ class Explore extends Component {
           </View>
           <ScrollView
             scrollEventThrottle={16}
+            showsVerticalScrollIndicator={false}
             refreshControl={
               <RefreshControl
                 refreshing={this.state.refreshing}
@@ -166,7 +167,12 @@ class Explore extends Component {
               </View>
               <View>
                 <Button
-                  style={{ flex: 2, justifyContent: "center", paddingTop: 1 }}
+                  style={{
+                    flex: 2,
+                    justifyContent: "center",
+                    paddingTop: 10,
+                    fontWeight: "500"
+                  }}
                   color="black"
                   onPress={() => this.props.navigation.navigate("AddItem")}
                   title="Have Something To Sell?"

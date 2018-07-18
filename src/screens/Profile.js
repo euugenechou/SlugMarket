@@ -30,7 +30,7 @@ import UserListings from "./components/Profile/UserListings";
 class Profile extends Component {
   static navigationOptions = ({ navigation }) => ({
     header: null
-  })
+  });
 
   constructor(props) {
     super(props);
@@ -50,6 +50,7 @@ class Profile extends Component {
   };
 
   componentWillMount() {
+    this.startHeaderHeight = 60;
     this.getUserPosts();
     this.getUserInfo();
     console.log(this.state.postsToRender);
@@ -112,7 +113,7 @@ class Profile extends Component {
               description: post.description
             })
           }
-          underlayColor='white'
+          underlayColor="white"
           key={post.timeAdded}
         >
           <UserListings
@@ -153,7 +154,13 @@ class Profile extends Component {
     switch (this.state.activeIndex) {
       case 0:
         return (
-          <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+          <View
+            style={{
+              flexDirection: "row",
+              flexWrap: "wrap",
+              backgroundColor: "white"
+            }}
+          >
             {this.renderSectionOne()}
           </View>
         );
@@ -174,129 +181,140 @@ class Profile extends Component {
 
   render() {
     return (
-      <ScrollView
-        refreshControl={
-          <RefreshControl
-            refreshing={this.state.refreshing}
-            onRefresh={this._onRefresh}
-          />
-        }
-      >
-        <Container style={{ flex: 1, backgroundColor: "white" }}>
-          <Content>
-            <View>
-              <Body style={{ paddingTop: 30, paddingRight: 10 }}>
-                <Text style={field.text}>{this.state.userName}</Text>
-              </Body>
+      <SafeAreaView>
+        <ScrollView
+          style={{ backgroundColor: "white" }}
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={this._onRefresh}
+            />
+          }
+          showsVerticalScrollIndicator={false}
+        >
+          <Container style={{ backgroundColor: "white" }}>
+            <Content>
               <View>
+                <Body
+                  style={{
+                    paddingTop: 30,
+                    paddingRight: 10,
+                    height: this.startHeaderHeight
+                  }}
+                >
+                  <Text style={field.text}>{this.state.userName}</Text>
+                </Body>
+                <View>
+                  <View
+                    style={{
+                      justifyContent: "center",
+                      alignItems: "center",
+                      paddingLeft: 10
+                    }}
+                  >
+                    <Image
+                      source={require("../assets/darrell.png")}
+                      style={{ width: 200, height: 200, borderRadius: 35.5 }}
+                    />
+                  </View>
+                </View>
+                <View style={{ flexDirection: "row" }}>
+                  <Button
+                    bordered
+                    dark
+                    onPress={() =>
+                      this.props.navigation.navigate("EditProfile")
+                    }
+                    style={{
+                      flex: 1,
+                      marginLeft: 50,
+                      marginRight: 50,
+                      justifyContent: "center",
+                      height: 30
+                    }}
+                  >
+                    <Text> Edit Profile </Text>
+                    color="teal"
+                  </Button>
+                </View>
+                <View
+                  style={
+                    {
+                      flexDirection: "column",
+                      paddingVertical: 15,
+                      paddingLeft: 80,
+                      alignItems: "flex-start"
+                    } // flex: 1,
+                  }
+                >
+                  <View>
+                    <Text>
+                      <B>Name:</B> {this.state.userName}
+                    </Text>
+                    <Text>
+                      <B>Phone Number:</B>{" "}
+                      {this.state.userAttributes.phone_number}
+                    </Text>
+                    <Text>
+                      <B>Email:</B> {this.state.userAttributes.email}
+                    </Text>
+                  </View>
+                </View>
                 <View
                   style={{
-                    flex: 1,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    paddingLeft: 10,
-                    paddingTop: 5
+                    flexDirection: "row",
+                    justifyContent: "space-around",
+                    borderTopWidth: 1,
+                    borderBottomWidth: 1,
+                    borderTopColor: "#dddddd",
+                    borderBottomColor: "#dddddd"
                   }}
                 >
-                  <Image
-                    source={require("../assets/darrell.png")}
-                    style={{ width: 200, height: 200, borderRadius: 35.5}}
-                  />
-                </View>
-              </View>
-              <View style={{ flexDirection: "row" }}>
-                <Button
-                  bordered
-                  dark
-                  onPress={() => this.props.navigation.navigate("EditProfile")}
-                  style={{
-                    flex: 1,
-                    marginLeft: 50,
-                    marginRight: 50,
-                    justifyContent: "center",
-                    height: 30
-                  }}
-                >
-                  <Text> Edit Profile </Text>
-                  color="teal"
-                </Button>
-              </View>
-              <View
-                style={{
-                  flexDirection: "column",
-                  flex: 3,
-                  paddingVertical: 15,
-                  paddingLeft: 80,
-                  alignItems: "flex-start"
-                }}
-              >
-                <View>
-                  <Text>
-                    <B>Name:</B> {this.state.userName}
-                  </Text>
-                  <Text>
-                    <B>Phone Number:</B>{" "}
-                    {this.state.userAttributes.phone_number}
-                  </Text>
-                  <Text>
-                    <B>Email:</B> {this.state.userAttributes.email}
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-around",
-                  borderTopWidth: 1,
-                  borderBottomWidth: 1,
-                  borderTopColor: "#dddddd",
-                  borderBottomColor: "#dddddd"
-                }}
-              >
-                <Button
-                  transparent
-                  onPress={() => this.segmentClicked(0)}
-                  active={this.state.activeIndex == 0}
-                >
-                  <Icon
-                    name="ios-apps-outline"
-                    style={[
-                      this.state.activeIndex == 0 ? {} : { color: "grey" }
-                    ]}
-                  />
-                </Button>
+                  <Button
+                    transparent
+                    onPress={() => this.segmentClicked(0)}
+                    active={this.state.activeIndex == 0}
+                  >
+                    <Icon
+                      name="ios-apps-outline"
+                      style={[
+                        this.state.activeIndex == 0 ? {} : { color: "grey" }
+                      ]}
+                    />
+                  </Button>
 
-                <Button
-                  transparent
-                  onPress={() => this.segmentClicked(1)}
-                  active={this.state.activeIndex == 1}
-                >
-                  <Icon
-                    name="ios-chatbubbles-outline"
-                    style={[
-                      this.state.activeIndex == 1 ? {} : { color: "grey" }
-                    ]}
-                  />
-                </Button>
+                  <Button
+                    transparent
+                    onPress={() => this.segmentClicked(1)}
+                    active={this.state.activeIndex == 1}
+                  >
+                    <Icon
+                      name="ios-chatbubbles-outline"
+                      style={[
+                        this.state.activeIndex == 1 ? {} : { color: "grey" }
+                      ]}
+                    />
+                  </Button>
 
-                <Button
-                  transparent
-                  onPress={() => this.segmentClicked(2)}
-                  active={this.state.activeIndex == 2}
-                >
-                  <Icon
-                    name="ios-bookmark-outline"
-                    style={[
-                      this.state.activeIndex == 2 ? {} : { color: "grey" }
-                    ]}
-                  />
-                </Button>
+                  <Button
+                    transparent
+                    onPress={() => this.segmentClicked(2)}
+                    active={this.state.activeIndex == 2}
+                  >
+                    <Icon
+                      name="ios-bookmark-outline"
+                      style={[
+                        this.state.activeIndex == 2 ? {} : { color: "grey" }
+                      ]}
+                    />
+                  </Button>
+                </View>
+                {this.renderSection()}
               </View>
-              {this.renderSection()}
-            </View>
-          </Content>
-        </Container>
-      </ScrollView>
+            </Content>
+          </Container>
+        </ScrollView>
+      </SafeAreaView>
     );
   }
 }
@@ -321,7 +339,12 @@ const field = StyleSheet.create({
     marginBottom: 8
   },
   text: {
-    fontSize: 18
+    fontSize: 20,
+    fontWeight: "600",
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
+    flexDirection: "row"
   }
 });
 
