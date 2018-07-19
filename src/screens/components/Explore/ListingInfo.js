@@ -13,21 +13,21 @@ class Listings extends Component {
       borderBottomWidth: 0
     }
   });
-  
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{ alignItems: "center", fontSize: 20, color: "black" }}>
-          item name: {this.props.navigation.getParam("name")}
+        <Text style={styles.titleText}>
+          {this.props.navigation.getParam("name")}
         </Text>
-        <Text style={{ alignItems: "center", fontSize: 20, color: "black" }}>
-          price: ${this.props.navigation.getParam("price")}
+        <Text style={styles.text}>
+          ${this.props.navigation.getParam("price")}
         </Text>
-        <Text style={{ alignItems: "center", fontSize: 20, color: "black" }}>
-          category: {this.props.navigation.getParam("category")}
+        <Text style={styles.text}>
+          {this.props.navigation.getParam("category")}
         </Text>
-        <Text style={{ alignItems: "center", fontSize: 20, color: "black" }}>
-          description: {this.props.navigation.getParam("description")}
+        <Text style={styles.text}>
+          {this.props.navigation.getParam("description")}
         </Text>
         <Button
           raised
@@ -44,8 +44,8 @@ class Listings extends Component {
           title="View Seller Details"
           containerViewStyle={{
             width: 300,
-            paddingBottom: 15,
-            paddingRight: 25
+            alignSelf: 'center',
+            paddingTop: 10
           }}
         />
       </View>
@@ -56,6 +56,20 @@ class Listings extends Component {
 export default Listings;
 
 const styles = StyleSheet.create({
+  text: {
+    fontSize: 22,
+    color: "black",
+    fontWeight: "400",
+    alignSelf: 'center',
+    paddingBottom: 10
+  },
+  titleText: {
+    fontSize: 30,
+    color: "black",
+    fontWeight: "800",
+    alignSelf: 'center',
+    paddingBottom: 10
+  },
   container: {
     flex: 1,
     alignItems: "center",
