@@ -98,7 +98,7 @@ class UserListingsInfo extends Component {
             defaultValue={this.props.navigation.getParam("itemName")}
             onChangeText={value => this.onChangeText("itemName", value)}
           />
-          <Text style={styles.text}>Item Price</Text>
+          <Text style={styles.text}>Item Price (USD)</Text>
           <TextInput
             style={styles.input}
             autoCapitalize="none"
