@@ -78,15 +78,15 @@ export default class Settings extends Component {
 						//hasNavArrow = {true}
 						arrowStyle = {{tintColor:'teal'}}
 						//onPress = {() => {Alert.alert('Change location')}}/>
-						onPress={() =>
-							this.props.navigation.navigate("Authors")
-						}
 						/>
 					<SettingsList.Header headerText = 'Authors' headerStyle={{color:'white', marginTop:50}}/>
 						<SettingsList.Item
 								title='Authors'
 								hasNavArrow={true}
 								arrowStyle={{tintColor:'blue'}}
+								onPress={() =>
+									this.props.navigation.navigate("Authors")
+								}
 							/> 
 					</SettingsList>
 				<View>
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'flex-start',
 	  },
 	  row: {
-		flexDirection: "row",
+		flexDirection: "column",
 		justifyContent: "center",
 		padding: 10,
 		backgroundColor: "#f6f6f6",
