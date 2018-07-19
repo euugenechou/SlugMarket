@@ -85,7 +85,7 @@ export default class Settings extends Component {
 								hasNavArrow={true}
 								arrowStyle={{tintColor:'blue'}}
 								onPress={() =>
-									this.props.navigation.navigate("Authors")
+									this.props.navigation.navigate("AuthorsScreen")
 								}
 							/> 
 					</SettingsList>
@@ -97,9 +97,9 @@ export default class Settings extends Component {
 						borderRadius = {2}
 						title = "Sign Out"
 						fontWeight = "bold"
-						// onPress={() =>
-						// 	this.props.navigation.navigate("LogIn")
-						// }
+						onPress={() =>
+							this.props.navigation.navigate("SignInScreen")
+						}
 						containerViewStyle={{ width: 150, paddingTop: 10 }}
 					/>
 				</View>
