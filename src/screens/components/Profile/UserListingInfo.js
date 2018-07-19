@@ -56,6 +56,7 @@ class UserListingsInfo extends Component {
   getUpdatedPostObject(cognitoUserId) {
     let postObject = { body: this.state };
     postObject.body.userId = cognitoUserId;
+    postObject.body.isSold = false;
     return postObject;
   }
 
