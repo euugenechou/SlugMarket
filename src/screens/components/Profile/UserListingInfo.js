@@ -35,7 +35,7 @@ class UserListingsInfo extends Component {
     API.put(apiName, path, updatedObject)
       .then(res => {
         console.log(res);
-        this.props.navigation.navigate("ProfileScreen");
+        this.props.navigation.navigate("MainProfile");
       })
       .catch(err => {
         Alert.alert("Error updating post. Please try again");
@@ -47,6 +47,26 @@ class UserListingsInfo extends Component {
     let postObject = { body: this.state };
     postObject.body.userId = cognitoUserId;
     return postObject;
+  }
+
+  async deletePost() {
+    const userInfo = await Auth.currentUserInfo().catch(error => {
+      Alert.alert(JSON.stringify(error));
+      return;
+    });
+    const apiName = "itemPostingsCRUD";
+    const path = "/itemPostings";
+    const updatedObject = this.getUpdatedPostObject(userInfo.id);
+    updatedObject.body.isSold = true;
+    API.put(apiName, path, updatedObject)
+      .then(res => {
+        console.log(res);
+        this.props.navigation.navigate("MainProfile");
+      })
+      .catch(err => {
+        Alert.alert("Error updating post. Please try again");
+        console.log(err);
+      });
   }
 
   onChangeText(key, value) {
@@ -107,7 +127,7 @@ class UserListingsInfo extends Component {
             backgroundColor="red"
             borderRadius={5}
             fontWeight="bold"
-            onPress={() => this.updateItemFields()}
+            onPress={() => this.deletePost()}
             title="Delete Item"
             containerViewStyle={{ width: 300, paddingTop: 10 }}
           />

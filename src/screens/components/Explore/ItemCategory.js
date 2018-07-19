@@ -59,7 +59,7 @@ class ItemCategory extends Component {
         console.log(response.data[0].category);
         console.log(this.state.category);
         let filteredResponse = response.data.filter((post) => {
-          return post.category.toLowerCase() == this.state.category.toLowerCase();
+          return post.category.toLowerCase() == this.state.category.toLowerCase() && post.isSold === false;
         });
         this.setState({
           postsToRender: filteredResponse

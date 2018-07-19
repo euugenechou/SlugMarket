@@ -70,9 +70,12 @@ class Explore extends Component {
     API.get(apiName, path, headers)
       .then(response => {
         console.log(response);
+        const sorted = response.data.sort((a, b) => {
+          return new Date(b.timeAdded) - new Date(a.timeAdded);
+        });
         this.setState({
-          postsToRender: response.data.sort((a, b) => {
-            return new Date(b.timeAdded) - new Date(a.timeAdded);
+          postsToRender: sorted.filter((post) => {
+            return post.isSold === false;
           })
         });
       })

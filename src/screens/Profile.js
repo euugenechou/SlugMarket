@@ -70,7 +70,9 @@ class Profile extends Component {
     API.get(apiName, path, headers)
       .then(response => {
         console.log(response);
-        this.setState({ postsToRender: response.data });
+        this.setState({ postsToRender: response.data.filter(post => {
+          return post.isSold === false;
+        })});
       })
       .catch(error => console.log(error.response));
   }
@@ -166,7 +168,7 @@ class Profile extends Component {
 
   render() {
     return (
-      <SafeAreaView style={{ backgroundColor: "white" }}>
+      <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
         <ScrollView
           scrollEventThrottle={16}
           contentContainerStyle={{ backgroundColor: "white" }}
