@@ -27,7 +27,7 @@ export default class SellerDetails extends React.Component {
       backgroundColor: "white",
       shadowColor: "transparent",
       borderBottomWidth: 0
-    },
+    }
   });
 
   componentWillMount() {
@@ -54,7 +54,10 @@ export default class SellerDetails extends React.Component {
           postsToRender: response.data.filter(post => {
             console.log(post.userId);
             console.log(this.props.navigation.getParam("userId"));
-            return post.userId === this.props.navigation.getParam("userId");
+            return (
+              post.userId === this.props.navigation.getParam("userId") &&
+              post.isSold === false
+            );
           })
         });
       })
