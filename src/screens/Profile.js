@@ -18,7 +18,7 @@ import {
   Header,
   Left,
   Body,
-  Right,
+  Right
 } from "native-base";
 
 import { Button } from "react-native-elements";
@@ -154,17 +154,7 @@ class Profile extends Component {
   renderSection = () => {
     switch (this.state.activeIndex) {
       case 0:
-        return (
-          <View
-            style={{
-              flexDirection: "row",
-              flexWrap: "wrap",
-              backgroundColor: "white"
-            }}
-          >
-            {this.renderSectionOne()}
-          </View>
-        );
+        return this.renderSectionOne();
       case 1:
         return (
           <View>
@@ -176,9 +166,10 @@ class Profile extends Component {
 
   render() {
     return (
-      <SafeAreaView>
+      <SafeAreaView style={{ backgroundColor: "white" }}>
         <ScrollView
-          style={{ backgroundColor: "white" }}
+          scrollEventThrottle={16}
+          contentContainerStyle={{ backgroundColor: "white" }}
           refreshControl={
             <RefreshControl
               refreshing={this.state.refreshing}
@@ -187,33 +178,61 @@ class Profile extends Component {
           }
           showsVerticalScrollIndicator={false}
         >
-          <Container style={{ backgroundColor: "white" }}>
-            <Content>
-              <View>
-                <Body
+          <View style={{ backgroundColor: "white" }}>
+            {/* <ScrollView
+          scrollEventThrottle={16}
+          style={{ backgroundColor: "white" }}
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={this._onRefresh}
+            />
+          }
+          showsVerticalScrollIndicator={false}
+        > */}
+            <View
+              style={{
+                backgroundColor: "white",
+                flexDirection: "row-reverse",
+                flex: 1
+              }}
+            >
+              <Image
+                source={require("../assets/darrell.png")}
+                style={{
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginTop: 70,
+                  width: null,
+                  height: 150,
+                  resizeMode: "contain",
+                  borderRadius: 8,
+                  flex: 1
+                }}
+              />
+              <View
+                style={{
+                  backgroundColor: "white",
+                  flexDirection: "column",
+                  flex: 1,
+                  paddingTop: 60
+                }}
+              >
+                <View
                   style={{
-                    paddingTop: 30,
-                    paddingRight: 10,
-                    height: this.startHeaderHeight
+                    alignItems: "center",
+                    backgroundColor: "white",
+                    justifyContent: "flex-start",
+                    paddingLeft: 20
                   }}
                 >
-                  <Text style={field.text}>{this.state.userName}</Text>
-                </Body>
-                <View>
-                  <View
-                    style={{
-                      justifyContent: "center",
-                      alignItems: "center",
-                      paddingLeft: 10
-                    }}
-                  >
-                    <Image
-                      source={require("../assets/darrell.png")}
-                      style={{ width: 200, height: 200, borderRadius: 35.5 }}
-                    />
-                  </View>
-                </View>
-                <View style={{ alignItems: "center", justifyContent: "center" }}>
+                  <Text style={field.titleText}>{this.state.userName}</Text>
+                  <Text style={field.text}>
+                    {this.state.userAttributes.email}
+                  </Text>
+                  <Text style={field.text}>
+                    {this.state.userAttributes.phone_number}
+                  </Text>
                   <Button
                     raised
                     color="white"
@@ -224,72 +243,55 @@ class Profile extends Component {
                     onPress={() =>
                       this.props.navigation.navigate("EditProfile")
                     }
-                    containerViewStyle={{ width: 300, paddingTop: 10 }}
-                  >
-                  </Button>
+                    containerViewStyle={{ width: 150, paddingTop: 10 }}
+                  />
                 </View>
-                <View
-                  style={
-                    {
-                      flexDirection: "column",
-                      paddingVertical: 15,
-                      paddingLeft: 80,
-                      alignItems: "flex-start"
-                    }
-                  }
-                >
-                  <View>
-                    <Text>
-                      <B>Name:</B> {this.state.userName}
-                    </Text>
-                    <Text>
-                      <B>Phone Number:</B>{" "}
-                      {this.state.userAttributes.phone_number}
-                    </Text>
-                    <Text>
-                      <B>Email:</B> {this.state.userAttributes.email}
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "space-around",
-                    borderTopWidth: 1,
-                    borderBottomWidth: 1,
-                    borderTopColor: "#dddddd",
-                    borderBottomColor: "#dddddd"
-                  }}
-                >
-                  <Button
-                    transparent
-                    onPress={() => this.segmentClicked(0)}
-                    active={this.state.activeIndex == 0}
-                  >
-                    <Icon
-                      name="ios-apps-outline"
-                      style={[
-                        this.state.activeIndex == 0 ? {} : { color: "grey" }
-                      ]}
-                    />
-                  </Button>
-                  <Button
-                    transparent
-                    onPress={() => this.segmentClicked(1)}
-                    active={this.state.activeIndex == 1}
-                  >
-                    <Icon
-                      name="ios-bookmark-outline"
-                      style={[
-                        this.state.activeIndex == 1 ? {} : { color: "grey" }
-                      ]}
-                    />
-                  </Button>
-                </View>
-                {this.renderSection()}
               </View>
-            </Content>
-          </Container>
+            </View>
+            {/* <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-around",
+              borderTopWidth: 1,
+              borderBottomWidth: 1,
+              borderTopColor: "#dddddd",
+              borderBottomColor: "#dddddd",
+            }}
+          >
+            <Button
+              transparent
+              onPress={() => this.segmentClicked(0)}
+              active={this.state.activeIndex == 0}
+            >
+              <Icon
+                name="ios-apps-outline"
+                style={[this.state.activeIndex == 0 ? {} : { color: "grey" }]}
+              />
+            </Button>
+            <Button
+              transparent
+              onPress={() => this.segmentClicked(1)}
+              active={this.state.activeIndex == 1}
+            >
+              <Icon
+                name="ios-bookmark-outline"
+                style={[this.state.activeIndex == 1 ? {} : { color: "grey" }]}
+              />
+            </Button>
+          </View> */}
+            <Text
+              style={{
+                fontSize: 24,
+                fontWeight: "700",
+                marginBottom: 20,
+                marginTop: 20,
+                paddingHorizontal: 20
+              }}
+            >
+              My Listings
+            </Text>
+            {this.renderSection()}
+          </View>
         </ScrollView>
       </SafeAreaView>
     );
@@ -316,12 +318,17 @@ const field = StyleSheet.create({
     marginBottom: 8
   },
   text: {
-    fontSize: 20,
+    paddingTop: 5,
+    fontSize: 14,
+    fontWeight: "300",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  titleText: {
+    fontSize: 36,
     fontWeight: "600",
     justifyContent: "center",
-    alignItems: "center",
-    flex: 1,
-    flexDirection: "row"
+    alignItems: "center"
   }
 });
 
