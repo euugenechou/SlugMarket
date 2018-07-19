@@ -1,75 +1,106 @@
 /* React imports */
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Image, Button, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  TextInput,
+  Alert,
+  ScrollView
+} from "react-native";
 
 /* AWS imports */
-import { Auth } from "aws-amplify";
+import { API, Auth } from "aws-amplify";
 
 class UserListingsInfo extends Component {
-  createPutObject(cognitoUserId) {
-    const put = { body: this.state };
-    put.body.timeAdded = new Date().toString();
-    return post;
-  }
+  state = {
+    itemName: this.props.navigation.getParam("name"),
+    price: this.props.navigation.getParam("price"),
+    seller: this.props.navigation.getParam("seller"),
+    category: this.props.navigation.getParam("category"),
+    description: this.props.navigation.getParam("description"),
+    timeAdded: this.props.navigation.getParam("timeAdded")
+  };
 
-  async saveItemChanges() {
+  async updateItemFields() {
     const userInfo = await Auth.currentUserInfo().catch(error => {
       Alert.alert(JSON.stringify(error));
       return;
     });
     const apiName = "itemPostingsCRUD";
     const path = "/itemPostings";
-    const put = this.createPutObject(userInfo.id);
-    API.put(apiName, path, put)
-      .then(res => this.props.navigation.navigate("MainProfile"))
-      .catch(err => console.log(err));
+    const updatedObject = this.getUpdatedPostObject(userInfo.id);
+    API.put(apiName, path, updatedObject)
+      .then(res => {
+        console.log(res);
+        this.props.navigation.navigate("ProfileScreen");
+      })
+      .catch(err => {
+        Alert.alert("Error updating post. Please try again");
+        console.log(err);
+      });
+  }
+
+  getUpdatedPostObject(cognitoUserId) {
+    let postObject = { body: this.state };
+    postObject.body.userId = cognitoUserId;
+    return postObject;
+  }
+
+  onChangeText(key, value) {
+    this.setState({
+      [key]: value
+    });
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.text}>
-          Item name: {this.props.navigation.getParam("name")}
-        </Text>
+      <ScrollView>
+        <Text style={styles.text}>Item name:</Text>
         <TextInput
           // onChangeText={value => this.onChangeText("username", value)}
-          style={styles.text}
+          style={styles.input}
           placeholder="item name"
           placeholderTextColor="gray"
           autoCapitalize="none"
           autoCorrect={false}
+          defaultValue={this.props.navigation.getParam("itemName")}
+          onChangeText={value => this.onChangeText("itemName", value)}
         />
-        <Text style={styles.text}>
-          Item price: ${this.props.navigation.getParam("price")}
-        </Text>
+        <Text style={styles.text}>Item price:</Text>
         <TextInput
           // onChangeText={value => this.onChangeText("username", value)}
-          style={styles.text}
+          style={styles.input}
           placeholder="price"
           placeholderTextColor="gray"
           autoCapitalize="none"
           autoCorrect={false}
+          defaultValue={this.props.navigation.getParam("price")}
+          onChangeText={value => this.onChangeText("price", value)}
         />
         <Text style={styles.text}>
-          Item description: {this.props.navigation.getParam("description")}
+          Item description:
         </Text>
         <TextInput
           // onChangeText={value => this.onChangeText("description", value)}
-          style={styles.text}
+          style={styles.input}
           placeholder="description"
           placeholderTextColor="gray"
           autoCapitalize="none"
           autoCorrect={false}
+          defaultValue={this.props.navigation.getParam("description")}
+          onChangeText={value => this.onChangeText("description", value)}
         />
         <Button
           style={{
             justifyContent: "center"
           }}
           color="teal"
-          onPress={() => this.saveItemChanges()}
-          title="Save Changes!"
+          onPress={() => this.updateItemFields()}
+          title="Save Changes"
         />
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -80,15 +111,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white'
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "white"
   },
   text: {
     flex: 1,
-    paddingBottom: 80,
+    paddingBottom: 20,
     alignItems: "flex-start",
     fontSize: 16,
-    color: "black"
+    color: "black", 
+  },
+  input: {
+    height: 50,
+    color: "black",
+    borderBottomWidth: 2,
+    borderBottomColor: "teal",
+    margin: 10,
+    width: 300
   }
 });

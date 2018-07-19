@@ -106,11 +106,12 @@ class Profile extends Component {
         <TouchableHighlight
           onPress={() =>
             this.props.navigation.navigate("UserListingInfoScreen", {
-              name: post.itemName,
+              itemName: post.itemName,
               price: post.price,
               seller: post.seller,
               category: post.category,
-              description: post.description
+              description: post.description,
+              timeAdded: post.timeAdded
             })
           }
           underlayColor="white"
