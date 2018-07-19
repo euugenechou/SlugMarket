@@ -4,7 +4,6 @@ import {
   View,
   Text,
   StyleSheet,
-  Button,
   TextInput,
   Alert,
   ScrollView
@@ -13,9 +12,11 @@ import {
 /* AWS imports */
 import { API, Auth } from "aws-amplify";
 
+import { Button } from "react-native-elements";
+
 class UserListingsInfo extends Component {
   state = {
-    itemName: this.props.navigation.getParam("name"),
+    itemName: this.props.navigation.getParam("itemName"),
     price: this.props.navigation.getParam("price"),
     seller: this.props.navigation.getParam("seller"),
     category: this.props.navigation.getParam("category"),
@@ -56,51 +57,62 @@ class UserListingsInfo extends Component {
 
   render() {
     return (
-      <ScrollView>
-        <Text style={styles.text}>Item name:</Text>
-        <TextInput
-          // onChangeText={value => this.onChangeText("username", value)}
-          style={styles.input}
-          placeholder="item name"
-          placeholderTextColor="gray"
-          autoCapitalize="none"
-          autoCorrect={false}
-          defaultValue={this.props.navigation.getParam("itemName")}
-          onChangeText={value => this.onChangeText("itemName", value)}
-        />
-        <Text style={styles.text}>Item price:</Text>
-        <TextInput
-          // onChangeText={value => this.onChangeText("username", value)}
-          style={styles.input}
-          placeholder="price"
-          placeholderTextColor="gray"
-          autoCapitalize="none"
-          autoCorrect={false}
-          defaultValue={this.props.navigation.getParam("price")}
-          onChangeText={value => this.onChangeText("price", value)}
-        />
-        <Text style={styles.text}>
-          Item description:
-        </Text>
-        <TextInput
-          // onChangeText={value => this.onChangeText("description", value)}
-          style={styles.input}
-          placeholder="description"
-          placeholderTextColor="gray"
-          autoCapitalize="none"
-          autoCorrect={false}
-          defaultValue={this.props.navigation.getParam("description")}
-          onChangeText={value => this.onChangeText("description", value)}
-        />
-        <Button
-          style={{
-            justifyContent: "center"
-          }}
-          color="teal"
-          onPress={() => this.updateItemFields()}
-          title="Save Changes"
-        />
-      </ScrollView>
+      <View
+        style={{
+          backgroundColor: "white",
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          paddingTop: 40
+        }}
+      >
+        <ScrollView contentContainerStyle={{ backgroundColor: "white" }}>
+          <Text style={styles.text}>Item name:</Text>
+          <TextInput
+            style={styles.input}
+            autoCapitalize="none"
+            autoCorrect={false}
+            defaultValue={this.props.navigation.getParam("itemName")}
+            onChangeText={value => this.onChangeText("itemName", value)}
+          />
+          <Text style={styles.text}>Item price:</Text>
+          <TextInput
+            style={styles.input}
+            autoCapitalize="none"
+            autoCorrect={false}
+            defaultValue={this.props.navigation.getParam("price")}
+            onChangeText={value => this.onChangeText("price", value)}
+          />
+          <Text style={styles.text}>Item description:</Text>
+          <TextInput
+            style={styles.input}
+            autoCapitalize="none"
+            autoCorrect={false}
+            defaultValue={this.props.navigation.getParam("description")}
+            onChangeText={value => this.onChangeText("description", value)}
+          />
+          <Button
+            raised
+            color="white"
+            backgroundColor="teal"
+            borderRadius={5}
+            fontWeight="bold"
+            onPress={() => this.updateItemFields()}
+            title="Save Changes"
+            containerViewStyle={{ width: 300, paddingTop: 10 }}
+          />
+          <Button
+            raised
+            color="white"
+            backgroundColor="red"
+            borderRadius={5}
+            fontWeight="bold"
+            onPress={() => this.updateItemFields()}
+            title="Delete Item"
+            containerViewStyle={{ width: 300, paddingTop: 10 }}
+          />
+        </ScrollView>
+      </View>
     );
   }
 }
@@ -120,7 +132,7 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     alignItems: "flex-start",
     fontSize: 16,
-    color: "black", 
+    color: "black"
   },
   input: {
     height: 50,
