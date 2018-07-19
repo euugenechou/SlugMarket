@@ -59,7 +59,7 @@ const SettingsStack = createStackNavigator(
   {
     MainSettings: { screen: Settings },
     SignInScreen: { screen: SignIn },
-    AuthorsScreen: { screen: Authors },
+    TermsScreen: { screen: Authors },
   },
   // { headerMode: "none" }
 );

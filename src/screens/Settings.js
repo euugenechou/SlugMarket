@@ -1,6 +1,6 @@
 /* React imports */
 import React, { Component } from 'react';
-import { Alert, Platform, Text, View, StyleSheet, Button, SafeAreaView, Image } from 'react-native';
+import { Alert, Platform, Text, View, StyleSheet, Button, SafeAreaView, Image, header, } from 'react-native';
 import LoginStack from './login/LoginStack'
 import SettingsList from 'react-native-settings-list';
 import {API, Auth} from "aws-amplify"
@@ -41,15 +41,6 @@ export default class Settings extends Component {
 	this.getUserInfo();
 	console.log(this.state.postsToRender);
 	}
-	
-	 _onPressButton() {
-	 	() => this.props.navigation.navigate("SignInScreen");
-	// 	// Auth.signOut()
-	// 	// 	.then(() => {
-				
-	// 	// 	})
-	// 	// 	.catch(err => console.log(err));
-	}
 
 	onValueChange(value){
 		this.setState({switchValue: value});
@@ -61,38 +52,25 @@ export default class Settings extends Component {
 			<View style = {{flex:1, marginTop:25}}>
 				<SettingsList>
 					<SettingsList.Header headerText='Settings' headerStyle={{color:'teal', fontWeight: 'bold', fontSize: 24}}/>
-					{/* <SettingsList.Item
-						icon = {
-							<View style = {{height:100, marginLeft:10, alignSelf:'center'}}>
-								<Image style = {{alignSelf:'center', height:100, width:100}} source={require("../assets/darrell.png")}/>
-							</View>
-						}
-						itemWidth = {50}
-						hasNavArrow ={ false}
-						fontSize = {50}
-						title = {this.state.userName}
-					/> */}
-					<SettingsList.Header headerText = 'Location' headerStyle={{color:'white', marginTop:50}}/>
-					<SettingsList.Item	
-						title = 'Edit location'
-						//hasNavArrow = {true}
-						arrowStyle = {{tintColor:'teal'}}
-						//onPress = {() => {Alert.alert('Change location')}}/>
-						/>
-					<SettingsList.Header headerText = 'Authors' headerStyle={{color:'white', marginTop:50}}/>
+					<SettingsList.Header headerText = 'Terms' headerStyle={{color:'white', marginTop:50}}/>
 						<SettingsList.Item
-								title='Authors'
+								title='Terms of Service'
 								hasNavArrow={true}
 								arrowStyle={{tintColor:'blue'}}
 								onPress={() =>
-									this.props.navigation.navigate("AuthorsScreen")
+									this.props.navigation.navigate("TermsScreen")
 								}
 							/> 
+					<SettingsList.Header headerText = 'Version' headerStyle={{color:'white', marginTop:50}}/>
+						<SettingsList.Item	
+							title = 'Slug Market v0.1.0'
+							hasNavArrow = {false}
+						/>	
 					</SettingsList>
 				<View>
+					{/* To view button again change color */}
 					<Button
-						raised
-						color = "teal"
+						color = "white"
 						backgroundColor = "white"
 						borderRadius = {2}
 						title = "Sign Out"
