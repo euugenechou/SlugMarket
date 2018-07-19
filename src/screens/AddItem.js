@@ -104,11 +104,7 @@ export default class AddItem extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1, flexDirection: 'row' }}>
-        <ScrollView
-          contentContainerStyle={styles.container}
-          centerContent={true}
-        >
+        <View style={styles.container}>
           <Text style={styles.text}>Item Name</Text>
           <TextInput
             onChangeText={value => this.onChangeText("itemName", value)}
@@ -123,11 +119,22 @@ export default class AddItem extends React.Component {
             autoCapitalize="none"
             autoCorrect={false}
           />
-          <Text style={styles.text}>Item Category</Text>
+          <Text
+            style={{
+              paddingLeft: 36,
+              fontSize: 16,
+              color: "black",
+              fontWeight: "700",
+              textAlign: "left",
+              paddingBottom: 10
+            }}
+          >
+            Item Category
+          </Text>
           <Picker
             selectedValue={this.state.category}
-            style={{ height: 20, width: 100, flex: 1}}
-            itemStyle={{height: 120, fontSize: 18}}
+            style={{ width: 120, alignSelf: "center" }}
+            itemStyle={{ height: 120, fontSize: 18 }}
             onValueChange={(itemValue, itemIndex) =>
               this.setState({ category: itemValue })
             }
@@ -158,20 +165,25 @@ export default class AddItem extends React.Component {
             onPress={() => this.saveItemPost()}
             backgroundColor="teal"
             borderRadius={5}
-            containerViewStyle={{ width: 300 }}
+            containerViewStyle={{
+              width: 300,
+              alignSelf: "center",
+              paddingTop: 10
+            }}
           />
-        </ScrollView>
-      </View>
+        </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
   input: {
+    justifyContent: "center",
+    alignSelf: "center",
     height: 30,
     color: "black",
     borderBottomWidth: 0.5,
-    borderBottomColor: "gray",
+    borderBottomColor: "#dddddd",
     marginBottom: 20,
     width: 300
   },
@@ -182,21 +194,15 @@ const styles = StyleSheet.create({
     borderWidth: 3
   },
   container: {
-    flex: 1,
-    padding: 30,
+    flexGrow: 1,
     backgroundColor: "white",
-    alignItems: "center"
-  },
-  titleText: {
-    fontSize: 36,
-    padding: 50,
-    color: "teal"
   },
   text: {
-    justifyContent: 'flex-start',
+    paddingLeft: 36,
     fontSize: 16,
     color: "black",
     fontWeight: "700",
-    textAlign: 'left'
+    textAlign: "left",
+    paddingTop: 10
   }
 });
