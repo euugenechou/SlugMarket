@@ -4,16 +4,27 @@ import {
   TextInput,
   StyleSheet,
   View,
-  Button,
   ScrollView,
   Alert
 } from "react-native";
 import { API, Auth } from "aws-amplify";
 
+import { Button } from "react-native-elements";
+
 export default class AddItem extends React.Component {
+  static navigationOptions = () => ({
+    headerTintColor: "teal",
+    headerStyle: {
+      height: 40,
+      backgroundColor: "white",
+      shadowColor: "transparent",
+      borderBottomWidth: 0
+    }
+  });
+
   constructor(props) {
     super(props);
-    this.state = {lookingFor: ""};
+    this.state = { lookingFor: "" };
   }
 
   onChangeText(key, value) {
@@ -62,13 +73,14 @@ export default class AddItem extends React.Component {
             autoCorrect={false}
           />
           <Button
-            style={{
-              flex: 2,
-              justifyContent: "center"
-            }}
-            color="black"
+            raised
+            color="white"
+            backgroundColor="teal"
+            borderRadius={5}
+            containerViewStyle={{ width: 300, paddingTop: 10 }}
             onPress={() => console.log("Changing profile!")}
-            title="Save changes!"
+            title="Save Changes"
+            fontWeight="bold"
           />
         </ScrollView>
       </View>
@@ -79,11 +91,11 @@ export default class AddItem extends React.Component {
 const styles = StyleSheet.create({
   input: {
     height: 50,
+    width: 300,
     color: "black",
-    borderBottomWidth: 2,
-    borderBottomColor: "teal",
-    margin: 10,
-    width: 300
+    borderBottomWidth: 0.8,
+    borderBottomColor: "#dddddd",
+    marginBottom: 10,
   },
   box: {
     height: 100,

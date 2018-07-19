@@ -24,6 +24,16 @@ class UserListingsInfo extends Component {
     timeAdded: this.props.navigation.getParam("timeAdded")
   };
 
+  static navigationOptions = () => ({
+    headerTintColor: "teal",
+    headerStyle: {
+      height: 40,
+      backgroundColor: "white",
+      shadowColor: "transparent",
+      borderBottomWidth: 0,
+    }
+  });
+
   async updateItemFields() {
     const userInfo = await Auth.currentUserInfo().catch(error => {
       Alert.alert(JSON.stringify(error));
@@ -77,60 +87,92 @@ class UserListingsInfo extends Component {
 
   render() {
     return (
-      <View
-        style={{
-          backgroundColor: "white",
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-          paddingTop: 40
-        }}
-      >
-        <ScrollView contentContainerStyle={{ backgroundColor: "white" }}>
-          <Text style={styles.text}>Item name:</Text>
-          <TextInput
-            style={styles.input}
-            autoCapitalize="none"
-            autoCorrect={false}
-            defaultValue={this.props.navigation.getParam("itemName")}
-            onChangeText={value => this.onChangeText("itemName", value)}
-          />
-          <Text style={styles.text}>Item price:</Text>
-          <TextInput
-            style={styles.input}
-            autoCapitalize="none"
-            autoCorrect={false}
-            defaultValue={this.props.navigation.getParam("price")}
-            onChangeText={value => this.onChangeText("price", value)}
-          />
-          <Text style={styles.text}>Item description:</Text>
-          <TextInput
-            style={styles.input}
-            autoCapitalize="none"
-            autoCorrect={false}
-            defaultValue={this.props.navigation.getParam("description")}
-            onChangeText={value => this.onChangeText("description", value)}
-          />
-          <Button
-            raised
-            color="white"
-            backgroundColor="teal"
-            borderRadius={5}
-            fontWeight="bold"
-            onPress={() => this.updateItemFields()}
-            title="Save Changes"
-            containerViewStyle={{ width: 300, paddingTop: 10 }}
-          />
-          <Button
-            raised
-            color="white"
-            backgroundColor="red"
-            borderRadius={5}
-            fontWeight="bold"
-            onPress={() => this.deletePost()}
-            title="Delete Item"
-            containerViewStyle={{ width: 300, paddingTop: 10 }}
-          />
+      <View style={{ backgroundColor: "white", flex: 1 }}>
+        <ScrollView
+          contentContainerStyle={{
+            backgroundColor: "white",
+            paddingTop: 30,
+            paddingLeft: 35,
+            flex: 1
+          }}
+        >
+          <View>
+            <Text style={styles.text}>Item Name</Text>
+            <TextInput
+              style={styles.input}
+              autoCapitalize="none"
+              autoCorrect={false}
+              defaultValue={this.props.navigation.getParam("itemName")}
+              onChangeText={value => this.onChangeText("itemName", value)}
+            />
+            <Text style={styles.text}>Item Price</Text>
+            <TextInput
+              style={styles.input}
+              autoCapitalize="none"
+              autoCorrect={false}
+              defaultValue={this.props.navigation.getParam("price")}
+              onChangeText={value => this.onChangeText("price", value)}
+            />
+            <Text style={styles.text}>Item Description</Text>
+            <TextInput
+              style={styles.input}
+              autoCapitalize="none"
+              autoCorrect={false}
+              defaultValue={this.props.navigation.getParam("description")}
+              onChangeText={value => this.onChangeText("description", value)}
+            />
+          </View>
+          <View
+            style={{
+              backgroundColor: "white",
+              paddingTop: 40,
+              alignContent: "space-around",
+              justifyContent: "space-around"
+            }}
+          >
+            <Button
+              raised
+              color="white"
+              backgroundColor="teal"
+              borderRadius={5}
+              fontWeight="bold"
+              onPress={() => this.updateItemFields()}
+              title="Save Changes"
+              containerViewStyle={{
+                width: 300,
+                paddingBottom: 15,
+                paddingRight: 25
+              }}
+            />
+            <Button
+              raised
+              color="white"
+              backgroundColor="goldenrod"
+              borderRadius={5}
+              fontWeight="bold"
+              onPress={() => this.deletePost()}
+              title="Mark Item As Sold"
+              containerViewStyle={{
+                width: 300,
+                paddingBottom: 15,
+                paddingRight: 25
+              }}
+            />
+            <Button
+              raised
+              color="white"
+              backgroundColor="red"
+              borderRadius={5}
+              fontWeight="bold"
+              onPress={() => this.deletePost()}
+              title="Delete Item"
+              containerViewStyle={{
+                width: 300,
+                paddingBottom: 15,
+                paddingRight: 25
+              }}
+            />
+          </View>
         </ScrollView>
       </View>
     );
@@ -140,26 +182,21 @@ class UserListingsInfo extends Component {
 export default UserListingsInfo;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 40,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "white"
-  },
   text: {
-    flex: 1,
-    paddingBottom: 20,
-    alignItems: "flex-start",
-    fontSize: 16,
-    color: "black"
+    fontSize: 20,
+    color: "black",
+    fontWeight: "700"
   },
   input: {
     height: 50,
     color: "black",
-    borderBottomWidth: 2,
-    borderBottomColor: "teal",
-    margin: 10,
+    borderBottomWidth: 0.8,
+    borderBottomColor: "#dddddd",
+    marginBottom: 20,
     width: 300
+  },
+  container: {
+    marginTop: 30,
+    marginLeft: 30
   }
 });
