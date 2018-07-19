@@ -95,15 +95,15 @@ const BottomTabNavigator = createBottomTabNavigator(
         )
       }
     },
-    Chat: {
-      screen: ChatStack,
-      navigationOptions: {
-        tabBarLabel: "MESSAGES",
-        tabBarIcon: ({tintColor}) => (
-          <Icon name = "ios-chatbubbles-outline" color ={tintColor} size = {24}/>
-        )
-      }
-    },
+    // Chat: {
+    //   screen: ChatStack,
+    //   navigationOptions: {
+    //     tabBarLabel: "MESSAGES",
+    //     tabBarIcon: ({tintColor}) => (
+    //       <Icon name = "ios-chatbubbles-outline" color ={tintColor} size = {24}/>
+    //     )
+    //   }
+    // },
     Settings: {
       screen: SettingsStack,
       navigationOptions: {
