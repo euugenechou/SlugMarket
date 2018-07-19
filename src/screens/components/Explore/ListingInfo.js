@@ -1,17 +1,23 @@
 /* React imports */
 import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import { Button } from "react-native-elements";
 
 class Listings extends Component {
   static navigationOptions = () => ({
-    headerTintColor: "teal",
+    headerTintColor: "white",
     headerStyle: {
       height: 40,
       backgroundColor: "white",
       shadowColor: "transparent",
       borderBottomWidth: 0
-    }
+    },
+    headerBackground: (
+      <Image
+        style={StyleSheet.absoluteFill}
+        source={require("../../../assets/textbooks.jpg")}
+      />
+    ),
   });
 
   render() {
@@ -61,14 +67,16 @@ const styles = StyleSheet.create({
     color: "black",
     fontWeight: "400",
     alignSelf: 'center',
-    paddingBottom: 10
+    paddingBottom: 10,
+    paddingHorizontal: 30,
   },
   titleText: {
     fontSize: 30,
     color: "black",
     fontWeight: "800",
     alignSelf: 'center',
-    paddingBottom: 10
+    paddingBottom: 10,
+    marginTop: 100
   },
   container: {
     flex: 1,

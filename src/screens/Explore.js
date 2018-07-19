@@ -136,7 +136,7 @@ class Explore extends Component {
             }
           >
             <View style={{ flex: 1, backgroundColor: "white", paddingTop: 20 }}>
-              <Text style={styles.sectionTitle}>Browse Items By Category</Text>
+              <Text style={styles.sectionTitle}>Browse items by category</Text>
               <View style={styles.sideScroll}>
                 <ScrollView
                   horizontal={true}
@@ -191,7 +191,7 @@ class Explore extends Component {
                     paddingHorizontal: 20
                   }}
                 >
-                  Recently Added Items
+                  Recently added items
                 </Text>
                 <View
                   style={{

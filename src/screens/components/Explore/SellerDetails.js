@@ -7,7 +7,8 @@ import {
   ScrollView,
   TouchableHighlight,
   Image,
-  Dimensions
+  Dimensions,
+  RefreshControl
 } from "react-native";
 import { API } from "aws-amplify";
 
@@ -15,7 +16,8 @@ import UserListings from "../Profile/UserListings";
 
 export default class SellerDetails extends React.Component {
   state = {
-    postsToRender: []
+    postsToRender: [],
+    refreshing: false
   };
 
   static navigationOptions = () => ({
@@ -25,12 +27,18 @@ export default class SellerDetails extends React.Component {
       backgroundColor: "white",
       shadowColor: "transparent",
       borderBottomWidth: 0
-    }
+    },
   });
-  
+
   componentWillMount() {
     this.getPostsToRender();
   }
+
+  _onRefresh = () => {
+    this.setState({ refreshing: true });
+    this.getPostsToRender();
+    this.setState({ refreshing: false });
+  };
 
   getPostsToRender() {
     const path = "/itemPostings";
@@ -41,15 +49,16 @@ export default class SellerDetails extends React.Component {
     };
 
     API.get(apiName, path, params)
-    .then(response => {this.setState({
-        postsToRender: response.data.filter(post => {
-          console.log(post.userId);
-          console.log(this.props.navigation.getParam("userId"));
-          return post.userId === this.props.navigation.getParam("userId");
-        })
-      });
-    })
-    .catch(err => console.log(err));
+      .then(response => {
+        this.setState({
+          postsToRender: response.data.filter(post => {
+            console.log(post.userId);
+            console.log(this.props.navigation.getParam("userId"));
+            return post.userId === this.props.navigation.getParam("userId");
+          })
+        });
+      })
+      .catch(err => console.log(err));
   }
 
   renderSection = () => {
@@ -86,8 +95,14 @@ export default class SellerDetails extends React.Component {
       <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
         <ScrollView
           scrollEventThrottle={16}
-          contentContainerStyle={{ backgroundColor: "white" }}
           showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ backgroundColor: "white" }}
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={this._onRefresh}
+            />
+          }
         >
           <View style={{ backgroundColor: "white" }}>
             <View
@@ -102,7 +117,7 @@ export default class SellerDetails extends React.Component {
                 style={{
                   justifyContent: "center",
                   alignItems: "center",
-                  marginTop: 70,
+                  marginTop: 40,
                   width: null,
                   height: 150,
                   resizeMode: "contain",

@@ -92,7 +92,7 @@ class ItemCategory extends Component {
                   paddingHorizontal: 20
                 }}
               >
-                Recently Added To {this.props.navigation.getParam("category")}
+                Recently added to {this.props.navigation.getParam("category")}
               </Text>
               <View
                 style={{
