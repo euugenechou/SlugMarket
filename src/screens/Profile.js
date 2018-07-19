@@ -154,15 +154,7 @@ class Profile extends Component {
   renderSection = () => {
     switch (this.state.activeIndex) {
       case 0:
-        return (
-          <View
-            style={{
-              backgroundColor: "white"
-            }}
-          >
-            {this.renderSectionOne()}
-          </View>
-        );
+        return this.renderSectionOne();
       case 1:
         return (
           <View>
@@ -174,8 +166,20 @@ class Profile extends Component {
 
   render() {
     return (
-      <SafeAreaView>
+      <SafeAreaView style={{ backgroundColor: "white" }}>
         <ScrollView
+          scrollEventThrottle={16}
+          contentContainerStyle={{ backgroundColor: "white" }}
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={this._onRefresh}
+            />
+          }
+          showsVerticalScrollIndicator={false}
+        >
+          <View style={{ backgroundColor: "white" }}>
+            {/* <ScrollView
           scrollEventThrottle={16}
           style={{ backgroundColor: "white" }}
           refreshControl={
@@ -185,63 +189,66 @@ class Profile extends Component {
             />
           }
           showsVerticalScrollIndicator={false}
-        >
-          <View
-            style={{
-              backgroundColor: "white",
-              flexDirection: "row-reverse",
-              flex: 1
-            }}
-          >
-            <Image
-              source={require("../assets/darrell.png")}
-              style={{
-                justifyContent: "center",
-                alignItems: "center",
-                marginTop: 70,
-                width: null,
-                height: 150,
-                resizeMode: "contain",
-                borderRadius: 8,
-                flex: 1
-              }}
-            />
+        > */}
             <View
               style={{
                 backgroundColor: "white",
-                flexDirection: "column",
-                flex: 1,
-                paddingTop: 60
+                flexDirection: "row-reverse",
+                flex: 1
               }}
             >
+              <Image
+                source={require("../assets/darrell.png")}
+                style={{
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginTop: 70,
+                  width: null,
+                  height: 150,
+                  resizeMode: "contain",
+                  borderRadius: 8,
+                  flex: 1
+                }}
+              />
               <View
                 style={{
-                  alignItems: "center",
-                  justifyContent: "flex-start",
-                  paddingLeft: 20
+                  backgroundColor: "white",
+                  flexDirection: "column",
+                  flex: 1,
+                  paddingTop: 60
                 }}
               >
-                <Text style={field.titleText}>{this.state.userName}</Text>
-                <Text style={field.text}>
-                  {this.state.userAttributes.email}
-                </Text>
-                <Text style={field.text}>
-                  {this.state.userAttributes.phone_number}
-                </Text>
-                <Button
-                  raised
-                  color="white"
-                  backgroundColor="teal"
-                  borderRadius={5}
-                  title="Edit Profile"
-                  fontWeight="bold"
-                  onPress={() => this.props.navigation.navigate("EditProfile")}
-                  containerViewStyle={{ width: 150, paddingTop: 10 }}
-                />
+                <View
+                  style={{
+                    alignItems: "center",
+                    backgroundColor: "white",
+                    justifyContent: "flex-start",
+                    paddingLeft: 20
+                  }}
+                >
+                  <Text style={field.titleText}>{this.state.userName}</Text>
+                  <Text style={field.text}>
+                    {this.state.userAttributes.email}
+                  </Text>
+                  <Text style={field.text}>
+                    {this.state.userAttributes.phone_number}
+                  </Text>
+                  <Button
+                    raised
+                    color="white"
+                    backgroundColor="teal"
+                    borderRadius={5}
+                    title="Edit Profile"
+                    fontWeight="bold"
+                    onPress={() =>
+                      this.props.navigation.navigate("EditProfile")
+                    }
+                    containerViewStyle={{ width: 150, paddingTop: 10 }}
+                  />
+                </View>
               </View>
             </View>
-          </View>
-          {/* <View
+            {/* <View
             style={{
               flexDirection: "row",
               justifyContent: "space-around",
@@ -272,18 +279,19 @@ class Profile extends Component {
               />
             </Button>
           </View> */}
-          <Text
-            style={{
-              fontSize: 24,
-              fontWeight: "700",
-              marginTop: 40,
-              marginBottom: 20,
-              paddingHorizontal: 20
-            }}
-          >
-            My Listings
-          </Text>
-          {this.renderSection()}
+            <Text
+              style={{
+                fontSize: 24,
+                fontWeight: "700",
+                marginBottom: 20,
+                marginTop: 20,
+                paddingHorizontal: 20
+              }}
+            >
+              My Listings
+            </Text>
+            {this.renderSection()}
+          </View>
         </ScrollView>
       </SafeAreaView>
     );
