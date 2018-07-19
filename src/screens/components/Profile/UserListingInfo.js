@@ -30,7 +30,7 @@ class UserListingsInfo extends Component {
       height: 40,
       backgroundColor: "white",
       shadowColor: "transparent",
-      borderBottomWidth: 0,
+      borderBottomWidth: 0
     }
   });
 
@@ -87,93 +87,70 @@ class UserListingsInfo extends Component {
 
   render() {
     return (
-      <View style={{ backgroundColor: "white", flex: 1 }}>
-        <ScrollView
-          contentContainerStyle={{
+      <View style={{ backgroundColor: "white", flex: 1, paddingTop: 20 }}>
+        <View>
+          <Text style={styles.text}>Item Name</Text>
+          <TextInput
+            style={styles.input}
+            autoCapitalize="none"
+            autoCorrect={false}
+            defaultValue={this.props.navigation.getParam("itemName")}
+            onChangeText={value => this.onChangeText("itemName", value)}
+          />
+          <Text style={styles.text}>Item Price</Text>
+          <TextInput
+            style={styles.input}
+            autoCapitalize="none"
+            autoCorrect={false}
+            defaultValue={this.props.navigation.getParam("price")}
+            onChangeText={value => this.onChangeText("price", value)}
+          />
+          <Text style={styles.text}>Item Description</Text>
+          <TextInput
+            style={styles.input}
+            autoCapitalize="none"
+            autoCorrect={false}
+            defaultValue={this.props.navigation.getParam("description")}
+            onChangeText={value => this.onChangeText("description", value)}
+          />
+        </View>
+        <View
+          style={{
             backgroundColor: "white",
-            paddingTop: 30,
-            paddingLeft: 35,
-            flex: 1
+            paddingTop: 20
           }}
         >
-          <View>
-            <Text style={styles.text}>Item Name</Text>
-            <TextInput
-              style={styles.input}
-              autoCapitalize="none"
-              autoCorrect={false}
-              defaultValue={this.props.navigation.getParam("itemName")}
-              onChangeText={value => this.onChangeText("itemName", value)}
-            />
-            <Text style={styles.text}>Item Price</Text>
-            <TextInput
-              style={styles.input}
-              autoCapitalize="none"
-              autoCorrect={false}
-              defaultValue={this.props.navigation.getParam("price")}
-              onChangeText={value => this.onChangeText("price", value)}
-            />
-            <Text style={styles.text}>Item Description</Text>
-            <TextInput
-              style={styles.input}
-              autoCapitalize="none"
-              autoCorrect={false}
-              defaultValue={this.props.navigation.getParam("description")}
-              onChangeText={value => this.onChangeText("description", value)}
-            />
-          </View>
-          <View
-            style={{
-              backgroundColor: "white",
-              paddingTop: 40,
-              alignContent: "space-around",
-              justifyContent: "space-around"
-            }}
-          >
-            <Button
-              raised
-              color="white"
-              backgroundColor="teal"
-              borderRadius={5}
-              fontWeight="bold"
-              onPress={() => this.updateItemFields()}
-              title="Save Changes"
-              containerViewStyle={{
-                width: 300,
-                paddingBottom: 15,
-                paddingRight: 25
-              }}
-            />
-            <Button
-              raised
-              color="white"
-              backgroundColor="goldenrod"
-              borderRadius={5}
-              fontWeight="bold"
-              onPress={() => this.deletePost()}
-              title="Mark Item As Sold"
-              containerViewStyle={{
-                width: 300,
-                paddingBottom: 15,
-                paddingRight: 25
-              }}
-            />
-            <Button
-              raised
-              color="white"
-              backgroundColor="red"
-              borderRadius={5}
-              fontWeight="bold"
-              onPress={() => this.deletePost()}
-              title="Delete Item"
-              containerViewStyle={{
-                width: 300,
-                paddingBottom: 15,
-                paddingRight: 25
-              }}
-            />
-          </View>
-        </ScrollView>
+          <Button
+            raised
+            color="white"
+            backgroundColor="teal"
+            borderRadius={5}
+            fontWeight="bold"
+            onPress={() => this.updateItemFields()}
+            title="Save Changes"
+            containerViewStyle={styles.buttonStyle}
+          />
+          <Button
+            raised
+            color="white"
+            backgroundColor="goldenrod"
+            borderRadius={5}
+            fontWeight="bold"
+            onPress={() => this.deletePost()}
+            title="Mark Item As Sold"
+            containerViewStyle={styles.buttonStyle}
+          />
+          <Button
+            raised
+            color="white"
+            backgroundColor="red"
+            borderRadius={5}
+            fontWeight="bold"
+            onPress={() => this.deletePost()}
+            title="Delete Item"
+            containerViewStyle={styles.buttonStyle}
+          />
+        </View>
       </View>
     );
   }
@@ -185,7 +162,8 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     color: "black",
-    fontWeight: "700"
+    fontWeight: "700",
+    paddingLeft: 35
   },
   input: {
     height: 50,
@@ -193,10 +171,16 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.8,
     borderBottomColor: "#dddddd",
     marginBottom: 20,
-    width: 300
+    width: 300,
+    alignSelf: "center"
   },
   container: {
     marginTop: 30,
     marginLeft: 30
+  },
+  buttonStyle: {
+    width: 300,
+    alignSelf: "center",
+    paddingBottom: 20
   }
 });
