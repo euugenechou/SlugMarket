@@ -43,9 +43,9 @@ export default class SellerDetails extends React.Component {
     API.get(apiName, path, params)
     .then(response => {this.setState({
         postsToRender: response.data.filter(post => {
-          console.log(post.seller);
-          console.log(this.props.navigation.getParam("seller"));
-          return post.seller === this.props.navigation.getParam("seller");
+          console.log(post.userId);
+          console.log(this.props.navigation.getParam("userId"));
+          return post.userId === this.props.navigation.getParam("userId");
         })
       });
     })
