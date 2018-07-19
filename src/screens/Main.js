@@ -11,6 +11,7 @@ import Explore from "./Explore";
 import AddItem from "./AddItem";
 import ItemCategory from "./components/Explore/ItemCategory";
 import ListingInfo from "./components/Explore/ListingInfo";
+import SellerDetails from "./components/Explore/SellerDetails"
 
 import Profile from "./Profile";
 import EditProfile from "./EditProfile";
@@ -38,7 +39,8 @@ const ExploreStack = createStackNavigator(
     },
     AddItem: { screen: AddItem },
     ListingInfo: { screen: ListingInfo },
-    ViewCategory: { screen: ItemCategory }
+    ViewCategory: { screen: ItemCategory },
+    SellerDetails: { screen: SellerDetails }
   },
   // { headerMode: 'none' }
 );
