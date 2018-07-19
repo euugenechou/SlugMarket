@@ -183,18 +183,6 @@ class Explore extends Component {
                   </TouchableHighlight>
                 </ScrollView>
               </View>
-              <View style={{ alignItems: "center", justifyContent: "center" }}>
-                <Button
-                  raised
-                  color="white"
-                  backgroundColor="teal"
-                  borderRadius={5}
-                  containerViewStyle={{ width: 300, paddingTop: 10 }}
-                  onPress={() => this.props.navigation.navigate("AddItem")}
-                  title="Sell An Item"
-                  fontWeight="bold"
-                />
-              </View>
               <View style={{ marginTop: 20 }}>
                 <Text
                   style={{

@@ -2,17 +2,29 @@
 import React from "react";
 import Expo from "expo";
 import {
+  Text,
   TextInput,
   StyleSheet,
   View,
-  Button,
   ScrollView,
   Alert,
   Picker
 } from "react-native";
 import { API, Auth, Storage } from "aws-amplify";
 
+import { Button } from "react-native-elements";
+
 export default class AddItem extends React.Component {
+  static navigationOptions = () => ({
+    headerTintColor: "teal",
+    headerStyle: {
+      height: 40,
+      backgroundColor: "white",
+      shadowColor: "transparent",
+      borderBottomWidth: 0
+    }
+  });
+
   constructor(props) {
     super(props);
     this.state = {
@@ -49,7 +61,7 @@ export default class AddItem extends React.Component {
    * Creates post object to save in itemPostings schema
    */
   createPostObject(cognitoUserId) {
-    const post = {"body": this.state};
+    const post = { body: this.state };
     post.body.userId = cognitoUserId;
     post.body.timeAdded = new Date().toString();
     return post;
@@ -59,14 +71,14 @@ export default class AddItem extends React.Component {
    * Saves image(s) associated with a user post to S3 bucket
    */
   saveImageToS3(cognitoUserId, imageUriArray, timeAdded) {
-    imageUriArray.forEach((imageUri) => {
-      Storage.put(imageUri, { 
+    imageUriArray.forEach(imageUri => {
+      Storage.put(imageUri, {
         level: "protected",
         identityId: cognitoUserId
       })
-      .then()
-      .catch(error => console.log(error));
-    })
+        .then()
+        .catch(error => console.log(error));
+    });
   }
 
   /**
@@ -82,67 +94,71 @@ export default class AddItem extends React.Component {
     const path = "/itemPostings";
     const post = this.createPostObject(userInfo.id);
     API.post(apiName, path, post)
-      .then(res => this.props.navigation.navigate("MainExplore", {
-        reload: true
-      }))
+      .then(res =>
+        this.props.navigation.navigate("MainExplore", {
+          reload: true
+        })
+      )
       .catch(err => console.log(err));
   }
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, flexDirection: 'row' }}>
         <ScrollView
           contentContainerStyle={styles.container}
           centerContent={true}
         >
+          <Text style={styles.text}>Item Name</Text>
           <TextInput
             onChangeText={value => this.onChangeText("itemName", value)}
             style={styles.input}
-            placeholder="item name"
-            placeholderTextColor="gray"
             autoCapitalize="none"
             autoCorrect={false}
           />
+          <Text style={styles.text}>Item Price (USD) </Text>
           <TextInput
             onChangeText={value => this.onChangeText("price", value)}
             style={styles.input}
-            placeholder="price (USD)"
-            placeholderTextColor="gray"
             autoCapitalize="none"
             autoCorrect={false}
           />
+          <Text style={styles.text}>Item Category</Text>
           <Picker
             selectedValue={this.state.category}
-            style={{ height: 50, width: 100, flex: 1 }}
-            onValueChange={(itemValue, itemIndex) => this.setState({ category: itemValue })}>
+            style={{ height: 20, width: 100, flex: 1}}
+            itemStyle={{height: 120, fontSize: 18}}
+            onValueChange={(itemValue, itemIndex) =>
+              this.setState({ category: itemValue })
+            }
+          >
             <Picker.Item label="Furniture" value="furniture" />
             <Picker.Item label="Textbook" value="textbook" />
             <Picker.Item label="Electronic" value="electronic" />
           </Picker>
+          <Text style={styles.text}>Item Description</Text>
           <TextInput
             onChangeText={value => this.onChangeText("description", value)}
             style={styles.input}
-            placeholder="description"
-            placeholderTextColor="gray"
             autoCapitalize="none"
             autoCorrect={true}
           />
+          <Text style={styles.text}>Seller Name</Text>
           <TextInput
             onChangeText={value => this.onChangeText("seller", value)}
             style={styles.input}
-            placeholder="seller name"
-            placeholderTextColor="gray"
             autoCapitalize="words"
             autoCorrect={false}
           />
           <Button
-            style={{
-              flex: 2,
-              justifyContent: "center"
-            }}
-            color="black"
+            raised
+            color="white"
+            title="Add Item"
+            fontWeight="bold"
             onPress={() => this.saveItemPost()}
-            title="Add Item!"
+            backgroundColor="teal"
+            borderRadius={5}
+            containerViewStyle={{ width: 300 }}
           />
         </ScrollView>
       </View>
@@ -152,11 +168,11 @@ export default class AddItem extends React.Component {
 
 const styles = StyleSheet.create({
   input: {
-    height: 50,
+    height: 30,
     color: "black",
-    borderBottomWidth: 2,
-    borderBottomColor: "teal",
-    margin: 10,
+    borderBottomWidth: 0.5,
+    borderBottomColor: "gray",
+    marginBottom: 20,
     width: 300
   },
   box: {
@@ -175,5 +191,12 @@ const styles = StyleSheet.create({
     fontSize: 36,
     padding: 50,
     color: "teal"
+  },
+  text: {
+    justifyContent: 'flex-start',
+    fontSize: 16,
+    color: "black",
+    fontWeight: "700",
+    textAlign: 'left'
   }
 });

@@ -26,10 +26,12 @@ class ItemCategory extends Component {
   };
 
   static navigationOptions = () => ({
-    headerTintColor: 'teal',
+    headerTintColor: "teal",
     headerStyle: {
       height: 40,
-      backgroundColor: 'white'
+      backgroundColor: "white",
+      shadowColor: "transparent",
+      borderBottomWidth: 0,
     }
   });
 

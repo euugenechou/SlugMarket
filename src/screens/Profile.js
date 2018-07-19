@@ -240,10 +240,10 @@ class Profile extends Component {
                     color="white"
                     backgroundColor="teal"
                     borderRadius={5}
-                    title="Edit Profile"
+                    title="Sell Item"
                     fontWeight="bold"
                     onPress={() =>
-                      this.props.navigation.navigate("EditProfile")
+                      this.props.navigation.navigate("AddItem")
                     }
                     containerViewStyle={{ width: 150, paddingTop: 10 }}
                   />
