@@ -29,7 +29,7 @@ class UserListingsInfo extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.text}>
-          Item name: {this.props.navigation.getParam("name")}
+          Item name:
         </Text>
         <TextInput
           // onChangeText={value => this.onChangeText("username", value)}
@@ -38,6 +38,7 @@ class UserListingsInfo extends Component {
           placeholderTextColor="gray"
           autoCapitalize="none"
           autoCorrect={false}
+          defaultValue={this.props.navigation.getParam("name")}
         />
         <Text style={styles.text}>
           Item price: ${this.props.navigation.getParam("price")}

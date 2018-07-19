@@ -13,7 +13,7 @@ class UserListings extends Component {
           borderWidth: 0.5,
           borderColor: "#dddddd",
           marginLeft: 20,
-          marginTop: 20,
+          marginBottom: 20,
           borderRadius: 3,
           borderWidth: 1,
           borderColor: "#dddddd",
