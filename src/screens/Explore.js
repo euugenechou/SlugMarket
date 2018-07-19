@@ -208,6 +208,7 @@ class Explore extends Component {
                       <TouchableHighlight
                         onPress={() =>
                           this.props.navigation.navigate("ListingInfo", {
+                            timeAdded: post.timeAdded,
                             name: post.itemName,
                             price: post.price,
                             seller: post.seller,
