@@ -4,6 +4,16 @@ import { View, Text, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
 
 class Listings extends Component {
+  static navigationOptions = () => ({
+    headerTintColor: "teal",
+    headerStyle: {
+      height: 40,
+      backgroundColor: "white",
+      shadowColor: "transparent",
+      borderBottomWidth: 0
+    }
+  });
+  
   render() {
     return (
       <View style={styles.container}>
