@@ -19,7 +19,10 @@ import UserListingInfo from "./components/Profile/UserListingInfo";
 
 import Settings from "./Settings";
 import SignIn from "./login/SignIn";
-import Chat from "./Chat";
+import Authors from "./Authors";
+
+
+import Chat from "./Chat"
 
 export default class Main extends React.Component {
   render() {
@@ -55,7 +58,8 @@ const ProfileStack = createStackNavigator(
 const SettingsStack = createStackNavigator(
   {
     MainSettings: { screen: Settings },
-    SignInScreen: { screen: SignIn }
+    SignInScreen: { screen: SignIn },
+    AuthorsScreen: { screen: Authors },
   },
   // { headerMode: "none" }
 );

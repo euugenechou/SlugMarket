@@ -2,21 +2,47 @@
 import React from "react";
 import Expo from "expo";
 import {
-  StyleSheet,
-  View,
-  ScrollView,
-  Text
+    AppRegistry,
+    StyleSheet,
+    View,
+    ScrollView,
+    Text,
+    TouchableHighlight,
+    Button,
+    Alert
 } from "react-native";
+import {
+    List, 
+    ListItem,
+} from "react-native-elements";
 
 export default class Chat extends React.Component{
+    _onPressButton() {
+        Alert.alert('You tapped the button!')
+      }
+
     render() {
         return(
-            <View style = {file.header}> 
-                <Text style = {file.titleText}> This is where chat messages will go </Text>
-            </View> 
+            <ScrollView> 
+                <Button
+                
+                onPress={this._onPressButton}
+                title="Press Me"
+                />
+                    {/* <List>
+                        <ListItem
+                            title = "This is where chat messages will go"
+                        />
+                        <ListItem 
+                            title ="This is where more messages will go"
+                        />
+                    </List> */}
+            </ScrollView>
+
         )
     }
 }
+
 
 const file = StyleSheet.create({
     titleText: {
