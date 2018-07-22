@@ -16,12 +16,17 @@ import { Button } from "react-native-elements";
 
 class UserListingsInfo extends Component {
   state = {
+    userId: "",
+    timeAdded: this.props.navigation.getParam("timeAdded"),
+    category: this.props.navigation.getParam("category"),
     itemName: this.props.navigation.getParam("itemName"),
     price: this.props.navigation.getParam("price"),
     seller: this.props.navigation.getParam("seller"),
-    category: this.props.navigation.getParam("category"),
     description: this.props.navigation.getParam("description"),
-    timeAdded: this.props.navigation.getParam("timeAdded")
+    isSold: this.props.navigation.getParam("isSold"),
+    isRemoved: this.props.navigation.getParam("isRemoved"),
+    phoneNumber: this.props.navigation.getParam("phoneNumber"),
+    email: this.props.navigation.getParam("email")
   };
 
   static navigationOptions = () => ({
@@ -41,7 +46,7 @@ class UserListingsInfo extends Component {
     });
     const apiName = "itemPostingsCRUD";
     const path = "/itemPostings";
-    const updatedObject = this.getUpdatedPostObject(userInfo.id);
+    const updatedObject = this.getUpdatedPostObject(userInfo);
     API.put(apiName, path, updatedObject)
       .then(res => {
         console.log(res);
@@ -53,10 +58,8 @@ class UserListingsInfo extends Component {
       });
   }
 
-  getUpdatedPostObject(cognitoUserId) {
+  getUpdatedPostObject() {
     let postObject = { body: this.state };
-    postObject.body.userId = cognitoUserId;
-    postObject.body.isSold = false;
     return postObject;
   }
 
@@ -67,7 +70,7 @@ class UserListingsInfo extends Component {
     });
     const apiName = "itemPostingsCRUD";
     const path = "/itemPostings";
-    const updatedObject = this.getUpdatedPostObject(userInfo.id);
+    const updatedObject = this.getUpdatedPostObject();
     updatedObject.body.isRemoved = true;
     API.put(apiName, path, updatedObject)
       .then(res => {

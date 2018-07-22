@@ -130,7 +130,11 @@ export default class Profile extends Component {
               seller: post.seller,
               category: post.category,
               description: post.description,
-              timeAdded: post.timeAdded
+              timeAdded: post.timeAdded,
+              email: post.email,
+              phoneNumber: post.phoneNumber,
+              isSold: post.isSold,
+              isRemoved: post.isRemoved
             })
           }
           underlayColor="white"
