@@ -66,6 +66,7 @@ export default class AddItem extends React.Component {
    * Primary key: userId and timeAdded
    */
   async saveItemPost() {
+    const { goBack } = this.props.navigation;
     const userInfo = await Auth.currentUserInfo().catch(error => {
       console.log(error);
       return;
@@ -77,7 +78,7 @@ export default class AddItem extends React.Component {
     API.post(apiName, path, post)
       .then(res => {
         console.log(res);
-        this.props.navigation.navigate("MainProfile", {
+        this.props.navigation.navigate("MainProfile",{
           reload: true
         })
       })

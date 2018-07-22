@@ -30,10 +30,7 @@ export default class Main extends React.Component {
 
 const ExploreStack = createStackNavigator(
   {
-    MainExplore: {
-      screen: Explore,
-    },
-    AddItem: { screen: AddItem },
+    MainExplore: { screen: Explore, },
     ListingInfo: { screen: ListingInfo },
     ViewCategory: { screen: ItemCategory },
     SellerDetails: { screen: SellerDetails }
@@ -42,10 +39,9 @@ const ExploreStack = createStackNavigator(
 
 const ProfileStack = createStackNavigator(
   {
-    MainProfile: { 
-      screen: Profile,
-    },
+    MainProfile: { screen: Profile, },
     EditProfile: { screen: EditProfile },
+    AddItem: { screen: AddItem },
     UserListingScreen: { screen: UserListings},
     UserListingInfoScreen: { screen: UserListingInfo}
   },
