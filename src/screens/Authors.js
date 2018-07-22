@@ -14,15 +14,12 @@ export default class Authors extends React.Component {
       shadowColor: "transparent",
       borderBottomWidth: 0
     },
-    // headerLeft: {
-    //   <Button
-    //     onPress={() => this.props.navigation.navigate("SettingsScreen")}
-    //   />
-    // }
   });
+
   constructor(props) {
     super(props);
   }
+  
   render() {
     return (
       <ScrollView style={field.contentContainer}>
@@ -157,21 +154,18 @@ export default class Authors extends React.Component {
 const field = StyleSheet.create({
   baseText: {
     fontSize: 14,
-    // fontFamily: 'San Francisco',
     paddingLeft: 5,
     paddingRight: 5
   },
   linkText: {
     fontSize: 14,
     color: "blue",
-    // fontFamily: 'San Francisco',
     paddingLeft: 5,
     paddingRight: 5
   },
   titleText: {
     fontSize: 28,
     fontWeight: "bold",
-    // fontFamily: 'San Francisco',
     paddingLeft: 5,
     paddingRight: 5,
     paddingVertical: 10
@@ -180,15 +174,12 @@ const field = StyleSheet.create({
   title: {
     fontSize: 32,
     fontWeight: "bold",
-    // fontFamily: 'San Francisco',
     paddingLeft: 5,
     paddingRight: 5,
     paddingVertical: 10
   },
   contentContainer: {
     flex: 1,
-    //marginTop: 20,
-    //paddingTop: 10,
     paddingBottom: 30,
     paddingHorizontal: 10,    
     paddingTop: 10,

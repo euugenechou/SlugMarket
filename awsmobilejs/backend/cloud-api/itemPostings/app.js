@@ -86,7 +86,7 @@ app.get('/itemPostings/userPosts', function(req, res) {
   });
 });
 
-app.get("/itemPostings", function(req, res) {
+app.get("/itemPostings/allPosts", function(req, res) {
   const payload = {
     TableName: tableName,
     Limit: 50, // optional (limit the number of items to evaluate)
@@ -102,6 +102,7 @@ app.get("/itemPostings", function(req, res) {
     }
   });
 });
+
 /*****************************************
  * HTTP Get method for get single object *
  *****************************************/

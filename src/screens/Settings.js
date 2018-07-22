@@ -2,19 +2,12 @@
 import React, { Component } from "react";
 import {
   Alert,
-  Platform,
-  Text,
   View,
   StyleSheet,
-  SafeAreaView,
-  Image,
-  header
 } from "react-native";
 import { Button } from "react-native-elements";
-import LoginStack from "./login/LoginStack";
 import SettingsList from "react-native-settings-list";
 import { API, Auth } from "aws-amplify";
-import UserListings from "./components/Profile/UserListings";
 
 export default class Settings extends Component {
   static navigationOptions = () => ({
@@ -81,12 +74,7 @@ export default class Settings extends Component {
           <SettingsList borderColor="white" defaultItemSize={70}>
             <SettingsList.Header
               headerText="Settings"
-              headerStyle={{
-                color: "black",
-                fontWeight: "700",
-                fontSize: 36,
-                paddingLeft: 10
-              }}
+              headerStyle={styles.header}
             />
             <SettingsList.Item
               title="View/Edit Profile"
@@ -103,7 +91,7 @@ export default class Settings extends Component {
               onPress={() => this.props.navigation.navigate("TermsScreen")}
             />
             <SettingsList.Item
-              title="Slug Market v0.1.0"
+              title="SlugMarket v0.1.0"
               titleStyle={styles.item}
               hasNavArrow={false}
             />
@@ -114,13 +102,9 @@ export default class Settings extends Component {
               color="white"
               title="Sign Out"
               fontWeight="bold"
-              backgroundColor="teal"
+              backgroundColor="red"
               borderRadius={5}
-              containerViewStyle={{
-                width: 300,
-                alignSelf: "center",
-                paddingBottom: 30
-              }}
+              containerViewStyle={styles.buttonContainer}
               onPress={() => this.handleLogOut()}
             />
           </View>
@@ -163,5 +147,16 @@ const styles = StyleSheet.create({
   },
   item: {
     fontSize: 18
-  }
+  },
+  buttonContainer:{
+    width: 300,
+    alignSelf: "center",
+    paddingBottom: 40
+  },
+  header: {
+    color: "black",
+    fontWeight: "700",
+    fontSize: 36,
+    paddingLeft: 10
+  },
 });

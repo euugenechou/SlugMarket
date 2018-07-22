@@ -1,8 +1,8 @@
+/* React imports */
 import React, { Component } from "react";
 import {
   StyleSheet,
   SafeAreaView,
-  StatusBar,
   Image,
   Text,
   View,
@@ -11,23 +11,15 @@ import {
   TouchableHighlight,
   RefreshControl
 } from "react-native";
-import {
-  Icon,
-  Container,
-  Content,
-  Header,
-  Left,
-  Body,
-  Right
-} from "native-base";
-
 import { Button } from "react-native-elements";
+/* AWS imports */
 import { API, Auth } from "aws-amplify";
-import EntypoIcon from "react-native-vector-icons/Entypo";
-
+/* Local imports */
 import UserListings from "./components/Profile/UserListings";
 
-class Profile extends Component {
+const { height, width } = Dimensions.get("window");
+
+export default class Profile extends Component {
   static navigationOptions = ({ navigation }) => ({
     header: null
   });
@@ -37,6 +29,7 @@ class Profile extends Component {
     this.state = {
       activeIndex: 0,
       postsToRender: [],
+      soldPostsToRender: [],
       userName: "",
       userAttributes: {},
       refreshing: false
@@ -52,6 +45,7 @@ class Profile extends Component {
   componentWillMount() {
     this.startHeaderHeight = 60;
     this.getUserPosts();
+    this.getUserSoldPosts();
     this.getUserInfo();
     console.log(this.state.postsToRender);
   }
@@ -63,16 +57,41 @@ class Profile extends Component {
     const headers = {
       headers: {},
       response: true,
-      queryStringParameters: {
-        order: "timeAdded"
-      }
     };
     API.get(apiName, path, headers)
       .then(response => {
         console.log(response);
-        this.setState({ postsToRender: response.data.filter(post => {
-          return post.isSold === false;
-        })});
+        response.data.sort((a, b) => {
+          return new Date(b.timeAdded) - new Date(a.timeAdded);
+        })
+        this.setState({
+          postsToRender: response.data.filter(post => {
+            return !post.isSold && !post.isRemoved;
+          })
+        });
+      })
+      .catch(error => console.log(error.response));
+  }
+
+  // for getting user sold posts
+  getUserSoldPosts() {
+    const path = "/itemPostings/userPosts";
+    const apiName = "itemPostingsCRUD";
+    const headers = {
+      headers: {},
+      response: true,
+    };
+    API.get(apiName, path, headers)
+      .then(response => {
+        console.log(response);
+        response.data.sort((a, b) => {
+          return new Date(b.timeAdded) - new Date(a.timeAdded);
+        })
+        this.setState({
+          soldPostsToRender: response.data.filter(post => {
+            return post.isSold && !post.isRemoved;
+          })
+        });
       })
       .catch(error => console.log(error.response));
   }
@@ -87,7 +106,7 @@ class Profile extends Component {
     Auth.currentUserInfo()
       .then(res => {
         this.setState({ userAttributes: res.attributes });
-        this.setState({ userName: res.username });
+        this.setState({ userName: res.attributes.name });
         console.log(res);
       })
       .catch(err => console.log(err));
@@ -96,13 +115,11 @@ class Profile extends Component {
   _onRefresh = () => {
     this.setState({ refreshing: true });
     this.getUserPosts();
+    this.getUserSoldPosts();
     this.setState({ refreshing: false });
   };
 
-  /*
-  Render images so that they fit correctly and uniformly
-  */
-  renderSectionOne = () => {
+  renderUserListings = () => {
     return this.state.postsToRender.map(post => {
       return (
         <TouchableHighlight
@@ -129,41 +146,35 @@ class Profile extends Component {
         </TouchableHighlight>
       );
     });
-
-    // return images.map((image, index) => {
-    //   return (
-    //     <View
-    //       key={index}
-    //       style={[
-    //         { width: width / 3 },
-    //         { height: height / 6 },
-    //         { marginBottom: 2 },
-    //         index % 3 !== 0 ? { paddingLeft: 2 } : { paddingLeft: 0 }
-    //       ]}
-    //     >
-    //       <Image
-    //         style={{ flex: 1, width: undefined, height: undefined }}
-    //         source={image}
-    //       />
-    //     </View>
-    //   );
-    // });
   };
 
-  /*
-  Determine which section to render
-  */
-  renderSection = () => {
-    switch (this.state.activeIndex) {
-      case 0:
-        return this.renderSectionOne();
-      case 1:
-        return (
-          <View>
-            <Text> Favorited items will appear here</Text>
-          </View>
-        );
-    }
+  renderUserSoldListings = () => {
+    return this.state.soldPostsToRender.map(post => {
+      return (
+        <TouchableHighlight
+          onPress={() =>
+            this.props.navigation.navigate("UserListingInfoScreen", {
+              itemName: post.itemName,
+              price: post.price,
+              seller: post.seller,
+              category: post.category,
+              description: post.description,
+              timeAdded: post.timeAdded
+            })
+          }
+          underlayColor="white"
+          key={post.timeAdded}
+        >
+          <UserListings
+            width={width}
+            name={post.itemName}
+            price={post.price}
+            category={post.category}
+            seller={post.seller}
+          />
+        </TouchableHighlight>
+      );
+    });
   };
 
   render() {
@@ -181,58 +192,18 @@ class Profile extends Component {
           showsVerticalScrollIndicator={false}
         >
           <View style={{ backgroundColor: "white" }}>
-            {/* <ScrollView
-          scrollEventThrottle={16}
-          style={{ backgroundColor: "white" }}
-          refreshControl={
-            <RefreshControl
-              refreshing={this.state.refreshing}
-              onRefresh={this._onRefresh}
-            />
-          }
-          showsVerticalScrollIndicator={false}
-        > */}
-            <View
-              style={{
-                backgroundColor: "white",
-                flexDirection: "row-reverse",
-                flex: 1
-              }}
-            >
+            <View style={styles.outerContainer}>
               <Image
                 source={require("../assets/darrell.png")}
-                style={{
-                  justifyContent: "center",
-                  alignItems: "center",
-                  marginTop: 70,
-                  width: null,
-                  height: 150,
-                  resizeMode: "contain",
-                  borderRadius: 8,
-                  flex: 1
-                }}
+                style={styles.image}
               />
-              <View
-                style={{
-                  backgroundColor: "white",
-                  flexDirection: "column",
-                  flex: 1,
-                  paddingTop: 60
-                }}
-              >
-                <View
-                  style={{
-                    alignItems: "center",
-                    backgroundColor: "white",
-                    justifyContent: "flex-start",
-                    paddingLeft: 20
-                  }}
-                >
-                  <Text style={field.titleText}>{this.state.userName}</Text>
-                  <Text style={field.text}>
+              <View style={styles.columnContainer}>
+                <View style={styles.innerContainer}>
+                  <Text style={styles.titleText}>{this.state.userName}</Text>
+                  <Text style={styles.text}>
                     {this.state.userAttributes.email}
                   </Text>
-                  <Text style={field.text}>
+                  <Text style={styles.text}>
                     {this.state.userAttributes.phone_number}
                   </Text>
                   <Button
@@ -242,57 +213,20 @@ class Profile extends Component {
                     borderRadius={5}
                     title="Sell Item"
                     fontWeight="bold"
-                    onPress={() =>
-                      this.props.navigation.navigate("AddItem")
-                    }
+                    onPress={() => this.props.navigation.navigate("AddItem")}
                     containerViewStyle={{ width: 150, paddingTop: 10 }}
                   />
                 </View>
               </View>
             </View>
-            {/* <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-around",
-              borderTopWidth: 1,
-              borderBottomWidth: 1,
-              borderTopColor: "#dddddd",
-              borderBottomColor: "#dddddd",
-            }}
-          >
-            <Button
-              transparent
-              onPress={() => this.segmentClicked(0)}
-              active={this.state.activeIndex == 0}
-            >
-              <Icon
-                name="ios-apps-outline"
-                style={[this.state.activeIndex == 0 ? {} : { color: "grey" }]}
-              />
-            </Button>
-            <Button
-              transparent
-              onPress={() => this.segmentClicked(1)}
-              active={this.state.activeIndex == 1}
-            >
-              <Icon
-                name="ios-bookmark-outline"
-                style={[this.state.activeIndex == 1 ? {} : { color: "grey" }]}
-              />
-            </Button>
-          </View> */}
-            <Text
-              style={{
-                fontSize: 24,
-                fontWeight: "700",
-                marginBottom: 20,
-                marginTop: 20,
-                paddingHorizontal: 20
-              }}
-            >
+            <Text style={styles.listingText}>
               My Listings
             </Text>
-            {this.renderSection()}
+            {this.renderUserListings()}
+            <Text style={styles.listingText}>
+              My Sold Listings
+            </Text>
+            {this.renderUserSoldListings()}
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -300,24 +234,33 @@ class Profile extends Component {
   }
 }
 
-var { width, height } = Dimensions.get("window");
-
-var images = [
-  require("../assets/textbooks.jpg"),
-  require("../assets/electronics.jpg"),
-  require("../assets/furniture.jpg"),
-  require("../assets/icon.png"),
-  require("../assets/market_stand.png")
-];
-
-const B = props => <Text style={{ fontWeight: "bold" }}>{props.children}</Text>;
-
-const field = StyleSheet.create({
-  row: {
-    flexDirection: "row",
+const styles = StyleSheet.create({
+  outerContainer: {
+    backgroundColor: "white",
+    flexDirection: "row-reverse",
+    flex: 1
+  },
+  columnContainer: {
+    backgroundColor: "white",
+    flexDirection: "column",
+    flex: 1,
+    paddingTop: 60
+  },
+  innerContainer: {
+    alignItems: "center",
+    backgroundColor: "white",
+    justifyContent: "flex-start",
+    paddingLeft: 20
+  },
+  image: {
     justifyContent: "center",
-    backgroundColor: "#f6f6f6",
-    marginBottom: 8
+    alignItems: "center",
+    marginTop: 70,
+    width: null,
+    height: 150,
+    resizeMode: "contain",
+    borderRadius: 8,
+    flex: 1
   },
   text: {
     paddingTop: 5,
@@ -331,7 +274,13 @@ const field = StyleSheet.create({
     fontWeight: "600",
     justifyContent: "center",
     alignItems: "center"
+  },
+  listingText: {
+    fontSize: 24,
+    fontWeight: "700",
+    marginBottom: 20,
+    marginTop: 20,
+    paddingHorizontal: 20
   }
 });
 
-export default Profile;

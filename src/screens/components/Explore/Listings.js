@@ -20,37 +20,17 @@ class Listings extends Component {
           shadowColor: "black",
           shadowOpacity: 0.1,
           elevation: 1,
-          backgroundColor: 'white'
+          backgroundColor: "white"
         }}
       >
         <View style={{ flex: 2 }}>
           <Image
-            style={{
-              flex: 2,
-              width: null,
-              height: null,
-              resizeMode: "cover",
-              borderRadius: 3
-            }}
+            style={styles.image}
             source={require("../../../assets/textbooks.jpg")}
           />
         </View>
-        <View
-          style={{
-            flex: 1,
-            alignItems: "center",
-            justifyContent: "space-evenly"
-          }}
-        >
-          <Text
-            style={{
-              alignItems: "center",
-              fontSize: 14,
-              fontWeight: "bold",
-              justifyContent: "center",
-              paddingHorizontal: 10
-            }}
-          >
+        <View style={styles.listingContainer}>
+          <Text style={styles.titleText}>
             {this.props.name}
           </Text>
           <Text style={{ alignItems: "center", fontSize: 12 }}>
@@ -71,8 +51,23 @@ class Listings extends Component {
 export default Listings;
 
 const styles = StyleSheet.create({
-  container: {
+  image: {
+    flex: 2,
+    width: null,
+    height: null,
+    resizeMode: "cover",
+    borderRadius: 3
+  },
+  listingContainer: {
+    flex: 1,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "space-evenly"
+  },
+  titleText: {
+    alignItems: "center",
+    fontSize: 14,
+    fontWeight: "bold",
+    justifyContent: "center",
+    paddingHorizontal: 10
   }
 });

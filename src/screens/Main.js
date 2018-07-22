@@ -22,9 +22,6 @@ import Settings from "./Settings";
 import SignIn from "./login/SignIn";
 import Authors from "./Authors";
 
-
-import Chat from "./Chat"
-
 export default class Main extends React.Component {
   render() {
     return <BottomTabNavigator />;
@@ -35,14 +32,12 @@ const ExploreStack = createStackNavigator(
   {
     MainExplore: {
       screen: Explore,
-      headerVisible: false
     },
     AddItem: { screen: AddItem },
     ListingInfo: { screen: ListingInfo },
     ViewCategory: { screen: ItemCategory },
     SellerDetails: { screen: SellerDetails }
   },
-  // { headerMode: 'none' }
 );
 
 const ProfileStack = createStackNavigator(
@@ -54,7 +49,6 @@ const ProfileStack = createStackNavigator(
     UserListingScreen: { screen: UserListings},
     UserListingInfoScreen: { screen: UserListingInfo}
   },
-  // { headerMode: "none" }
 );
 
 const SettingsStack = createStackNavigator(
@@ -63,23 +57,14 @@ const SettingsStack = createStackNavigator(
     SignInScreen: { screen: SignIn },
     TermsScreen: { screen: Authors },
   },
-  // { headerMode: "none" }
 );
-
-const ChatStack = createStackNavigator(
-  {
-    MainChat: { screen: Chat},
-  },
-  {
-      headerMode: "none",
-  }
-)
 
 export const BottomTabNavigator = createBottomTabNavigator(
   {
     Explore: {
       screen: ExploreStack,
       navigationOptions: {
+        gesturesEnabled: false,
         tabBarLabel: "EXPLORE",
         tabBarIcon: ({ tintColor }) => (
           <Icon name="ios-search-outline" color={tintColor} size={24} />
@@ -89,24 +74,17 @@ export const BottomTabNavigator = createBottomTabNavigator(
     Profile: {
       screen: ProfileStack,
       navigationOptions: {
+        gesturesEnabled: false,
         tabBarLabel: "PROFILE",
         tabBarIcon: ({ tintColor }) => (
           <Icon name="ios-person-outline" color={tintColor} size={24} />
         )
       }
     },
-    // Chat: {
-    //   screen: ChatStack,
-    //   navigationOptions: {
-    //     tabBarLabel: "MESSAGES",
-    //     tabBarIcon: ({tintColor}) => (
-    //       <Icon name = "ios-chatbubbles-outline" color ={tintColor} size = {24}/>
-    //     )
-    //   }
-    // },
     Settings: {
       screen: SettingsStack,
       navigationOptions: {
+        gesturesEnabled: false,
         tabBarLabel: "SETTINGS",
         tabBarIcon: ({ tintColor }) => (
           <Icon name="ios-settings-outline" color={tintColor} size={24} />
@@ -116,7 +94,7 @@ export const BottomTabNavigator = createBottomTabNavigator(
   },
   {
     tabBarPosition: "bottom",
-    swipeEnabled: "true",
+    swipeEnabled: "false",
     tabBarOptions: {
       activeTintColor: "teal",
       inactiveTintColor: "grey",

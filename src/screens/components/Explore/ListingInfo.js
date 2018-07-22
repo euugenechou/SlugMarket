@@ -48,11 +48,7 @@ class Listings extends Component {
             })
           }
           title="View Seller Details"
-          containerViewStyle={{
-            width: 300,
-            alignSelf: 'center',
-            paddingTop: 10
-          }}
+          containerViewStyle={styles.buttonContainer}
         />
       </View>
     );
@@ -83,5 +79,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "white"
+  },
+  buttonContainer: {
+    width: 300,
+    alignSelf: 'center',
+    paddingTop: 10
   }
 });

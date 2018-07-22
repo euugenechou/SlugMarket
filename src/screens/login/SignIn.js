@@ -64,11 +64,11 @@ export default class App extends React.Component {
           contentContainerStyle={styles.container}
           centerContent={true}
         >
-          <Text style={styles.titleText}>SLUGMARKET</Text>
+          <Text style={styles.titleText}>SlugMarket</Text>
           <TextInput
             onChangeText={value => this.onChangeText("username", value)}
             style={styles.input}
-            placeholder="username"
+            placeholder="UCSC email"
             placeholderTextColor="gray"
             autoCapitalize="none"
             autoCorrect={false}
@@ -113,28 +113,27 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   input: {
+    justifyContent: "center",
+    alignSelf: "center",
     height: 50,
     color: "black",
-    borderWidth: 1,
-    borderRadius: 4,
-    borderColor: "white",
-    margin: 10,
-    width: 300,
-    paddingLeft: 10,
-    backgroundColor: "white"
+    borderBottomWidth: 0.7,
+    borderBottomColor: "darkgray",
+    marginBottom: 20,
+    width: 300
   },
   container: {
     flex: 1,
     paddingVertical: 150,
-    backgroundColor: "#B0DFE5",
+    backgroundColor: "white",
     alignItems: "center",
   },
   titleText: {
     fontSize: 36,
-    fontWeight: "800",
-    padding: 20,
-    color: "white",
+    fontWeight: "700",
+    padding: 30,
+    color: "black",
     textShadowColor: "#dddddd",
-    textShadowRadius: 15
+    textShadowRadius: 15,
   }
 });

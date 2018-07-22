@@ -11,31 +11,31 @@ features:
           sdk-generation-stage-name: Development
         paths:
           /itemPostings: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/itemPostings-20180716131038.zip
+            codeFilename: uploads/itemPostings-20180722134835.zip
             description: 'Handler for calls to resource path : /itemPostings/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: 2RPxrfjSFPbpEKIQJjPrGsyV4CE7NjZhAkGnj80ZHvA=
+            hashcode: 0xGgtEIboVpdhoPitBMhaoGaQyVpyfxKA0mx9yIyD2M=
             memorySize: '128'
-            modified: '2018-07-16T20:11:16.066+0000'
+            modified: '2018-07-22T20:50:24.792+0000'
             name: itemPostings
             runtime: nodejs6.10
             timeout: '3'
-            version: XeG6J0PkqAF3kNiBTup0CRMk86eYJNP3
+            version: ENvPBxmtIkVpTUt3VafuQd_Mp8bsE9t9
           '/itemPostings/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/itemPostings-20180716131038.zip
+            codeFilename: uploads/itemPostings-20180722134835.zip
             description: 'Handler for calls to resource path : /itemPostings/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: 2RPxrfjSFPbpEKIQJjPrGsyV4CE7NjZhAkGnj80ZHvA=
+            hashcode: 0xGgtEIboVpdhoPitBMhaoGaQyVpyfxKA0mx9yIyD2M=
             memorySize: '128'
-            modified: '2018-07-16T20:11:16.066+0000'
+            modified: '2018-07-22T20:50:24.792+0000'
             name: itemPostings
             runtime: nodejs6.10
             timeout: '3'
-            version: cbTMZl7q9tIBHxUy3bHtm8sW_xTBsXM2
+            version: dvkxGQHfqbFz6xNT2E0ruLSBb7o5ei3_
       sampleCloudApi: !com.amazonaws.mobilehub.v0.API 
         attributes:
           name: sampleCloudApi
@@ -43,31 +43,31 @@ features:
           sdk-generation-stage-name: Development
         paths:
           /items: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/sampleLambda-20180716131038.zip
+            codeFilename: uploads/sampleLambda-20180722134835.zip
             description: 'Handler for calls to resource path : /items/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: 3UzS7r0uj/mDKf1QQiINFV9COcYDBJIj7W9B7Dqtkig=
+            hashcode: TbMZCjupOxhmBm+eTUW3a8V9AJwJKT0faVO4vzXMeds=
             memorySize: '128'
-            modified: '2018-07-16T20:11:17.813+0000'
+            modified: '2018-07-22T20:50:24.767+0000'
             name: sampleLambda
             runtime: nodejs6.10
             timeout: '3'
-            version: FeQWgWI3BROpTfViehBmCj7gTm8b1PGE
+            version: ybQzer_GiZ.jZ4nJ6qNpmtLWXfPRRNFX
           '/items/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/sampleLambda-20180716131038.zip
+            codeFilename: uploads/sampleLambda-20180722134835.zip
             description: 'Handler for calls to resource path : /items/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: 3UzS7r0uj/mDKf1QQiINFV9COcYDBJIj7W9B7Dqtkig=
+            hashcode: TbMZCjupOxhmBm+eTUW3a8V9AJwJKT0faVO4vzXMeds=
             memorySize: '128'
-            modified: '2018-07-16T20:11:17.813+0000'
+            modified: '2018-07-22T20:50:24.767+0000'
             name: sampleLambda
             runtime: nodejs6.10
             timeout: '3'
-            version: E6SCUF0hpFGl63Vu0odflvrLPxkHVjSE
+            version: .P53Aj0EAt8xUvGaJNm8IHSKUU_QPugc
   content-delivery: !com.amazonaws.mobilehub.v0.ContentDelivery 
     attributes:
       enabled: true
@@ -80,30 +80,12 @@ features:
         tables:
           - !com.amazonaws.mobilehub.v0.NoSQLTable 
             attributes:
-              email: S
-              personId: S
-              personName: S
-              phone: S
-              teamId: S
-            hashKeyName: teamId
-            hashKeyType: S
-            indexes:
-              - !com.amazonaws.mobilehub.v0.NoSQLIndex 
-                hashKeyName: teamId
-                hashKeyType: S
-                indexName: personName-index
-                rangeKeyName: personName
-                rangeKeyType: S
-            rangeKeyName: personId
-            rangeKeyType: S
-            tableName: ___DYNAMIC_PREFIX___-AWSMobileTable
-            tablePrivacy: public
-          - !com.amazonaws.mobilehub.v0.NoSQLTable 
-            attributes:
               category: S
               description: S
+              email: S
+              isRemoved: BOOL
               isSold: BOOL
-              itemName: S
+              phoneNumber: S
               price: N
               seller: S
               timeAdded: S
@@ -114,36 +96,16 @@ features:
             rangeKeyType: S
             tableName: ___DYNAMIC_PREFIX___-itemPostings
             tablePrivacy: protected
-          - !com.amazonaws.mobilehub.v0.NoSQLTable 
-            attributes:
-              category: S
-              description: S
-              isSold: BOOL
-              itemName: S
-              price: N
-              seller: S
-              timePosted: S
-              userId: S
-            hashKeyName: userId
-            hashKeyType: S
-            rangeKeyName: ''
-            rangeKeyType: ''
-            tableName: ___DYNAMIC_PREFIX___-itemPosts
-            tablePrivacy: protected
   mobile-analytics: !com.amazonaws.mobilehub.v0.Pinpoint 
     components:
       analytics: !com.amazonaws.mobilehub.v0.PinpointAnalytics {}
   sign-in: !com.amazonaws.mobilehub.v0.SignIn 
     attributes:
       enabled: true
-      optional-sign-in: true
+      optional-sign-in: false
     components:
       sign-in-user-pools: !com.amazonaws.mobilehub.v0.UserPoolsIdentityProvider 
         attributes:
-          alias-attributes:
-            - preferred_username
-            - email
-            - phone_number
           mfa-configuration: OFF
           name: userpool
           password-policy: !com.amazonaws.mobilehub.ConvertibleMap 
@@ -152,10 +114,7 @@ features:
             require-numbers: true
             require-symbols: false
             require-upper-case: true
-          standard-attributes: '["email","phone_number"]'
-  user-files: !com.amazonaws.mobilehub.v0.UserFiles 
-    attributes:
-      enabled: true
-      wildcard-cors-policy: true
-name: SlugMarket-v2
+          standard-attributes: '["email","name","phone_number"]'
+          username-attributes: '["email"]'
+name: SlugMarket
 region: us-west-1

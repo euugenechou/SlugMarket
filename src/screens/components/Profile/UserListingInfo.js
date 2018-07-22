@@ -68,6 +68,26 @@ class UserListingsInfo extends Component {
     const apiName = "itemPostingsCRUD";
     const path = "/itemPostings";
     const updatedObject = this.getUpdatedPostObject(userInfo.id);
+    updatedObject.body.isRemoved = true;
+    API.put(apiName, path, updatedObject)
+      .then(res => {
+        console.log(res);
+        this.props.navigation.navigate("MainProfile");
+      })
+      .catch(err => {
+        Alert.alert("Error updating post. Please try again");
+        console.log(err);
+      });
+  }
+
+  async sellPost() {
+    const userInfo = await Auth.currentUserInfo().catch(error => {
+      Alert.alert(JSON.stringify(error));
+      return;
+    });
+    const apiName = "itemPostingsCRUD";
+    const path = "/itemPostings";
+    const updatedObject = this.getUpdatedPostObject(userInfo.id);
     updatedObject.body.isSold = true;
     API.put(apiName, path, updatedObject)
       .then(res => {
@@ -115,12 +135,7 @@ class UserListingsInfo extends Component {
             onChangeText={value => this.onChangeText("description", value)}
           />
         </View>
-        <View
-          style={{
-            backgroundColor: "white",
-            paddingTop: 20
-          }}
-        >
+        <View style={{backgroundColor: "white", paddingTop: 20}}>
           <Button
             raised
             color="white"
@@ -137,7 +152,7 @@ class UserListingsInfo extends Component {
             backgroundColor="goldenrod"
             borderRadius={5}
             fontWeight="bold"
-            onPress={() => this.deletePost()}
+            onPress={() => this.sellPost()}
             title="Mark Item As Sold"
             containerViewStyle={styles.buttonStyle}
           />
@@ -174,10 +189,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     width: 300,
     alignSelf: "center"
-  },
-  container: {
-    marginTop: 30,
-    marginLeft: 30
   },
   buttonStyle: {
     width: 300,

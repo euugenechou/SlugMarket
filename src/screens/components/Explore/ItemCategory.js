@@ -47,9 +47,10 @@ class ItemCategory extends Component {
   };
 
   getPostsByCategory() {
-    const path = "/itemPostings";
+    const path = "/itemPostings/allPosts";
     const apiName = "itemPostingsCRUD";
     const headers = {
+      headers: {},
       response: true,
       queryStringParameters: {
         ScanIndexForward: false
@@ -58,13 +59,15 @@ class ItemCategory extends Component {
     API.get(apiName, path, headers)
       .then(response => {
         console.log(response);
-        console.log(response.data[0].category);
-        console.log(this.state.category);
-        let filteredResponse = response.data.filter((post) => {
-          return post.category.toLowerCase() == this.state.category.toLowerCase() && post.isSold === false;
+        const sorted = response.data.sort((a, b) => {
+          return new Date(b.timeAdded) - new Date(a.timeAdded);
         });
         this.setState({
-          postsToRender: filteredResponse
+          postsToRender: sorted.filter(post => {
+            return (!post.isSold && 
+            !post.isRemoved &&
+            post.category === this.props.navigation.getParam("category"));
+          })
         });
       })
       .catch(error => console.log(error.response));
@@ -85,24 +88,11 @@ class ItemCategory extends Component {
             }
           >
             <View style={{ marginTop: 20 }}>
-              <Text
-                style={{
-                  fontSize: 22,
-                  fontWeight: "700",
-                  paddingHorizontal: 20
-                }}
-              >
-                Recently added to {this.props.navigation.getParam("category")}
+              <Text style={styles.titleText}>
+                Recently Added To {this.props.navigation.getParam("category")}
               </Text>
               <View
-                style={{
-                  paddingHorizontal: 20,
-                  paddingVertical: 20,
-                  marginBottom: 20,
-                  flexDirection: "column",
-                  flexWrap: "wrap",
-                  justifyContent: "space-evenly"
-                }}
+                style={styles.listings}
               >
                 {this.state.postsToRender.map(post => {
                   return (
@@ -144,5 +134,18 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     justifyContent: "center"
+  },
+  listings: {
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+    marginBottom: 20,
+    flexDirection: "column",
+    flexWrap: "wrap",
+    justifyContent: "space-evenly"
+  },
+  titleText: {
+    fontSize: 22,
+    fontWeight: "700",
+    paddingHorizontal: 20
   }
 });

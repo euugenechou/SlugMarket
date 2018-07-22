@@ -23,8 +23,8 @@
     ]
   },
   "dependencies": {
-    "aws-amplify": "^0.4.8",
-    "aws-amplify-react-native": "^0.2.19",
+    "aws-amplify": "^1.0.2",
+    "aws-amplify-react-native": "^1.0.2",
     "expo": "^28.0.0",
     "graphql": "^0.13.0",
     "native-base": "^2.7.0",

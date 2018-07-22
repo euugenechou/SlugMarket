@@ -10,7 +10,8 @@ import {
   ScrollView,
   Dimensions,
   RefreshControl,
-  TouchableHighlight
+  TouchableHighlight,
+  StyleSheet
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { Button } from "react-native-elements";
@@ -19,24 +20,18 @@ import { API } from "aws-amplify";
 /* Local imports */
 import Category from "./components/Explore/Category";
 import Listings from "./components/Explore/Listings";
-import { styles } from "../styles";
 
 const { height, width } = Dimensions.get("window");
 
-class Explore extends Component {
+export default class Explore extends Component {
   state = {
     postsToRender: [],
     refreshing: false
   };
 
-  static navigationOptions = () => ({
+  static navigationOptions = ({ navigation }) => ({
     header: null,
-    headerStyle: {
-      height: 40,
-      shadowColor: "black",
-      borderBottomColor: "black",
-      borderBottomWidth: 0.5
-    }
+    gesturesEnabled: false
   });
 
   componentWillMount() {
@@ -58,14 +53,11 @@ class Explore extends Component {
    * Gets items which were posted at most one day ago
    */
   getRecentPosts() {
-    const path = "/itemPostings";
+    const path = "/itemPostings/allPosts";
     const apiName = "itemPostingsCRUD";
     const headers = {
       headers: {},
       response: true,
-      queryStringParameters: {
-        ScanIndexForward: false
-      }
     };
     API.get(apiName, path, headers)
       .then(response => {
@@ -74,8 +66,8 @@ class Explore extends Component {
           return new Date(b.timeAdded) - new Date(a.timeAdded);
         });
         this.setState({
-          postsToRender: sorted.filter((post) => {
-            return post.isSold === false;
+          postsToRender: sorted.filter(post => {
+            return !post.isSold && !post.isRemoved;
           })
         });
       })
@@ -136,7 +128,7 @@ class Explore extends Component {
             }
           >
             <View style={{ flex: 1, backgroundColor: "white", paddingTop: 20 }}>
-              <Text style={styles.sectionTitle}>Browse items by category</Text>
+              <Text style={styles.sectionTitle}>Browse Items By Category</Text>
               <View style={styles.sideScroll}>
                 <ScrollView
                   horizontal={true}
@@ -145,7 +137,7 @@ class Explore extends Component {
                   <TouchableHighlight
                     onPress={() =>
                       this.props.navigation.navigate("ViewCategory", {
-                        category: "textbook"
+                        category: "Textbooks"
                       })
                     }
                     underlayColor="white"
@@ -158,7 +150,7 @@ class Explore extends Component {
                   <TouchableHighlight
                     onPress={() =>
                       this.props.navigation.navigate("ViewCategory", {
-                        category: "furniture"
+                        category: "Furniture"
                       })
                     }
                     underlayColor="white"
@@ -171,7 +163,7 @@ class Explore extends Component {
                   <TouchableHighlight
                     onPress={() =>
                       this.props.navigation.navigate("ViewCategory", {
-                        category: "electronic"
+                        category: "Electronics"
                       })
                     }
                     underlayColor="white"
@@ -184,25 +176,8 @@ class Explore extends Component {
                 </ScrollView>
               </View>
               <View style={{ marginTop: 20 }}>
-                <Text
-                  style={{
-                    fontSize: 24,
-                    fontWeight: "700",
-                    paddingHorizontal: 20
-                  }}
-                >
-                  Recently added items
-                </Text>
-                <View
-                  style={{
-                    paddingHorizontal: 20,
-                    paddingVertical: 20,
-                    marginBottom: 20,
-                    flexDirection: "column",
-                    flexWrap: "wrap",
-                    justifyContent: "space-evenly"
-                  }}
-                >
+                <Text style={styles.text}>Recently Added Items</Text>
+                <View style={styles.listingsView}>
                   {this.state.postsToRender.map(post => {
                     return (
                       <TouchableHighlight
@@ -240,4 +215,27 @@ class Explore extends Component {
   }
 }
 
-export default Explore;
+const styles = StyleSheet.create({
+  sectionTitle: {
+    fontSize: 24,
+    fontWeight: "700",
+    paddingHorizontal: 20
+  },
+  sideScroll: {
+    height: 130,
+    marginTop: 20
+  },
+  text: {
+    fontSize: 24,
+    fontWeight: "700",
+    paddingHorizontal: 20
+  },
+  listingsView: {
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+    marginBottom: 20,
+    flexDirection: "column",
+    flexWrap: "wrap",
+    justifyContent: "space-evenly"
+  }
+});

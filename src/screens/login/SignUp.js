@@ -11,22 +11,24 @@ import {
 
 /* AWS imports */
 import { Auth } from "aws-amplify";
+import Icon from "react-native-vector-icons/Entypo";
 import { Button } from "react-native-elements";
 
 export default class App extends React.Component {
   state = {
-    username: "",
-    password: "",
-    phone_number: "",
+    name: "",
     email: "",
+    phone_number: "",
+    password: "",
     confirmationCode: ""
   };
 
   static navigationOptions = () => ({
-    headerTransparent: true,
+    headerTintColor: "teal",
     headerStyle: {
       height: 40,
-      shadowColor: "transparent"
+      backgroundColor: "white",
+      borderBottomWidth: 0
     }
   });
 
@@ -36,16 +38,16 @@ export default class App extends React.Component {
 
   signUp() {
     Auth.signUp({
-      username: this.state.username,
+      username: this.state.email,
       password: this.state.password,
       attributes: {
-        email: this.state.email,
+        name: this.state.name,
         phone_number: this.state.phone_number
       }
     })
       .then(() =>
         this.props.navigation.navigate("ConfirmScreen", {
-          userName: this.state.username
+          userName: this.state.email
         })
       )
       .catch(err => console.log(err));
@@ -54,36 +56,47 @@ export default class App extends React.Component {
   render() {
     return (
       <ScrollView centerContent={true} contentContainerStyle={styles.container}>
+        <Icon
+          name="chevron-small-left"
+          size={45}
+          color="teal"
+          style={{paddingVertical: 10}}
+          onPress={() => this.props.navigation.navigate("SignInScreen")}
+        />
         <View style={styles.container}>
+          <Text style={styles.text}>First Name</Text>
           <TextInput
-            onChangeText={value => this.onChangeText("username", value)}
+            onChangeText={value => this.onChangeText("name", value)}
             style={styles.input}
-            placeholder="UCSC ID"
+            placeholder="e.g.: Sammy"
             placeholderTextColor="gray"
             autoCapitalize="none"
             autoCorrect={false}
           />
+          <Text style={styles.text}>Password</Text>
           <TextInput
             onChangeText={value => this.onChangeText("password", value)}
             style={styles.input}
             secureTextEntry={true}
-            placeholder="Cruz Blue password"
+            placeholder="e.g.: Slug6969"
             placeholderTextColor="gray"
             autoCapitalize="none"
             autoCorrect={false}
           />
+          <Text style={styles.text}>Phone Number</Text>
           <TextInput
             onChangeText={value => this.onChangeText("phone_number", value)}
             style={styles.input}
-            placeholder="phone"
+            placeholder="e.g.: +15101234567"
             placeholderTextColor="gray"
             autoCapitalize="none"
             autoCorrect={false}
           />
+          <Text style={styles.text}>UCSC Email</Text>
           <TextInput
             onChangeText={value => this.onChangeText("email", value)}
             style={styles.input}
-            placeholder="email"
+            placeholder="e.g.: sammyslug@ucsc.edu"
             placeholderTextColor="gray"
             keyboardType="email-address"
             autoCapitalize="none"
@@ -96,7 +109,7 @@ export default class App extends React.Component {
             fontWeight="bold"
             backgroundColor="teal"
             borderRadius={5}
-            containerViewStyle={{ width: 300, paddingTop: 10 }}
+            containerViewStyle={styles.buttonContainer}
             onPress={() => this.signUp()}
           />
         </View>
@@ -107,22 +120,32 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   input: {
+    justifyContent: "center",
+    alignSelf: "center",
     height: 50,
     color: "black",
-    borderWidth: 1,
-    borderRadius: 4,
-    borderColor: "white",
-    margin: 10,
-    width: 300,
-    paddingLeft: 10,
-    alignContent: "center",
-    backgroundColor: "white"
+    borderBottomWidth: 0.7,
+    borderBottomColor: "darkgray",
+    marginBottom: 20,
+    width: 300
   },
   container: {
     flex: 1,
-    backgroundColor: "#B0DFE5",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "white",
     paddingVertical: 10
+    // justifyContent: "center"
+  },
+  buttonContainer: {
+    width: 300,
+    paddingTop: 10,
+    alignSelf: "center"
+  },
+  text: {
+    paddingLeft: 36,
+    fontSize: 20,
+    color: "black",
+    fontWeight: "700",
+    textAlign: "left",
+    paddingTop: 10
   }
 });

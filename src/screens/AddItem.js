@@ -10,7 +10,7 @@ import {
   Alert,
   Picker
 } from "react-native";
-import { API, Auth, Storage } from "aws-amplify";
+import { API, Auth } from "aws-amplify";
 
 import { Button } from "react-native-elements";
 
@@ -29,13 +29,15 @@ export default class AddItem extends React.Component {
     super(props);
     this.state = {
       userId: "",
-      category: "",
+      timeAdded: "",
+      category: "Furniture",
       description: "",
+      email: "",
+      isRemoved: false,
       isSold: false,
-      itemName: "",
+      phoneNumber: "",
       price: 0,
-      seller: "",
-      timeAdded: ""
+      seller: ""
     };
   }
 
@@ -46,39 +48,17 @@ export default class AddItem extends React.Component {
   }
 
   /**
-   * Open image picker for creating a new post
-   */
-  async getPostImage() {
-    let result = await Expo.ImagePicker.launchCameraAsync({
-      allowsEditing: true,
-      aspect: [4, 3],
-      mediaTypes: "Images"
-    });
-    return result;
-  }
-
-  /**
    * Creates post object to save in itemPostings schema
    */
-  createPostObject(cognitoUserId) {
-    const post = { body: this.state };
-    post.body.userId = cognitoUserId;
-    post.body.timeAdded = new Date().toString();
-    return post;
-  }
-
-  /**
-   * Saves image(s) associated with a user post to S3 bucket
-   */
-  saveImageToS3(cognitoUserId, imageUriArray, timeAdded) {
-    imageUriArray.forEach(imageUri => {
-      Storage.put(imageUri, {
-        level: "protected",
-        identityId: cognitoUserId
-      })
-        .then()
-        .catch(error => console.log(error));
-    });
+  createPostObject(userInfo) {
+    this.setState({
+      userId: userInfo.id,
+      timeAdded: new Date().toString(),
+      email: userInfo.attributes.email,
+      phoneNumber: userInfo.attributes.phone_number,
+      seller: userInfo.attributes.name
+    })
+    return {body: this.state};
   }
 
   /**
@@ -87,18 +67,20 @@ export default class AddItem extends React.Component {
    */
   async saveItemPost() {
     const userInfo = await Auth.currentUserInfo().catch(error => {
-      Alert.alert(JSON.stringify(error));
+      console.log(error);
       return;
     });
     const apiName = "itemPostingsCRUD";
     const path = "/itemPostings";
-    const post = this.createPostObject(userInfo.id);
+    const post = this.createPostObject(userInfo);
+    console.log(apiName, path, post);
     API.post(apiName, path, post)
-      .then(res =>
-        this.props.navigation.navigate("MainExplore", {
+      .then(res => {
+        console.log(res);
+        this.props.navigation.navigate("MainProfile", {
           reload: true
         })
-      )
+      })
       .catch(err => console.log(err));
   }
 
@@ -119,29 +101,18 @@ export default class AddItem extends React.Component {
             autoCapitalize="none"
             autoCorrect={false}
           />
-          <Text
-            style={{
-              paddingLeft: 36,
-              fontSize: 16,
-              color: "black",
-              fontWeight: "700",
-              textAlign: "left",
-              paddingBottom: 10
-            }}
-          >
-            Item Category
-          </Text>
+          <Text style={styles.categoryText}>Item Category</Text>
           <Picker
             selectedValue={this.state.category}
             style={{ width: 120, alignSelf: "center" }}
-            itemStyle={{ height: 120, fontSize: 18 }}
+            itemStyle={{ height: 110, fontSize: 18 }}
             onValueChange={(itemValue, itemIndex) =>
               this.setState({ category: itemValue })
             }
           >
-            <Picker.Item label="Furniture" value="furniture" />
-            <Picker.Item label="Textbook" value="textbook" />
-            <Picker.Item label="Electronic" value="electronic" />
+            <Picker.Item label="Furniture" value="Furniture" />
+            <Picker.Item label="Textbook" value="Textbooks" />
+            <Picker.Item label="Electronic" value="Electronics" />
           </Picker>
           <Text style={styles.text}>Item Description</Text>
           <TextInput
@@ -149,13 +120,6 @@ export default class AddItem extends React.Component {
             style={styles.input}
             autoCapitalize="none"
             autoCorrect={true}
-          />
-          <Text style={styles.text}>Seller Name</Text>
-          <TextInput
-            onChangeText={value => this.onChangeText("seller", value)}
-            style={styles.input}
-            autoCapitalize="words"
-            autoCorrect={false}
           />
           <Button
             raised
@@ -165,11 +129,7 @@ export default class AddItem extends React.Component {
             onPress={() => this.saveItemPost()}
             backgroundColor="teal"
             borderRadius={5}
-            containerViewStyle={{
-              width: 300,
-              alignSelf: "center",
-              paddingTop: 10
-            }}
+            containerViewStyle={styles.buttonContainer}
           />
         </View>
     );
@@ -182,10 +142,18 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     height: 30,
     color: "black",
-    borderBottomWidth: 0.5,
-    borderBottomColor: "#dddddd",
+    borderBottomWidth: 0.7,
+    borderBottomColor: "darkgray",
     marginBottom: 20,
     width: 300
+  },
+  categoryText: {
+    paddingLeft: 36,
+    fontSize: 16,
+    color: "black",
+    fontWeight: "700",
+    textAlign: "left",
+    paddingVertical: 10
   },
   box: {
     height: 100,
@@ -203,6 +171,11 @@ const styles = StyleSheet.create({
     color: "black",
     fontWeight: "700",
     textAlign: "left",
+    paddingTop: 10
+  },
+  buttonContainer: {
+    width: 300,
+    alignSelf: "center",
     paddingTop: 10
   }
 });

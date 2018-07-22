@@ -64,7 +64,7 @@ export default class SellerDetails extends React.Component {
       .catch(err => console.log(err));
   }
 
-  renderSection = () => {
+  renderListings = () => {
     return this.state.postsToRender.map(post => {
       return (
         <TouchableHighlight
@@ -108,62 +108,25 @@ export default class SellerDetails extends React.Component {
           }
         >
           <View style={{ backgroundColor: "white" }}>
-            <View
-              style={{
-                backgroundColor: "white",
-                flexDirection: "row-reverse",
-                flex: 1
-              }}
-            >
+            <View style={styles.topView}>
               <Image
                 source={require("../../../assets/darrell.png")}
-                style={{
-                  justifyContent: "center",
-                  alignItems: "center",
-                  marginTop: 40,
-                  width: null,
-                  height: 150,
-                  resizeMode: "contain",
-                  borderRadius: 8,
-                  flex: 1
-                }}
+                style={styles.image}
               />
-              <View
-                style={{
-                  backgroundColor: "white",
-                  flexDirection: "column",
-                  flex: 1,
-                  paddingTop: 60
-                }}
-              >
-                <View
-                  style={{
-                    alignItems: "center",
-                    backgroundColor: "white",
-                    justifyContent: "flex-start",
-                    paddingLeft: 20
-                  }}
-                >
-                  <Text style={field.titleText}>
+              <View style={styles.midView}>
+                <View style={styles.botView}>
+                  <Text style={styles.titleText}>
                     {this.props.navigation.getParam("seller")}
                   </Text>
-                  <Text style={field.text}>{"example@ucsc.edu"}</Text>
-                  <Text style={field.text}>{"+16508683124"}</Text>
+                  <Text style={styles.text}>{"example@ucsc.edu"}</Text>
+                  <Text style={styles.text}>{"+16508683124"}</Text>
                 </View>
               </View>
             </View>
-            <Text
-              style={{
-                fontSize: 24,
-                fontWeight: "700",
-                marginBottom: 20,
-                marginTop: 20,
-                paddingHorizontal: 20
-              }}
-            >
+            <Text style={styles.listingText}>
               {this.props.navigation.getParam("seller")}'s Listings
             </Text>
-            {this.renderSection()}
+            {this.renderListings()}
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -173,12 +136,33 @@ export default class SellerDetails extends React.Component {
 
 var { width, height } = Dimensions.get("window");
 
-const field = StyleSheet.create({
-  row: {
-    flexDirection: "row",
+const styles = StyleSheet.create({
+  topView: {
+    backgroundColor: "white",
+    flexDirection: "row-reverse",
+    flex: 1
+  },
+  image: {
     justifyContent: "center",
-    backgroundColor: "#f6f6f6",
-    marginBottom: 8
+    alignItems: "center",
+    marginTop: 40,
+    width: null,
+    height: 150,
+    resizeMode: "contain",
+    borderRadius: 8,
+    flex: 1
+  },
+  midView: {
+    backgroundColor: "white",
+    flexDirection: "column",
+    flex: 1,
+    paddingTop: 60
+  },
+  botView: {
+    alignItems: "center",
+    backgroundColor: "white",
+    justifyContent: "flex-start",
+    paddingLeft: 20
   },
   text: {
     paddingTop: 5,
@@ -192,5 +176,12 @@ const field = StyleSheet.create({
     fontWeight: "600",
     justifyContent: "center",
     alignItems: "center"
+  },
+  listingText: {
+    fontSize: 24,
+    fontWeight: "700",
+    marginBottom: 20,
+    marginTop: 20,
+    paddingHorizontal: 20
   }
 });
