@@ -41,7 +41,7 @@ export default class SellerDetails extends React.Component {
   };
 
   getPostsToRender() {
-    const path = "/itemPostings";
+    const path = "/itemPostings/allPosts";
     const apiName = "itemPostingsCRUD";
     const params = {
       headers: {},
@@ -118,8 +118,8 @@ export default class SellerDetails extends React.Component {
                   <Text style={styles.titleText}>
                     {this.props.navigation.getParam("seller")}
                   </Text>
-                  <Text style={styles.text}>{"example@ucsc.edu"}</Text>
-                  <Text style={styles.text}>{"+16508683124"}</Text>
+                  <Text style={styles.text}>{this.props.navigation.getParam("email")}</Text>
+                  <Text style={styles.text}>{this.props.navigation.getParam("phoneNumber")}</Text>
                 </View>
               </View>
             </View>

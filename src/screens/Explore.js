@@ -189,7 +189,9 @@ export default class Explore extends Component {
                             price: post.price,
                             seller: post.seller,
                             category: post.category,
-                            description: post.description
+                            description: post.description,
+                            phoneNumber: post.phoneNumber,
+                            email: post.username
                           })
                         }
                         underlayColor="white"
