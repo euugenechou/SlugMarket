@@ -48,7 +48,7 @@ export default class App extends React.Component {
           userName: this.state.username
         })
       )
-      .catch(err => Alert.alert(err));
+      .catch(err => console.log(err));
   }
 
   render() {

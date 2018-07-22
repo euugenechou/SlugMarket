@@ -75,7 +75,7 @@ const ChatStack = createStackNavigator(
   }
 )
 
-const BottomTabNavigator = createBottomTabNavigator(
+export const BottomTabNavigator = createBottomTabNavigator(
   {
     Explore: {
       screen: ExploreStack,

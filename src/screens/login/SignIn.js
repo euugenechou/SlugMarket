@@ -27,7 +27,8 @@ export default class App extends React.Component {
       confirmationCode: "",
       user: {},
       visible: false,
-      errorMessage: ""
+      errorMessage: "",
+      isAuthenticated: false
     };
   }
 
@@ -42,7 +43,7 @@ export default class App extends React.Component {
     Auth.signIn(username, password)
       .then(() => {
         user => this.setState({ user });
-        this.props.screenProps.authenticate(true);
+        this.props.navigation.push("MainScreen");
       })
       .catch(() =>
         this.setState({

@@ -169,27 +169,29 @@ const field = StyleSheet.create({
     paddingRight: 5
   },
   titleText: {
-    fontSize: 24,
-    fontWeight: "bold",
-    // fontFamily: 'San Francisco',
-    paddingLeft: 5,
-    paddingRight: 5
-  },
-  title: {
-    fontSize: 36,
+    fontSize: 28,
     fontWeight: "bold",
     // fontFamily: 'San Francisco',
     paddingLeft: 5,
     paddingRight: 5,
-    paddingTop: 10
+    paddingVertical: 10
+
+  },
+  title: {
+    fontSize: 32,
+    fontWeight: "bold",
+    // fontFamily: 'San Francisco',
+    paddingLeft: 5,
+    paddingRight: 5,
+    paddingVertical: 10
   },
   contentContainer: {
     flex: 1,
     //marginTop: 20,
     //paddingTop: 10,
     paddingBottom: 30,
-    paddingLeft: 5,
-    paddingRight: 5,
+    paddingHorizontal: 10,    
+    paddingTop: 10,
     backgroundColor: "white"
   }
 });
