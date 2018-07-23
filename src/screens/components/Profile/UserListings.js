@@ -1,4 +1,4 @@
-/* React imports */
+// React imports
 import React, { Component } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 
@@ -24,21 +24,21 @@ class UserListings extends Component {
           backgroundColor: "white"
         }}
       >
-        <View style={{ flex: 2 }}>
+        <View style = { { flex: 2 } }>
           <Image
-            style={styles.image}
-            source={require("../../../assets/textbooks.jpg")}
+            style = { styles.image }
+            source = { require("../../../assets/textbooks.jpg") }
           />
         </View>
-        <View style={styles.container}>
-          <Text style={styles.titleText}>
-            {this.props.name}
+        <View style = { styles.container }>
+          <Text style = { styles.titleText }>
+            { this.props.name }
           </Text>
-          <Text style={styles.text}>
-            {this.props.category}
+          <Text style = { styles.text }>
+            { this.props.category }
           </Text>
-          <Text style={styles.text}>
-            ${this.props.price}
+          <Text style = { styles.text }>
+            ${ this.props.price }
           </Text>
         </View>
       </View>

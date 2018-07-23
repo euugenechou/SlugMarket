@@ -1,4 +1,4 @@
-/* React imports */
+// React imports 
 import React, { Component } from "react";
 import {
   View,
@@ -15,9 +15,9 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { Button } from "react-native-elements";
+// AWS imports
 import { API } from "aws-amplify";
-
-/* Local imports */
+// Local imports 
 import Category from "./components/Explore/Category";
 import Listings from "./components/Explore/Listings";
 

@@ -1,4 +1,4 @@
-/* React imports */
+// React imports
 import React, { Component } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { Button } from "react-native-elements";
@@ -14,34 +14,34 @@ class Listings extends Component {
     },
     headerBackground: (
       <Image
-        style={StyleSheet.absoluteFill}
-        source={require("../../../assets/textbooks.jpg")}
+        style = { StyleSheet.absoluteFill }
+        source = { require("../../../assets/textbooks.jpg") }
       />
     ),
   });
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.titleText}>
-          {this.props.navigation.getParam("name")}
+      <View style = { styles.container }>
+        <Text style = { styles.titleText }>
+          { this.props.navigation.getParam("name") }
         </Text>
-        <Text style={styles.text}>
-          ${this.props.navigation.getParam("price")}
+        <Text style = { styles.text }>
+          ${ this.props.navigation.getParam("price") }
         </Text>
-        <Text style={styles.text}>
-          {this.props.navigation.getParam("category")}
+        <Text style = { styles.text }>
+          { this.props.navigation.getParam("category") }
         </Text>
-        <Text style={styles.text}>
-          {this.props.navigation.getParam("description")}
+        <Text style = { styles.text }>
+          { this.props.navigation.getParam("description") }
         </Text>
         <Button
           raised
-          color="white"
-          backgroundColor="teal"
-          borderRadius={5}
-          fontWeight="bold"
-          onPress={() =>
+          color = "white"
+          backgroundColor = "teal"
+          borderRadius = { 5 }
+          fontWeight = "bold"
+          onPress = { () =>
             this.props.navigation.navigate("SellerDetails", {
               userId: this.props.navigation.getParam("userId"),
               seller: this.props.navigation.getParam("seller"),
@@ -49,8 +49,8 @@ class Listings extends Component {
               email: this.props.navigation.getParam("email")
             })
           }
-          title="View Seller Details"
-          containerViewStyle={styles.buttonContainer}
+          title = "View Seller Details"
+          containerViewStyle = { styles.buttonContainer }
         />
       </View>
     );

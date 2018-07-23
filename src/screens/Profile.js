@@ -1,4 +1,4 @@
-/* React imports */
+// React imports 
 import React, { Component } from "react";
 import {
   StyleSheet,
@@ -12,9 +12,9 @@ import {
   RefreshControl
 } from "react-native";
 import { Button } from "react-native-elements";
-/* AWS imports */
+// AWS imports 
 import { API, Auth } from "aws-amplify";
-/* Local imports */
+// Local imports 
 import UserListings from "./components/Profile/UserListings";
 
 const { height, width } = Dimensions.get("window");
@@ -38,7 +38,7 @@ export default class Profile extends Component {
 
   static navigationOtions = {
     tabBarIcon: ({ tintColor }) => (
-      <Icon name="person" style={{ color: tintColor }} />
+      <Icon name="person" style = {{ color: tintColor }} />
     )
   };
 
@@ -50,7 +50,7 @@ export default class Profile extends Component {
     console.log(this.state.postsToRender);
   }
 
-  // for getting user posts
+  // For getting user posts
   getUserPosts() {
     const path = "/itemPostings/userPosts";
     const apiName = "itemPostingsCRUD";
@@ -73,7 +73,7 @@ export default class Profile extends Component {
       .catch(error => console.log(error.response));
   }
 
-  // for getting user sold posts
+  // For getting user sold posts
   getUserSoldPosts() {
     const path = "/itemPostings/userPosts";
     const apiName = "itemPostingsCRUD";
@@ -123,29 +123,25 @@ export default class Profile extends Component {
     return this.state.postsToRender.map(post => {
       return (
         <TouchableHighlight
-          onPress={() =>
+          onPress = {() =>
             this.props.navigation.navigate("UserListingInfoScreen", {
               itemName: post.itemName,
               price: post.price,
               seller: post.seller,
               category: post.category,
               description: post.description,
-              timeAdded: post.timeAdded,
-              email: post.email,
-              phoneNumber: post.phoneNumber,
-              isSold: post.isSold,
-              isRemoved: post.isRemoved
+              timeAdded: post.timeAdded
             })
           }
-          underlayColor="white"
-          key={post.timeAdded}
+          underlayColor = "white"
+          key = {post.timeAdded}
         >
           <UserListings
-            width={width}
-            name={post.itemName}
-            price={post.price}
-            category={post.category}
-            seller={post.seller}
+            width = { width }
+            name = { post.itemName }
+            price = { post.price }
+            category = { post.category }
+            seller = { post.seller }
           />
         </TouchableHighlight>
       );
@@ -156,7 +152,7 @@ export default class Profile extends Component {
     return this.state.soldPostsToRender.map(post => {
       return (
         <TouchableHighlight
-          onPress={() =>
+          onPress = {() =>
             this.props.navigation.navigate("UserListingInfoScreen", {
               itemName: post.itemName,
               price: post.price,
@@ -166,15 +162,15 @@ export default class Profile extends Component {
               timeAdded: post.timeAdded
             })
           }
-          underlayColor="white"
-          key={post.timeAdded}
+          underlayColor = "white"
+          key = { post.timeAdded }
         >
           <UserListings
-            width={width}
-            name={post.itemName}
-            price={post.price}
-            category={post.category}
-            seller={post.seller}
+            width = { width }
+            name = { post.itemName }
+            price = { post.price }
+            category = { post.category }
+            seller = { post.seller }
           />
         </TouchableHighlight>
       );
@@ -183,54 +179,54 @@ export default class Profile extends Component {
 
   render() {
     return (
-      <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
+      <SafeAreaView style = {{ backgroundColor: "white", flex: 1 }}>
         <ScrollView
-          scrollEventThrottle={16}
-          contentContainerStyle={{ backgroundColor: "white" }}
-          refreshControl={
+          scrollEventThrottle = { 16 }
+          contentContainerStyle = {{ backgroundColor: "white" }}
+          refreshControl = {
             <RefreshControl
-              refreshing={this.state.refreshing}
-              onRefresh={this._onRefresh}
+              refreshing = {this.state.refreshing}
+              onRefresh = {this._onRefresh}
             />
           }
-          showsVerticalScrollIndicator={false}
+          showsVerticalScrollIndicator = {false}
         >
-          <View style={{ backgroundColor: "white" }}>
-            <View style={styles.outerContainer}>
+          <View style = {{ backgroundColor: "white" }}>
+            <View style = { styles.outerContainer }>
               <Image
-                source={require("../assets/darrell.png")}
-                style={styles.image}
+                source = { require("../assets/darrell.png") }
+                style = { styles.image }
               />
-              <View style={styles.columnContainer}>
-                <View style={styles.innerContainer}>
-                  <Text style={styles.titleText}>{this.state.userName}</Text>
-                  <Text style={styles.text}>
+              <View style = { styles.columnContainer }>
+                <View style = { styles.innerContainer }>
+                  <Text style = { styles.titleText }>{ this.state.userName } </Text>
+                  <Text style = { styles.text }>
                     {this.state.userAttributes.email}
                   </Text>
-                  <Text style={styles.text}>
+                  <Text style = {styles.text}>
                     {this.state.userAttributes.phone_number}
                   </Text>
                   <Button
                     raised
-                    color="white"
-                    backgroundColor="teal"
-                    borderRadius={5}
-                    title="Sell Item"
-                    fontWeight="bold"
-                    onPress={() => this.props.navigation.navigate("AddItem")}
-                    containerViewStyle={{ width: 150, paddingTop: 10 }}
+                    color = "white"
+                    backgroundColor = "teal"
+                    borderRadius = { 5 }
+                    title = "Sell Item"
+                    fontWeight = "bold"
+                    onPress = {() => this.props.navigation.navigate("AddItem")}
+                    containerViewStyle = {{ width: 150, paddingTop: 10 }}
                   />
                 </View>
               </View>
             </View>
-            <Text style={styles.listingText}>
+            <Text style = {styles.listingText}>
               My Listings
             </Text>
-            {this.renderUserListings()}
-            <Text style={styles.listingText}>
+            { this.renderUserListings() }
+            <Text style = { styles.listingText }>
               My Sold Listings
             </Text>
-            {this.renderUserSoldListings()}
+            { this.renderUserSoldListings() }
           </View>
         </ScrollView>
       </SafeAreaView>

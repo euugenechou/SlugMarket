@@ -1,4 +1,4 @@
-/* React imports */
+// React imports
 import React, { Component } from "react";
 import {
   Alert,
@@ -7,6 +7,7 @@ import {
 } from "react-native";
 import { Button } from "react-native-elements";
 import SettingsList from "react-native-settings-list";
+// AWS imports 
 import { API, Auth } from "aws-amplify";
 
 export default class Settings extends Component {

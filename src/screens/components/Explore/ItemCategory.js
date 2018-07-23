@@ -1,4 +1,4 @@
-/* React imports */
+// React imports 
 import React, { Component } from "react";
 import {
   View,
@@ -97,7 +97,7 @@ class ItemCategory extends Component {
                 {this.state.postsToRender.map(post => {
                   return (
                     <TouchableHighlight
-                      onPress={() =>
+                      onPress = { () =>
                         this.props.navigation.navigate("ListingInfo", {
                           name: post.itemName,
                           price: post.price,
@@ -107,14 +107,14 @@ class ItemCategory extends Component {
                         })
                       }
                       underlayColor="white"
-                      key={post.timeAdded}
+                      key = {post.timeAdded}
                     >
                       <Listings
-                        width={width}
-                        name={post.itemName}
-                        price={post.price}
-                        seller={post.seller}
-                        category={post.category}
+                        width = { width }
+                        name = { post.itemName }
+                        price = { post.price }
+                        seller = { post.seller }
+                        category = { post.category }
                       />
                     </TouchableHighlight>
                   );

@@ -1,4 +1,4 @@
-/* React imports */
+// React imports 
 import React from "react";
 import {
   TextInput,
@@ -7,9 +7,9 @@ import {
   ScrollView,
   Alert
 } from "react-native";
-import { API, Auth } from "aws-amplify";
-
 import { Button } from "react-native-elements";
+// AWS imports
+import { API, Auth } from "aws-amplify";
 
 export default class AddItem extends React.Component {
   static navigationOptions = () => ({
@@ -59,28 +59,28 @@ export default class AddItem extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style = {{ flex: 1 }}>
         <ScrollView
-          contentContainerStyle={styles.container}
-          centerContent={true}
+          contentContainerStyle = { styles.container }
+          centerContent = { true }
         >
           <TextInput
-            onChangeText={value => this.onChangeText("lookingFor", value)}
-            style={styles.input}
-            placeholder="What are you looking for?"
-            placeholderTextColor="gray"
-            autoCapitalize="none"
-            autoCorrect={false}
+            onChangeText = { value => this.onChangeText("lookingFor", value)}
+            style = { styles.input }
+            placeholder = "What are you looking for?"
+            placeholderTextColor = "gray"
+            autoCapitalize = "none"
+            autoCorrect = {false}
           />
           <Button
             raised
-            color="white"
-            backgroundColor="teal"
-            borderRadius={5}
-            containerViewStyle={{ width: 300, paddingTop: 10 }}
-            onPress={() => console.log("Changing profile!")}
-            title="Save Changes"
-            fontWeight="bold"
+            color = "white"
+            backgroundColor = "teal"
+            borderRadius = { 5 }
+            containerViewStyle = {{ width: 300, paddingTop: 10 }}
+            onPress = {() => console.log("Changing profile!")}
+            title = "Save Changes"
+            fontWeight = "bold"
           />
         </ScrollView>
       </View>

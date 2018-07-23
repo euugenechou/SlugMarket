@@ -1,11 +1,10 @@
-/* React imports */
+// React imports 
 import React from "react";
 import { Text, TextInput, StyleSheet, View, Alert } from "react-native";
-
-/* AWS imports */
-import { Auth } from "aws-amplify";
 import Icon from "react-native-vector-icons/Entypo";
 import { Button } from "react-native-elements";
+// AWS imports 
+import { Auth } from "aws-amplify";
 
 export default class App extends React.Component {
   state = {
@@ -38,34 +37,34 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style = { styles.container }>
         <Icon
-          name="chevron-small-left"
-          size={45}
-          color="teal"
-          style={{paddingVertical: 30}}
-          onPress={() => this.props.navigation.navigate("SignUpScreen")}
+          name = "chevron-small-left"
+          size = { 45 }
+          color = "teal"
+          style = { {paddingVertical: 30} }
+          onPress = { () => this.props.navigation.navigate("SignUpScreen") }
         />
-        <View style={styles.innerContainer}>
-          <Text style={styles.text}>Confirmation Code</Text>
+        <View style = { styles.innerContainer }>
+          <Text style = { styles.text }> Confirmation Code </Text>
           <TextInput
-            onChangeText={value => this.onChangeText("confirmationCode", value)}
-            style={styles.input}
-            keyboardType="number-pad"
-            placeholder="e.g.: 123456"
-            placeholderTextColor="gray"
-            autoCapitalize="none"
-            autoCorrect={false}
+            onChangeText = { value => this.onChangeText("confirmationCode", value) }
+            style = { styles.input }
+            keyboardType = "number-pad"
+            placeholder = "e.g.: 123456"
+            placeholderTextColor = "gray"
+            autoCapitalize = "none"
+            autoCorrect = {false}
           />
           <Button
             raised
-            color="white"
-            title="Confirm Sign Up"
-            fontWeight="bold"
-            backgroundColor="teal"
-            borderRadius={5}
-            containerViewStyle={styles.buttonContainer}
-            onPress={() => this.confirmSignUp()}
+            color = "white"
+            title = "Confirm Sign Up"
+            fontWeight = "bold"
+            backgroundColor = "teal"
+            borderRadius = { 5 }
+            containerViewStyle = { styles.buttonContainer }
+            onPress={ () => this.confirmSignUp() }
           />
         </View>
       </View>

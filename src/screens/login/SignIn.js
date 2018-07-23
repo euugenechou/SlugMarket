@@ -1,4 +1,4 @@
-/* React imports */
+// React imports
 import React from "react";
 import {
   TextInput,
@@ -8,11 +8,9 @@ import {
   ScrollView
 } from "react-native";
 import TopAlert from "../components/TopAlert";
-
-/* AWS imports */
-import { Auth } from "aws-amplify";
-import Expo, { Font } from 'expo';
 import { Button } from 'react-native-elements'
+// AWS imports 
+import { Auth } from "aws-amplify";
 
 export default class App extends React.Component {
   static navigationOptions = ({ navigation }) => ({
@@ -55,52 +53,52 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <View style={{flex: 1}}>
+      <View style = { {flex: 1} }>
         <TopAlert
-          visible={this.state.visible}
-          message={this.state.errorMessage}
+          visible = { this.state.visible }
+          message = { this.state.errorMessage }
         />
         <ScrollView
-          contentContainerStyle={styles.container}
-          centerContent={true}
+          contentContainerStyle = { styles.container }
+          centerContent = { true }
         >
-          <Text style={styles.titleText}>SlugMarket</Text>
+          <Text style = { styles.titleText }> SlugMarket </Text>
           <TextInput
-            onChangeText={value => this.onChangeText("username", value)}
-            style={styles.input}
-            placeholder="UCSC email"
-            placeholderTextColor="gray"
-            autoCapitalize="none"
-            autoCorrect={false}
+            onChangeText = { value => this.onChangeText("username", value) }
+            style = { styles.input }
+            placeholder = "UCSC email"
+            placeholderTextColor = "gray"
+            autoCapitalize = "none"
+            autoCorrect = { false }
           />
           <TextInput
-            onChangeText={value => this.onChangeText("password", value)}
-            style={styles.input}
-            secureTextEntry={true}
-            placeholder="password"
-            placeholderTextColor="gray"
-            autoCapitalize="none"
-            autoCorrect={false}
+            onChangeText = { value => this.onChangeText("password", value) }
+            style = { styles.input }
+            secureTextEntry = { true }
+            placeholder = "password"
+            placeholderTextColor = "gray"
+            autoCapitalize = "none"
+            autoCorrect = { false }
           />
           <Button
             raised
-            color='white'
-            title="Sign In"
-            fontWeight="bold"
-            onPress={() => this.signIn()}
-            backgroundColor="teal"
-            borderRadius={5}
-            containerViewStyle={{width: 300, paddingVertical: 20}}
+            color = 'white'
+            title = "Sign In"
+            fontWeight = "bold"
+            onPress = { () => this.signIn() }
+            backgroundColor = "teal"
+            borderRadius = { 5 }
+            containerViewStyle = { {width: 300, paddingVertical: 20} }
             />
           <Button
             raised
-            color="white"
-            title="Sign Up"
-            fontWeight="bold"
-            backgroundColor="teal"
-            borderRadius={5}
-            containerViewStyle={{width: 300}}
-            onPress={() => {
+            color = "white"
+            title = "Sign Up"
+            fontWeight = "bold"
+            backgroundColor = "teal"
+            borderRadius = { 5 }
+            containerViewStyle = { {width: 300} }
+            onPress = { () => {
               this.setState({ visible: false });
               this.props.navigation.navigate("SignUpScreen");
             }}

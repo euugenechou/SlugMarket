@@ -5,8 +5,8 @@ export default class TopAlert extends React.Component {
   render() {
     if (this.props.visible) {
       return (
-        <View style={styles.container}>
-          <Text style={styles.text}>{this.props.message}</Text>
+        <View style = {styles.container}>
+          <Text style = {styles.text}> {this.props.message} </Text>
         </View>
       );
     } else {

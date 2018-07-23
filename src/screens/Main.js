@@ -1,4 +1,4 @@
-/* React imports */
+// React imports 
 import React from "react";
 import {
   createBottomTabNavigator,
@@ -6,18 +6,20 @@ import {
 } from "react-navigation";
 import Icon from "react-native-vector-icons/Ionicons";
 
-/* Local imports */
+// Imports for Explore
 import Explore from "./Explore";
-import AddItem from "./AddItem";
 import ItemCategory from "./components/Explore/ItemCategory";
 import ListingInfo from "./components/Explore/ListingInfo";
 import SellerDetails from "./components/Explore/SellerDetails"
 
+// Imports for Profile
 import Profile from "./Profile";
 import EditProfile from "./EditProfile";
+import AddItem from "./AddItem";
 import UserListings from "./components/Profile/UserListings";
 import UserListingInfo from "./components/Profile/UserListingInfo";
 
+// Imports for Settings
 import Settings from "./Settings";
 import SignIn from "./login/SignIn";
 import Authors from "./Authors";
@@ -63,7 +65,7 @@ export const BottomTabNavigator = createBottomTabNavigator(
         gesturesEnabled: false,
         tabBarLabel: "EXPLORE",
         tabBarIcon: ({ tintColor }) => (
-          <Icon name="ios-search-outline" color={tintColor} size={24} />
+          <Icon name="ios-search-outline" color={ tintColor } size={ 24 } />
         )
       }
     },
@@ -73,7 +75,7 @@ export const BottomTabNavigator = createBottomTabNavigator(
         gesturesEnabled: false,
         tabBarLabel: "PROFILE",
         tabBarIcon: ({ tintColor }) => (
-          <Icon name="ios-person-outline" color={tintColor} size={24} />
+          <Icon name = "ios-person-outline" color = { tintColor } size = { 24 } />
         )
       }
     },
@@ -83,7 +85,7 @@ export const BottomTabNavigator = createBottomTabNavigator(
         gesturesEnabled: false,
         tabBarLabel: "SETTINGS",
         tabBarIcon: ({ tintColor }) => (
-          <Icon name="ios-settings-outline" color={tintColor} size={24} />
+          <Icon name = "ios-settings-outline" color = { tintColor } size = { 24 } />
         )
       }
     }

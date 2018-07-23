@@ -21,7 +21,7 @@ export default class SellerDetails extends React.Component {
     postsToRender: [],
     refreshing: false
   };
-
+  
   static navigationOptions = () => ({
     headerTintColor: "teal",
     headerStyle: {
