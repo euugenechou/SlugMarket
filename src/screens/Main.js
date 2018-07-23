@@ -18,6 +18,7 @@ import EditProfile from "./EditProfile";
 import AddItem from "./AddItem";
 import UserListings from "./components/Profile/UserListings";
 import UserListingInfo from "./components/Profile/UserListingInfo";
+import SoldListingInfo from "./components/Profile/SoldListingInfo";
 
 // Imports for Settings
 import Settings from "./Settings";
@@ -25,9 +26,6 @@ import SignIn from "./login/SignIn";
 import Authors from "./Authors";
 
 export default class Main extends React.Component {
-  componentWillMount() {
-
-  }
   render() {
     return <BottomTabNavigator />;
   }
@@ -48,7 +46,8 @@ const ProfileStack = createStackNavigator(
     EditProfile: { screen: EditProfile },
     AddItem: { screen: AddItem },
     UserListingScreen: { screen: UserListings},
-    UserListingInfoScreen: { screen: UserListingInfo}
+    UserListingInfoScreen: { screen: UserListingInfo},
+    SoldListingInfoScreen: { screen: SoldListingInfo }
   },
 );
 

@@ -66,6 +66,7 @@ export default class App extends React.Component {
           <TextInput
             onChangeText = { value => this.onChangeText("username", value) }
             style = { styles.input }
+            keyboardType = "email-address"
             placeholder = "UCSC email"
             placeholderTextColor = "gray"
             autoCapitalize = "none"
@@ -74,6 +75,7 @@ export default class App extends React.Component {
           <TextInput
             onChangeText = { value => this.onChangeText("password", value) }
             style = { styles.input }
+            keyboardType = "default"
             secureTextEntry = { true }
             placeholder = "password"
             placeholderTextColor = "gray"

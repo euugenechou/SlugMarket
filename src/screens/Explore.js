@@ -1,4 +1,4 @@
-// React imports 
+// React imports
 import React, { Component } from "react";
 import {
   View,
@@ -16,8 +16,8 @@ import {
 import Icon from "react-native-vector-icons/Ionicons";
 import { Button } from "react-native-elements";
 // AWS imports
-import { API } from "aws-amplify";
-// Local imports 
+import { API, Auth } from "aws-amplify";
+// Local imports
 import Category from "./components/Explore/Category";
 import Listings from "./components/Explore/Listings";
 
@@ -26,6 +26,7 @@ const { height, width } = Dimensions.get("window");
 export default class Explore extends Component {
   state = {
     postsToRender: [],
+    userName: "",
     refreshing: false
   };
 
@@ -40,12 +41,14 @@ export default class Explore extends Component {
       this.startHeaderHeight = 100 + StatusBar.currentHeight;
     }
     this.getRecentPosts();
+    this.getUserInfo();
     console.log(this.state.postsToRender);
   }
 
   _onRefresh = () => {
     this.setState({ refreshing: true });
     this.getRecentPosts();
+    this.getUserInfo();
     this.setState({ refreshing: false });
   };
 
@@ -57,7 +60,7 @@ export default class Explore extends Component {
     const apiName = "itemPostingsCRUD";
     const headers = {
       headers: {},
-      response: true,
+      response: true
     };
     API.get(apiName, path, headers)
       .then(response => {
@@ -74,146 +77,115 @@ export default class Explore extends Component {
       .catch(error => console.log(error.response));
   }
 
+  getUserInfo() {
+    Auth.currentUserInfo()
+      .then(res => {
+        this.setState({ userAttributes: res.attributes });
+        this.setState({ userName: res.attributes.name });
+        console.log(res);
+      })
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
-      <SafeAreaView style={{ flex: 1 }}>
-        <View style={{ flex: 1, backgroundColor: "white" }}>
-          <View
-            style={{
-              height: this.startHeaderHeight,
-              backgroundColor: "white",
-              borderBottomWidth: 0.5,
-              borderBottomColor: "#dddddd",
-              shadowOffset: { width: 0, height: 0 },
-              shadowColor: "black",
-              shadowOpacity: 0.1,
-              elevation: 1
-            }}
-          >
-            <View
-              style={{
-                flexDirection: "row",
-                padding: 10,
-                backgroundColor: "white",
-                marginHorizontal: 20,
-                shadowOffset: { width: 0, height: 0 },
-                shadowColor: "black",
-                shadowOpacity: 0.2,
-                elevation: 1,
-                marginTop: Platform.OS == "android" ? 30 : 30
-              }}
-            >
-              <Icon name="ios-search" size={20} style={{ marginRight: 10 }} />
-              <TextInput
-                underlineColorAndroid="transparent"
-                placeholder="Search"
-                placeholderTextColor="grey"
-                style={{
-                  flex: 1,
-                  fontWeight: "700",
-                  backgroundColor: "white",
-                  borderRadius: 3
-                }}
-              />
+      <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+        <ScrollView
+          scrollEventThrottle={16}
+          showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={this._onRefresh}
+            />
+          }
+        >
+          <View style={{ flex: 1, backgroundColor: "white", paddingTop: 40 }}>
+            <Text style={styles.nameText}>Hi {this.state.userName}! </Text>
+            <Text style={styles.sectionTitle}>Browse Items By Category</Text>
+            <View style={styles.sideScroll}>
+              <ScrollView
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+              >
+                <TouchableHighlight
+                  onPress={() =>
+                    this.props.navigation.navigate("ViewCategory", {
+                      category: "Textbooks"
+                    })
+                  }
+                  underlayColor="white"
+                >
+                  <Category
+                    imageUri={require("../assets/textbooks.jpg")}
+                    name="Textbooks"
+                  />
+                </TouchableHighlight>
+                <TouchableHighlight
+                  onPress={() =>
+                    this.props.navigation.navigate("ViewCategory", {
+                      category: "Furniture"
+                    })
+                  }
+                  underlayColor="white"
+                >
+                  <Category
+                    imageUri={require("../assets/furniture.jpg")}
+                    name="Furniture"
+                  />
+                </TouchableHighlight>
+                <TouchableHighlight
+                  onPress={() =>
+                    this.props.navigation.navigate("ViewCategory", {
+                      category: "Electronics"
+                    })
+                  }
+                  underlayColor="white"
+                >
+                  <Category
+                    imageUri={require("../assets/electronics.jpg")}
+                    name="Electronics"
+                  />
+                </TouchableHighlight>
+              </ScrollView>
+            </View>
+            <View style={{ marginTop: 20 }}>
+              <Text style={styles.text}>Recently Added Items</Text>
+              <View style={styles.listingsView}>
+                {this.state.postsToRender.map(post => {
+                  return (
+                    <TouchableHighlight
+                      onPress={() => {
+                        console.log(post);
+                        this.props.navigation.navigate("ListingInfo", {
+                          userId: post.userId,
+                          timeAdded: post.timeAdded,
+                          name: post.itemName,
+                          price: post.price,
+                          seller: post.seller,
+                          category: post.category,
+                          description: post.description,
+                          phoneNumber: post.phoneNumber,
+                          email: post.email
+                        });
+                      }}
+                      underlayColor="white"
+                      key={post.timeAdded}
+                    >
+                      <Listings
+                        width={width}
+                        name={post.itemName}
+                        price={post.price}
+                        seller={post.seller}
+                        category={post.category}
+                      />
+                    </TouchableHighlight>
+                  );
+                })}
+              </View>
             </View>
           </View>
-          <ScrollView
-            scrollEventThrottle={16}
-            showsVerticalScrollIndicator={false}
-            refreshControl={
-              <RefreshControl
-                refreshing={this.state.refreshing}
-                onRefresh={this._onRefresh}
-              />
-            }
-          >
-            <View style={{ flex: 1, backgroundColor: "white", paddingTop: 20 }}>
-              <Text style={styles.sectionTitle}>Browse Items By Category</Text>
-              <View style={styles.sideScroll}>
-                <ScrollView
-                  horizontal={true}
-                  showsHorizontalScrollIndicator={false}
-                >
-                  <TouchableHighlight
-                    onPress={() =>
-                      this.props.navigation.navigate("ViewCategory", {
-                        category: "Textbooks"
-                      })
-                    }
-                    underlayColor="white"
-                  >
-                    <Category
-                      imageUri={require("../assets/textbooks.jpg")}
-                      name="Textbooks"
-                    />
-                  </TouchableHighlight>
-                  <TouchableHighlight
-                    onPress={() =>
-                      this.props.navigation.navigate("ViewCategory", {
-                        category: "Furniture"
-                      })
-                    }
-                    underlayColor="white"
-                  >
-                    <Category
-                      imageUri={require("../assets/furniture.jpg")}
-                      name="Furniture"
-                    />
-                  </TouchableHighlight>
-                  <TouchableHighlight
-                    onPress={() =>
-                      this.props.navigation.navigate("ViewCategory", {
-                        category: "Electronics"
-                      })
-                    }
-                    underlayColor="white"
-                  >
-                    <Category
-                      imageUri={require("../assets/electronics.jpg")}
-                      name="Electronics"
-                    />
-                  </TouchableHighlight>
-                </ScrollView>
-              </View>
-              <View style={{ marginTop: 20 }}>
-                <Text style={styles.text}>Recently Added Items</Text>
-                <View style={styles.listingsView}>
-                  {this.state.postsToRender.map(post => {
-                    return (
-                      <TouchableHighlight
-                        onPress={() => {
-                          console.log(post);
-                          this.props.navigation.navigate("ListingInfo", {
-                            userId: post.userId,
-                            timeAdded: post.timeAdded,
-                            name: post.itemName,
-                            price: post.price,
-                            seller: post.seller,
-                            category: post.category,
-                            description: post.description,
-                            phoneNumber: post.phoneNumber,
-                            email: post.email
-                          })
-                          }
-                        }
-                        underlayColor="white"
-                        key={post.timeAdded}
-                      >
-                        <Listings
-                          width={width}
-                          name={post.itemName}
-                          price={post.price}
-                          seller={post.seller}
-                          category={post.category}
-                        />
-                      </TouchableHighlight>
-                    );
-                  })}
-                </View>
-              </View>
-            </View>
-          </ScrollView>
-        </View>
+        </ScrollView>
       </SafeAreaView>
     );
   }
@@ -233,6 +205,13 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "700",
     paddingHorizontal: 20
+  },
+  nameText: {
+    fontSize: 32,
+    fontWeight: "700",
+    paddingHorizontal: 20,
+    paddingTop: 20,
+    paddingBottom: 30
   },
   listingsView: {
     paddingHorizontal: 20,

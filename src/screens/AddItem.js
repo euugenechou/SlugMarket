@@ -4,8 +4,8 @@ import {
   Text,
   TextInput,
   StyleSheet,
-  View,
-  Picker
+  Picker,
+  KeyboardAvoidingView
 } from "react-native";
 import { Button } from "react-native-elements";
 // AWS imports 
@@ -80,7 +80,7 @@ export default class AddItem extends React.Component {
 
   render() {
     return (
-        <View style = { styles.container }>
+        <KeyboardAvoidingView style = { styles.container } behavior="padding" keyboardVerticalOffset={-64} enabled>
           <Text style = { styles.text }> Item Name </Text>
           <TextInput
             onChangeText = { value => this.onChangeText("itemName", value) }
@@ -125,7 +125,7 @@ export default class AddItem extends React.Component {
             borderRadius = { 5 }
             containerViewStyle = { styles.buttonContainer }
           />
-        </View>
+        </KeyboardAvoidingView>
     );
   }
 }
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
   input: {
     justifyContent: "center",
     alignSelf: "center",
-    height: 30,
+    height: 40,
     color: "black",
     borderBottomWidth: 0.7,
     borderBottomColor: "darkgray",
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     width: 300
   },
   categoryText: {
-    paddingLeft: 36,
+    paddingLeft: 32,
     fontSize: 16,
     color: "black",
     fontWeight: "700",
@@ -156,11 +156,11 @@ const styles = StyleSheet.create({
     borderWidth: 3
   },
   container: {
-    flexGrow: 1,
+    flex: 1,
     backgroundColor: "white",
   },
   text: {
-    paddingLeft: 36,
+    paddingLeft: 32,
     fontSize: 16,
     color: "black",
     fontWeight: "700",

@@ -130,7 +130,9 @@ export default class Profile extends Component {
               seller: post.seller,
               category: post.category,
               description: post.description,
-              timeAdded: post.timeAdded
+              timeAdded: post.timeAdded,
+              isSold: post.isSold,
+              isRemoved: post.isRemoved
             })
           }
           underlayColor = "white"
@@ -153,13 +155,15 @@ export default class Profile extends Component {
       return (
         <TouchableHighlight
           onPress = {() =>
-            this.props.navigation.navigate("UserListingInfoScreen", {
+            this.props.navigation.navigate("SoldListingInfoScreen", {
               itemName: post.itemName,
               price: post.price,
               seller: post.seller,
               category: post.category,
               description: post.description,
-              timeAdded: post.timeAdded
+              timeAdded: post.timeAdded,
+              isSold: post.isSold,
+              isRemoved: post.isRemoved
             })
           }
           underlayColor = "white"
@@ -220,11 +224,11 @@ export default class Profile extends Component {
               </View>
             </View>
             <Text style = {styles.listingText}>
-              My Listings
+              Your Listings
             </Text>
             { this.renderUserListings() }
             <Text style = { styles.listingText }>
-              My Sold Listings
+              Your Sold Listings
             </Text>
             { this.renderUserSoldListings() }
           </View>

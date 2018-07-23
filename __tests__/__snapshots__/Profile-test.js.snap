@@ -45,7 +45,7 @@ exports[`renders correctly 1`] = `
           <Image
             source={
               Object {
-                "testUri": "../../../src/assets/darrell.png",
+                "testUri": "../../../src/assets/Slug.png",
               }
             }
             style={
@@ -55,7 +55,7 @@ exports[`renders correctly 1`] = `
                 "flex": 1,
                 "height": 150,
                 "justifyContent": "center",
-                "marginTop": 70,
+                "marginTop": 60,
                 "resizeMode": "contain",
                 "width": null,
               }
