@@ -94,7 +94,7 @@ export default class AddItem extends React.Component {
           autoCapitalize="none"
           autoCorrect={false}
         />
-        <Text style={styles.text}>Item Price (USD) </Text>
+        <Text style={styles.text}>Item Price (USD)</Text>
         <TextInput
           onChangeText={value => this.onChangeText("price", value)}
           style={styles.input}
