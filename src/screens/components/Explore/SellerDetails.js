@@ -12,9 +12,7 @@ import {
   RefreshControl
 } from "react-native";
 // AWS imports
-import {
-  API
-} from "aws-amplify";
+import { API } from "aws-amplify";
 // Local imports
 import UserListings from "../Profile/UserListings";
 
@@ -39,13 +37,9 @@ export default class SellerDetails extends React.Component {
   }
 
   _onRefresh = () => {
-    this.setState({
-      refreshing: true
-    });
+    this.setState({ refreshing: true });
     this.getPostsToRender();
-    this.setState({
-      refreshing: false
-    });
+    this.setState({ refreshing: false });
   };
 
   getPostsToRender() {
@@ -74,139 +68,75 @@ export default class SellerDetails extends React.Component {
 
   renderListings = () => {
     return this.state.postsToRender.map(post => {
-      return ( <
-        TouchableHighlight onPress = {
-          () =>
-          this.props.navigation.navigate("ListingInfo", {
-            itemName: post.itemName,
-            price: post.price,
-            seller: post.seller,
-            category: post.category,
-            description: post.description,
-            timeAdded: post.timeAdded
-          })
-        }
-        underlayColor = "white"
-        key = {
-          post.timeAdded
-        } >
-        <
-        UserListings width = {
-          width
-        }
-        name = {
-          post.itemName
-        }
-        price = {
-          post.price
-        }
-        category = {
-          post.category
-        }
-        seller = {
-          post.seller
-        }
-        /> <
-        /TouchableHighlight>
+      return (
+        <TouchableHighlight
+          onPress = { () =>
+            this.props.navigation.navigate("ListingInfo", {
+              itemName: post.itemName,
+              price: post.price,
+              seller: post.seller,
+              category: post.category,
+              description: post.description,
+              timeAdded: post.timeAdded
+            })
+          }
+          underlayColor="white"
+          key = { post.timeAdded }
+        >
+          <UserListings
+            width = { width }
+            name = { post.itemName }
+            price = { post.price }
+            category = { post.category }
+            seller = { post.seller }
+          />
+        </TouchableHighlight>
       );
     });
   };
 
   render() {
-    return ( <
-      SafeAreaView style = {
-        {
-          backgroundColor: "white",
-          flex: 1
-        }
-      } >
-      <
-      ScrollView scrollEventThrottle = {
-        16
-      }
-      showsVerticalScrollIndicator = {
-        false
-      }
-      contentContainerStyle = {
-        {
-          backgroundColor: "white"
-        }
-      }
-      refreshControl = { <
-        RefreshControl
-        refreshing = {
-          this.state.refreshing
-        }
-        onRefresh = {
-          this._onRefresh
-        }
-        />
-      } >
-      <
-      View style = {
-        {
-          backgroundColor: "white"
-        }
-      } >
-      <
-      View style = {
-        styles.topView
-      } >
-      <
-      Image source = {
-        require("../../../assets/darrell.png")
-      }
-      style = {
-        styles.image
-      }
-      /> <
-      View style = {
-        styles.midView
-      } >
-      <
-      View style = {
-        styles.botView
-      } >
-      <
-      Text style = {
-        styles.titleText
-      } > {
-        this.props.navigation.getParam("seller")
-      } <
-      /Text> <
-      Text style = {
-        styles.text
-      } > {
-        this.props.navigation.getParam("email")
-      } < /Text> <
-      Text style = {
-        styles.text
-      } > {
-        this.props.navigation.getParam("phoneNumber")
-      } < /Text> <
-      /View> <
-      /View> <
-      /View> <
-      Text style = {
-        styles.listingText
-      } > {
-        this.props.navigation.getParam("seller")
-      }
-      's Listings <
-      /Text> {
-        this.renderListings()
-      } <
-      /View> <
-      /ScrollView> <
-      /SafeAreaView>
+    return (
+      <SafeAreaView style = { { backgroundColor: "white", flex: 1 } }>
+        <ScrollView
+          scrollEventThrottle = { 16 }
+          showsVerticalScrollIndicator = { false }
+          contentContainerStyle = { { backgroundColor: "white" } }
+          refreshControl = {
+            <RefreshControl
+              refreshing = { this.state.refreshing }
+              onRefresh = { this._onRefresh }
+            />
+          }
+        >
+          <View style = { { backgroundColor: "white" } }>
+            <View style = { styles.topView }>
+              <Image
+                source = { require("../../../assets/darrell.png") }
+                style = { styles.image }
+              />
+              <View style = { styles.midView } >
+                <View style = { styles.botView }>
+                  <Text style = { styles.titleText }>
+                    { this.props.navigation.getParam("seller") }
+                  </Text>
+                  <Text style = { styles.text }> { this.props.navigation.getParam("email") } </Text>
+                  <Text style = { styles.text }> { this.props.navigation.getParam("phoneNumber") } </Text>
+                </View>
+              </View>
+            </View>
+            <Text style = { styles.listingText }>
+              { this.props.navigation.getParam("seller") }'s Listings
+            </Text>
+            { this.renderListings() }
+          </View>
+        </ScrollView>
+      </SafeAreaView>
     );
   }
 }
 
-var {
-  width,
-  height
-} = Dimensions.get("window");
+var { width, height } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   topView: {
