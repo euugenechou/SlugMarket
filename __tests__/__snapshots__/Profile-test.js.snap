@@ -1,0 +1,281 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<RCTSafeAreaView
+  style={
+    Object {
+      "backgroundColor": "white",
+      "flex": 1,
+    }
+  }
+>
+  <RCTScrollView
+    contentContainerStyle={
+      Object {
+        "backgroundColor": "white",
+      }
+    }
+    refreshControl={
+      <RefreshControlMock
+        onRefresh={[Function]}
+        refreshing={false}
+      />
+    }
+    scrollEventThrottle={16}
+    showsVerticalScrollIndicator={false}
+  >
+    <RCTRefreshControl />
+    <View>
+      <View
+        style={
+          Object {
+            "backgroundColor": "white",
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "white",
+              "flex": 1,
+              "flexDirection": "row-reverse",
+            }
+          }
+        >
+          <Image
+            source={
+              Object {
+                "testUri": "../../../src/assets/darrell.png",
+              }
+            }
+            style={
+              Object {
+                "alignItems": "center",
+                "borderRadius": 8,
+                "flex": 1,
+                "height": 150,
+                "justifyContent": "center",
+                "marginTop": 70,
+                "resizeMode": "contain",
+                "width": null,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "backgroundColor": "white",
+                "flex": 1,
+                "flexDirection": "column",
+                "paddingTop": 60,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "white",
+                  "justifyContent": "flex-start",
+                  "paddingLeft": 20,
+                }
+              }
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "fontSize": 36,
+                    "fontWeight": "600",
+                    "justifyContent": "center",
+                  }
+                }
+              >
+                
+                 
+              </Text>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "fontSize": 14,
+                    "fontWeight": "300",
+                    "justifyContent": "center",
+                    "paddingTop": 5,
+                  }
+                }
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "fontSize": 14,
+                    "fontWeight": "300",
+                    "justifyContent": "center",
+                    "paddingTop": 5,
+                  }
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "marginLeft": 15,
+                      "marginRight": 15,
+                    },
+                    Object {
+                      "shadowColor": "rgba(0,0,0, .4)",
+                      "shadowOffset": Object {
+                        "height": 1,
+                        "width": 1,
+                      },
+                      "shadowOpacity": 1,
+                      "shadowRadius": 1,
+                    },
+                    Object {
+                      "paddingTop": 10,
+                      "width": 150,
+                    },
+                    Object {
+                      "borderRadius": 5,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessible={true}
+                  isTVSelectable={true}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={null}
+                >
+                  <View
+                    pointerEvents="box-only"
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "backgroundColor": "#9E9E9E",
+                          "flexDirection": "row",
+                          "justifyContent": "center",
+                          "padding": 19,
+                        },
+                        undefined,
+                        undefined,
+                        undefined,
+                        undefined,
+                        undefined,
+                        Object {
+                          "backgroundColor": "teal",
+                        },
+                        Object {
+                          "borderRadius": 5,
+                        },
+                        Object {
+                          "padding": 12,
+                        },
+                        undefined,
+                        undefined,
+                        undefined,
+                        undefined,
+                        undefined,
+                        undefined,
+                      ]
+                    }
+                  >
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      ellipsizeMode="tail"
+                      style={
+                        Array [
+                          Object {},
+                          undefined,
+                          undefined,
+                          undefined,
+                          undefined,
+                          undefined,
+                          undefined,
+                          undefined,
+                          undefined,
+                          undefined,
+                          Array [
+                            Object {
+                              "color": "white",
+                              "fontSize": 20,
+                            },
+                            Object {
+                              "color": "white",
+                            },
+                            Object {
+                              "fontSize": 17.5,
+                            },
+                            undefined,
+                            undefined,
+                            Object {
+                              "fontWeight": "bold",
+                            },
+                            undefined,
+                            undefined,
+                          ],
+                        ]
+                      }
+                    >
+                      Sell Item
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "fontSize": 24,
+              "fontWeight": "700",
+              "marginBottom": 20,
+              "marginTop": 20,
+              "paddingHorizontal": 20,
+            }
+          }
+        >
+          My Listings
+        </Text>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "fontSize": 24,
+              "fontWeight": "700",
+              "marginBottom": 20,
+              "marginTop": 20,
+              "paddingHorizontal": 20,
+            }
+          }
+        >
+          My Sold Listings
+        </Text>
+      </View>
+    </View>
+  </RCTScrollView>
+</RCTSafeAreaView>
+`;

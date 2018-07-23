@@ -1,0 +1,447 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<RCTSafeAreaView
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "white",
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "white",
+          "borderBottomColor": "#dddddd",
+          "borderBottomWidth": 0.5,
+          "elevation": 1,
+          "height": 90,
+          "shadowColor": "black",
+          "shadowOffset": Object {
+            "height": 0,
+            "width": 0,
+          },
+          "shadowOpacity": 0.1,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "white",
+            "elevation": 1,
+            "flexDirection": "row",
+            "marginHorizontal": 20,
+            "marginTop": 30,
+            "padding": 10,
+            "shadowColor": "black",
+            "shadowOffset": Object {
+              "height": 0,
+              "width": 0,
+            },
+            "shadowOpacity": 0.2,
+          }
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={false}
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {
+                "color": undefined,
+                "fontSize": 20,
+              },
+              Object {
+                "marginRight": 10,
+              },
+              Object {
+                "fontFamily": "Ionicons",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+            ]
+          }
+        >
+          
+        </Text>
+        <TextInput
+          allowFontScaling={true}
+          placeholder="Search"
+          placeholderTextColor="grey"
+          style={
+            Object {
+              "backgroundColor": "white",
+              "borderRadius": 3,
+              "flex": 1,
+              "fontWeight": "700",
+            }
+          }
+          underlineColorAndroid="transparent"
+        />
+      </View>
+    </View>
+    <RCTScrollView
+      refreshControl={
+        <RefreshControlMock
+          onRefresh={[Function]}
+          refreshing={false}
+        />
+      }
+      scrollEventThrottle={16}
+      showsVerticalScrollIndicator={false}
+    >
+      <RCTRefreshControl />
+      <View>
+        <View
+          style={
+            Object {
+              "backgroundColor": "white",
+              "flex": 1,
+              "paddingTop": 20,
+            }
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "fontSize": 24,
+                "fontWeight": "700",
+                "paddingHorizontal": 20,
+              }
+            }
+          >
+            Browse Items By Category
+          </Text>
+          <View
+            style={
+              Object {
+                "height": 130,
+                "marginTop": 20,
+              }
+            }
+          >
+            <RCTScrollView
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+            >
+              <View>
+                <View
+                  accessible={true}
+                  isTVSelectable={true}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={null}
+                >
+                  <View
+                    style={
+                      Object {
+                        "backgroundColor": "white",
+                        "borderColor": "#dddddd",
+                        "borderRadius": 3,
+                        "borderWidth": 1,
+                        "elevation": 1,
+                        "height": 120,
+                        "marginLeft": 20,
+                        "shadowColor": "black",
+                        "shadowOffset": Object {
+                          "height": 0,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.2,
+                        "width": 130,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        Object {
+                          "flex": 2,
+                        }
+                      }
+                    >
+                      <Image
+                        source={
+                          Object {
+                            "testUri": "../../../src/assets/textbooks.jpg",
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 3,
+                            "borderWidth": 0.1,
+                            "flex": 1,
+                            "height": null,
+                            "resizeMode": "cover",
+                            "shadowColor": "black",
+                            "shadowOffset": Object {
+                              "height": 0,
+                              "width": 0,
+                            },
+                            "shadowOpacity": 0.2,
+                            "width": null,
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      style={
+                        Object {
+                          "alignItems": "center",
+                          "flex": 1,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        ellipsizeMode="tail"
+                        style={
+                          Object {
+                            "fontWeight": "600",
+                          }
+                        }
+                      >
+                         
+                        Textbooks
+                         
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  accessible={true}
+                  isTVSelectable={true}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={null}
+                >
+                  <View
+                    style={
+                      Object {
+                        "backgroundColor": "white",
+                        "borderColor": "#dddddd",
+                        "borderRadius": 3,
+                        "borderWidth": 1,
+                        "elevation": 1,
+                        "height": 120,
+                        "marginLeft": 20,
+                        "shadowColor": "black",
+                        "shadowOffset": Object {
+                          "height": 0,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.2,
+                        "width": 130,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        Object {
+                          "flex": 2,
+                        }
+                      }
+                    >
+                      <Image
+                        source={
+                          Object {
+                            "testUri": "../../../src/assets/furniture.jpg",
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 3,
+                            "borderWidth": 0.1,
+                            "flex": 1,
+                            "height": null,
+                            "resizeMode": "cover",
+                            "shadowColor": "black",
+                            "shadowOffset": Object {
+                              "height": 0,
+                              "width": 0,
+                            },
+                            "shadowOpacity": 0.2,
+                            "width": null,
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      style={
+                        Object {
+                          "alignItems": "center",
+                          "flex": 1,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        ellipsizeMode="tail"
+                        style={
+                          Object {
+                            "fontWeight": "600",
+                          }
+                        }
+                      >
+                         
+                        Furniture
+                         
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  accessible={true}
+                  isTVSelectable={true}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={null}
+                >
+                  <View
+                    style={
+                      Object {
+                        "backgroundColor": "white",
+                        "borderColor": "#dddddd",
+                        "borderRadius": 3,
+                        "borderWidth": 1,
+                        "elevation": 1,
+                        "height": 120,
+                        "marginLeft": 20,
+                        "shadowColor": "black",
+                        "shadowOffset": Object {
+                          "height": 0,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.2,
+                        "width": 130,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        Object {
+                          "flex": 2,
+                        }
+                      }
+                    >
+                      <Image
+                        source={
+                          Object {
+                            "testUri": "../../../src/assets/electronics.jpg",
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 3,
+                            "borderWidth": 0.1,
+                            "flex": 1,
+                            "height": null,
+                            "resizeMode": "cover",
+                            "shadowColor": "black",
+                            "shadowOffset": Object {
+                              "height": 0,
+                              "width": 0,
+                            },
+                            "shadowOpacity": 0.2,
+                            "width": null,
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      style={
+                        Object {
+                          "alignItems": "center",
+                          "flex": 1,
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        ellipsizeMode="tail"
+                        style={
+                          Object {
+                            "fontWeight": "600",
+                          }
+                        }
+                      >
+                         
+                        Electronics
+                         
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </RCTScrollView>
+          </View>
+          <View
+            style={
+              Object {
+                "marginTop": 20,
+              }
+            }
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "fontSize": 24,
+                  "fontWeight": "700",
+                  "paddingHorizontal": 20,
+                }
+              }
+            >
+              Recently Added Items
+            </Text>
+            <View
+              style={
+                Object {
+                  "flexDirection": "column",
+                  "flexWrap": "wrap",
+                  "justifyContent": "space-evenly",
+                  "marginBottom": 20,
+                  "paddingHorizontal": 20,
+                  "paddingVertical": 20,
+                }
+              }
+            />
+          </View>
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>
+</RCTSafeAreaView>
+`;

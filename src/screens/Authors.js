@@ -2,7 +2,6 @@
 import React from "react";
 import { StyleSheet, ScrollView, View, Text } from "react-native";
 import Hyperlink from "react-native-hyperlink";
-import { Button } from "native-base";
 
 export default class Authors extends React.Component {
   static navigationOptions = ({ navigation }) => ({
