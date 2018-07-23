@@ -1,9 +1,8 @@
-/* React imports */
+// React imports
 import React, { Component } from 'react';
 import { StyleSheet, ImageBackground } from 'react-native';
 
-/* Local imports */
-import Login from './login/Login';
+// Local imports
 import { YellowBox } from 'react-native'
 YellowBox.ignoreWarnings([
 	'Encountered an error loading page',    // WebView uri: result.url and url failing to load - "bloomberg suneq" https://github.com/facebook/react-native/issues/7839#issuecomment-224111608
