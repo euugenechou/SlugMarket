@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 
-class Listings extends Component {
+export default class Listings extends Component {
   render() {
     return (
       <View
@@ -47,8 +47,6 @@ class Listings extends Component {
     );
   }
 }
-
-export default Listings;
 
 const styles = StyleSheet.create({
   image: {

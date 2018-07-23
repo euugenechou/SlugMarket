@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { Button } from "react-native-elements";
 
-class Listings extends Component {
+export default class Listings extends Component {
   static navigationOptions = () => ({
     headerTintColor: "white",
     headerStyle: {
@@ -56,8 +56,6 @@ class Listings extends Component {
     );
   }
 }
-
-export default Listings;
 
 const styles = StyleSheet.create({
   text: {

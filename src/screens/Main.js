@@ -4,8 +4,8 @@ import {
   createBottomTabNavigator,
   createStackNavigator
 } from "react-navigation";
+// Import for Icon
 import Icon from "react-native-vector-icons/Ionicons";
-
 // Imports for Explore
 import Explore from "./Explore";
 import ItemCategory from "./components/Explore/ItemCategory";
@@ -25,6 +25,9 @@ import SignIn from "./login/SignIn";
 import Authors from "./Authors";
 
 export default class Main extends React.Component {
+  componentWillMount() {
+
+  }
   render() {
     return <BottomTabNavigator />;
   }

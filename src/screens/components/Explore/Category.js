@@ -2,7 +2,8 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 
-class Category extends Component {
+
+export default class Category extends Component {
   render() {
     return (
       <View style = { styles.container }>
@@ -19,8 +20,6 @@ class Category extends Component {
     );
   }
 }
-
-export default Category;
 
 const styles = StyleSheet.create({
   text: {

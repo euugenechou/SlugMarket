@@ -18,7 +18,7 @@ import { API } from "aws-amplify";
 
 const { height, width } = Dimensions.get("window");
 
-class ItemCategory extends Component {
+export default class ItemCategory extends Component {
   state = {
     postsToRender: [],
     category: this.props.navigation.getParam("category"),
@@ -127,8 +127,6 @@ class ItemCategory extends Component {
     );
   }
 }
-
-export default ItemCategory;
 
 const styles = StyleSheet.create({
   container: {

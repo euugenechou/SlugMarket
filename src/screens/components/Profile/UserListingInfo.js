@@ -12,7 +12,7 @@ import { Button } from "react-native-elements";
 // AWS imports 
 import { API, Auth } from "aws-amplify";
 
-class UserListingsInfo extends Component {
+export default class UserListingsInfo extends Component {
   state = {
     userId: "",
     timeAdded: this.props.navigation.getParam("timeAdded"),
@@ -172,8 +172,6 @@ class UserListingsInfo extends Component {
     );
   }
 }
-
-export default UserListingsInfo;
 
 const styles = StyleSheet.create({
   text: {
