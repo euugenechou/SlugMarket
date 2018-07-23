@@ -5,8 +5,6 @@ import {
   TextInput,
   StyleSheet,
   View,
-  ScrollView,
-  Alert,
   Picker
 } from "react-native";
 import { Button } from "react-native-elements";
@@ -14,7 +12,7 @@ import { Button } from "react-native-elements";
 import { API, Auth } from "aws-amplify";
 
 export default class AddItem extends React.Component {
-  static navigationOptions = () => ({
+  static navigationOptions = ({ navigation }) => ({
     headerTintColor: "teal",
     headerStyle: {
       height: 40,

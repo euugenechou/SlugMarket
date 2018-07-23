@@ -78,13 +78,6 @@ export default class Settings extends Component {
               headerStyle={styles.header}
             />
             <SettingsList.Item
-              title="View/Edit Profile"
-              titleStyle={styles.item}
-              hasNavArrow={true}
-              arrowStyle={{ tintColor: "teal" }}
-              onPress={() => this.props.navigation.navigate("TermsScreen")}
-            />
-            <SettingsList.Item
               title="Terms of Service"
               titleStyle={styles.item}
               hasNavArrow={true}
