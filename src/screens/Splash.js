@@ -1,27 +1,28 @@
 // React imports
 import React, { Component } from "react";
-import { StyleSheet, ImageBackground } from "react-native";
+import { StyleSheet, Image, View } from "react-native";
 
 export default class Splash extends Component {
   render() {
     return (
-      <ImageBackground
-        source={require("../assets/SplashScreeniOS.png")}
-        style={styles.container}
-      />
+      <View style = { styles.container }>
+        <Image 
+					source = {require("../assets/Slug.png")}
+					style = { styles.image } />
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  image: {
+    flex: 1,
+    alignSelf: "center",
+    resizeMode: "contain",
+    aspectRatio: 0.15
+  },
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  title: {
-    fontWeight: "bold",
-    fontSize: 18,
-    color: "white"
+    backgroundColor: "teal"
   }
 });

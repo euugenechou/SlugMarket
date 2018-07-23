@@ -112,7 +112,7 @@ export default class SellerDetails extends React.Component {
           <View style = { { backgroundColor: "white" } }>
             <View style = { styles.topView }>
               <Image
-                source = { require("../../../assets/darrell.png") }
+                source = { require("../../../assets/Slug.png") }
                 style = { styles.image }
               />
               <View style = { styles.midView } >
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     height: 150,
     resizeMode: "contain",
     borderRadius: 8,
-    flex: 1
+    flex: 1,
   },
   midView: {
     backgroundColor: "white",

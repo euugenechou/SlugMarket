@@ -194,7 +194,7 @@ export default class Profile extends Component {
           <View style = {{ backgroundColor: "white" }}>
             <View style = { styles.outerContainer }>
               <Image
-                source = { require("../assets/darrell.png") }
+                source = { require("../assets/Slug.png") }
                 style = { styles.image }
               />
               <View style = { styles.columnContainer }>
@@ -255,7 +255,7 @@ const styles = StyleSheet.create({
   image: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 70,
+    marginTop: 60,
     width: null,
     height: 150,
     resizeMode: "contain",

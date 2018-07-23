@@ -181,7 +181,8 @@ export default class Explore extends Component {
                   {this.state.postsToRender.map(post => {
                     return (
                       <TouchableHighlight
-                        onPress={() =>
+                        onPress={() => {
+                          console.log(post);
                           this.props.navigation.navigate("ListingInfo", {
                             userId: post.userId,
                             timeAdded: post.timeAdded,
@@ -191,8 +192,9 @@ export default class Explore extends Component {
                             category: post.category,
                             description: post.description,
                             phoneNumber: post.phoneNumber,
-                            email: post.username
+                            email: post.email
                           })
+                          }
                         }
                         underlayColor="white"
                         key={post.timeAdded}
