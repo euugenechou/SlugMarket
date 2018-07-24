@@ -5,7 +5,9 @@ import {
   StyleSheet,
   View,
   Text,
-  ScrollView
+  ScrollView,
+  Keyboard,
+  TouchableWithoutFeedback
 } from "react-native";
 // AWS imports 
 import { Auth } from "aws-amplify";
@@ -54,60 +56,62 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <View style = { {flex: 1} }>
-        <TopAlert
-          visible = { this.state.visible }
-          message = { this.state.errorMessage }
-        />
-        <ScrollView
-          contentContainerStyle = { styles.container }
-          centerContent = { true }
-        >
-          <Text style = { styles.titleText }> SlugMarket </Text>
-          <TextInput
-            onChangeText = { value => this.onChangeText("username", value) }
-            style = { styles.input }
-            keyboardType = "email-address"
-            placeholder = "UCSC email"
-            placeholderTextColor = "gray"
-            autoCapitalize = "none"
-            autoCorrect = { false }
+      <TouchableWithoutFeedback onPress = { Keyboard.dismiss } accessible = { false }>
+        <View style = { {flex: 1} }>
+          <TopAlert
+            visible = { this.state.visible }
+            message = { this.state.errorMessage }
           />
-          <TextInput
-            onChangeText = { value => this.onChangeText("password", value) }
-            style = { styles.input }
-            keyboardType = "default"
-            secureTextEntry = { true }
-            placeholder = "password"
-            placeholderTextColor = "gray"
-            autoCapitalize = "none"
-            autoCorrect = { false }
-          />
-          <Button
-            raised
-            color = 'white'
-            title = "Sign In"
-            fontWeight = "bold"
-            onPress = { () => this.signIn() }
-            backgroundColor = "teal"
-            borderRadius = { 5 }
-            containerViewStyle = { {width: 300, paddingVertical: 20} }
+          <ScrollView
+            contentContainerStyle = { styles.container }
+            centerContent = { true }
+          >
+            <Text style = { styles.titleText }> SlugMarket </Text>
+            <TextInput
+              onChangeText = { value => this.onChangeText("username", value) }
+              style = { styles.input }
+              keyboardType = "email-address"
+              placeholder = "UCSC email"
+              placeholderTextColor = "gray"
+              autoCapitalize = "none"
+              autoCorrect = { false }
             />
-          <Button
-            raised
-            color = "white"
-            title = "Sign Up"
-            fontWeight = "bold"
-            backgroundColor = "teal"
-            borderRadius = { 5 }
-            containerViewStyle = { {width: 300} }
-            onPress = { () => {
-              this.setState({ visible: false });
-              this.props.navigation.navigate("SignUpScreen");
-            }}
-          />
-        </ScrollView>
-      </View>
+            <TextInput
+              onChangeText = { value => this.onChangeText("password", value) }
+              style = { styles.input }
+              keyboardType = "default"
+              secureTextEntry = { true }
+              placeholder = "password"
+              placeholderTextColor = "gray"
+              autoCapitalize = "none"
+              autoCorrect = { false }
+            />
+            <Button
+              raised
+              color = 'white'
+              title = "Sign In"
+              fontWeight = "bold"
+              onPress = { () => this.signIn() }
+              backgroundColor = "teal"
+              borderRadius = { 5 }
+              containerViewStyle = { {width: 300, paddingVertical: 20} }
+              />
+            <Button
+              raised
+              color = "white"
+              title = "Sign Up"
+              fontWeight = "bold"
+              backgroundColor = "teal"
+              borderRadius = { 5 }
+              containerViewStyle = { {width: 300} }
+              onPress = { () => {
+                this.setState({ visible: false });
+                this.props.navigation.navigate("SignUpScreen");
+              }}
+            />
+          </ScrollView>
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 }

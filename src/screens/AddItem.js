@@ -5,7 +5,9 @@ import {
   TextInput,
   StyleSheet,
   Picker,
-  KeyboardAvoidingView
+  Keyboard,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback
 } from "react-native";
 import { Button } from "react-native-elements";
 // AWS imports 
@@ -80,7 +82,8 @@ export default class AddItem extends React.Component {
 
   render() {
     return (
-        <KeyboardAvoidingView style = { styles.container } behavior="padding" keyboardVerticalOffset={-64} enabled>
+      <TouchableWithoutFeedback onPress = { Keyboard.dismiss } accessible = { false }>
+        <KeyboardAvoidingView style = { styles.container } behavior="padding" enabled>
           <Text style = { styles.text }> Item Name </Text>
           <TextInput
             onChangeText = { value => this.onChangeText("itemName", value) }
@@ -91,6 +94,7 @@ export default class AddItem extends React.Component {
           <Text style = { styles.text }> Item Price (USD) </Text>
           <TextInput
             onChangeText = { value => this.onChangeText("price", value) }
+            keyboardType = "number-pad"
             style = { styles.input }
             autoCapitalize = "none"
             autoCorrect = { false }
@@ -126,6 +130,7 @@ export default class AddItem extends React.Component {
             containerViewStyle = { styles.buttonContainer }
           />
         </KeyboardAvoidingView>
+      </TouchableWithoutFeedback>
     );
   }
 }
@@ -143,7 +148,7 @@ const styles = StyleSheet.create({
   },
   categoryText: {
     paddingLeft: 32,
-    fontSize: 16,
+    fontSize: 20,
     color: "black",
     fontWeight: "700",
     textAlign: "left",
@@ -157,11 +162,12 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    paddingTop: 30,
     backgroundColor: "white",
   },
   text: {
     paddingLeft: 32,
-    fontSize: 16,
+    fontSize: 20,
     color: "black",
     fontWeight: "700",
     textAlign: "left",

@@ -47,7 +47,6 @@ export default class Profile extends Component {
     this.getUserPosts();
     this.getUserSoldPosts();
     this.getUserInfo();
-    console.log(this.state.postsToRender);
   }
 
   // For getting user posts
@@ -60,7 +59,6 @@ export default class Profile extends Component {
     };
     API.get(apiName, path, headers)
       .then(response => {
-        console.log(response);
         response.data.sort((a, b) => {
           return new Date(b.timeAdded) - new Date(a.timeAdded);
         })
@@ -70,7 +68,7 @@ export default class Profile extends Component {
           })
         });
       })
-      .catch(error => console.log(error.response));
+      .catch(() => Alert.alert("error getting user posts"));
   }
 
   // For getting user sold posts
@@ -83,7 +81,6 @@ export default class Profile extends Component {
     };
     API.get(apiName, path, headers)
       .then(response => {
-        console.log(response);
         response.data.sort((a, b) => {
           return new Date(b.timeAdded) - new Date(a.timeAdded);
         })
@@ -93,7 +90,7 @@ export default class Profile extends Component {
           })
         });
       })
-      .catch(error => console.log(error.response));
+      .catch(() => Alert.alert("error getting user sold posts"));
   }
 
   segmentClicked = index => {
@@ -107,9 +104,8 @@ export default class Profile extends Component {
       .then(res => {
         this.setState({ userAttributes: res.attributes });
         this.setState({ userName: res.attributes.name });
-        console.log(res);
       })
-      .catch(err => console.log(err));
+      .catch(() => Alert.alert("error getting user info"));
   }
 
   _onRefresh = () => {

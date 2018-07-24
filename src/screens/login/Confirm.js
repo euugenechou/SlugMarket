@@ -1,6 +1,13 @@
 // React imports 
 import React from "react";
-import { Text, TextInput, StyleSheet, View, Alert } from "react-native";
+import {
+  Text,
+  TextInput,
+  StyleSheet,
+  View,
+  Keyboard,
+  TouchableWithoutFeedback
+} from "react-native";
 import Icon from "react-native-vector-icons/Entypo";
 import { Button } from "react-native-elements";
 // AWS imports 
@@ -45,41 +52,43 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <View style = { styles.container }>
-        <TopAlert
-          visible = { this.state.visible }
-          message = { this.state.errorMessage }
-        />
-        <Icon
-          name = "chevron-small-left"
-          size = { 45 }
-          color = "teal"
-          style = { {paddingVertical: 30} }
-          onPress = { () => this.props.navigation.navigate("SignUpScreen") }
-        />
-        <View style = { styles.innerContainer }>
-          <Text style = { styles.text }> Confirmation Code </Text>
-          <TextInput
-            onChangeText = { value => this.onChangeText("confirmationCode", value) }
-            style = { styles.input }
-            keyboardType = "number-pad"
-            placeholder = "e.g.: 123456"
-            placeholderTextColor = "gray"
-            autoCapitalize = "none"
-            autoCorrect = {false}
+      <TouchableWithoutFeedback onPress = { Keyboard.dismiss } accessible = { false }>
+        <View style = { styles.container }>
+          <TopAlert
+            visible = { this.state.visible }
+            message = { this.state.errorMessage }
           />
-          <Button
-            raised
-            color = "white"
-            title = "Confirm Sign Up"
-            fontWeight = "bold"
-            backgroundColor = "teal"
-            borderRadius = { 5 }
-            containerViewStyle = { styles.buttonContainer }
-            onPress={ () => this.confirmSignUp() }
+          <Icon
+            name = "chevron-small-left"
+            size = { 45 }
+            color = "teal"
+            style = { {paddingVertical: 30} }
+            onPress = { () => this.props.navigation.navigate("SignUpScreen") }
           />
+          <View style = { styles.innerContainer }>
+            <Text style = { styles.text }> Confirmation Code </Text>
+            <TextInput
+              onChangeText = { value => this.onChangeText("confirmationCode", value) }
+              style = { styles.input }
+              keyboardType = "number-pad"
+              placeholder = "e.g.: 123456"
+              placeholderTextColor = "gray"
+              autoCapitalize = "none"
+              autoCorrect = {false}
+            />
+            <Button
+              raised
+              color = "white"
+              title = "Confirm Sign Up"
+              fontWeight = "bold"
+              backgroundColor = "teal"
+              borderRadius = { 5 }
+              containerViewStyle = { styles.buttonContainer }
+              onPress={ () => this.confirmSignUp() }
+            />
+          </View>
         </View>
-      </View>
+      </TouchableWithoutFeedback>
     );
   }
 }
@@ -111,7 +120,7 @@ const styles = StyleSheet.create({
     alignSelf: "center"
   },
   text: {
-    paddingLeft: 36,
+    paddingLeft: 32,
     fontSize: 20,
     color: "black",
     fontWeight: "700",

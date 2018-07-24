@@ -5,8 +5,9 @@ import {
   StyleSheet,
   Text,
   View,
-  Alert,
-  ScrollView
+  ScrollView,
+  Keyboard,
+  TouchableWithoutFeedback
 } from "react-native";
 import Icon from "react-native-vector-icons/Entypo";
 import { Button } from "react-native-elements";
@@ -62,69 +63,71 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <ScrollView centerContent={true} contentContainerStyle={styles.container}>
-        <TopAlert
-          visible = { this.state.visible }
-          message = { this.state.errorMessage }
-        />
-        <Icon
-          name = "chevron-small-left"
-          size = { 45 }
-          color = "teal"
-          style = { {paddingVertical: 10} }
-          onPress = { () => this.props.navigation.navigate("SignInScreen") }
-        />
-        <View style = { styles.container }>
-          <Text style = { styles.text }> First Name </Text>
-          <TextInput
-            onChangeText = { value => this.onChangeText("name", value) }
-            style = { styles.input }
-            placeholder = "e.g.: Sammy"
-            placeholderTextColor = "gray"
-            autoCapitalize = "none"
-            autoCorrect = { false }
+      <TouchableWithoutFeedback onPress = { Keyboard.dismiss } accessible = { false }>
+        <ScrollView centerContent={true} contentContainerStyle={styles.container}>
+          <TopAlert
+            visible = { this.state.visible }
+            message = { this.state.errorMessage }
           />
-          <Text style = { styles.text }> Password </Text>
-          <TextInput
-            onChangeText = { value => this.onChangeText("password", value) }
-            style = { styles.input }
-            secureTextEntry = { true }
-            placeholder=  "e.g.: Slug6969"
-            placeholderTextColor = "gray"
-            autoCapitalize = "none"
-            autoCorrect = { false }
+          <Icon
+            name = "chevron-small-left"
+            size = { 45 }
+            color = "teal"
+            style = { {paddingVertical: 10} }
+            onPress = { () => this.props.navigation.navigate("SignInScreen") }
           />
-          <Text style = { styles.text }> Phone Number </Text>
-          <TextInput
-            onChangeText = { value => this.onChangeText("phone_number", value) }
-            style = { styles.input }
-            placeholder = "e.g.: +15101234567"
-            placeholderTextColor = "gray"
-            autoCapitalize = "none"
-            autoCorrect = { false }
-          />
-          <Text style = { styles.text }> UCSC Email </Text>
-          <TextInput
-            onChangeText = { value => this.onChangeText("email", value) }
-            style = { styles.input }
-            placeholder = "e.g.: sammyslug@ucsc.edu"
-            placeholderTextColor = "gray"
-            keyboardType = "email-address"
-            autoCapitalize = "none"
-            autoCorrect = {false}
-          />
-          <Button
-            raised
-            color = "white"
-            title = "Sign Up"
-            fontWeight = "bold"
-            backgroundColor = "teal"
-            borderRadius = { 5 }
-            containerViewStyle = { styles.buttonContainer }
-            onPress = { () => this.signUp() }
-          />
-        </View>
-      </ScrollView>
+          <View style = { styles.container }>
+            <Text style = { styles.text }> First Name </Text>
+            <TextInput
+              onChangeText = { value => this.onChangeText("name", value) }
+              style = { styles.input }
+              placeholder = "e.g.: Sammy"
+              placeholderTextColor = "gray"
+              autoCapitalize = "none"
+              autoCorrect = { false }
+            />
+            <Text style = { styles.text }> Password </Text>
+            <TextInput
+              onChangeText = { value => this.onChangeText("password", value) }
+              style = { styles.input }
+              secureTextEntry = { true }
+              placeholder=  "e.g.: Slug6969"
+              placeholderTextColor = "gray"
+              autoCapitalize = "none"
+              autoCorrect = { false }
+            />
+            <Text style = { styles.text }> Phone Number </Text>
+            <TextInput
+              onChangeText = { value => this.onChangeText("phone_number", value) }
+              style = { styles.input }
+              placeholder = "e.g.: +15101234567"
+              placeholderTextColor = "gray"
+              autoCapitalize = "none"
+              autoCorrect = { false }
+            />
+            <Text style = { styles.text }> UCSC Email </Text>
+            <TextInput
+              onChangeText = { value => this.onChangeText("email", value) }
+              style = { styles.input }
+              placeholder = "e.g.: sammyslug@ucsc.edu"
+              placeholderTextColor = "gray"
+              keyboardType = "email-address"
+              autoCapitalize = "none"
+              autoCorrect = {false}
+            />
+            <Button
+              raised
+              color = "white"
+              title = "Sign Up"
+              fontWeight = "bold"
+              backgroundColor = "teal"
+              borderRadius = { 5 }
+              containerViewStyle = { styles.buttonContainer }
+              onPress = { () => this.signUp() }
+            />
+          </View>
+        </ScrollView>
+      </TouchableWithoutFeedback>
     );
   }
 }
@@ -151,7 +154,7 @@ const styles = StyleSheet.create({
     alignSelf: "center"
   },
   text: {
-    paddingLeft: 36,
+    paddingLeft: 32,
     fontSize: 20,
     color: "black",
     fontWeight: "700",

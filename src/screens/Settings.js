@@ -40,15 +40,13 @@ export default class Settings extends Component {
       .then(res => {
         this.setState({ userAttributes: res.attributes });
         this.setState({ userName: res.username });
-        console.log(res);
       })
-      .catch(err => console.log(err));
+      .catch(() => Alert.alert("error getting user info"));
   }
 
   componentWillMount() {
     this.startHeaderHeight = 60;
     this.getUserInfo();
-    console.log(this.state.postsToRender);
   }
 
   onValueChange(value) {
@@ -60,10 +58,7 @@ export default class Settings extends Component {
 			.then(() => {
 				this.props.navigation.popToTop()
 			})
-			.catch(error => {
-				console.log(error);
-				Alert.alert("Logout error occured. Please try again")
-			})
+			.catch(() => Alert.alert("Logout error occured. Please try again"))
 	}
 
   render() {

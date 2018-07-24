@@ -4,7 +4,7 @@ import {
   View,
   Text,
   SafeAreaView,
-  TextInput,
+  Alert,
   Platform,
   StatusBar,
   ScrollView,
@@ -42,7 +42,6 @@ export default class Explore extends Component {
     }
     this.getRecentPosts();
     this.getUserInfo();
-    console.log(this.state.postsToRender);
   }
 
   _onRefresh = () => {
@@ -64,7 +63,6 @@ export default class Explore extends Component {
     };
     API.get(apiName, path, headers)
       .then(response => {
-        console.log(response);
         const sorted = response.data.sort((a, b) => {
           return new Date(b.timeAdded) - new Date(a.timeAdded);
         });
@@ -74,7 +72,7 @@ export default class Explore extends Component {
           })
         });
       })
-      .catch(error => console.log(error.response));
+      .catch(() => Alert.alert("error getting recent posts"));
   }
 
   getUserInfo() {
@@ -84,7 +82,7 @@ export default class Explore extends Component {
         this.setState({ userName: res.attributes.name });
         console.log(res);
       })
-      .catch(err => console.log(err));
+      .catch(() => Alert.alert("error getting user info"));
   }
 
   render() {
