@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "white",
+      "borderColor": "#dddddd",
+      "borderRadius": 3,
+      "borderWidth": 1,
+      "elevation": 1,
+      "flexDirection": "row",
+      "height": NaN,
+      "marginBottom": 20,
+      "marginLeft": 20,
+      "shadowColor": "black",
+      "shadowOffset": Object {
+        "height": 0,
+        "width": 0,
+      },
+      "shadowOpacity": 0.1,
+      "width": NaN,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 2,
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/assets/textbooks.jpg",
+        }
+      }
+      style={
+        Object {
+          "borderRadius": 3,
+          "flex": 2,
+          "height": null,
+          "resizeMode": "cover",
+          "width": null,
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "alignItems": "center",
+          "fontSize": 14,
+          "fontWeight": "bold",
+          "justifyContent": "center",
+          "paddingHorizontal": 10,
+        }
+      }
+    />
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "alignItems": "center",
+          "fontSize": 12,
+          "justifyContent": "center",
+          "paddingTop": 5,
+        }
+      }
+    />
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "alignItems": "center",
+          "fontSize": 12,
+          "justifyContent": "center",
+          "paddingTop": 5,
+        }
+      }
+    >
+      $
+    </Text>
+  </View>
+</View>
+`;
