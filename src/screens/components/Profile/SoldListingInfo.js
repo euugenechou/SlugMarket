@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { Button } from "react-native-elements";
 
-import { API, Auth } from "aws-amplify"
+import { API, Auth } from "aws-amplify";
 
 export default class SoldListingsInfo extends Component {
   static navigationOptions = () => ({
@@ -16,10 +16,10 @@ export default class SoldListingsInfo extends Component {
     },
     headerBackground: (
       <Image
-        style = { styles.wrapper }
-        source = { require("../../../assets/textbooks.jpg") }
+        style={styles.wrapper}
+        source={require("../../../assets/textbooks.jpg")}
       />
-    ),
+    )
   });
 
   state = {
@@ -63,28 +63,28 @@ export default class SoldListingsInfo extends Component {
 
   render() {
     return (
-      <View style = { styles.container }>
-        <Text style = { styles.titleText }>
-          { this.props.navigation.getParam("itemName") }
+      <View style={styles.container}>
+        <Text style={styles.titleText}>
+          {this.props.navigation.getParam("itemName")}
         </Text>
-        <Text style = { styles.text }>
-          ${ this.props.navigation.getParam("price") }
+        <Text style={styles.text}>
+          ${this.props.navigation.getParam("price")}
         </Text>
-        <Text style = { styles.text }>
-          { this.props.navigation.getParam("category") }
+        <Text style={styles.text}>
+          {this.props.navigation.getParam("category")}
         </Text>
-        <Text style = { styles.text }>
-          { this.props.navigation.getParam("description") }
+        <Text style={styles.text}>
+          {this.props.navigation.getParam("description")}
         </Text>
         <Button
-            color = "white"
-            backgroundColor = "red"
-            borderRadius = { 5 }
-            fontWeight = "bold"
-            onPress = { () => this.deletePost() }
-            title = "Delete Item"
-            containerViewStyle = { styles.buttonContainer }
-          />
+          color="white"
+          backgroundColor="red"
+          borderRadius={5}
+          fontWeight="bold"
+          onPress={() => this.deletePost()}
+          title="Delete Item"
+          containerViewStyle={styles.buttonContainer}
+        />
       </View>
     );
   }
@@ -95,15 +95,15 @@ const styles = StyleSheet.create({
     fontSize: 22,
     color: "black",
     fontWeight: "400",
-    alignSelf: 'center',
+    alignSelf: "center",
     paddingBottom: 10,
-    paddingHorizontal: 30,
+    paddingHorizontal: 30
   },
   titleText: {
     fontSize: 30,
     color: "black",
     fontWeight: "800",
-    alignSelf: 'center',
+    alignSelf: "center",
     paddingBottom: 10,
     marginTop: 100
   },
@@ -120,6 +120,6 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     ...StyleSheet.absoluteFillObject,
-    marginTop: 20,
-  },
+    marginTop: 20
+  }
 });

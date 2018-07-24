@@ -9,11 +9,11 @@ import {
   Keyboard,
   TouchableWithoutFeedback
 } from "react-native";
-// AWS imports 
+// AWS imports
 import { Auth } from "aws-amplify";
 // Local imports
 import TopAlert from "../components/TopAlert";
-import { Button } from 'react-native-elements'
+import { Button } from "react-native-elements";
 
 export default class App extends React.Component {
   static navigationOptions = ({ navigation }) => ({
@@ -56,55 +56,55 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <TouchableWithoutFeedback onPress = { Keyboard.dismiss } accessible = { false }>
-        <View style = { {flex: 1} }>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+        <View style={{ flex: 1 }}>
           <TopAlert
-            visible = { this.state.visible }
-            message = { this.state.errorMessage }
+            visible={this.state.visible}
+            message={this.state.errorMessage}
           />
           <ScrollView
-            contentContainerStyle = { styles.container }
-            centerContent = { true }
+            contentContainerStyle={styles.container}
+            centerContent={true}
           >
-            <Text style = { styles.titleText }> SlugMarket </Text>
+            <Text style={styles.titleText}> SlugMarket </Text>
             <TextInput
-              underlineColorAndroid = { 'transparent' }
-              onChangeText = { value => this.onChangeText("username", value) }
-              style = { styles.input }
-              keyboardType = "email-address"
-              placeholder = "UCSC email"
-              placeholderTextColor = "gray"
-              autoCapitalize = "none"
-              autoCorrect = { false }
+              underlineColorAndroid={"transparent"}
+              onChangeText={value => this.onChangeText("username", value)}
+              style={styles.input}
+              keyboardType="email-address"
+              placeholder="UCSC email"
+              placeholderTextColor="gray"
+              autoCapitalize="none"
+              autoCorrect={false}
             />
             <TextInput
-              underlineColorAndroid = { 'transparent' }
-              onChangeText = { value => this.onChangeText("password", value) }
-              style = { styles.input }
-              keyboardType = "default"
-              secureTextEntry = { true }
-              placeholder = "password"
-              placeholderTextColor = "gray"
-              autoCapitalize = "none"
-              autoCorrect = { false }
+              underlineColorAndroid={"transparent"}
+              onChangeText={value => this.onChangeText("password", value)}
+              style={styles.input}
+              keyboardType="default"
+              secureTextEntry={true}
+              placeholder="password"
+              placeholderTextColor="gray"
+              autoCapitalize="none"
+              autoCorrect={false}
             />
             <Button
-              color = 'white'
-              title = "Sign In"
-              fontWeight = "bold"
-              onPress = { () => this.signIn() }
-              backgroundColor = "teal"
-              borderRadius = { 5 }
-              containerViewStyle = { {width: 300, paddingVertical: 20} }
-              />
+              color="white"
+              title="Sign In"
+              fontWeight="bold"
+              onPress={() => this.signIn()}
+              backgroundColor="teal"
+              borderRadius={5}
+              containerViewStyle={{ width: 300, paddingVertical: 20 }}
+            />
             <Button
-              color = "white"
-              title = "Sign Up"
-              fontWeight = "bold"
-              backgroundColor = "teal"
-              borderRadius = { 5 }
-              containerViewStyle = { {width: 300} }
-              onPress = { () => {
+              color="white"
+              title="Sign Up"
+              fontWeight="bold"
+              backgroundColor="teal"
+              borderRadius={5}
+              containerViewStyle={{ width: 300 }}
+              onPress={() => {
                 this.setState({ visible: false });
                 this.props.navigation.navigate("SignUpScreen");
               }}
@@ -125,13 +125,13 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.7,
     borderBottomColor: "darkgray",
     marginBottom: 20,
-    width: 300,
+    width: 300
   },
   container: {
     flex: 1,
     paddingVertical: 150,
     backgroundColor: "white",
-    alignItems: "center",
+    alignItems: "center"
   },
   titleText: {
     fontSize: 36,
@@ -139,6 +139,6 @@ const styles = StyleSheet.create({
     padding: 30,
     color: "black",
     textShadowColor: "#dddddd",
-    textShadowRadius: 15,
+    textShadowRadius: 15
   }
 });

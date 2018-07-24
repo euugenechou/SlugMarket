@@ -21,7 +21,7 @@ export default class SellerDetails extends React.Component {
     postsToRender: [],
     refreshing: false
   };
-  
+
   static navigationOptions = () => ({
     headerTintColor: "teal",
     headerStyle: {
@@ -54,7 +54,7 @@ export default class SellerDetails extends React.Component {
       .then(response => {
         response.data.sort((a, b) => {
           return new Date(a) - new Date(b);
-        })
+        });
         this.setState({
           postsToRender: response.data.filter(post => {
             console.log(post.userId);
@@ -73,7 +73,7 @@ export default class SellerDetails extends React.Component {
     return this.state.postsToRender.map(post => {
       return (
         <TouchableHighlight
-          onPress = { () =>
+          onPress={() =>
             this.props.navigation.navigate("SellerListingInfo", {
               itemName: post.itemName,
               price: post.price,
@@ -84,14 +84,14 @@ export default class SellerDetails extends React.Component {
             })
           }
           underlayColor="white"
-          key = { post.timeAdded }
+          key={post.timeAdded}
         >
           <UserListings
-            width = { width }
-            name = { post.itemName }
-            price = { post.price }
-            category = { post.category }
-            seller = { post.seller }
+            width={width}
+            name={post.itemName}
+            price={post.price}
+            category={post.category}
+            seller={post.seller}
           />
         </TouchableHighlight>
       );
@@ -100,38 +100,44 @@ export default class SellerDetails extends React.Component {
 
   render() {
     return (
-      <SafeAreaView style = { { backgroundColor: "white", flex: 1 } }>
+      <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
         <ScrollView
-          scrollEventThrottle = { 16 }
-          showsVerticalScrollIndicator = { false }
-          contentContainerStyle = { { backgroundColor: "white" } }
-          refreshControl = {
+          scrollEventThrottle={16}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ backgroundColor: "white" }}
+          refreshControl={
             <RefreshControl
-              refreshing = { this.state.refreshing }
-              onRefresh = { this._onRefresh }
+              refreshing={this.state.refreshing}
+              onRefresh={this._onRefresh}
             />
           }
         >
-          <View style = { { backgroundColor: "white" } }>
-            <View style = { styles.topView }>
+          <View style={{ backgroundColor: "white" }}>
+            <View style={styles.topView}>
               <Image
-                source = { require("../../../assets/Slug.png") }
-                style = { styles.image }
+                source={require("../../../assets/Slug.png")}
+                style={styles.image}
               />
-              <View style = { styles.midView } >
-                <View style = { styles.botView }>
-                  <Text style = { styles.titleText }>
-                    { this.props.navigation.getParam("seller") }
+              <View style={styles.midView}>
+                <View style={styles.botView}>
+                  <Text style={styles.titleText}>
+                    {this.props.navigation.getParam("seller")}
                   </Text>
-                  <Text style = { styles.text }> { this.props.navigation.getParam("email") } </Text>
-                  <Text style = { styles.text }> { this.props.navigation.getParam("phoneNumber") } </Text>
+                  <Text style={styles.text}>
+                    {" "}
+                    {this.props.navigation.getParam("email")}{" "}
+                  </Text>
+                  <Text style={styles.text}>
+                    {" "}
+                    {this.props.navigation.getParam("phoneNumber")}{" "}
+                  </Text>
                 </View>
               </View>
             </View>
-            <Text style = { styles.listingText }>
-              { this.props.navigation.getParam("seller") }'s Listings
+            <Text style={styles.listingText}>
+              {this.props.navigation.getParam("seller")}'s Listings
             </Text>
-            { this.renderListings() }
+            {this.renderListings()}
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -155,7 +161,7 @@ const styles = StyleSheet.create({
     height: 150,
     resizeMode: "contain",
     borderRadius: 8,
-    flex: 1,
+    flex: 1
   },
   midView: {
     backgroundColor: "white",

@@ -24,22 +24,16 @@ export default class UserListings extends Component {
           backgroundColor: "white"
         }}
       >
-        <View style = { { flex: 2 } }>
+        <View style={{ flex: 2 }}>
           <Image
-            style = { styles.image }
-            source = { require("../../../assets/textbooks.jpg") }
+            style={styles.image}
+            source={require("../../../assets/textbooks.jpg")}
           />
         </View>
-        <View style = { styles.container }>
-          <Text style = { styles.titleText }>
-            { this.props.name }
-          </Text>
-          <Text style = { styles.text }>
-            { this.props.category }
-          </Text>
-          <Text style = { styles.text }>
-            ${ this.props.price }
-          </Text>
+        <View style={styles.container}>
+          <Text style={styles.titleText}>{this.props.name}</Text>
+          <Text style={styles.text}>{this.props.category}</Text>
+          <Text style={styles.text}>${this.props.price}</Text>
         </View>
       </View>
     );
@@ -71,5 +65,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingTop: 5,
     fontSize: 12
-  },
+  }
 });

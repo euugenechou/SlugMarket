@@ -1,4 +1,4 @@
-// React imports 
+// React imports
 import React, { Component } from "react";
 import {
   View,
@@ -9,7 +9,7 @@ import {
   ScrollView
 } from "react-native";
 import { Button } from "react-native-elements";
-// AWS imports 
+// AWS imports
 import { API, Auth } from "aws-amplify";
 
 export default class UserListingsInfo extends Component {
@@ -109,63 +109,63 @@ export default class UserListingsInfo extends Component {
 
   render() {
     return (
-      <View style = { { backgroundColor: "white", flex: 1, paddingTop: 20 } }>
+      <View style={{ backgroundColor: "white", flex: 1, paddingTop: 20 }}>
         <View>
-          <Text style = { styles.text }> Item Name </Text>
+          <Text style={styles.text}> Item Name </Text>
           <TextInput
-            style = { styles.input }
-            autoCapitalize = "none"
-            autoCorrect = { false }
-            defaultValue = { this.props.navigation.getParam("itemName") }
-            onChangeText = { value => this.onChangeText("itemName", value) }
+            style={styles.input}
+            autoCapitalize="none"
+            autoCorrect={false}
+            defaultValue={this.props.navigation.getParam("itemName")}
+            onChangeText={value => this.onChangeText("itemName", value)}
           />
-          <Text style = { styles.text }> Item Price (USD) </Text>
+          <Text style={styles.text}> Item Price (USD) </Text>
           <TextInput
-            style = { styles.input }
-            autoCapitalize = "none"
-            autoCorrect = { false }
-            defaultValue = { this.props.navigation.getParam("price") }
-            onChangeText = { value => this.onChangeText("price", value) }
+            style={styles.input}
+            autoCapitalize="none"
+            autoCorrect={false}
+            defaultValue={this.props.navigation.getParam("price")}
+            onChangeText={value => this.onChangeText("price", value)}
           />
-          <Text style = { styles.text}> Item Description </Text>
+          <Text style={styles.text}> Item Description </Text>
           <TextInput
-            style = {styles.input}
-            autoCapitalize = "none"
-            autoCorrect = { false }
-            defaultValue = { this.props.navigation.getParam("description") }
-            onChangeText = { value => this.onChangeText("description", value) }
+            style={styles.input}
+            autoCapitalize="none"
+            autoCorrect={false}
+            defaultValue={this.props.navigation.getParam("description")}
+            onChangeText={value => this.onChangeText("description", value)}
           />
         </View>
-        <View style = { {backgroundColor: "white", paddingTop: 20} }>
+        <View style={{ backgroundColor: "white", paddingTop: 20 }}>
           <Button
             raised
-            color = "white"
-            backgroundColor = "teal"
-            borderRadius = { 5 }
-            fontWeight = "bold"
-            onPress = { () => this.updateItemFields() }
-            title = "Save Changes"
-            containerViewStyle = { styles.buttonStyle }
+            color="white"
+            backgroundColor="teal"
+            borderRadius={5}
+            fontWeight="bold"
+            onPress={() => this.updateItemFields()}
+            title="Save Changes"
+            containerViewStyle={styles.buttonStyle}
           />
           <Button
             raised
-            color = "white"
-            backgroundColor = "goldenrod"
-            borderRadius = { 5 }
-            fontWeight = "bold"
-            onPress = { () => this.sellPost() }
-            title = "Mark Item As Sold"
-            containerViewStyle = { styles.buttonStyle }
+            color="white"
+            backgroundColor="goldenrod"
+            borderRadius={5}
+            fontWeight="bold"
+            onPress={() => this.sellPost()}
+            title="Mark Item As Sold"
+            containerViewStyle={styles.buttonStyle}
           />
           <Button
             raised
-            color = "white"
-            backgroundColor = "red"
-            borderRadius = { 5 }
-            fontWeight = "bold"
-            onPress = { () => this.deletePost() }
-            title = "Delete Item"
-            containerViewStyle = { styles.buttonStyle }
+            color="white"
+            backgroundColor="red"
+            borderRadius={5}
+            fontWeight="bold"
+            onPress={() => this.deletePost()}
+            title="Delete Item"
+            containerViewStyle={styles.buttonStyle}
           />
         </View>
       </View>

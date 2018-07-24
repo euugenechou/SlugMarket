@@ -1,4 +1,4 @@
-// React imports 
+// React imports
 import React, { Component } from "react";
 import {
   View,
@@ -31,7 +31,7 @@ export default class ItemCategory extends Component {
       height: 40,
       backgroundColor: "white",
       shadowColor: "transparent",
-      borderBottomWidth: 0,
+      borderBottomWidth: 0
     }
   });
 
@@ -64,9 +64,11 @@ export default class ItemCategory extends Component {
         });
         this.setState({
           postsToRender: sorted.filter(post => {
-            return (!post.isSold && 
-            !post.isRemoved &&
-            post.category === this.props.navigation.getParam("category"));
+            return (
+              !post.isSold &&
+              !post.isRemoved &&
+              post.category === this.props.navigation.getParam("category")
+            );
           })
         });
       })
@@ -91,13 +93,11 @@ export default class ItemCategory extends Component {
               <Text style={styles.titleText}>
                 Recently Added To {this.props.navigation.getParam("category")}
               </Text>
-              <View
-                style={styles.listings}
-              >
+              <View style={styles.listings}>
                 {this.state.postsToRender.map(post => {
                   return (
                     <TouchableHighlight
-                      onPress = { () =>
+                      onPress={() =>
                         this.props.navigation.navigate("ListingInfo", {
                           name: post.itemName,
                           price: post.price,
@@ -107,14 +107,14 @@ export default class ItemCategory extends Component {
                         })
                       }
                       underlayColor="white"
-                      key = {post.timeAdded}
+                      key={post.timeAdded}
                     >
                       <Listings
-                        width = { width }
-                        name = { post.itemName }
-                        price = { post.price }
-                        seller = { post.seller }
-                        category = { post.category }
+                        width={width}
+                        name={post.itemName}
+                        price={post.price}
+                        seller={post.seller}
+                        category={post.category}
                       />
                     </TouchableHighlight>
                   );

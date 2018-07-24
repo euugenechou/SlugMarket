@@ -6,7 +6,7 @@ export default class Listings extends Component {
   render() {
     return (
       <View
-        style = { {
+        style={{
           flexDirection: "row",
           width: this.props.width - 40,
           height: this.props.width / 2 - 80,
@@ -23,24 +23,22 @@ export default class Listings extends Component {
           backgroundColor: "white"
         }}
       >
-        <View style = { { flex: 2 } }>
+        <View style={{ flex: 2 }}>
           <Image
-            style = { styles.image }
-            source = { require("../../../assets/textbooks.jpg") }
+            style={styles.image}
+            source={require("../../../assets/textbooks.jpg")}
           />
         </View>
-        <View style = { styles.listingContainer }>
-          <Text style = { styles.titleText }>
-            { this.props.name }
+        <View style={styles.listingContainer}>
+          <Text style={styles.titleText}>{this.props.name}</Text>
+          <Text style={{ alignItems: "center", fontSize: 12 }}>
+            {this.props.category}
           </Text>
-          <Text style = { { alignItems: "center", fontSize: 12 } }>
-            { this.props.category }
-          </Text>
-          <Text style = { { alignItems: "center", fontSize: 12 } }>
+          <Text style={{ alignItems: "center", fontSize: 12 }}>
             ${this.props.price}
           </Text>
-          <Text style = { { alignItems: "center", fontSize: 12 } }>
-            seller: { this.props.seller }
+          <Text style={{ alignItems: "center", fontSize: 12 }}>
+            seller: {this.props.seller}
           </Text>
         </View>
       </View>

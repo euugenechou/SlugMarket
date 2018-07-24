@@ -1,4 +1,4 @@
-// React imports 
+// React imports
 import React from "react";
 import {
   Text,
@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Entypo";
 import { Button } from "react-native-elements";
-// AWS imports 
+// AWS imports
 import { Auth } from "aws-amplify";
 // Local imports
 import TopAlert from "../components/TopAlert";
@@ -52,39 +52,41 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <TouchableWithoutFeedback onPress = { Keyboard.dismiss } accessible = { false }>
-        <View style = { styles.container }>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+        <View style={styles.container}>
           <TopAlert
-            visible = { this.state.visible }
-            message = { this.state.errorMessage }
+            visible={this.state.visible}
+            message={this.state.errorMessage}
           />
           <Icon
-            name = "chevron-small-left"
-            size = { 45 }
-            color = "teal"
-            style = { {paddingVertical: 30} }
-            onPress = { () => this.props.navigation.navigate("SignUpScreen") }
+            name="chevron-small-left"
+            size={45}
+            color="teal"
+            style={{ paddingVertical: 30 }}
+            onPress={() => this.props.navigation.navigate("SignUpScreen")}
           />
-          <View style = { styles.innerContainer }>
-            <Text style = { styles.text }> Confirmation Code </Text>
+          <View style={styles.innerContainer}>
+            <Text style={styles.text}> Confirmation Code </Text>
             <TextInput
-              underlineColorAndroid = { 'transparent' }
-              onChangeText = { value => this.onChangeText("confirmationCode", value) }
-              style = { styles.input }
-              keyboardType = "number-pad"
-              placeholder = "e.g.: 123456"
-              placeholderTextColor = "gray"
-              autoCapitalize = "none"
-              autoCorrect = {false}
+              underlineColorAndroid={"transparent"}
+              onChangeText={value =>
+                this.onChangeText("confirmationCode", value)
+              }
+              style={styles.input}
+              keyboardType="number-pad"
+              placeholder="e.g.: 123456"
+              placeholderTextColor="gray"
+              autoCapitalize="none"
+              autoCorrect={false}
             />
             <Button
-              color = "white"
-              title = "Confirm Sign Up"
-              fontWeight = "bold"
-              backgroundColor = "teal"
-              borderRadius = { 5 }
-              containerViewStyle = { styles.buttonContainer }
-              onPress={ () => this.confirmSignUp() }
+              color="white"
+              title="Confirm Sign Up"
+              fontWeight="bold"
+              backgroundColor="teal"
+              borderRadius={5}
+              containerViewStyle={styles.buttonContainer}
+              onPress={() => this.confirmSignUp()}
             />
           </View>
         </View>
@@ -112,7 +114,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
     justifyContent: "center",
-    paddingBottom: 90,
+    paddingBottom: 90
   },
   buttonContainer: {
     width: 300,

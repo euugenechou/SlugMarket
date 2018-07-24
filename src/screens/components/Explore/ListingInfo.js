@@ -14,34 +14,34 @@ export default class Listings extends Component {
     },
     headerBackground: (
       <Image
-        style = { styles.wrapper }
-        source = { require("../../../assets/textbooks.jpg") }
+        style={styles.wrapper}
+        source={require("../../../assets/textbooks.jpg")}
       />
-    ),
+    )
   });
 
   render() {
     return (
-      <View style = { styles.container }>
-        <Text style = { styles.titleText }>
-          { this.props.navigation.getParam("name") }
+      <View style={styles.container}>
+        <Text style={styles.titleText}>
+          {this.props.navigation.getParam("name")}
         </Text>
-        <Text style = { styles.text }>
-          ${ this.props.navigation.getParam("price") }
+        <Text style={styles.text}>
+          ${this.props.navigation.getParam("price")}
         </Text>
-        <Text style = { styles.text }>
-          { this.props.navigation.getParam("category") }
+        <Text style={styles.text}>
+          {this.props.navigation.getParam("category")}
         </Text>
-        <Text style = { styles.text }>
-          { this.props.navigation.getParam("description") }
+        <Text style={styles.text}>
+          {this.props.navigation.getParam("description")}
         </Text>
         <Button
           raised
-          color = "white"
-          backgroundColor = "teal"
-          borderRadius = { 5 }
-          fontWeight = "bold"
-          onPress = { () =>
+          color="white"
+          backgroundColor="teal"
+          borderRadius={5}
+          fontWeight="bold"
+          onPress={() =>
             this.props.navigation.navigate("SellerDetails", {
               userId: this.props.navigation.getParam("userId"),
               seller: this.props.navigation.getParam("seller"),
@@ -49,8 +49,8 @@ export default class Listings extends Component {
               email: this.props.navigation.getParam("email")
             })
           }
-          title = "View Seller Details"
-          containerViewStyle = { styles.buttonContainer }
+          title="View Seller Details"
+          containerViewStyle={styles.buttonContainer}
         />
       </View>
     );
@@ -62,15 +62,15 @@ const styles = StyleSheet.create({
     fontSize: 22,
     color: "black",
     fontWeight: "400",
-    alignSelf: 'center',
+    alignSelf: "center",
     paddingBottom: 10,
-    paddingHorizontal: 30,
+    paddingHorizontal: 30
   },
   titleText: {
     fontSize: 30,
     color: "black",
     fontWeight: "800",
-    alignSelf: 'center',
+    alignSelf: "center",
     paddingBottom: 10,
     marginTop: 100
   },
@@ -83,11 +83,11 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     width: 300,
-    alignSelf: 'center',
+    alignSelf: "center",
     paddingTop: 10
   },
   wrapper: {
     ...StyleSheet.absoluteFillObject,
-    marginTop: 20,
-  },
+    marginTop: 20
+  }
 });

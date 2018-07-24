@@ -88,7 +88,8 @@ export default class Explore extends Component {
   render() {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
-        <ScrollView style={{ marginTop: 20 }}
+        <ScrollView
+          style={{ marginTop: 20 }}
           scrollEventThrottle={16}
           showsVerticalScrollIndicator={false}
           refreshControl={

@@ -1,13 +1,9 @@
 // React imports
 import React, { Component } from "react";
-import {
-  Alert,
-  View,
-  StyleSheet,
-} from "react-native";
+import { Alert, View, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
 import SettingsList from "react-native-settings-list";
-// AWS imports 
+// AWS imports
 import { API, Auth } from "aws-amplify";
 
 export default class Settings extends Component {
@@ -51,15 +47,15 @@ export default class Settings extends Component {
 
   onValueChange(value) {
     this.setState({ switchValue: value });
-	}
-	
-	handleLogOut() {
-		Auth.signOut()
-			.then(() => {
-				this.props.navigation.popToTop()
-			})
-			.catch(() => Alert.alert("Logout error occured. Please try again"))
-	}
+  }
+
+  handleLogOut() {
+    Auth.signOut()
+      .then(() => {
+        this.props.navigation.popToTop();
+      })
+      .catch(() => Alert.alert("Logout error occured. Please try again"));
+  }
 
   render() {
     return (
@@ -136,7 +132,7 @@ const styles = StyleSheet.create({
   item: {
     fontSize: 18
   },
-  buttonContainer:{
+  buttonContainer: {
     width: 300,
     alignSelf: "center",
     paddingBottom: 40
@@ -146,5 +142,5 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 36,
     paddingLeft: 10
-  },
+  }
 });

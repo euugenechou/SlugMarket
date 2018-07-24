@@ -1,20 +1,16 @@
-// React imports 
+// React imports
 import React, { Component } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
-
 
 export default class Category extends Component {
   render() {
     return (
-      <View style = { styles.container }>
-        <View style = {{ flex: 2 }}>
-          <Image
-            source = { this.props.imageUri }
-            style = { styles.image }
-          />
+      <View style={styles.container}>
+        <View style={{ flex: 2 }}>
+          <Image source={this.props.imageUri} style={styles.image} />
         </View>
-        <View style = { styles.text }>
-          <Text style = {{ fontWeight: '600' }}> { this.props.name } </Text>
+        <View style={styles.text}>
+          <Text style={{ fontWeight: "600" }}> {this.props.name} </Text>
         </View>
       </View>
     );
@@ -25,7 +21,7 @@ const styles = StyleSheet.create({
   text: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   container: {
     height: 120,
@@ -38,7 +34,7 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     shadowOpacity: 0.2,
     elevation: 1,
-    backgroundColor: 'white'
+    backgroundColor: "white"
   },
   image: {
     flex: 1,
@@ -50,5 +46,5 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 0 },
     shadowColor: "black",
     shadowOpacity: 0.2
-  },
+  }
 });

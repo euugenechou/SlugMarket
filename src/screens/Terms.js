@@ -1,9 +1,9 @@
-// React imports 
+// React imports
 import React from "react";
-import { StyleSheet, ScrollView, View, Text } from "react-native";
+import { StyleSheet, ScrollView, Text } from "react-native";
 import Hyperlink from "react-native-hyperlink";
 
-export default class Authors extends React.Component {
+export default class Terms extends React.Component {
   static navigationOptions = ({ navigation }) => ({
     headerTintColor: "teal",
     headerStyle: {
@@ -11,13 +11,13 @@ export default class Authors extends React.Component {
       backgroundColor: "white",
       shadowColor: "transparent",
       borderBottomWidth: 0
-    },
+    }
   });
 
   constructor(props) {
     super(props);
   }
-  
+
   render() {
     return (
       <ScrollView style={field.contentContainer}>
@@ -173,7 +173,6 @@ const field = StyleSheet.create({
     paddingLeft: 5,
     paddingRight: 5,
     paddingVertical: 10
-
   },
   title: {
     fontSize: 32,
@@ -185,7 +184,7 @@ const field = StyleSheet.create({
   contentContainer: {
     flex: 1,
     paddingBottom: 30,
-    paddingHorizontal: 10,    
+    paddingHorizontal: 10,
     paddingTop: 10,
     backgroundColor: "white"
   }

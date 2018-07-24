@@ -1,11 +1,11 @@
-// __tests__/Settings-test.js
+// __tests__/Authors.js
 import "react-native";
 import React from "react";
-import Settings from "../src/screens/Settings";
+import Terms from "../src/screens/Terms";
 
 import renderer from "react-test-renderer";
 
 it("renders correctly", () => {
-  const tree = renderer.create(<Settings />).toJSON();
+  const tree = renderer.create(<Terms />).toJSON();
   expect(tree).toMatchSnapshot();
 });

@@ -10,7 +10,7 @@ import {
   TouchableWithoutFeedback
 } from "react-native";
 import { Button } from "react-native-elements";
-// AWS imports 
+// AWS imports
 import { API, Auth } from "aws-amplify";
 
 export default class AddItem extends React.Component {
@@ -54,8 +54,8 @@ export default class AddItem extends React.Component {
       email: userInfo.attributes.email,
       phoneNumber: userInfo.attributes.phone_number,
       seller: userInfo.attributes.name
-    })
-    return {body: this.state};
+    });
+    return { body: this.state };
   }
 
   /* Save a new item post to postedItems schema.
@@ -73,63 +73,67 @@ export default class AddItem extends React.Component {
     API.post(apiName, path, post)
       .then(res => {
         console.log(res);
-        this.props.navigation.navigate("MainProfile",{
+        this.props.navigation.navigate("MainProfile", {
           reload: true
-        })
+        });
       })
       .catch(err => console.log(err));
   }
 
   render() {
     return (
-      <TouchableWithoutFeedback onPress = { Keyboard.dismiss } accessible = { false }>
-        <KeyboardAvoidingView style = { styles.container } behavior="padding" enabled>
-          <Text style = { styles.text }> Item Name </Text>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+        <KeyboardAvoidingView
+          style={styles.container}
+          behavior="padding"
+          enabled
+        >
+          <Text style={styles.text}> Item Name </Text>
           <TextInput
-            underlineColorAndroid = { 'transparent' }
-            onChangeText = { value => this.onChangeText("itemName", value) }
-            style = { styles.input }
-            autoCapitalize = "none"
-            autoCorrect = { false }
+            underlineColorAndroid={"transparent"}
+            onChangeText={value => this.onChangeText("itemName", value)}
+            style={styles.input}
+            autoCapitalize="none"
+            autoCorrect={false}
           />
-          <Text style = { styles.text }> Item Price (USD) </Text>
+          <Text style={styles.text}> Item Price (USD) </Text>
           <TextInput
-            underlineColorAndroid = { 'transparent' }
-            onChangeText = { value => this.onChangeText("price", value) }
-            keyboardType = "numeric"
-            style = { styles.input }
-            autoCapitalize = "none"
-            autoCorrect = { false }
+            underlineColorAndroid={"transparent"}
+            onChangeText={value => this.onChangeText("price", value)}
+            keyboardType="numeric"
+            style={styles.input}
+            autoCapitalize="none"
+            autoCorrect={false}
           />
-          <Text style = { styles.categoryText }> Item Category </Text>
+          <Text style={styles.categoryText}> Item Category </Text>
           <Picker
-            selectedValue = { this.state.category }
-            style = {{ width: 120, alignSelf: "center" }}
-            itemStyle = {{ height: 110, fontSize: 18 }}
-            onValueChange = {( itemValue, itemIndex ) =>
+            selectedValue={this.state.category}
+            style={{ width: 120, alignSelf: "center" }}
+            itemStyle={{ height: 110, fontSize: 18 }}
+            onValueChange={(itemValue, itemIndex) =>
               this.setState({ category: itemValue })
             }
           >
-            <Picker.Item label = "Furniture" value = "Furniture" />
-            <Picker.Item label = "Textbook" value = "Textbooks" />
-            <Picker.Item label = "Electronic" value = "Electronics" />
+            <Picker.Item label="Furniture" value="Furniture" />
+            <Picker.Item label="Textbook" value="Textbooks" />
+            <Picker.Item label="Electronic" value="Electronics" />
           </Picker>
-          <Text style = { styles.text }> Item Description </Text>
+          <Text style={styles.text}> Item Description </Text>
           <TextInput
-            underlineColorAndroid = { 'transparent' }
-            onChangeText = { value => this.onChangeText("description", value) }
-            style = { styles.input }
-            autoCapitalize = "none"
-            autoCorrect = { true }
+            underlineColorAndroid={"transparent"}
+            onChangeText={value => this.onChangeText("description", value)}
+            style={styles.input}
+            autoCapitalize="none"
+            autoCorrect={true}
           />
           <Button
-            color = "white"
-            title = "Add Item"
-            fontWeight = "bold"
-            onPress = { () => this.saveItemPost() }
-            backgroundColor = "teal"
-            borderRadius = { 5 }
-            containerViewStyle = { styles.buttonContainer }
+            color="white"
+            title="Add Item"
+            fontWeight="bold"
+            onPress={() => this.saveItemPost()}
+            backgroundColor="teal"
+            borderRadius={5}
+            containerViewStyle={styles.buttonContainer}
           />
         </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
@@ -165,7 +169,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 30,
-    backgroundColor: "white",
+    backgroundColor: "white"
   },
   text: {
     paddingLeft: 32,

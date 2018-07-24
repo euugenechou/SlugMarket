@@ -5,10 +5,8 @@ import { StyleSheet, Image, View } from "react-native";
 export default class Splash extends Component {
   render() {
     return (
-      <View style = { styles.container }>
-        <Image   
-					source = {require("../assets/Slug.png")}
-					style = { styles.image } />
+      <View style={styles.container}>
+        <Image source={require("../assets/Slug.png")} style={styles.image} />
       </View>
     );
   }

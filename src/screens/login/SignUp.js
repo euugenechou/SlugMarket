@@ -1,4 +1,4 @@
-// React imports 
+// React imports
 import React from "react";
 import {
   TextInput,
@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Entypo";
 import { Button } from "react-native-elements";
-// AWS imports 
+// AWS imports
 import { Auth } from "aws-amplify";
 // Local imports
 import TopAlert from "../components/TopAlert";
@@ -63,68 +63,71 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <TouchableWithoutFeedback onPress = { Keyboard.dismiss } accessible = { false }>
-        <ScrollView centerContent={true} contentContainerStyle={styles.container}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+        <ScrollView
+          centerContent={true}
+          contentContainerStyle={styles.container}
+        >
           <TopAlert
-            visible = { this.state.visible }
-            message = { this.state.errorMessage }
+            visible={this.state.visible}
+            message={this.state.errorMessage}
           />
           <Icon
-            name = "chevron-small-left"
-            size = { 45 }
-            color = "teal"
-            style = { {paddingVertical: 10} }
-            onPress = { () => this.props.navigation.navigate("SignInScreen") }
+            name="chevron-small-left"
+            size={45}
+            color="teal"
+            style={{ paddingVertical: 10 }}
+            onPress={() => this.props.navigation.navigate("SignInScreen")}
           />
-          <View style = { styles.container }>
-            <Text style = { styles.text }> First Name </Text>
+          <View style={styles.container}>
+            <Text style={styles.text}> First Name </Text>
             <TextInput
-              underlineColorAndroid = { 'transparent' }
-              onChangeText = { value => this.onChangeText("name", value) }
-              style = { styles.input }
-              placeholder = "e.g.: Sammy"
-              placeholderTextColor = "gray"
-              autoCapitalize = "none"
-              autoCorrect = { false }
+              underlineColorAndroid={"transparent"}
+              onChangeText={value => this.onChangeText("name", value)}
+              style={styles.input}
+              placeholder="e.g.: Sammy"
+              placeholderTextColor="gray"
+              autoCapitalize="none"
+              autoCorrect={false}
             />
-            <Text style = { styles.text }> Password </Text>
+            <Text style={styles.text}> Password </Text>
             <TextInput
-              underlineColorAndroid = { 'transparent' }
-              onChangeText = { value => this.onChangeText("password", value) }
-              style = { styles.input }
-              secureTextEntry = { true }
-              placeholder=  "e.g.: Slug1965"
-              placeholderTextColor = "gray"
-              autoCapitalize = "none"
-              autoCorrect = { false }
+              underlineColorAndroid={"transparent"}
+              onChangeText={value => this.onChangeText("password", value)}
+              style={styles.input}
+              secureTextEntry={true}
+              placeholder="e.g.: Slug1965"
+              placeholderTextColor="gray"
+              autoCapitalize="none"
+              autoCorrect={false}
             />
-            <Text style = { styles.text }> Phone Number </Text>
+            <Text style={styles.text}> Phone Number </Text>
             <TextInput
-              onChangeText = { value => this.onChangeText("phone_number", value) }
-              style = { styles.input }
-              placeholder = "e.g.: +15101234567"
-              placeholderTextColor = "gray"
-              autoCapitalize = "none"
-              autoCorrect = { false }
+              onChangeText={value => this.onChangeText("phone_number", value)}
+              style={styles.input}
+              placeholder="e.g.: +15101234567"
+              placeholderTextColor="gray"
+              autoCapitalize="none"
+              autoCorrect={false}
             />
-            <Text style = { styles.text }> UCSC Email </Text>
+            <Text style={styles.text}> UCSC Email </Text>
             <TextInput
-              onChangeText = { value => this.onChangeText("email", value) }
-              style = { styles.input }
-              placeholder = "e.g.: sammyslug@ucsc.edu"
-              placeholderTextColor = "gray"
-              keyboardType = "email-address"
-              autoCapitalize = "none"
-              autoCorrect = {false}
+              onChangeText={value => this.onChangeText("email", value)}
+              style={styles.input}
+              placeholder="e.g.: sammyslug@ucsc.edu"
+              placeholderTextColor="gray"
+              keyboardType="email-address"
+              autoCapitalize="none"
+              autoCorrect={false}
             />
             <Button
-              color = "white"
-              title = "Sign Up"
-              fontWeight = "bold"
-              backgroundColor = "teal"
-              borderRadius = { 5 }
-              containerViewStyle = { styles.buttonContainer }
-              onPress = { () => this.signUp() }
+              color="white"
+              title="Sign Up"
+              fontWeight="bold"
+              backgroundColor="teal"
+              borderRadius={5}
+              containerViewStyle={styles.buttonContainer}
+              onPress={() => this.signUp()}
             />
           </View>
         </ScrollView>

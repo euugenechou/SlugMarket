@@ -1,4 +1,4 @@
-// React imports 
+// React imports
 import React from "react";
 import {
   createBottomTabNavigator,
@@ -21,7 +21,7 @@ import SoldListingInfo from "./components/Profile/SoldListingInfo";
 // Imports for Settings
 import Settings from "./Settings";
 import SignIn from "./login/SignIn";
-import Authors from "./Authors";
+import Terms from "./Terms";
 
 export default class Main extends React.Component {
   render() {
@@ -29,33 +29,27 @@ export default class Main extends React.Component {
   }
 }
 
-const ExploreStack = createStackNavigator(
-  {
-    MainExplore: { screen: Explore, },
-    ListingInfo: { screen: ListingInfo },
-    ViewCategory: { screen: ItemCategory },
-    SellerDetails: { screen: SellerDetails },
-    SellerListingInfo: { screen: SellerListingInfo }
-  },
-);
+const ExploreStack = createStackNavigator({
+  MainExplore: { screen: Explore },
+  ListingInfo: { screen: ListingInfo },
+  ViewCategory: { screen: ItemCategory },
+  SellerDetails: { screen: SellerDetails },
+  SellerListingInfo: { screen: SellerListingInfo }
+});
 
-const ProfileStack = createStackNavigator(
-  {
-    MainProfile: { screen: Profile, },
-    AddItem: { screen: AddItem },
-    UserListingScreen: { screen: UserListings},
-    UserListingInfoScreen: { screen: UserListingInfo},
-    SoldListingInfoScreen: { screen: SoldListingInfo }
-  },
-);
+const ProfileStack = createStackNavigator({
+  MainProfile: { screen: Profile },
+  AddItem: { screen: AddItem },
+  UserListingScreen: { screen: UserListings },
+  UserListingInfoScreen: { screen: UserListingInfo },
+  SoldListingInfoScreen: { screen: SoldListingInfo }
+});
 
-const SettingsStack = createStackNavigator(
-  {
-    MainSettings: { screen: Settings },
-    SignInScreen: { screen: SignIn },
-    TermsScreen: { screen: Authors },
-  },
-);
+const SettingsStack = createStackNavigator({
+  MainSettings: { screen: Settings },
+  SignInScreen: { screen: SignIn },
+  TermsScreen: { screen: Terms }
+});
 
 export const BottomTabNavigator = createBottomTabNavigator(
   {
@@ -65,7 +59,7 @@ export const BottomTabNavigator = createBottomTabNavigator(
         gesturesEnabled: false,
         tabBarLabel: "EXPLORE",
         tabBarIcon: ({ tintColor }) => (
-          <Icon name="ios-search-outline" color={ tintColor } size={ 24 } />
+          <Icon name="ios-search-outline" color={tintColor} size={24} />
         )
       }
     },
@@ -75,7 +69,7 @@ export const BottomTabNavigator = createBottomTabNavigator(
         gesturesEnabled: false,
         tabBarLabel: "PROFILE",
         tabBarIcon: ({ tintColor }) => (
-          <Icon name = "ios-person-outline" color = { tintColor } size = { 24 } />
+          <Icon name="ios-person-outline" color={tintColor} size={24} />
         )
       }
     },
@@ -85,7 +79,7 @@ export const BottomTabNavigator = createBottomTabNavigator(
         gesturesEnabled: false,
         tabBarLabel: "SETTINGS",
         tabBarIcon: ({ tintColor }) => (
-          <Icon name = "ios-settings-outline" color = { tintColor } size = { 24 } />
+          <Icon name="ios-settings-outline" color={tintColor} size={24} />
         )
       }
     }
@@ -105,7 +99,7 @@ export const BottomTabNavigator = createBottomTabNavigator(
         shadowOpacity: 0.5,
         elevation: 5,
         paddingTop: 5,
-        paddingBottom: 5,
+        paddingBottom: 5
       }
     }
   }

@@ -13,26 +13,26 @@ export default class SellerListingInfo extends Component {
     },
     headerBackground: (
       <Image
-        style = { styles.wrapper }
-        source = { require("../../../assets/textbooks.jpg") }
+        style={styles.wrapper}
+        source={require("../../../assets/textbooks.jpg")}
       />
-    ),
+    )
   });
 
   render() {
     return (
-      <View style = { styles.container }>
-        <Text style = { styles.titleText }>
-          { this.props.navigation.getParam("itemName") }
+      <View style={styles.container}>
+        <Text style={styles.titleText}>
+          {this.props.navigation.getParam("itemName")}
         </Text>
-        <Text style = { styles.text }>
-          ${ this.props.navigation.getParam("price") }
+        <Text style={styles.text}>
+          ${this.props.navigation.getParam("price")}
         </Text>
-        <Text style = { styles.text }>
-          { this.props.navigation.getParam("category") }
+        <Text style={styles.text}>
+          {this.props.navigation.getParam("category")}
         </Text>
-        <Text style = { styles.text }>
-          { this.props.navigation.getParam("description") }
+        <Text style={styles.text}>
+          {this.props.navigation.getParam("description")}
         </Text>
       </View>
     );
@@ -44,15 +44,15 @@ const styles = StyleSheet.create({
     fontSize: 22,
     color: "black",
     fontWeight: "400",
-    alignSelf: 'center',
+    alignSelf: "center",
     paddingBottom: 10,
-    paddingHorizontal: 30,
+    paddingHorizontal: 30
   },
   titleText: {
     fontSize: 30,
     color: "black",
     fontWeight: "800",
-    alignSelf: 'center',
+    alignSelf: "center",
     paddingBottom: 10,
     marginTop: 100
   },
@@ -65,11 +65,11 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     width: 300,
-    alignSelf: 'center',
+    alignSelf: "center",
     paddingTop: 10
   },
   wrapper: {
     ...StyleSheet.absoluteFillObject,
-    marginTop: 20,
-  },
+    marginTop: 20
+  }
 });
