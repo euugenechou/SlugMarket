@@ -16,6 +16,7 @@ exports[`renders correctly 1`] = `
       Object {
         "backgroundColor": "white",
         "flex": 1,
+        "paddingTop": 30,
       },
       Object {
         "paddingBottom": 0,
