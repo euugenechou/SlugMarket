@@ -12,15 +12,12 @@ import ItemCategory from "./components/Explore/ItemCategory";
 import ListingInfo from "./components/Explore/ListingInfo";
 import SellerDetails from "./components/Explore/SellerDetails";
 import SellerListingInfo from "./components/Explore/SellerListingInfo";
-
 // Imports for Profile
 import Profile from "./Profile";
-import EditProfile from "./EditProfile";
 import AddItem from "./AddItem";
 import UserListings from "./components/Profile/UserListings";
 import UserListingInfo from "./components/Profile/UserListingInfo";
 import SoldListingInfo from "./components/Profile/SoldListingInfo";
-
 // Imports for Settings
 import Settings from "./Settings";
 import SignIn from "./login/SignIn";
@@ -45,7 +42,6 @@ const ExploreStack = createStackNavigator(
 const ProfileStack = createStackNavigator(
   {
     MainProfile: { screen: Profile, },
-    EditProfile: { screen: EditProfile },
     AddItem: { screen: AddItem },
     UserListingScreen: { screen: UserListings},
     UserListingInfoScreen: { screen: UserListingInfo},
