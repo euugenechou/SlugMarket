@@ -24,4 +24,9 @@ sell or browse for items they want to buy.
 
 ### Sprint 3
 + Plan: https://drive.google.com/open?id=1QrZZMSEL9OE8jNmcciMR0i_0DhfaFkqzJtqBggFivjg
-+ Review: https://drive.google.com/open?id=1wOIOrGRkoBW_8hvTO_RKA6rSNblXaM8pKiyKKWB3Q0g
++ Report: https://drive.google.com/open?id=1wOIOrGRkoBW_8hvTO_RKA6rSNblXaM8pKiyKKWB3Q0g
+
+### Release 1.0 Deliverables 
++ System and Unit Test Report: https://drive.google.com/open?id=1oHIdTpLOjGGGVKLTxrXISHmnB3hOBn2FgucoX_fnnyE
++ Working ProtoType Known Problems Report: https://drive.google.com/open?id=15nU64wxLBMlwmrzgsGP_oqUza_tjdPKKSstPNQU285Y
++ Installation guide/User manual: // WE GOTTA MAKE SOME DOC WITH INSTRUCTIONS HOW TO DOWNLOAD STUFF
