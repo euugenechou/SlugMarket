@@ -6,7 +6,7 @@ export default class Splash extends Component {
   render() {
     return (
       <View style = { styles.container }>
-        <Image 
+        <Image   
 					source = {require("../assets/Slug.png")}
 					style = { styles.image } />
       </View>

@@ -68,6 +68,7 @@ export default class App extends React.Component {
           <View style = { styles.innerContainer }>
             <Text style = { styles.text }> Confirmation Code </Text>
             <TextInput
+              underlineColorAndroid = { 'transparent' }
               onChangeText = { value => this.onChangeText("confirmationCode", value) }
               style = { styles.input }
               keyboardType = "number-pad"
@@ -77,7 +78,6 @@ export default class App extends React.Component {
               autoCorrect = {false}
             />
             <Button
-              raised
               color = "white"
               title = "Confirm Sign Up"
               fontWeight = "bold"

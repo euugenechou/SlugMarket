@@ -138,7 +138,7 @@ export default class Authors extends React.Component {
             do not agree to the new terms, please stop using the Service. {"\n"}
           </Text>
           <Text style={field.titleText}>Contact Us </Text>
-          <Text style={field.baseText}>
+          <Text style={field.endText}>
             If you have any questions about these Terms, please contact us.{
               "\n"
             }
@@ -154,6 +154,12 @@ const field = StyleSheet.create({
     fontSize: 14,
     paddingLeft: 5,
     paddingRight: 5
+  },
+  endText: {
+    fontSize: 14,
+    paddingLeft: 5,
+    paddingRight: 5,
+    paddingBottom: 10
   },
   linkText: {
     fontSize: 14,

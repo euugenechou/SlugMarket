@@ -65,6 +65,7 @@ export default class AddItem extends React.Component {
           centerContent = { true }
         >
           <TextInput
+            underlineColorAndroid = { 'transparent' }
             onChangeText = { value => this.onChangeText("lookingFor", value)}
             style = { styles.input }
             placeholder = "What are you looking for?"
@@ -73,7 +74,6 @@ export default class AddItem extends React.Component {
             autoCorrect = {false}
           />
           <Button
-            raised
             color = "white"
             backgroundColor = "teal"
             borderRadius = { 5 }

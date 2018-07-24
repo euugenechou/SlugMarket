@@ -79,6 +79,7 @@ export default class App extends React.Component {
           <View style = { styles.container }>
             <Text style = { styles.text }> First Name </Text>
             <TextInput
+              underlineColorAndroid = { 'transparent' }
               onChangeText = { value => this.onChangeText("name", value) }
               style = { styles.input }
               placeholder = "e.g.: Sammy"
@@ -88,6 +89,7 @@ export default class App extends React.Component {
             />
             <Text style = { styles.text }> Password </Text>
             <TextInput
+              underlineColorAndroid = { 'transparent' }
               onChangeText = { value => this.onChangeText("password", value) }
               style = { styles.input }
               secureTextEntry = { true }
@@ -116,7 +118,6 @@ export default class App extends React.Component {
               autoCorrect = {false}
             />
             <Button
-              raised
               color = "white"
               title = "Sign Up"
               fontWeight = "bold"

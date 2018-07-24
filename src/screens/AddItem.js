@@ -86,6 +86,7 @@ export default class AddItem extends React.Component {
         <KeyboardAvoidingView style = { styles.container } behavior="padding" enabled>
           <Text style = { styles.text }> Item Name </Text>
           <TextInput
+            underlineColorAndroid = { 'transparent' }
             onChangeText = { value => this.onChangeText("itemName", value) }
             style = { styles.input }
             autoCapitalize = "none"
@@ -93,8 +94,9 @@ export default class AddItem extends React.Component {
           />
           <Text style = { styles.text }> Item Price (USD) </Text>
           <TextInput
+            underlineColorAndroid = { 'transparent' }
             onChangeText = { value => this.onChangeText("price", value) }
-            keyboardType = "number-pad"
+            keyboardType = "numeric"
             style = { styles.input }
             autoCapitalize = "none"
             autoCorrect = { false }
@@ -114,13 +116,13 @@ export default class AddItem extends React.Component {
           </Picker>
           <Text style = { styles.text }> Item Description </Text>
           <TextInput
+            underlineColorAndroid = { 'transparent' }
             onChangeText = { value => this.onChangeText("description", value) }
             style = { styles.input }
             autoCapitalize = "none"
             autoCorrect = { true }
           />
           <Button
-            raised
             color = "white"
             title = "Add Item"
             fontWeight = "bold"

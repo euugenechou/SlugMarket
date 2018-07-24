@@ -87,7 +87,6 @@ export default class Settings extends Component {
           </SettingsList>
           <View>
             <Button
-              raised
               color="white"
               title="Sign Out"
               fontWeight="bold"

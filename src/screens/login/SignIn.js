@@ -68,6 +68,7 @@ export default class App extends React.Component {
           >
             <Text style = { styles.titleText }> SlugMarket </Text>
             <TextInput
+              underlineColorAndroid = { 'transparent' }
               onChangeText = { value => this.onChangeText("username", value) }
               style = { styles.input }
               keyboardType = "email-address"
@@ -77,6 +78,7 @@ export default class App extends React.Component {
               autoCorrect = { false }
             />
             <TextInput
+              underlineColorAndroid = { 'transparent' }
               onChangeText = { value => this.onChangeText("password", value) }
               style = { styles.input }
               keyboardType = "default"
@@ -87,7 +89,6 @@ export default class App extends React.Component {
               autoCorrect = { false }
             />
             <Button
-              raised
               color = 'white'
               title = "Sign In"
               fontWeight = "bold"
@@ -97,7 +98,6 @@ export default class App extends React.Component {
               containerViewStyle = { {width: 300, paddingVertical: 20} }
               />
             <Button
-              raised
               color = "white"
               title = "Sign Up"
               fontWeight = "bold"
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.7,
     borderBottomColor: "darkgray",
     marginBottom: 20,
-    width: 300
+    width: 300,
   },
   container: {
     flex: 1,

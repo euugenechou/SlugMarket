@@ -207,7 +207,6 @@ export default class Profile extends Component {
                     {this.state.userAttributes.phone_number}
                   </Text>
                   <Button
-                    raised
                     color = "white"
                     backgroundColor = "teal"
                     borderRadius = { 5 }

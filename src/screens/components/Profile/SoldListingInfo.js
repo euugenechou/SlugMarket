@@ -77,7 +77,6 @@ export default class SoldListingsInfo extends Component {
           { this.props.navigation.getParam("description") }
         </Text>
         <Button
-            raised
             color = "white"
             backgroundColor = "red"
             borderRadius = { 5 }
