@@ -1,9 +1,19 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Animated } from "react-native";
 
 export default class TopAlert extends React.Component {
+  state = {
+    timeout: false
+  }
+
+  componentWillMount() {
+    this.timeoutHandle = setTimeout(() => {
+      this.setState({ timeout: true });
+    }, 3500);
+  }
+
   render() {
-    if (this.props.visible) {
+    if (this.props.visible && !this.state.timeout) {
       return (
         <View style = {styles.container}>
           <Text style = {styles.text}> {this.props.message} </Text>
@@ -17,13 +27,13 @@ export default class TopAlert extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 20,
     backgroundColor: "red",
     zIndex: 1,
     position: "absolute",
     left: 0,
     right: 0,
     marginLeft: "auto",
-    marginRight: "auto"
   },
   text: {
     color: "white",

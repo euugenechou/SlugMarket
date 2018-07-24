@@ -12,6 +12,8 @@ import Icon from "react-native-vector-icons/Entypo";
 import { Button } from "react-native-elements";
 // AWS imports 
 import { Auth } from "aws-amplify";
+// Local imports
+import TopAlert from "../components/TopAlert";
 
 export default class App extends React.Component {
   state = {
@@ -19,7 +21,8 @@ export default class App extends React.Component {
     email: "",
     phone_number: "",
     password: "",
-    confirmationCode: ""
+    confirmationCode: "",
+    visible: false
   };
 
   static navigationOptions = () => ({
@@ -49,12 +52,21 @@ export default class App extends React.Component {
           userName: this.state.email
         })
       )
-      .catch(err => console.log(err));
+      .catch(() =>
+        this.setState({
+          visible: true,
+          errorMessage: "Username, password, phone number, or email incorrect"
+        })
+      );
   }
 
   render() {
     return (
       <ScrollView centerContent={true} contentContainerStyle={styles.container}>
+        <TopAlert
+          visible = { this.state.visible }
+          message = { this.state.errorMessage }
+        />
         <Icon
           name = "chevron-small-left"
           size = { 45 }

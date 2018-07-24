@@ -23,6 +23,11 @@ exports[`renders correctly 1`] = `
     }
     scrollEventThrottle={16}
     showsVerticalScrollIndicator={false}
+    style={
+      Object {
+        "marginTop": 20,
+      }
+    }
   >
     <RCTRefreshControl />
     <View>
@@ -67,7 +72,7 @@ exports[`renders correctly 1`] = `
                 "backgroundColor": "white",
                 "flex": 1,
                 "flexDirection": "column",
-                "paddingTop": 60,
+                "paddingTop": 50,
               }
             }
           >
@@ -256,7 +261,7 @@ exports[`renders correctly 1`] = `
             }
           }
         >
-          My Listings
+          Your Listings
         </Text>
         <Text
           accessible={true}
@@ -272,7 +277,7 @@ exports[`renders correctly 1`] = `
             }
           }
         >
-          My Sold Listings
+          Your Sold Listings
         </Text>
       </View>
     </View>

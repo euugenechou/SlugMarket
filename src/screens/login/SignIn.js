@@ -7,10 +7,11 @@ import {
   Text,
   ScrollView
 } from "react-native";
-import TopAlert from "../components/TopAlert";
-import { Button } from 'react-native-elements'
 // AWS imports 
 import { Auth } from "aws-amplify";
+// Local imports
+import TopAlert from "../components/TopAlert";
+import { Button } from 'react-native-elements'
 
 export default class App extends React.Component {
   static navigationOptions = ({ navigation }) => ({

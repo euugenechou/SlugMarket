@@ -52,6 +52,9 @@ export default class SellerDetails extends React.Component {
 
     API.get(apiName, path, params)
       .then(response => {
+        response.data.sort((a, b) => {
+          return new Date(a) - new Date(b);
+        })
         this.setState({
           postsToRender: response.data.filter(post => {
             console.log(post.userId);

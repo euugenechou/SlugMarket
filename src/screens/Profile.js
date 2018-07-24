@@ -184,7 +184,7 @@ export default class Profile extends Component {
   render() {
     return (
       <SafeAreaView style = {{ backgroundColor: "white", flex: 1 }}>
-        <ScrollView
+        <ScrollView style={{ marginTop: 20 }}
           scrollEventThrottle = { 16 }
           contentContainerStyle = {{ backgroundColor: "white" }}
           refreshControl = {
@@ -248,7 +248,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     flexDirection: "column",
     flex: 1,
-    paddingTop: 60
+    paddingTop: 50
   },
   innerContainer: {
     alignItems: "center",

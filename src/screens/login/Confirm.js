@@ -5,10 +5,13 @@ import Icon from "react-native-vector-icons/Entypo";
 import { Button } from "react-native-elements";
 // AWS imports 
 import { Auth } from "aws-amplify";
+// Local imports
+import TopAlert from "../components/TopAlert";
 
 export default class App extends React.Component {
   state = {
-    confirmationCode: ""
+    confirmationCode: "",
+    visible: false
   };
 
   static navigationOptions = () => ({
@@ -32,12 +35,21 @@ export default class App extends React.Component {
       this.state.confirmationCode
     )
       .then(() => this.props.navigation.navigate("SignInScreen"))
-      .catch(err => Alert.alert(err));
+      .catch(() =>
+        this.setState({
+          visible: true,
+          errorMessage: "Confirmation code incorrect"
+        })
+      );
   }
 
   render() {
     return (
       <View style = { styles.container }>
+        <TopAlert
+          visible = { this.state.visible }
+          message = { this.state.errorMessage }
+        />
         <Icon
           name = "chevron-small-left"
           size = { 45 }

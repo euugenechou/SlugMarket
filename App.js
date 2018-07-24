@@ -26,7 +26,6 @@ Amplify.configure(aws_exports);
 
 export default class App extends React.Component {
   state = {
-    fontLoaded: false,
     component: <Splash />
   };
 
@@ -36,13 +35,12 @@ export default class App extends React.Component {
         Entypo,
         Ionicons
       });
-      this.setState({ fontLoaded: true });
     } catch (error) {
       console.log(error);
     }
     this.timeoutHandle = setTimeout(() => {
       this.setState({ component: <LoginStack /> });
-    }, 900);
+    }, 1000);
   }
 
   componentWillUnmount() {

@@ -90,7 +90,7 @@ export default class Explore extends Component {
   render() {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
-        <ScrollView
+        <ScrollView style={{ marginTop: 20 }}
           scrollEventThrottle={16}
           showsVerticalScrollIndicator={false}
           refreshControl={
@@ -210,7 +210,6 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: "700",
     paddingHorizontal: 20,
-    paddingTop: 20,
     paddingBottom: 30
   },
   listingsView: {
