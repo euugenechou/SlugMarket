@@ -1,9 +1,8 @@
 // React imports
 import React, { Component } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
-import { Button } from "react-native-elements";
 
-export default class Listings extends Component {
+export default class SellerListingInfo extends Component {
   static navigationOptions = () => ({
     headerTintColor: "white",
     headerStyle: {
@@ -24,7 +23,7 @@ export default class Listings extends Component {
     return (
       <View style = { styles.container }>
         <Text style = { styles.titleText }>
-          { this.props.navigation.getParam("name") }
+          { this.props.navigation.getParam("itemName") }
         </Text>
         <Text style = { styles.text }>
           ${ this.props.navigation.getParam("price") }
@@ -35,23 +34,6 @@ export default class Listings extends Component {
         <Text style = { styles.text }>
           { this.props.navigation.getParam("description") }
         </Text>
-        <Button
-          raised
-          color = "white"
-          backgroundColor = "teal"
-          borderRadius = { 5 }
-          fontWeight = "bold"
-          onPress = { () =>
-            this.props.navigation.navigate("SellerDetails", {
-              userId: this.props.navigation.getParam("userId"),
-              seller: this.props.navigation.getParam("seller"),
-              phoneNumber: this.props.navigation.getParam("phoneNumber"),
-              email: this.props.navigation.getParam("email")
-            })
-          }
-          title = "View Seller Details"
-          containerViewStyle = { styles.buttonContainer }
-        />
       </View>
     );
   }

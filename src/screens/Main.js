@@ -10,7 +10,8 @@ import Icon from "react-native-vector-icons/Ionicons";
 import Explore from "./Explore";
 import ItemCategory from "./components/Explore/ItemCategory";
 import ListingInfo from "./components/Explore/ListingInfo";
-import SellerDetails from "./components/Explore/SellerDetails"
+import SellerDetails from "./components/Explore/SellerDetails";
+import SellerListingInfo from "./components/Explore/SellerListingInfo";
 
 // Imports for Profile
 import Profile from "./Profile";
@@ -36,7 +37,8 @@ const ExploreStack = createStackNavigator(
     MainExplore: { screen: Explore, },
     ListingInfo: { screen: ListingInfo },
     ViewCategory: { screen: ItemCategory },
-    SellerDetails: { screen: SellerDetails }
+    SellerDetails: { screen: SellerDetails },
+    SellerListingInfo: { screen: SellerListingInfo }
   },
 );
 

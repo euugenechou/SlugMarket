@@ -74,7 +74,7 @@ export default class SellerDetails extends React.Component {
       return (
         <TouchableHighlight
           onPress = { () =>
-            this.props.navigation.navigate("ListingInfo", {
+            this.props.navigation.navigate("SellerListingInfo", {
               itemName: post.itemName,
               price: post.price,
               seller: post.seller,

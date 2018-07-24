@@ -16,7 +16,7 @@ export default class SoldListingsInfo extends Component {
     },
     headerBackground: (
       <Image
-        style = { StyleSheet.absoluteFill }
+        style = { styles.wrapper }
         source = { require("../../../assets/textbooks.jpg") }
       />
     ),
@@ -117,5 +117,9 @@ const styles = StyleSheet.create({
     width: 300,
     alignSelf: "center",
     paddingVertical: 20
-  }
+  },
+  wrapper: {
+    ...StyleSheet.absoluteFillObject,
+    marginTop: 20,
+  },
 });

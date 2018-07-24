@@ -93,7 +93,7 @@ export default class App extends React.Component {
               onChangeText = { value => this.onChangeText("password", value) }
               style = { styles.input }
               secureTextEntry = { true }
-              placeholder=  "e.g.: Slug6969"
+              placeholder=  "e.g.: Slug1965"
               placeholderTextColor = "gray"
               autoCapitalize = "none"
               autoCorrect = { false }

@@ -208,15 +208,7 @@ exports[`renders correctly 1`] = `
               "marginLeft": 15,
               "marginRight": 15,
             },
-            Object {
-              "shadowColor": "rgba(0,0,0, .4)",
-              "shadowOffset": Object {
-                "height": 1,
-                "width": 1,
-              },
-              "shadowOpacity": 1,
-              "shadowRadius": 1,
-            },
+            undefined,
             Object {
               "alignSelf": "center",
               "paddingBottom": 40,
