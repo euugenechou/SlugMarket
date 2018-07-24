@@ -29,4 +29,5 @@ sell or browse for items they want to buy.
 ### Release 1.0 Deliverables 
 + System and Unit Test Report: https://drive.google.com/open?id=1oHIdTpLOjGGGVKLTxrXISHmnB3hOBn2FgucoX_fnnyE
 + Working ProtoType Known Problems Report: https://drive.google.com/open?id=15nU64wxLBMlwmrzgsGP_oqUza_tjdPKKSstPNQU285Y
-+ Installation guide/User manual: // WE GOTTA MAKE SOME DOC WITH INSTRUCTIONS HOW TO DOWNLOAD STUFF
++ Installation guide/User manual: https://drive.google.com/open?id=1UelzDWyWEYk0sn_lUbQd7Inl_9OINyFIU4J1rjSywqU
++ Final Presentation: https://drive.google.com/open?id=1VL4s2rCCt4tXuW3s4-AJfFOVtbdRMm86X_9Xnu1bZOc
