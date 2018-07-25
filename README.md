@@ -8,7 +8,7 @@ sell or browse for items they want to buy.
 3. Sabrina Au - Dev #1
 4. Timothy Lo - Dev #2
 
-## Deliverables
+## Documents
 
 ### General
 + Release Plan: https://drive.google.com/open?id=1cpBBg4Vp0OWPKwsGJK3UN1JZuBQ6rsP4DkNnTrd6woA
